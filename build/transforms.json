@@ -1,0 +1,556 @@
+[
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "component",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/component/",
+      "can/component/component",
+      "can/component/component.js"
+    ],
+    "newSourceValue": "can-component",
+    "defaultLocalName": "Component",
+    "exampleLocalName": "Component"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "construct",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/construct/",
+      "can/construct/construct",
+      "can/construct/construct.js"
+    ],
+    "newSourceValue": "can-construct",
+    "defaultLocalName": "Construct",
+    "exampleLocalName": "Construct"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "construct-super",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/construct/super/",
+      "can/construct/super/super",
+      "can/construct/super/super.js"
+    ],
+    "newSourceValue": "can-construct-super",
+    "defaultLocalName": false,
+    "exampleLocalName": false
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "control",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/control/",
+      "can/control/control",
+      "can/control/control.js"
+    ],
+    "newSourceValue": "can-control",
+    "defaultLocalName": "Control",
+    "exampleLocalName": "Control"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "list",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/list/",
+      "can/list/list",
+      "can/list/list.js"
+    ],
+    "newSourceValue": "can-list",
+    "defaultLocalName": "canList",
+    "exampleLocalName": "canList"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "map",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/map/",
+      "can/map/map",
+      "can/map/map.js"
+    ],
+    "newSourceValue": "can-map",
+    "defaultLocalName": "canMap",
+    "exampleLocalName": "canMap"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "map-backup",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/map/backup/",
+      "can/map/backup/backup",
+      "can/map/backup/backup.js"
+    ],
+    "newSourceValue": "can-map-backup",
+    "defaultLocalName": false,
+    "exampleLocalName": false
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "map-define",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/map/define/",
+      "can/map/define/define",
+      "can/map/define/define.js"
+    ],
+    "newSourceValue": "can-map-define",
+    "defaultLocalName": false,
+    "exampleLocalName": false
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "model",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/model/",
+      "can/model/model",
+      "can/model/model.js"
+    ],
+    "newSourceValue": "can-model",
+    "defaultLocalName": "Model",
+    "exampleLocalName": "Model"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "compute",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/compute/",
+      "can/compute/compute",
+      "can/compute/compute.js"
+    ],
+    "newSourceValue": "can-compute",
+    "defaultLocalName": "compute",
+    "exampleLocalName": "compute"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "event",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/event/",
+      "can/event/event",
+      "can/event/event.js"
+    ],
+    "newSourceValue": "can-event",
+    "defaultLocalName": "canEvent",
+    "exampleLocalName": "canEvent"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "fixture",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/util/fixture/",
+      "can/util/fixture/fixture",
+      "can/util/fixture/fixture.js"
+    ],
+    "newSourceValue": "can-fixture",
+    "defaultLocalName": "fixture",
+    "exampleLocalName": "fixture"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "route",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/route/",
+      "can/route/route",
+      "can/route/route.js"
+    ],
+    "newSourceValue": "can-route",
+    "defaultLocalName": "canRoute",
+    "exampleLocalName": "canRoute"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "route-pushstate",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/route/pushstate/",
+      "can/route/pushstate/pushstate",
+      "can/route/pushstate/pushstate.js"
+    ],
+    "newSourceValue": "can-route-pushstate",
+    "defaultLocalName": false,
+    "exampleLocalName": false
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "stache",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/stache/",
+      "can/view/stache/stache",
+      "can/view/stache/stache.js"
+    ],
+    "newSourceValue": "can-stache",
+    "defaultLocalName": "stache",
+    "exampleLocalName": "stache"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-autorender",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/autorender/",
+      "can/view/autorender/autorender",
+      "can/view/autorender/autorender.js"
+    ],
+    "newSourceValue": "can-view-autorender",
+    "defaultLocalName": "canAutorender",
+    "exampleLocalName": "canAutorender"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-scope",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/scope/",
+      "can/view/scope/scope",
+      "can/view/scope/scope.js"
+    ],
+    "newSourceValue": "can-view-scope",
+    "defaultLocalName": "canViewScope",
+    "exampleLocalName": "canViewScope"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-live",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/live/",
+      "can/view/live/live",
+      "can/view/live/live.js"
+    ],
+    "newSourceValue": "can-view-live",
+    "defaultLocalName": "canViewLive",
+    "exampleLocalName": "canViewLive"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-nodelist",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/node_list/",
+      "can/view/node_list/node_list",
+      "can/view/node_list/node_list.js"
+    ],
+    "newSourceValue": "can-view-nodelist",
+    "defaultLocalName": "canViewNodeList",
+    "exampleLocalName": "canViewNodeList"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-target",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/target/",
+      "can/view/target/target",
+      "can/view/target/target.js"
+    ],
+    "newSourceValue": "can-view-target",
+    "defaultLocalName": "canViewTarget",
+    "exampleLocalName": "canViewTarget"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-parser",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/parser/",
+      "can/view/parser/parser",
+      "can/view/parser/parser.js"
+    ],
+    "newSourceValue": "can-view-parser",
+    "defaultLocalName": "canHTMLParser",
+    "exampleLocalName": "canHTMLParser"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-callbacks",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/callbacks/",
+      "can/view/callbacks/callbacks",
+      "can/view/callbacks/callbacks.js"
+    ],
+    "newSourceValue": "can-view-callbacks",
+    "defaultLocalName": "canViewCallbacks",
+    "exampleLocalName": "canViewCallbacks"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-import",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/import/",
+      "can/view/import/import",
+      "can/view/import/import.js"
+    ],
+    "newSourceValue": "can-view-import",
+    "defaultLocalName": false,
+    "exampleLocalName": false
+  },
+  {
+    "generate": [
+      {
+        "template": "can-import.ejs",
+        "outputPath": "can-{shortName}/import.js"
+      },
+      {
+        "template": "can-require.ejs",
+        "outputPath": "can-{shortName}/require.js"
+      }
+    ],
+    "shortName": "view-href",
+    "type": "modern",
+    "oldSourceValues": [
+      "can/view/href/",
+      "can/view/href/href",
+      "can/view/href/href.js"
+    ],
+    "newSourceValue": "can-view-href",
+    "defaultLocalName": false,
+    "exampleLocalName": false
+  },
+  {
+    "generate": [
+      {
+        "template": "can-replace.ejs",
+        "outputPath": "can-map/replace.js"
+      }
+    ],
+    "shortName": "map",
+    "type": "modern",
+    "oldName": "Map",
+    "sourceValue": "can-map",
+    "localName": "canMap"
+  },
+  {
+    "generate": [
+      {
+        "template": "can-replace.ejs",
+        "outputPath": "can-stache/replace.js"
+      }
+    ],
+    "shortName": "stache",
+    "type": "modern",
+    "oldName": "stache",
+    "sourceValue": "can-stache",
+    "localName": "stache"
+  }
+]

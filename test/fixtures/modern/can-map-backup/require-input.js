@@ -1,0 +1,1 @@
+require('can/map/backup/');

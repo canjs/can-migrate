@@ -1,0 +1,35 @@
+/**
+ * Replaces old require statements with new ones and renames all references to the old variables.
+ * 
+ * Before:
+ *   ```js 
+ * <% oldSourceValues.forEach(function(oldSourceValue, idx) { %>  const <...> = require('<%= oldSourceValue %>');
+ *   <% if (idx < oldSourceValues.length - 1) { %>//OR
+ * <% } %><% }); %>```
+ * After:
+ *   ```js 
+ *   <% if (exampleLocalName) { %>const <%= exampleLocalName %> = <% } %>require('can-<%= shortName %>')
+ */
+import replaceRequire from '../../../utils/replaceRequire';
+import replaceRefs from '../../../utils/replaceRefs';
+import makeDebug from 'debug';
+const debug = makeDebug('can-migrate:<%= type %>-can-<%= shortName %>-require');
+
+export default function transformer(file, api, options) {
+  debug(`Running on ${file.path}`);
+  const j = api.jscodeshift;
+  const printOptions = options.printOptions || {};
+  const root = j(file.source);
+  const oldLocalName = replaceRequire(j, root, {
+    oldSourceValues: [<% oldSourceValues.forEach(function(oldSourceValue, idx) { %>'<%= oldSourceValue %>'<% if (idx < oldSourceValues.length - 1) { %>,<% } %> <% }); %>],
+    newSourceValue: 'can-<%= shortName %>',
+    newLocalName: options.name || '<%= defaultLocalName %>'
+  });
+  if(oldLocalName) {
+    replaceRefs(j, root, {
+      oldLocalName,
+      newLocalName: options.name || '<%= defaultLocalName %>'
+    });
+  }
+  return root.toSource(printOptions);
+}
