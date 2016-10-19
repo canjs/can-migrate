@@ -1,1 +1,1 @@
-require('can/view/import/');
+ require('can/view/import/import');

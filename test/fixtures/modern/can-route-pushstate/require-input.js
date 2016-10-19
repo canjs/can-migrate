@@ -1,1 +1,1 @@
-require('can/route/pushstate/');
+ require('can/route/pushstate/pushstate');

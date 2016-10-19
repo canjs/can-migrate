@@ -1,37 +1,26 @@
-/**
- * Replaces old import statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   import <...> from 'can/construct/super/';
- *   //OR
- *   import <...> from 'can/construct/super/super';
- *   //OR
- *   import <...> from 'can/construct/super/super.js';
- *   ```
- * After:
- *   ```js 
- *   import  'can-construct-super';
- */
-import replaceImport from '../../../utils/replaceImport';
+// This is a generated file, see src/templates/import/import.ejs
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-construct-super-import');
+const debug = makeDebug('can-migrate:can-construct-super-import');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-construct-super'] ? config.moduleToName['can-construct-super'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceImport(j, root, {
+  const oldLocalName = renameImport(root, {
     oldSourceValues: ['can/construct/super/', 'can/construct/super/super', 'can/construct/super/super.js' ],
     newSourceValue: 'can-construct-super',
-    newLocalName: options.name || 'false'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'false'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

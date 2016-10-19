@@ -1,0 +1,14 @@
+<% if(exampleLocalName) { %>const <%= exampleLocalName %> =<% } %> require('<%= oldSourceValues[1] %>');
+<% if(exampleLocalName) { %>
+const map = new <%= exampleLocalName %>({
+  define: {
+    Type: <%= exampleLocalName %>
+  }
+});
+<%= exampleLocalName %>();
+new <%= exampleLocalName %>();
+<%= exampleLocalName %>.prototype.say = function(){};
+function speak(<%= exampleLocalName %>) {};
+const say = function(<%= exampleLocalName %>) {};
+Object.assign({}, <%= exampleLocalName %>);
+<% } _%>

@@ -1,11 +1,13 @@
-const List = require('can/list/');
+const MyList = require('can/list/list');
 
-List.extend({
+const map = new MyList({
   define: {
-    items: {
-      Type: List
-    }
+    Type: MyList
   }
 });
-Map.List = List;
-const myList = new List({});
+MyList();
+new MyList();
+MyList.prototype.say = function(){};
+function speak(MyList) {};
+const say = function(MyList) {};
+Object.assign({}, MyList);

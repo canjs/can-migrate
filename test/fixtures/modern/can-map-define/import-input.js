@@ -1,1 +1,1 @@
-import 'can/map/define/';
+import  'can/map/define/define';

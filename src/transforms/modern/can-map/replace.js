@@ -1,71 +1,36 @@
-/**
- * Replaces instances where can.* is used in code. Also adds appropriate import/require.
- * 
- * Before:
- *   ```js 
- *     can.Map;
- *   ```
- * After:
- *   ```js 
- *   const canMap = require('can-map');
- *
- *   canMap;
- *   ```
- */
-import imports from 'jscodeshift-imports';
+// This is a generated file, see src/templates/replace/replace.ejs
+import getConfig from '../../../utils/getConfig';
+import dependencyUtils from '../../../utils/dependencyUtils';
 import makeDebug from 'debug';
-
-const debug = makeDebug('can-migrate:modern-can-map-replace');
+const debug = makeDebug('can-migrate:can-map-replace');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
   const j = api.jscodeshift;
-  const {statement} = j.template;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
   let found = false;
+  const newName = config.moduleToName['can-map'];
 
-  imports.register(j, imports.config.CJSBasicRequire);
-
-  root.find(j.MemberExpression, {
-    object: {
-      name: 'can'
-    },
-    property: {
-      name: 'Map'
-    }
+  debug(`Finding all instances of 'can.Map'`);
+  root.find(j.MemberExpression).filter(expression => {
+    let match = true;
+    
+      match = match && expression.value.object.name === 'can';
+     
+    return match && expression.value.property.name === 'Map';
   }).forEach(expression => {
+    debug(`Replacing all instances of 'can.Map' with '${newName}'`);
     found = true;
-    j(expression).replaceWith(j.identifier('canMap'));
+    
+    // can.Map -> canMap
+    j(expression).replaceWith(j.identifier(newName));
+    
   });
 
-  let useImport = root.find(j.ImportDeclaration).size() > 0;
-  let useRequire = root.find(j.CallExpression, {callee: {name: 'require'}}).size() > 0;
-  let useConst = root.find(j.VariableDeclaration, {kind: 'const'}).size() > 0;
-  debug(`File is using ${useConst ? 'const' : 'var'}`);
-  if (!useRequire && !useImport) {
-    debug(`File has no imports or requires defaulting to require`);
-    useRequire = true;
-  }
-  debug(`File is using ${useImport ? 'import' : 'require'}`);
-
   if (found) {
-    debug(`Found an instance to replace`);
-    if (useImport) {
-      root.addImport(statement`
-        import canMap from 'can-map';
-      `);
-    } else {
-      if (useConst) {
-        root.addImport(statement`
-          const canMap = require('can-map');
-        `);
-      } else {
-        root.addImport(statement`
-          var canMap = require('can-map');
-        `);
-      }
-    }
+    dependencyUtils.add(root, 'can-map', newName, ['can', 'can/can', 'can/can.js']);
   }
   return root.toSource(printOptions);
 }

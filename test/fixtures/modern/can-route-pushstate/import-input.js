@@ -1,1 +1,1 @@
-import 'can/route/pushstate/';
+import  'can/route/pushstate/pushstate';

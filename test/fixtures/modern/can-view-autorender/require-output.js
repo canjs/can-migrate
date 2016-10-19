@@ -1,3 +1,13 @@
-const canAutorender = require('can-view-autorender');
+const MyAutorender = require('can-view-autorender');
 
-canAutorender().then(() => {});
+const map = new MyAutorender({
+  define: {
+    Type: MyAutorender
+  }
+});
+MyAutorender();
+new MyAutorender();
+MyAutorender.prototype.say = function(){};
+function speak(MyAutorender) {};
+const say = function(MyAutorender) {};
+Object.assign({}, MyAutorender);

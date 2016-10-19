@@ -1,4 +1,13 @@
-const events = require('can/event/');
+const MyEvent = require('can/event/event');
 
-$.extend(something, events);
-events.on();
+const map = new MyEvent({
+  define: {
+    Type: MyEvent
+  }
+});
+MyEvent();
+new MyEvent();
+MyEvent.prototype.say = function(){};
+function speak(MyEvent) {};
+const say = function(MyEvent) {};
+Object.assign({}, MyEvent);

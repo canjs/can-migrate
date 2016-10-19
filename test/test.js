@@ -1,49 +1,93 @@
-const fs = require('fs');
-const path = require('path');
-require('mocha');
-const assert = require('assert');
-const disparity = require('disparity');
-
-const jscodeshift = require('jscodeshift');
-// const transforms = require('../');
-// console.log(transforms);
-// describe('minimal', function() {
-
-// });
-const transforms = {
-  modern: [{ name: 'can-map/replace.js',
-       fileName: 'can-map/replace.js',
-       file: '/Users/Curtis/Work/Bitovi/OpenSource/can-migrate-codemods/lib/transforms/modern/can-map/replace.js' }]};
-describe('modern', function() {
-  transforms.modern.forEach((t) => {
-    it(t.name, function() {
-      const fn = require(t.file);
-      const inputPath = path.join(__dirname, `fixtures/modern/${t.fileName.replace('.js', '-input.js')}`);
-      const outputPath = path.join(__dirname, `fixtures/modern/${t.fileName.replace('.js', '-output.js')}`);
-      const result = fn({
-        path: inputPath,
-        source: fs.readFileSync(inputPath, 'utf8')
-      }, {
-        jscodeshift: jscodeshift,
-        stats: function(){}
-      }, {
-        quote: 'single'
-      });
-
-      console.log('\n\n', result, '\n\n');
-
-      const diff = disparity.unified(fs.readFileSync(outputPath, 'utf8').trim(), result.trim(), {
-        paths: [
-          `${inputPath} (transformed)`,
-          outputPath
-        ]
-      });
-
-      assert.equal(diff, '', `\n${diff}`);
-    });
-  });
-});
-
-// describe('future', function() {
-
-// });
+require('../lib/transforms/modern/can-extend/can-extend-test.js');
+require('../lib/transforms/modern/can-data/can-data-test.js');
+require('../lib/transforms/modern/can-component/import-test.js');
+require('../lib/transforms/modern/can-construct/import-test.js');
+require('../lib/transforms/modern/can-construct-super/import-test.js');
+require('../lib/transforms/modern/can-control/import-test.js');
+require('../lib/transforms/modern/can-list/import-test.js');
+require('../lib/transforms/modern/can-map/import-test.js');
+require('../lib/transforms/modern/can-map-backup/import-test.js');
+require('../lib/transforms/modern/can-map-define/import-test.js');
+require('../lib/transforms/modern/can-model/import-test.js');
+require('../lib/transforms/modern/can-compute/import-test.js');
+require('../lib/transforms/modern/can-event/import-test.js');
+require('../lib/transforms/modern/can-fixture/import-test.js');
+require('../lib/transforms/modern/can-route/import-test.js');
+require('../lib/transforms/modern/can-route-pushstate/import-test.js');
+require('../lib/transforms/modern/can-stache/import-test.js');
+require('../lib/transforms/modern/can-view-autorender/import-test.js');
+require('../lib/transforms/modern/can-view-scope/import-test.js');
+require('../lib/transforms/modern/can-view-live/import-test.js');
+require('../lib/transforms/modern/can-view-target/import-test.js');
+require('../lib/transforms/modern/can-view-parser/import-test.js');
+require('../lib/transforms/modern/can-view-callbacks/import-test.js');
+require('../lib/transforms/modern/can-view-import/import-test.js');
+require('../lib/transforms/modern/can-view-href/import-test.js');
+require('../lib/transforms/modern/can-component/require-test.js');
+require('../lib/transforms/modern/can-construct/require-test.js');
+require('../lib/transforms/modern/can-construct-super/require-test.js');
+require('../lib/transforms/modern/can-control/require-test.js');
+require('../lib/transforms/modern/can-list/require-test.js');
+require('../lib/transforms/modern/can-map/require-test.js');
+require('../lib/transforms/modern/can-map-backup/require-test.js');
+require('../lib/transforms/modern/can-map-define/require-test.js');
+require('../lib/transforms/modern/can-model/require-test.js');
+require('../lib/transforms/modern/can-compute/require-test.js');
+require('../lib/transforms/modern/can-event/require-test.js');
+require('../lib/transforms/modern/can-fixture/require-test.js');
+require('../lib/transforms/modern/can-route/require-test.js');
+require('../lib/transforms/modern/can-route-pushstate/require-test.js');
+require('../lib/transforms/modern/can-stache/require-test.js');
+require('../lib/transforms/modern/can-view-autorender/require-test.js');
+require('../lib/transforms/modern/can-view-scope/require-test.js');
+require('../lib/transforms/modern/can-view-live/require-test.js');
+require('../lib/transforms/modern/can-view-target/require-test.js');
+require('../lib/transforms/modern/can-view-parser/require-test.js');
+require('../lib/transforms/modern/can-view-callbacks/require-test.js');
+require('../lib/transforms/modern/can-view-import/require-test.js');
+require('../lib/transforms/modern/can-view-href/require-test.js');
+require('../lib/transforms/modern/can-component/replace-test.js');
+require('../lib/transforms/modern/can-construct/replace-test.js');
+require('../lib/transforms/modern/can-control/replace-test.js');
+require('../lib/transforms/modern/can-list/replace-test.js');
+require('../lib/transforms/modern/can-map/replace-test.js');
+require('../lib/transforms/modern/can-model/replace-test.js');
+require('../lib/transforms/modern/can-compute/replace-test.js');
+require('../lib/transforms/modern/can-event/replace-test.js');
+require('../lib/transforms/modern/can-addEvent/replace-test.js');
+require('../lib/transforms/modern/can-dispatch/replace-test.js');
+require('../lib/transforms/modern/can-listenTo/replace-test.js');
+require('../lib/transforms/modern/can-one/replace-test.js');
+require('../lib/transforms/modern/can-removeEvent/replace-test.js');
+require('../lib/transforms/modern/can-stopListening/replace-test.js');
+require('../lib/transforms/modern/can-batch/replace-test.js');
+require('../lib/transforms/modern/can-fixture/replace-test.js');
+require('../lib/transforms/modern/can-mustache/replace-test.js');
+require('../lib/transforms/modern/can-route/replace-test.js');
+require('../lib/transforms/modern/can-stache/replace-test.js');
+require('../lib/transforms/modern/can-addClass/replace-test.js');
+require('../lib/transforms/modern/can-ajax/replace-test.js');
+require('../lib/transforms/modern/can-append/replace-test.js');
+require('../lib/transforms/modern/can-buildFragment/replace-test.js');
+require('../lib/transforms/modern/can-camelize/replace-test.js');
+require('../lib/transforms/modern/can-capitilize/replace-test.js');
+require('../lib/transforms/modern/can-deparam/replace-test.js');
+require('../lib/transforms/modern/can-each/replace-test.js');
+require('../lib/transforms/modern/can-esc/replace-test.js');
+require('../lib/transforms/modern/can-frag/replace-test.js');
+require('../lib/transforms/modern/can-getObject/replace-test.js');
+require('../lib/transforms/modern/can-hyphenate/replace-test.js');
+require('../lib/transforms/modern/can-isArray/replace-test.js');
+require('../lib/transforms/modern/can-isDeferred/replace-test.js');
+require('../lib/transforms/modern/can-isEmptyObject/replace-test.js');
+require('../lib/transforms/modern/can-isFunction/replace-test.js');
+require('../lib/transforms/modern/can-makeArray/replace-test.js');
+require('../lib/transforms/modern/can-param/replace-test.js');
+require('../lib/transforms/modern/can-remove/replace-test.js');
+require('../lib/transforms/modern/can-sub/replace-test.js');
+require('../lib/transforms/modern/can-underscore/replace-test.js');
+require('../lib/transforms/modern/can-view-autorender/replace-test.js');
+require('../lib/transforms/modern/can-view-scope/replace-test.js');
+require('../lib/transforms/modern/can-view-live/replace-test.js');
+require('../lib/transforms/modern/can-view-target/replace-test.js');
+require('../lib/transforms/modern/can-view-callbacks/replace-test.js');

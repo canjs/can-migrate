@@ -1,4 +1,13 @@
-const stache = require('can-stache');
+const MyStache = require('can-stache');
 
-const frag = stache('<br>');
-stache.registerHelper(function() {});
+const map = new MyStache({
+  define: {
+    Type: MyStache
+  }
+});
+MyStache();
+new MyStache();
+MyStache.prototype.say = function(){};
+function speak(MyStache) {};
+const say = function(MyStache) {};
+Object.assign({}, MyStache);

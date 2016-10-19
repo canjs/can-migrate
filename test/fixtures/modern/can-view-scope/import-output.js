@@ -1,4 +1,13 @@
-import canViewScope from 'can-view-scope';
+import MyViewScope from 'can-view-scope';
 
-canViewScope.extend({});
-const scope = new canViewScope({});
+const map = new MyViewScope({
+  define: {
+    Type: MyViewScope
+  }
+});
+MyViewScope();
+new MyViewScope();
+MyViewScope.prototype.say = function(){};
+function speak(MyViewScope) {};
+const say = function(MyViewScope) {};
+Object.assign({}, MyViewScope);

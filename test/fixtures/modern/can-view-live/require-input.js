@@ -1,4 +1,13 @@
-const live = require('can/view/live/');
+const MyViewLive = require('can/view/live/live');
 
-live.list();
-live.html();
+const map = new MyViewLive({
+  define: {
+    Type: MyViewLive
+  }
+});
+MyViewLive();
+new MyViewLive();
+MyViewLive.prototype.say = function(){};
+function speak(MyViewLive) {};
+const say = function(MyViewLive) {};
+Object.assign({}, MyViewLive);

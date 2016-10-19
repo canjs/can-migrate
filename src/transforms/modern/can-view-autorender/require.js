@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/view/autorender/');
- *   //OR
- *   const <...> = require('can/view/autorender/autorender');
- *   //OR
- *   const <...> = require('can/view/autorender/autorender.js');
- *   ```
- * After:
- *   ```js 
- *   const canAutorender = require('can-view-autorender')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-view-autorender-require');
+const debug = makeDebug('can-migrate:can-view-autorender-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-view-autorender'] ? config.moduleToName['can-view-autorender'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/view/autorender/', 'can/view/autorender/autorender', 'can/view/autorender/autorender.js' ],
     newSourceValue: 'can-view-autorender',
-    newLocalName: options.name || 'canAutorender'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'canAutorender'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

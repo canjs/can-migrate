@@ -1,1 +1,1 @@
-import 'can/view/import/';
+import  'can/view/import/import';

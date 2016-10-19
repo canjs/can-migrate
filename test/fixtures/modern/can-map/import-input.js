@@ -1,11 +1,13 @@
-import Map from 'can/map/';
+import MyMap from 'can/map/map';
 
-Map.extend({
+const map = new MyMap({
   define: {
-    items: {
-      Type: Map
-    }
+    Type: MyMap
   }
 });
-List.Map = Map;
-const myMap = new Map({});
+MyMap();
+new MyMap();
+MyMap.prototype.say = function(){};
+function speak(MyMap) {};
+const say = function(MyMap) {};
+Object.assign({}, MyMap);

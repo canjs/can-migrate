@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/control/');
- *   //OR
- *   const <...> = require('can/control/control');
- *   //OR
- *   const <...> = require('can/control/control.js');
- *   ```
- * After:
- *   ```js 
- *   const Control = require('can-control')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-control-require');
+const debug = makeDebug('can-migrate:can-control-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-control'] ? config.moduleToName['can-control'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/control/', 'can/control/control', 'can/control/control.js' ],
     newSourceValue: 'can-control',
-    newLocalName: options.name || 'Control'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'Control'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

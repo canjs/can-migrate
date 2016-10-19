@@ -1,37 +1,26 @@
-/**
- * Replaces old import statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   import <...> from 'can/control/';
- *   //OR
- *   import <...> from 'can/control/control';
- *   //OR
- *   import <...> from 'can/control/control.js';
- *   ```
- * After:
- *   ```js 
- *   import Control from  'can-control';
- */
-import replaceImport from '../../../utils/replaceImport';
+// This is a generated file, see src/templates/import/import.ejs
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-control-import');
+const debug = makeDebug('can-migrate:can-control-import');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-control'] ? config.moduleToName['can-control'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceImport(j, root, {
+  const oldLocalName = renameImport(root, {
     oldSourceValues: ['can/control/', 'can/control/control', 'can/control/control.js' ],
     newSourceValue: 'can-control',
-    newLocalName: options.name || 'Control'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'Control'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

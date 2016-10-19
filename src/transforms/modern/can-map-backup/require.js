@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/map/backup/');
- *   //OR
- *   const <...> = require('can/map/backup/backup');
- *   //OR
- *   const <...> = require('can/map/backup/backup.js');
- *   ```
- * After:
- *   ```js 
- *   require('can-map-backup')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-map-backup-require');
+const debug = makeDebug('can-migrate:can-map-backup-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-map-backup'] ? config.moduleToName['can-map-backup'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/map/backup/', 'can/map/backup/backup', 'can/map/backup/backup.js' ],
     newSourceValue: 'can-map-backup',
-    newLocalName: options.name || 'false'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'false'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

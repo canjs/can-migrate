@@ -1,1 +1,1 @@
-require('can/construct/super/');
+ require('can/construct/super/super');

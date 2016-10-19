@@ -64,12 +64,12 @@ export default function replaceRefs(j, root, options) {
   }).filter((identifier) => (
     // Don't replace function parameters
     identifier.parent.value.type !== 'FunctionExpression' &&
+    identifier.parent.value.type !== 'FunctionDeclaration' &&
     // Don't replace if it is part of an Object ie. `obj.<oldLocalName>`
     identifier.parent.value.type !== 'MemberExpression'
   )).forEach(identifier => {
     identifier.node.name = options.newLocalName;
   });
-  // Replace Object.assign({}, <oldLocalName>)
   root.find(j.Identifier, {
     object: {
       name: options.oldLocalName
@@ -80,7 +80,7 @@ export default function replaceRefs(j, root, options) {
   // Replace <oldLocalName>.on
   root.find(j.MemberExpression, {
     object: {
-	  name: options.oldLocalName
+	    name: options.oldLocalName
     }
   }).forEach(memberExpression => {
     memberExpression.node.object.name = options.newLocalName;

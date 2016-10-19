@@ -26,11 +26,13 @@ let future = [];
 modernDirs.forEach((dir) => {
   const transforms = fs.readdirSync(path.join(__dirname, `${MODERN_PATH}/${dir}`));
   transforms.forEach((transformFile) => {
-   modern.push({
-      name: `${dir}/${transformFile}`,
-      fileName: `${dir}/${transformFile}`,
-      file: path.join(__dirname, `${MODERN_PATH}/${dir}/${transformFile}`)
-   });
+    if(transformFile.indexOf('-test.js') === -1) {
+      modern.push({
+        name: `${dir}/${transformFile}`,
+        fileName: `${dir}/${transformFile}`,
+        file: path.join(__dirname, `${MODERN_PATH}/${dir}/${transformFile}`)
+      });
+    }
   });
 });
 

@@ -1,11 +1,13 @@
-import canList from 'can-list';
+import MyList from 'can-list';
 
-canList.extend({
+const map = new MyList({
   define: {
-    items: {
-      Type: canList
-    }
+    Type: MyList
   }
 });
-Map.List = canList;
-const myList = new canList({});
+MyList();
+new MyList();
+MyList.prototype.say = function(){};
+function speak(MyList) {};
+const say = function(MyList) {};
+Object.assign({}, MyList);

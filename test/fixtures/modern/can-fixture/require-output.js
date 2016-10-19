@@ -1,4 +1,13 @@
-const fixture = require('can-fixture');
+const MyFixture = require('can-fixture');
 
-fixture(function(){});
-fixture.on = false;
+const map = new MyFixture({
+  define: {
+    Type: MyFixture
+  }
+});
+MyFixture();
+new MyFixture();
+MyFixture.prototype.say = function(){};
+function speak(MyFixture) {};
+const say = function(MyFixture) {};
+Object.assign({}, MyFixture);

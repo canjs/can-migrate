@@ -1,1 +1,1 @@
-require('can/map/define/');
+ require('can/map/define/define');

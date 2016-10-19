@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/view/target/');
- *   //OR
- *   const <...> = require('can/view/target/target');
- *   //OR
- *   const <...> = require('can/view/target/target.js');
- *   ```
- * After:
- *   ```js 
- *   const canViewTarget = require('can-view-target')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-view-target-require');
+const debug = makeDebug('can-migrate:can-view-target-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-view-target'] ? config.moduleToName['can-view-target'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/view/target/', 'can/view/target/target', 'can/view/target/target.js' ],
     newSourceValue: 'can-view-target',
-    newLocalName: options.name || 'canViewTarget'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'canViewTarget'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

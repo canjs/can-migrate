@@ -1,1 +1,1 @@
-import 'can/map/backup/';
+import  'can/map/backup/backup';

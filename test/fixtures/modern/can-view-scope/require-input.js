@@ -1,4 +1,13 @@
-const Scope = require('can/view/scope/');
+const MyViewScope = require('can/view/scope/scope');
 
-Scope.extend({});
-const scope = new Scope({});
+const map = new MyViewScope({
+  define: {
+    Type: MyViewScope
+  }
+});
+MyViewScope();
+new MyViewScope();
+MyViewScope.prototype.say = function(){};
+function speak(MyViewScope) {};
+const say = function(MyViewScope) {};
+Object.assign({}, MyViewScope);

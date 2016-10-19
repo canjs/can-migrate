@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/list/');
- *   //OR
- *   const <...> = require('can/list/list');
- *   //OR
- *   const <...> = require('can/list/list.js');
- *   ```
- * After:
- *   ```js 
- *   const canList = require('can-list')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-list-require');
+const debug = makeDebug('can-migrate:can-list-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-list'] ? config.moduleToName['can-list'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/list/', 'can/list/list', 'can/list/list.js' ],
     newSourceValue: 'can-list',
-    newLocalName: options.name || 'canList'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'canList'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

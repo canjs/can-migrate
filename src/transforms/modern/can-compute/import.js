@@ -1,37 +1,26 @@
-/**
- * Replaces old import statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   import <...> from 'can/compute/';
- *   //OR
- *   import <...> from 'can/compute/compute';
- *   //OR
- *   import <...> from 'can/compute/compute.js';
- *   ```
- * After:
- *   ```js 
- *   import compute from  'can-compute';
- */
-import replaceImport from '../../../utils/replaceImport';
+// This is a generated file, see src/templates/import/import.ejs
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-compute-import');
+const debug = makeDebug('can-migrate:can-compute-import');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-compute'] ? config.moduleToName['can-compute'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceImport(j, root, {
+  const oldLocalName = renameImport(root, {
     oldSourceValues: ['can/compute/', 'can/compute/compute', 'can/compute/compute.js' ],
     newSourceValue: 'can-compute',
-    newLocalName: options.name || 'compute'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'compute'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

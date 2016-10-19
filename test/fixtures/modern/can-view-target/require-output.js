@@ -1,3 +1,13 @@
-const canViewTarget = require('can-view-target');
+const MyTarget = require('can-view-target');
 
-canViewTarget();
+const map = new MyTarget({
+  define: {
+    Type: MyTarget
+  }
+});
+MyTarget();
+new MyTarget();
+MyTarget.prototype.say = function(){};
+function speak(MyTarget) {};
+const say = function(MyTarget) {};
+Object.assign({}, MyTarget);

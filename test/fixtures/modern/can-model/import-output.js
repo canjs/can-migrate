@@ -1,3 +1,13 @@
-import Model from 'can-model';
+import MyModel from 'can-model';
 
-Model.extend({});
+const map = new MyModel({
+  define: {
+    Type: MyModel
+  }
+});
+MyModel();
+new MyModel();
+MyModel.prototype.say = function(){};
+function speak(MyModel) {};
+const say = function(MyModel) {};
+Object.assign({}, MyModel);

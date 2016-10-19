@@ -1,50 +1,98 @@
 #!/usr/bin/env node
-const fse = require('fs-extra');
+const fs = require('fs-extra');
 const path = require('path');
 const ejs = require('ejs');
-const beautify = require('js-beautify');
+const deepAssign = require('deep-assign');
+const config = require('../config.json');
 const transforms = require('./transforms.json');
 
+const DIRS = {
+  test: 'src/transforms',
+  transform: 'src/transforms',
+  fixture: 'test/fixtures'
+};
 const TEMPLATE_DIR = 'src/templates';
-const DEST_DIR = 'src/transforms';
 const PATH_RE = /\{([^\}]+)\}/g;
+const testFiles = [];
 
-function getOutputPath(template, config) {
+function sub(template, config) {
   return template.replace(PATH_RE, (matched, part) => {
     return config[part] || null;
   });
 }
 
-function generateTransform(transform) {
-  transform.generate.forEach((g) => {
-    const outputPath = getOutputPath(g.outputPath, transform);
-    const templatePath = `${TEMPLATE_DIR}/${g.template}`;
-    const destPath = `${DEST_DIR}/${transform.type}/${outputPath}`;
-    ejs.renderFile(templatePath, transform, (err, str) => {
-      if(err) {
+function copyTemplate(copy) {
+  const outputPath = `../${copy.type ? DIRS[copy.type] + '/' : ''}${copy.outputPath}`;
+  const srcPath = `../${TEMPLATE_DIR}/${copy.input}`;
+  if(copy.type === "test") {
+    testFiles.push(`${outputPath.replace('src/', 'lib/')}`);
+  }
+  fs.copy(path.join(__dirname, srcPath), path.join(__dirname, outputPath), (err) => {
+    if (err) {
         throw err;
       }
-      fse.outputFile(destPath, str, (err) => {
-        if (err) {
-          throw err;
-        }
-        console.log(`>> Wrote: ${destPath}`);
-      });
+      console.log(`>> Copied: ${outputPath}`);
+  });
+}
+
+function writeTemplate(generate, transform) {
+  const outputPath = `${generate.type ? DIRS[generate.type] + '/' : ''}${sub(generate.outputPath, transform)}`;
+  const templatePath = `${TEMPLATE_DIR}/${generate.template}`;
+  if(generate.type === "test") {
+    testFiles.push(`../${outputPath.replace('src/', 'lib/')}`);
+  }
+  ejs.renderFile(templatePath, transform, (err, str) => {
+    if(err) {
+      throw err;
+    }
+    fs.outputFile(outputPath, str, (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log(`>> Wrote: ${outputPath}`);
     });
   });
 }
 
-function generateTransforms(transforms) {
+function writeTransform(transform) {
+  if(transform.generate) {
+    transform.generate.forEach((g) => {
+      transform.transforms.forEach((t) => {
+        const data = deepAssign({}, t, config);
+        writeTemplate(g, data);
+      });
+    });
+  }
+  if(transform.copy) {
+    transform.copy.forEach((c) => {
+      copyTemplate(c);
+    });
+  }
+}
+
+function writeTransforms(transforms) {
   transforms.forEach((transform) => {
-    generateTransform(transform);
+    writeTransform(transform);
+  });
+  writeTemplate({
+    outputPath: 'test/test.js',
+    template: 'test.ejs'
+  }, {
+    tests: testFiles
   });
 }
 
-fse.emptyDir(DEST_DIR, (err) => {
+fs.emptyDir(DIRS.transform, (err) => {
   if (err) {
     throw err;
   }
-  console.log(`>> Emptied: ${DEST_DIR}`);
-  generateTransforms(transforms);
+  console.log(`>> Emptied: ${DIRS.transform}`);
+  fs.emptyDir(DIRS.fixture, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log(`>> Emptied: ${DIRS.fixture}`);
+    writeTransforms(transforms);
+  });
 });
 

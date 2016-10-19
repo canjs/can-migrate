@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/event/');
- *   //OR
- *   const <...> = require('can/event/event');
- *   //OR
- *   const <...> = require('can/event/event.js');
- *   ```
- * After:
- *   ```js 
- *   const canEvent = require('can-event')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-event-require');
+const debug = makeDebug('can-migrate:can-event-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-event'] ? config.moduleToName['can-event'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/event/', 'can/event/event', 'can/event/event.js' ],
     newSourceValue: 'can-event',
-    newLocalName: options.name || 'canEvent'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'canEvent'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

@@ -1,0 +1,5 @@
+const <%= moduleToName[sourceValue] %> = require('<%= sourceValue %>');
+const can = require('can');
+
+<%= moduleToName[sourceValue] %><% if (newPropertyName) { %>.<%= newPropertyName %><% } %>();
+<%= moduleToName[sourceValue] %><% if (newPropertyName) { %>.<%= newPropertyName %><% } %> = false;

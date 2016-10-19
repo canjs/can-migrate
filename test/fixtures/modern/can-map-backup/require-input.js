@@ -1,1 +1,1 @@
-require('can/map/backup/');
+ require('can/map/backup/backup');

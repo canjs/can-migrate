@@ -1,37 +1,26 @@
-/**
- * Replaces old import statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   import <...> from 'can/view/stache/';
- *   //OR
- *   import <...> from 'can/view/stache/stache';
- *   //OR
- *   import <...> from 'can/view/stache/stache.js';
- *   ```
- * After:
- *   ```js 
- *   import stache from  'can-stache';
- */
-import replaceImport from '../../../utils/replaceImport';
+// This is a generated file, see src/templates/import/import.ejs
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-stache-import');
+const debug = makeDebug('can-migrate:can-stache-import');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-stache'] ? config.moduleToName['can-stache'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceImport(j, root, {
+  const oldLocalName = renameImport(root, {
     oldSourceValues: ['can/view/stache/', 'can/view/stache/stache', 'can/view/stache/stache.js' ],
     newSourceValue: 'can-stache',
-    newLocalName: options.name || 'stache'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'stache'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

@@ -1,4 +1,13 @@
-import canViewCallbacks from 'can-view-callbacks';
+import MyViewCallbacks from 'can-view-callbacks';
 
-canViewCallbacks.attr(() => {});
-canViewCallbacks._tags;
+const map = new MyViewCallbacks({
+  define: {
+    Type: MyViewCallbacks
+  }
+});
+MyViewCallbacks();
+new MyViewCallbacks();
+MyViewCallbacks.prototype.say = function(){};
+function speak(MyViewCallbacks) {};
+const say = function(MyViewCallbacks) {};
+Object.assign({}, MyViewCallbacks);

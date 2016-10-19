@@ -1,1 +1,1 @@
-require('can/view/href/');
+ require('can/view/href/href');

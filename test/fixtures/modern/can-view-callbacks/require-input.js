@@ -1,4 +1,13 @@
-const callbacks = require('can/view/callbacks/');
+const MyViewCallbacks = require('can/view/callbacks/callbacks');
 
-callbacks.attr(() => {});
-callbacks._tags;
+const map = new MyViewCallbacks({
+  define: {
+    Type: MyViewCallbacks
+  }
+});
+MyViewCallbacks();
+new MyViewCallbacks();
+MyViewCallbacks.prototype.say = function(){};
+function speak(MyViewCallbacks) {};
+const say = function(MyViewCallbacks) {};
+Object.assign({}, MyViewCallbacks);

@@ -1,37 +1,26 @@
-/**
- * Replaces old import statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   import <...> from 'can/view/callbacks/';
- *   //OR
- *   import <...> from 'can/view/callbacks/callbacks';
- *   //OR
- *   import <...> from 'can/view/callbacks/callbacks.js';
- *   ```
- * After:
- *   ```js 
- *   import canViewCallbacks from  'can-view-callbacks';
- */
-import replaceImport from '../../../utils/replaceImport';
+// This is a generated file, see src/templates/import/import.ejs
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-view-callbacks-import');
+const debug = makeDebug('can-migrate:can-view-callbacks-import');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-view-callbacks'] ? config.moduleToName['can-view-callbacks'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceImport(j, root, {
+  const oldLocalName = renameImport(root, {
     oldSourceValues: ['can/view/callbacks/', 'can/view/callbacks/callbacks', 'can/view/callbacks/callbacks.js' ],
     newSourceValue: 'can-view-callbacks',
-    newLocalName: options.name || 'canViewCallbacks'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'canViewCallbacks'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

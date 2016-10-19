@@ -1,1 +1,1 @@
-import 'can/view/href/';
+import  'can/view/href/href';

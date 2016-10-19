@@ -1,4 +1,13 @@
-import canEvent from 'can-event';
+import MyEvent from 'can-event';
 
-$.extend(something, canEvent);
-canEvent.on();
+const map = new MyEvent({
+  define: {
+    Type: MyEvent
+  }
+});
+MyEvent();
+new MyEvent();
+MyEvent.prototype.say = function(){};
+function speak(MyEvent) {};
+const say = function(MyEvent) {};
+Object.assign({}, MyEvent);

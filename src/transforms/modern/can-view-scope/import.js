@@ -1,37 +1,26 @@
-/**
- * Replaces old import statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   import <...> from 'can/view/scope/';
- *   //OR
- *   import <...> from 'can/view/scope/scope';
- *   //OR
- *   import <...> from 'can/view/scope/scope.js';
- *   ```
- * After:
- *   ```js 
- *   import canViewScope from  'can-view-scope';
- */
-import replaceImport from '../../../utils/replaceImport';
+// This is a generated file, see src/templates/import/import.ejs
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-view-scope-import');
+const debug = makeDebug('can-migrate:can-view-scope-import');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-view-scope'] ? config.moduleToName['can-view-scope'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceImport(j, root, {
+  const oldLocalName = renameImport(root, {
     oldSourceValues: ['can/view/scope/', 'can/view/scope/scope', 'can/view/scope/scope.js' ],
     newSourceValue: 'can-view-scope',
-    newLocalName: options.name || 'canViewScope'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'canViewScope'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

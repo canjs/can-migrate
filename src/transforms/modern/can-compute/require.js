@@ -1,37 +1,26 @@
-/**
- * Replaces old require statements with new ones and renames all references to the old variables.
- * 
- * Before:
- *   ```js 
- *   const <...> = require('can/compute/');
- *   //OR
- *   const <...> = require('can/compute/compute');
- *   //OR
- *   const <...> = require('can/compute/compute.js');
- *   ```
- * After:
- *   ```js 
- *   const compute = require('can-compute')
- */
-import replaceRequire from '../../../utils/replaceRequire';
+// This is a generated file, see src/templates/require/require.ejs
+import getConfig from '../../../utils/getConfig';
+import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:modern-can-compute-require');
+const debug = makeDebug('can-migrate:can-compute-require');
 
 export default function transformer(file, api, options) {
+  const config = getConfig(options.config);
   debug(`Running on ${file.path}`);
+  const newLocalName = options.replace ? config.moduleToName['can-compute'] ? config.moduleToName['can-compute'] : false : false;
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = replaceRequire(j, root, {
+  const oldLocalName = renameRequire(root, {
     oldSourceValues: ['can/compute/', 'can/compute/compute', 'can/compute/compute.js' ],
     newSourceValue: 'can-compute',
-    newLocalName: options.name || 'compute'
+    newLocalName
   });
-  if(oldLocalName) {
+  if(options.replace && oldLocalName) {
     replaceRefs(j, root, {
       oldLocalName,
-      newLocalName: options.name || 'compute'
+      newLocalName
     });
   }
   return root.toSource(printOptions);

@@ -1,1 +1,1 @@
-import 'can/construct/super/';
+import  'can/construct/super/super';

@@ -1,4 +1,13 @@
-import route from 'can/route/';
+import MyRoute from 'can/route/route';
 
-route();
-route.ready();
+const map = new MyRoute({
+  define: {
+    Type: MyRoute
+  }
+});
+MyRoute();
+new MyRoute();
+MyRoute.prototype.say = function(){};
+function speak(MyRoute) {};
+const say = function(MyRoute) {};
+Object.assign({}, MyRoute);
