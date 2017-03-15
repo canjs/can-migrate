@@ -92,7 +92,7 @@ globby(cli.input).then((paths) => {
   return series(toApply, (transform) => {
     console.log(`${transform.name} running`);
 
-    const jscodeshiftPath = path.resolve(__dirname, '../node_modules/.bin/jscodeshift');
+    const jscodeshiftPath = require.resolve('jscodeshift');
     const args = [
       '-t', transform.file,
       cli.flags.apply ? '' : '-d',
