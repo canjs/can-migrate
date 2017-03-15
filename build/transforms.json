@@ -18,6 +18,16 @@
         "type": "fixture"
       },
       {
+        "input": "can-component-rename/input-no-component.js",
+        "outputPath": "modern/can-component-rename/can-component-rename-input-no-component.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-component-rename/output-no-component.js",
+        "outputPath": "modern/can-component-rename/can-component-rename-output-no-component.js",
+        "type": "fixture"
+      },
+      {
         "input": "can-component-rename/can-component-rename-test.js",
         "outputPath": "modern/can-component-rename/can-component-rename-test.js",
         "type": "test"

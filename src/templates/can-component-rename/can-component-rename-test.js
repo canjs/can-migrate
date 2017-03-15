@@ -14,4 +14,11 @@ describe('can-component-rename', function() {
     const outputPath = `fixtures/modern/${toTest.fileName.replace('.js', '-output.js')}`;
     utils.diffFiles(fn, inputPath, outputPath);
   });
+
+  it('Handles no component', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/modern/${toTest.fileName.replace('.js', '-input-no-component.js')}`;
+    const outputPath = `fixtures/modern/${toTest.fileName.replace('.js', '-output-no-component.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
 });
