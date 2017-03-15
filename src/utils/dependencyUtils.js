@@ -2,7 +2,7 @@ import j from 'jscodeshift';
 import importUtils from './importUtils';
 import requireUtils from './requireUtils';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:addDependency');
+const debug = makeDebug('can-migrate:dependencyUtils');
 
 export default {
   isUsingRequire(ast) {

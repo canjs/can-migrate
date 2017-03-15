@@ -1,3 +1,4 @@
+require('../lib/transforms/modern/can-component-rename/can-component-rename-test.js');
 require('../lib/transforms/modern/can-extend/can-extend-test.js');
 require('../lib/transforms/modern/can-data/can-data-test.js');
 require('../lib/transforms/modern/can-component/import-test.js');
@@ -91,3 +92,5 @@ require('../lib/transforms/modern/can-view-scope/replace-test.js');
 require('../lib/transforms/modern/can-view-live/replace-test.js');
 require('../lib/transforms/modern/can-view-target/replace-test.js');
 require('../lib/transforms/modern/can-view-callbacks/replace-test.js');
+require('../lib/transforms/modern/can-view-attr/replace-test.js');
+require('../lib/transforms/modern/can-view-tag/replace-test.js');

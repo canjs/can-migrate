@@ -1,5 +1,5 @@
 import string from 'can-util/js/string/string';
 import can from 'can';
 
-string();
-string = false;
+string.hyphenate();
+string.hyphenate = false;

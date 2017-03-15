@@ -1,5 +1,5 @@
 import string from 'can-util/js/string/string';
 import can from 'can';
 
-string();
-string = false;
+string.getObject();
+string.getObject = false;

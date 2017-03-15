@@ -1,5 +1,5 @@
 const string = require('can-util/js/string/string');
 const can = require('can');
 
-string();
-string = false;
+string.esc();
+string.esc = false;

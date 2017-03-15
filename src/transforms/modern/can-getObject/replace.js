@@ -21,11 +21,11 @@ export default function transformer(file, api, options) {
      
     return match && expression.value.property.name === 'getObject';
   }).forEach(expression => {
-    debug(`Replacing all instances of 'can.getObject' with '${newName}'`);
+    debug(`Replacing all instances of 'can.getObject' with '${newName}.getObject'`);
     found = true;
     
-    // can.Map -> canMap
-    j(expression).replaceWith(j.identifier(newName));
+    // can.event.addEvent -> canEvent.addEventListener
+    j(expression).replaceWith(j.memberExpression(j.identifier(newName), j.identifier('getObject')));
     
   });
 

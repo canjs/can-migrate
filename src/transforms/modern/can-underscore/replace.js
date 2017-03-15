@@ -21,11 +21,11 @@ export default function transformer(file, api, options) {
      
     return match && expression.value.property.name === 'underscore';
   }).forEach(expression => {
-    debug(`Replacing all instances of 'can.underscore' with '${newName}'`);
+    debug(`Replacing all instances of 'can.underscore' with '${newName}.underscore'`);
     found = true;
     
-    // can.Map -> canMap
-    j(expression).replaceWith(j.identifier(newName));
+    // can.event.addEvent -> canEvent.addEventListener
+    j(expression).replaceWith(j.memberExpression(j.identifier(newName), j.identifier('underscore')));
     
   });
 

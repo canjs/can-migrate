@@ -38,12 +38,13 @@ const cli = meow(`
   More info: http://canjs.github.io/canjs/doc/migrate-3.html#Modernizedmigrationpath 
 
   Options
-  --apply    -a    Apply transforms (instead of a dry run)
-  --minimal  -m    Apply minimal transforms only
-  --future   -f    Apply future-proof tranforms after modern tranforms
-  --force    -f    Apply transforms regardless of git status 
-  --replace  -r    Replace name of imports and requires
-  --config   -c    Path to custom config file
+  --apply     -a    Apply transforms (instead of a dry run)
+  --minimal   -m    Apply minimal transforms only
+  --future    -f    Apply future-proof tranforms after modern tranforms
+  --force          Apply transforms regardless of git status 
+  --replace   -r    Replace name of imports and requires
+  --config    -c    Path to custom config file
+  --transform -t    specify a transform
 
   Examples
   can-migrate **/*.js
@@ -51,7 +52,7 @@ const cli = meow(`
   can-migrate -iad **/*.js
 `, {
     boolean: ['apply', 'minimal', 'future', 'steal', 'replace', 'force'],
-    string: ['_', 'config'],
+    string: ['_', 'config', 'transform'],
     alias: {
       a: 'apply',
       m: 'minimal',
@@ -79,6 +80,11 @@ globby(cli.input).then((paths) => {
   }
   if (cli.flags.future) {
     toApply = toApply.concat(transforms.future);
+  }
+  if (cli.flags.transform) {
+    toApply = toApply.filter((t) => {
+      return t.name.indexOf(cli.flags.transform) !== -1;
+    });
   }
   if (cli.flags.config) {
     config = path.resolve(__dirname, cli.flags.config);

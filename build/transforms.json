@@ -3,6 +3,31 @@
     "type": "modern",
     "copy": [
       {
+        "input": "can-component-rename/can-component-rename.js",
+        "outputPath": "modern/can-component-rename/can-component-rename.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-component-rename/input.js",
+        "outputPath": "modern/can-component-rename/can-component-rename-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-component-rename/output.js",
+        "outputPath": "modern/can-component-rename/can-component-rename-output.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-component-rename/can-component-rename-test.js",
+        "outputPath": "modern/can-component-rename/can-component-rename-test.js",
+        "type": "test"
+      }
+    ]
+  },
+  {
+    "type": "modern",
+    "copy": [
+      {
         "input": "can-extend/can-extend.js",
         "outputPath": "modern/can-extend/can-extend.js",
         "type": "transform"
@@ -584,7 +609,7 @@
         "shortName": "esc",
         "oldObjectName": "can",
         "oldPropertyName": "esc",
-        "newPropertyName": false,
+        "newPropertyName": "esc",
         "sourceValue": "can-util/js/string/string"
       },
       {
@@ -598,14 +623,14 @@
         "shortName": "getObject",
         "oldObjectName": "can",
         "oldPropertyName": "getObject",
-        "newPropertyName": false,
+        "newPropertyName": "getObject",
         "sourceValue": "can-util/js/string/string"
       },
       {
         "shortName": "hyphenate",
         "oldObjectName": "can",
         "oldPropertyName": "hyphenate",
-        "newPropertyName": false,
+        "newPropertyName": "hyphenate",
         "sourceValue": "can-util/js/string/string"
       },
       {
@@ -661,14 +686,14 @@
         "shortName": "sub",
         "oldObjectName": "can",
         "oldPropertyName": "sub",
-        "newPropertyName": false,
+        "newPropertyName": "sub",
         "sourceValue": "can-util/js/string/string"
       },
       {
         "shortName": "underscore",
         "oldObjectName": "can",
         "oldPropertyName": "underscore",
-        "newPropertyName": false,
+        "newPropertyName": "underscore",
         "sourceValue": "can-util/js/string/string"
       },
       {
@@ -704,6 +729,20 @@
         "oldObjectName": "can.view",
         "oldPropertyName": "callbacks",
         "newPropertyName": false,
+        "sourceValue": "can-view-callbacks"
+      },
+      {
+        "shortName": "view-attr",
+        "oldObjectName": "can.view",
+        "oldPropertyName": "attr",
+        "newPropertyName": "attr",
+        "sourceValue": "can-view-callbacks"
+      },
+      {
+        "shortName": "view-tag",
+        "oldObjectName": "can.view",
+        "oldPropertyName": "tag",
+        "newPropertyName": "tag",
         "sourceValue": "can-view-callbacks"
       }
     ]
