@@ -1,13 +1,13 @@
-import MyCompute from 'can-compute';
+import compute from 'can-compute';
 
-const map = new MyCompute({
+const map = new compute({
   define: {
-    Type: MyCompute
+    Type: compute
   }
 });
-MyCompute();
-new MyCompute();
-MyCompute.prototype.say = function(){};
+compute();
+new compute();
+compute.prototype.say = function(){};
 function speak(MyCompute) {};
 const say = function(MyCompute) {};
-Object.assign({}, MyCompute);
+Object.assign({}, compute);

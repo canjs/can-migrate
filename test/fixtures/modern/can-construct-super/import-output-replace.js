@@ -1,1 +1,0 @@
-import  'can-construct-super';

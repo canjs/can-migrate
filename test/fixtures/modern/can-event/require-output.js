@@ -1,13 +1,13 @@
-const MyEvent = require('can-event');
+const canEvent = require('can-event');
 
-const map = new MyEvent({
+const map = new canEvent({
   define: {
-    Type: MyEvent
+    Type: canEvent
   }
 });
-MyEvent();
-new MyEvent();
-MyEvent.prototype.say = function(){};
+canEvent();
+new canEvent();
+canEvent.prototype.say = function(){};
 function speak(MyEvent) {};
 const say = function(MyEvent) {};
-Object.assign({}, MyEvent);
+Object.assign({}, canEvent);

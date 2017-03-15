@@ -1,13 +1,13 @@
-const MyComponent = require('can-component');
+const Component = require('can-component');
 
-const map = new MyComponent({
+const map = new Component({
   define: {
-    Type: MyComponent
+    Type: Component
   }
 });
-MyComponent();
-new MyComponent();
-MyComponent.prototype.say = function(){};
+Component();
+new Component();
+Component.prototype.say = function(){};
 function speak(MyComponent) {};
 const say = function(MyComponent) {};
-Object.assign({}, MyComponent);
+Object.assign({}, Component);

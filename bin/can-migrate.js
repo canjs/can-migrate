@@ -35,14 +35,14 @@ const cli = meow(`
   $ can-migrate [<file|glob> ...]
 
   Updates files according to the CanJS 3.0 migration paths (minimal, modern, future)
-  More info: http://canjs.github.io/canjs/doc/migrate-3.html#Modernizedmigrationpath 
+  More info: http://canjs.github.io/canjs/doc/migrate-3.html#Modernizedmigrationpath
 
   Options
   --apply     -a    Apply transforms (instead of a dry run)
   --minimal   -m    Apply minimal transforms only
   --future    -f    Apply future-proof tranforms after modern tranforms
-  --force          Apply transforms regardless of git status 
-  --replace   -r    Replace name of imports and requires
+  --force           Apply transforms regardless of git status
+  --silent    -s    Silence output
   --config    -c    Path to custom config file
   --transform -t    specify a transform
 
@@ -51,13 +51,12 @@ const cli = meow(`
   can-migrate --apply **/*.js
   can-migrate -iad **/*.js
 `, {
-    boolean: ['apply', 'minimal', 'future', 'steal', 'replace', 'force'],
+    boolean: ['apply', 'minimal', 'future', 'steal', 'force'],
     string: ['_', 'config', 'transform'],
     alias: {
       a: 'apply',
       m: 'minimal',
       f: 'future',
-      r: 'replace',
       c: 'config',
       h: 'help'
     }
@@ -98,8 +97,7 @@ globby(cli.input).then((paths) => {
       '-t', transform.file,
       cli.flags.apply ? '' : '-d',
       cli.flags.silent ? '-s' : '',
-      cli.flags.config ? `--config=${config}` : '',
-      cli.flags.replace ? `--replace` : ''
+      cli.flags.config ? `--config=${config}` : ''
     ].concat(paths);
 
     return execa(jscodeshiftPath, args, { stdio: 'inherit' }).then(() => {

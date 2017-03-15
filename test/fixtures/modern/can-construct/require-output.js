@@ -1,13 +1,13 @@
-const MyConstruct = require('can-construct');
+const Construct = require('can-construct');
 
-const map = new MyConstruct({
+const map = new Construct({
   define: {
-    Type: MyConstruct
+    Type: Construct
   }
 });
-MyConstruct();
-new MyConstruct();
-MyConstruct.prototype.say = function(){};
+Construct();
+new Construct();
+Construct.prototype.say = function(){};
 function speak(MyConstruct) {};
 const say = function(MyConstruct) {};
-Object.assign({}, MyConstruct);
+Object.assign({}, Construct);

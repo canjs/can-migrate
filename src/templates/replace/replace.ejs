@@ -2,11 +2,10 @@
 import getConfig from '../../../utils/getConfig';
 import dependencyUtils from '../../../utils/dependencyUtils';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-<%= shortName %>-replace');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-<%= shortName %>-replace:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
@@ -22,7 +21,7 @@ export default function transformer(file, api, options) {
       const objectName = parts[0];
       const objectProp = parts[1];
       // Figure out if the nested object matches
-      match = match && 
+      match = match &&
         expression.value.object.object.name === objectName &&
         expression.value.object.property.name === objectProp;
     } else {
@@ -30,7 +29,7 @@ export default function transformer(file, api, options) {
     }
     <% } else { %>
       match = match && expression.value.object.name === '<%= oldObjectName %>';
-    <% } %> 
+    <% } %>
     return match && expression.value.property.name === '<%= oldPropertyName %>';
   }).forEach(expression => {
     debug(`Replacing all instances of '<%= oldObjectName %>.<%= oldPropertyName %>' with '${newName}<% if( newPropertyName ) { %>.<%= newPropertyName %><% } %>'`);

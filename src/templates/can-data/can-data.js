@@ -2,11 +2,10 @@
 import getConfig from '../../../utils/getConfig';
 import dependencyUtils from '../../../utils/dependencyUtils';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-data');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-data:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);

@@ -1,13 +1,13 @@
-import MyViewLive from 'can-view-live';
+import canViewLive from 'can-view-live';
 
-const map = new MyViewLive({
+const map = new canViewLive({
   define: {
-    Type: MyViewLive
+    Type: canViewLive
   }
 });
-MyViewLive();
-new MyViewLive();
-MyViewLive.prototype.say = function(){};
+canViewLive();
+new canViewLive();
+canViewLive.prototype.say = function(){};
 function speak(MyViewLive) {};
 const say = function(MyViewLive) {};
-Object.assign({}, MyViewLive);
+Object.assign({}, canViewLive);

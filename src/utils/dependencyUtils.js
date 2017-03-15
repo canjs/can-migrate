@@ -41,7 +41,7 @@ export default {
     let useConst = this.isUsingConst(ast);
     return useImport ? importUtils.create(moduleName, variableName) : requireUtils.create(moduleName, variableName, useConst ? 'const' : 'var');
   },
-  add(ast, moduleName, variableName, afterSourceValues) {    
+  add(ast, moduleName, variableName, afterSourceValues) {
     debug(`Adding '${moduleName}' dependency to file`);
     if (this.find(ast, [moduleName]).size() > 0) {
       debug(`Dependency for '${moduleName}' already added, aborting`);
@@ -62,7 +62,7 @@ export default {
     let canDependency = this.find(ast, afterSourceValues);
     debug(`Creating  ${useImport ? 'import' : 'require'} for '${moduleName}'`);
     let dependency = this.create(ast, moduleName, variableName);
-    
+
     if(canDependency.size() === 1) {
       debug(`Inserting  ${useImport ? 'import' : 'require'}'`);
       canDependency.insertBefore(dependency);

@@ -2,11 +2,10 @@
 import getConfig from '../../../utils/getConfig';
 import dependencyUtils from '../../../utils/dependencyUtils';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-sub-replace');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-sub-replace:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
@@ -18,7 +17,7 @@ export default function transformer(file, api, options) {
     let match = true;
     
       match = match && expression.value.object.name === 'can';
-     
+    
     return match && expression.value.property.name === 'sub';
   }).forEach(expression => {
     debug(`Replacing all instances of 'can.sub' with '${newName}.sub'`);

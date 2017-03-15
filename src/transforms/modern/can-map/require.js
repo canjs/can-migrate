@@ -3,12 +3,11 @@ import getConfig from '../../../utils/getConfig';
 import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-map-require');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-map-require:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
-  const newLocalName = options.replace ? config.moduleToName['can-map'] ? config.moduleToName['can-map'] : false : false;
+  const newLocalName = config.moduleToName['can-map'];
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
@@ -17,7 +16,8 @@ export default function transformer(file, api, options) {
     newSourceValue: 'can-map',
     newLocalName
   });
-  if(options.replace && oldLocalName) {
+  if(oldLocalName) {
+    debug(`Replacing all occurences of ${oldLocalName} with ${newLocalName}`);
     replaceRefs(j, root, {
       oldLocalName,
       newLocalName

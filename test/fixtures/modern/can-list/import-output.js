@@ -1,13 +1,13 @@
-import MyList from 'can-list';
+import canList from 'can-list';
 
-const map = new MyList({
+const map = new canList({
   define: {
-    Type: MyList
+    Type: canList
   }
 });
-MyList();
-new MyList();
-MyList.prototype.say = function(){};
+canList();
+new canList();
+canList.prototype.say = function(){};
 function speak(MyList) {};
 const say = function(MyList) {};
-Object.assign({}, MyList);
+Object.assign({}, canList);

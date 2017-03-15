@@ -1,13 +1,13 @@
-const MyControl = require('can-control');
+const Control = require('can-control');
 
-const map = new MyControl({
+const map = new Control({
   define: {
-    Type: MyControl
+    Type: Control
   }
 });
-MyControl();
-new MyControl();
-MyControl.prototype.say = function(){};
+Control();
+new Control();
+Control.prototype.say = function(){};
 function speak(MyControl) {};
 const say = function(MyControl) {};
-Object.assign({}, MyControl);
+Object.assign({}, Control);

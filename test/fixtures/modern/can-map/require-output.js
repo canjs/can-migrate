@@ -1,13 +1,13 @@
-const MyMap = require('can-map');
+const canMap = require('can-map');
 
-const map = new MyMap({
+const map = new canMap({
   define: {
-    Type: MyMap
+    Type: canMap
   }
 });
-MyMap();
-new MyMap();
-MyMap.prototype.say = function(){};
+canMap();
+new canMap();
+canMap.prototype.say = function(){};
 function speak(MyMap) {};
 const say = function(MyMap) {};
-Object.assign({}, MyMap);
+Object.assign({}, canMap);

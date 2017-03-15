@@ -113,11 +113,6 @@
         "type": "fixture"
       },
       {
-        "template": "import/import-output-replace.ejs",
-        "outputPath": "modern/can-{shortName}/import-output-replace.js",
-        "type": "fixture"
-      },
-      {
         "template": "import/import-test.ejs",
         "outputPath": "modern/can-{shortName}/import-test.js",
         "type": "test"
@@ -141,11 +136,6 @@
         "template": "require/require-test.ejs",
         "outputPath": "modern/can-{shortName}/require-test.js",
         "type": "test"
-      },
-      {
-        "template": "require/require-output-replace.ejs",
-        "outputPath": "modern/can-{shortName}/require-output-replace.js",
-        "type": "fixture"
       }
     ],
     "transforms": [

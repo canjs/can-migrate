@@ -1,13 +1,13 @@
-import MyAutorender from 'can-view-autorender';
+import canAutorender from 'can-view-autorender';
 
-const map = new MyAutorender({
+const map = new canAutorender({
   define: {
-    Type: MyAutorender
+    Type: canAutorender
   }
 });
-MyAutorender();
-new MyAutorender();
-MyAutorender.prototype.say = function(){};
+canAutorender();
+new canAutorender();
+canAutorender.prototype.say = function(){};
 function speak(MyAutorender) {};
 const say = function(MyAutorender) {};
-Object.assign({}, MyAutorender);
+Object.assign({}, canAutorender);

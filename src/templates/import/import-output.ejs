@@ -1,14 +1,14 @@
-import <% if(exampleLocalName) { %><%= exampleLocalName %> from<% } %> '<%= newSourceValue %>';
+import <% if(exampleLocalName) { %><%= moduleToName[newSourceValue] %> from<% } %> '<%= newSourceValue %>';
 <% if(exampleLocalName) { %>
-const map = new <%= exampleLocalName %>({
+const map = new <%= moduleToName[newSourceValue] %>({
   define: {
-    Type: <%= exampleLocalName %>
+    Type: <%= moduleToName[newSourceValue] %>
   }
 });
-<%= exampleLocalName %>();
-new <%= exampleLocalName %>();
-<%= exampleLocalName %>.prototype.say = function(){};
+<%= moduleToName[newSourceValue] %>();
+new <%= moduleToName[newSourceValue] %>();
+<%= moduleToName[newSourceValue] %>.prototype.say = function(){};
 function speak(<%= exampleLocalName %>) {};
 const say = function(<%= exampleLocalName %>) {};
-Object.assign({}, <%= exampleLocalName %>);
+Object.assign({}, <%= moduleToName[newSourceValue] %>);
 <% } _%>

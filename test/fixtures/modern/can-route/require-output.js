@@ -1,13 +1,13 @@
-const MyRoute = require('can-route');
+const route = require('can-route');
 
-const map = new MyRoute({
+const map = new route({
   define: {
-    Type: MyRoute
+    Type: route
   }
 });
-MyRoute();
-new MyRoute();
-MyRoute.prototype.say = function(){};
+route();
+new route();
+route.prototype.say = function(){};
 function speak(MyRoute) {};
 const say = function(MyRoute) {};
-Object.assign({}, MyRoute);
+Object.assign({}, route);

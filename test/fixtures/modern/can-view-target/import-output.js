@@ -1,13 +1,13 @@
-import MyTarget from 'can-view-target';
+import canViewTarget from 'can-view-target';
 
-const map = new MyTarget({
+const map = new canViewTarget({
   define: {
-    Type: MyTarget
+    Type: canViewTarget
   }
 });
-MyTarget();
-new MyTarget();
-MyTarget.prototype.say = function(){};
+canViewTarget();
+new canViewTarget();
+canViewTarget.prototype.say = function(){};
 function speak(MyTarget) {};
 const say = function(MyTarget) {};
-Object.assign({}, MyTarget);
+Object.assign({}, canViewTarget);

@@ -1,13 +1,13 @@
-import MyStache from 'can-stache';
+import stache from 'can-stache';
 
-const map = new MyStache({
+const map = new stache({
   define: {
-    Type: MyStache
+    Type: stache
   }
 });
-MyStache();
-new MyStache();
-MyStache.prototype.say = function(){};
+stache();
+new stache();
+stache.prototype.say = function(){};
 function speak(MyStache) {};
 const say = function(MyStache) {};
-Object.assign({}, MyStache);
+Object.assign({}, stache);

@@ -1,13 +1,13 @@
-import MyParser from 'can-view-parser';
+import HTMLParser from 'can-view-parser';
 
-const map = new MyParser({
+const map = new HTMLParser({
   define: {
-    Type: MyParser
+    Type: HTMLParser
   }
 });
-MyParser();
-new MyParser();
-MyParser.prototype.say = function(){};
+HTMLParser();
+new HTMLParser();
+HTMLParser.prototype.say = function(){};
 function speak(MyParser) {};
 const say = function(MyParser) {};
-Object.assign({}, MyParser);
+Object.assign({}, HTMLParser);

@@ -3,12 +3,11 @@ import getConfig from '../../../utils/getConfig';
 import renameRequire from '../../../utils/renameRequire';
 import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-fixture-require');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-fixture-require:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
-  const newLocalName = options.replace ? config.moduleToName['can-fixture'] ? config.moduleToName['can-fixture'] : false : false;
+  const newLocalName = config.moduleToName['can-fixture'];
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
@@ -17,7 +16,8 @@ export default function transformer(file, api, options) {
     newSourceValue: 'can-fixture',
     newLocalName
   });
-  if(options.replace && oldLocalName) {
+  if(oldLocalName) {
+    debug(`Replacing all occurences of ${oldLocalName} with ${newLocalName}`);
     replaceRefs(j, root, {
       oldLocalName,
       newLocalName

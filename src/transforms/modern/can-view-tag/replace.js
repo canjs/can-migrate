@@ -2,11 +2,10 @@
 import getConfig from '../../../utils/getConfig';
 import dependencyUtils from '../../../utils/dependencyUtils';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-view-tag-replace');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-view-tag-replace:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
@@ -22,13 +21,13 @@ export default function transformer(file, api, options) {
       const objectName = parts[0];
       const objectProp = parts[1];
       // Figure out if the nested object matches
-      match = match && 
+      match = match &&
         expression.value.object.object.name === objectName &&
         expression.value.object.property.name === objectProp;
     } else {
       return false;
     }
-     
+    
     return match && expression.value.property.name === 'tag';
   }).forEach(expression => {
     debug(`Replacing all instances of 'can.view.tag' with '${newName}.tag'`);

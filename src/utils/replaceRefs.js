@@ -11,16 +11,13 @@
  *   <oldLocalName>.on
  * ```
  * <oldLocalName> will be replaced with <newLocalName>.
- * 
+ *
  * Options:
  *   oldLocalName {String} old local name to search for
  *   newLocalName {String} new local name (will replace <oldLocalName>)
  */
-import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:replaceRefs');
 
 export default function replaceRefs(j, root, options) {
-  debug(`Replacing all occurences of ${options.oldLocalName} with ${options.newLocalName}`);
   if(!options.oldLocalName || !options.newLocalName) {
     return;
   }

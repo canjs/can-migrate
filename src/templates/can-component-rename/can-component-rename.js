@@ -2,21 +2,22 @@
 import getConfig from '../../../utils/getConfig';
 import propertyUtils from '../../../utils/propertyUtils';
 import makeDebug from 'debug';
-const debug = makeDebug('can-migrate:can-component-rename');
 
 export default function transformer(file, api, options) {
+  const debug = makeDebug(`can-migrate:can-component-rename:${file.path}`);
   const config = getConfig(options.config);
-  debug(`Running on ${file.path}`);
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const componentName = config.moduleToName['can-component'];
   const root = j(file.source);
   root.find(j.CallExpression).filter((expression) => {
     // can.Component
-    if(expression.value.callee.object.type === 'MemberExpression') {
-      return expression.value.callee.object.property.name === 'Component';
-    } else {
-      return expression.value.callee.object.name === componentName;
+    if(expression.value.callee && expression.value.callee.object) {
+      if(expression.value.callee.object.type === 'MemberExpression') {
+        return expression.value.callee.object.property.name === 'Component';
+      } else {
+        return expression.value.callee.object.name === componentName;
+      }
     }
   })
   .forEach((expression) => {
