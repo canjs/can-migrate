@@ -92,7 +92,7 @@ globby(cli.input).then((paths) => {
   return series(toApply, (transform) => {
     console.log(`${transform.name} running`);
 
-    const jscodeshiftPath = require.resolve('jscodeshift');
+    const jscodeshiftPath = require.resolve('.bin/jscodeshift');
     const args = [
       '-t', transform.file,
       cli.flags.apply ? '' : '-d',
@@ -101,7 +101,6 @@ globby(cli.input).then((paths) => {
     ].concat(paths);
 
     return execa(jscodeshiftPath, args, { stdio: 'inherit' }).then(() => {
-      //
     }).catch(console.error.bind(console));
   });
 });
