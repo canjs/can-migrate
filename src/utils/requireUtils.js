@@ -24,7 +24,7 @@ export default {
   },
   rename(requireStatement, newModuleName, newVariableName) {
     let oldLocalName;
-    if(newVariableName && requireStatement.parent.parent.value.declarations.length === 1) {
+    if(newVariableName && requireStatement.parent.parent.value.declarations && requireStatement.parent.parent.value.declarations.length === 1) {
       oldLocalName = requireStatement.parent.parent.value.declarations[0].id.name;
       requireStatement.parent.parent.value.declarations[0].id.name = newVariableName;
     }
@@ -56,7 +56,7 @@ export default {
       variable = j.variableDeclarator(nameIdentifier, requireCall);
     }
     declaration = j.variableDeclaration(kind, [variable]);
-    
+
     return declaration;
   }
 };
