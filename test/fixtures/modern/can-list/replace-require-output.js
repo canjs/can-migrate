@@ -1,5 +1,5 @@
-const canList = require('can-list');
-const can = require('can');
+const CanList = require('can-list');
+const can = require('can/');
 
-canList();
-canList = false;
+CanList();
+CanList = false;

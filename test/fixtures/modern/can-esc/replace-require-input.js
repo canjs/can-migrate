@@ -1,4 +1,4 @@
-const can = require('can');
+const can = require('can/');
 
 can.esc();
 can.esc = false;

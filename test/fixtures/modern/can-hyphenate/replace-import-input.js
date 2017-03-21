@@ -1,4 +1,4 @@
-import can from 'can';
+import can from 'can/';
 
 can.hyphenate();
 can.hyphenate = false;

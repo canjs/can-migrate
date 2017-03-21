@@ -1,13 +1,13 @@
-import canMap from 'can-map';
+import CanMap from 'can-map';
 
-const map = new canMap({
+const map = new CanMap({
   define: {
-    Type: canMap
+    Type: CanMap
   }
 });
-canMap();
-new canMap();
-canMap.prototype.say = function(){};
+CanMap();
+new CanMap();
+CanMap.prototype.say = function(){};
 function speak(MyMap) {};
 const say = function(MyMap) {};
-Object.assign({}, canMap);
+Object.assign({}, CanMap);

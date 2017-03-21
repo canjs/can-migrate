@@ -1,13 +1,13 @@
-const canList = require('can-list');
+const CanList = require('can-list');
 
-const map = new canList({
+const map = new CanList({
   define: {
-    Type: canList
+    Type: CanList
   }
 });
-canList();
-new canList();
-canList.prototype.say = function(){};
+CanList();
+new CanList();
+CanList.prototype.say = function(){};
 function speak(MyList) {};
 const say = function(MyList) {};
-Object.assign({}, canList);
+Object.assign({}, CanList);

@@ -1,5 +1,5 @@
 import <%= moduleToName[sourceValue] %> from '<%= sourceValue %>';
-import can from 'can';
+import can from 'can/';
 
 <%= moduleToName[sourceValue] %><% if (newPropertyName) { %>.<%= newPropertyName %><% } %>();
 <%= moduleToName[sourceValue] %><% if (newPropertyName) { %>.<%= newPropertyName %><% } %> = false;

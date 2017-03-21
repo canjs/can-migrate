@@ -1,5 +1,5 @@
 import Control from 'can-control';
-import can from 'can';
+import can from 'can/';
 
 Control();
 Control = false;

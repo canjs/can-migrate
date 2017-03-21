@@ -1,4 +1,4 @@
-const can = require('can');
+const can = require('can/');
 
 can.Map();
 can.Map = false;
