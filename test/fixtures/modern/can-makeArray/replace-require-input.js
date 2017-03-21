@@ -1,4 +1,4 @@
-const can = require('can');
+const can = require('can/');
 
 can.makeArray();
 can.makeArray = false;

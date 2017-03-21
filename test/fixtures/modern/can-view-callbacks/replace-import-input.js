@@ -1,4 +1,4 @@
-import can from 'can';
+import can from 'can/';
 
 can.view.callbacks();
 can.view.callbacks = false;

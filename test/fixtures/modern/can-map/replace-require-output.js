@@ -1,5 +1,5 @@
-const canMap = require('can-map');
-const can = require('can');
+const CanMap = require('can-map');
+const can = require('can/');
 
-canMap();
-canMap = false;
+CanMap();
+CanMap = false;

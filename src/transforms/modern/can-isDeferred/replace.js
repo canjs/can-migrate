@@ -29,7 +29,7 @@ export default function transformer(file, api, options) {
   });
 
   if (found) {
-    dependencyUtils.add(root, 'can-util/js/is-promise-like/is-promise-like', newName, ['can', 'can/can', 'can/can.js']);
+    dependencyUtils.add(root, 'can-util/js/is-promise-like/is-promise-like', newName, ['can', 'can/', 'can/can', 'can/can.js']);
   }
   return root.toSource(printOptions);
 }

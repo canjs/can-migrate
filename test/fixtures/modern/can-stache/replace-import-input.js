@@ -1,4 +1,4 @@
-import can from 'can';
+import can from 'can/';
 
 can.stache();
 can.stache = false;

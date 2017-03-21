@@ -29,7 +29,7 @@ export default function transformer(file, api, options) {
   });
 
   if (found) {
-    dependencyUtils.add(root, 'can-util/dom/class-name/class-name', newName, ['can', 'can/can', 'can/can.js']);
+    dependencyUtils.add(root, 'can-util/dom/class-name/class-name', newName, ['can', 'can/', 'can/can', 'can/can.js']);
   }
   return root.toSource(printOptions);
 }

@@ -1,4 +1,4 @@
-import can from 'can';
+import can from 'can/';
 
 can.batch();
 can.batch = false;

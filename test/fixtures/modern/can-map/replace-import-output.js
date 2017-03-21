@@ -1,5 +1,5 @@
-import canMap from 'can-map';
-import can from 'can';
+import CanMap from 'can-map';
+import can from 'can/';
 
-canMap();
-canMap = false;
+CanMap();
+CanMap = false;
