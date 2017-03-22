@@ -26,7 +26,7 @@ export default function transformer(file, api, options) {
     propertyUtils.rename(expression.value.arguments[0], 'template', 'view');
     if(eventsProp) {
       debug(`Renaming 'removed' -> 'beforeremove'`);
-      propertyUtils.rename(eventsProp.value, 'removed', 'beforeremove');
+      propertyUtils.rename(eventsProp.value, 'removed', '{element} beforeremove', true);
     }
   });
   return root.toSource(printOptions);
