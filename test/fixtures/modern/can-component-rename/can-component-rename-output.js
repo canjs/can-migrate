@@ -2,7 +2,7 @@ Component.extend({
   tag: 'my-tag',
   view: 'Hi',
   events: {
-    beforeremove: function(){}
+    '{element} beforeremove': function(){}
   }
 });
 
@@ -10,13 +10,13 @@ can.Component.extend({
   tag: 'my-tag',
   view: 'Hi',
   events: {
-    beforeremove(){}
+    '{element} beforeremove'(){}
   }
 });
 
 Component.extend({
   tag: 'my-tag',
   events: {
-    'beforeremove': () => {}
+    '{element} beforeremove': () => {}
   }
 });
