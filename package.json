@@ -1,15 +1,19 @@
 {
   "name": "can-migrate-codemods",
   "version": "0.0.1",
-  "description": "Codemods to simplify upgrading CanJS version",
+  "description": "Codemods to simplify upgrading CanJS from 2.x to 3.x",
   "main": "lib/",
   "scripts": {
     "generate": "./build/generate.js",
-    "compile": "rm -rf lib/ && babel -d lib/ src/",
+    "compile": "rm -rf lib/ && babel -d lib/ src/ --ignore src/templates",
     "watch": "babel --watch -d lib/ src/",
     "jshint": "jshint src/. test/. --config",
     "mocha": "mocha test/ --compilers js:babel-core/register",
     "test": "npm run generate && npm run compile && npm run jshint && npm run mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canjs/can-migrate-codemods.git"
   },
   "bin": {
     "can-migrate": "./bin/can-migrate.js"
@@ -20,12 +24,20 @@
   "engines": {
     "node": ">= 0.12.0"
   },
+  "keywords": [
+    "canjs"
+  ],
   "preferGlobal": true,
   "author": {
     "name": "Bitovi",
-    "email": "curtis@pixelplicity.com"
+    "email": "contact@bitovi.com",
+    "url": "http://bitovi.com"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/canjs/can-migrate-codemods/issues"
+  },
+  "homepage": "https://github.com/canjs/can-migrate-codemods#readme",
   "dependencies": {
     "deep-assign": "^2.0.0",
     "disparity": "^2.0.0",

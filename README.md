@@ -19,7 +19,6 @@ The current groups of transforms are:
 ```
 [
   {
-    "type": "modern" // Possibly remove (only do modern migration)
     "copy": [ // Copy these files from src
       {
         "input": "...", // Source filename

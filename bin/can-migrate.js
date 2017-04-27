@@ -39,8 +39,6 @@ const cli = meow(`
 
   Options
   --apply     -a    Apply transforms (instead of a dry run)
-  --minimal   -m    Apply minimal transforms only
-  --future    -f    Apply future-proof tranforms after modern tranforms
   --force           Apply transforms regardless of git status
   --silent    -s    Silence output
   --config    -c    Path to custom config file
@@ -55,8 +53,6 @@ const cli = meow(`
     string: ['_', 'config', 'transform'],
     alias: {
       a: 'apply',
-      m: 'minimal',
-      f: 'future',
       c: 'config',
       h: 'help'
     }
@@ -72,14 +68,8 @@ if(!checkGitStatus(cli.flags.force)) {
 }
 
 globby(cli.input).then((paths) => {
-  let toApply = transforms.modern;
+  let toApply = transforms;
   let config;
-  if (cli.flags.minimal) {
-    toApply = transforms.minimal;
-  }
-  if (cli.flags.future) {
-    toApply = toApply.concat(transforms.future);
-  }
   if (cli.flags.transform) {
     toApply = toApply.filter((t) => {
       return t.name.indexOf(cli.flags.transform) !== -1;

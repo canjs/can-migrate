@@ -8,8 +8,6 @@ All transforms are store in `build/transforms.json`.
 ```js
 [
   {
-    // The migration path the transform belongs to
-    "type": `minimal`, `modern` or `future`
     // List of files to copy
     "copy": {
       // file to copy
