@@ -3,49 +3,25 @@
 const fs  = require('fs');
 const path = require('path');
 
-const MINIMAL_PATH = '/lib/transforms/minimal';
-const MODERN_PATH = '/lib/transforms/modern';
-const FUTURE_PATH = '/lib/transforms/future';
+const TRANSFORM_PATH = '/lib/transforms';
 
-// const minimalDirs = fs.readdirSync(path.join(__dirname, MINIMAL_PATH));
-const modernDirs = fs.readdirSync(path.join(__dirname, MODERN_PATH));
-// const futureDirs = fs.readdirSync(path.join(__dirname, FUTURE_PATH));
-let minimal = [];
-let modern = [];
-let future = [];
+const transformDirs = fs.readdirSync(path.join(__dirname, TRANSFORM_PATH));
+let transformFiles = [];
 
-// minimal = minimalDirs.map((dir) => {
-//   const transforms = fs.readdirSync(path.join(__dirname, `${MODERN_PATH}/${dir}`));
-//   return transforms.map((transformFile) => {
-//    return {
-//       name: `${dir}/${transformFile}`,
-//       file: path.join(__dirname, `${MODERN_PATH}/${dir}/${transformFile}`)
-//     };
-//   });
-// });
-modernDirs.forEach((dir) => {
-  const transforms = fs.readdirSync(path.join(__dirname, `${MODERN_PATH}/${dir}`));
-  transforms.forEach((transformFile) => {
-    if(transformFile.indexOf('-test.js') === -1) {
-      modern.push({
-        name: `${dir}/${transformFile}`,
-        fileName: `${dir}/${transformFile}`,
-        file: path.join(__dirname, `${MODERN_PATH}/${dir}/${transformFile}`)
-      });
-    }
-  });
+transformDirs.forEach((dir) => {
+  const dirPath = path.join(__dirname, `${TRANSFORM_PATH}/${dir}`);
+  if(fs.lstatSync(dirPath).isDirectory()) {
+    const transforms = fs.readdirSync(dirPath);
+    transforms.forEach((transformFile) => {
+      if(transformFile.indexOf('-test.js') === -1) {
+        transformFiles.push({
+          name: `${dir}/${transformFile}`,
+          fileName: `${dir}/${transformFile}`,
+          file: path.join(__dirname, `${TRANSFORM_PATH}/${dir}/${transformFile}`)
+        });
+      }
+    });
+  }
 });
 
-// future = futureDirs.map((dir) => {
-//   const transforms = fs.readdirSync(path.join(__dirname, `${MODERN_PATH}/${dir}`));
-//   return transforms.map((transformFile) => {
-//    return {
-//       name: `${dir}/${transformFile}`,
-//       file: path.join(__dirname, `${MODERN_PATH}/${dir}/${transformFile}`)
-//     };
-//   });
-// });
-
-exports.minimal = minimal;
-exports.modern = modern;
-exports.future = future;
+module.exports = transformFiles;

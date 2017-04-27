@@ -1,150 +1,146 @@
 [
   {
-    "type": "modern",
     "copy": [
       {
         "input": "can-component-rename/can-component-rename.js",
-        "outputPath": "modern/can-component-rename/can-component-rename.js",
+        "outputPath": "can-component-rename/can-component-rename.js",
         "type": "transform"
       },
       {
         "input": "can-component-rename/input.js",
-        "outputPath": "modern/can-component-rename/can-component-rename-input.js",
+        "outputPath": "can-component-rename/can-component-rename-input.js",
         "type": "fixture"
       },
       {
         "input": "can-component-rename/output.js",
-        "outputPath": "modern/can-component-rename/can-component-rename-output.js",
+        "outputPath": "can-component-rename/can-component-rename-output.js",
         "type": "fixture"
       },
       {
         "input": "can-component-rename/input-no-component.js",
-        "outputPath": "modern/can-component-rename/can-component-rename-input-no-component.js",
+        "outputPath": "can-component-rename/can-component-rename-input-no-component.js",
         "type": "fixture"
       },
       {
         "input": "can-component-rename/output-no-component.js",
-        "outputPath": "modern/can-component-rename/can-component-rename-output-no-component.js",
+        "outputPath": "can-component-rename/can-component-rename-output-no-component.js",
         "type": "fixture"
       },
       {
         "input": "can-component-rename/can-component-rename-test.js",
-        "outputPath": "modern/can-component-rename/can-component-rename-test.js",
+        "outputPath": "can-component-rename/can-component-rename-test.js",
         "type": "test"
       }
     ]
   },
   {
-    "type": "modern",
     "copy": [
       {
         "input": "can-extend/can-extend.js",
-        "outputPath": "modern/can-extend/can-extend.js",
+        "outputPath": "can-extend/can-extend.js",
         "type": "transform"
       },
       {
         "input": "can-extend/import-input.js",
-        "outputPath": "modern/can-extend/can-extend-import-input.js",
+        "outputPath": "can-extend/can-extend-import-input.js",
         "type": "fixture"
       },
       {
         "input": "can-extend/import-output.js",
-        "outputPath": "modern/can-extend/can-extend-import-output.js",
+        "outputPath": "can-extend/can-extend-import-output.js",
         "type": "fixture"
       },
       {
         "input": "can-extend/require-input.js",
-        "outputPath": "modern/can-extend/can-extend-require-input.js",
+        "outputPath": "can-extend/can-extend-require-input.js",
         "type": "fixture"
       },
       {
         "input": "can-extend/require-output.js",
-        "outputPath": "modern/can-extend/can-extend-require-output.js",
+        "outputPath": "can-extend/can-extend-require-output.js",
         "type": "fixture"
       },
       {
         "input": "can-extend/can-extend-test.js",
-        "outputPath": "modern/can-extend/can-extend-test.js",
+        "outputPath": "can-extend/can-extend-test.js",
         "type": "test"
       }
     ]
   },
   {
-    "type": "modern",
     "copy": [
       {
         "input": "can-data/can-data.js",
-        "outputPath": "modern/can-data/can-data.js",
+        "outputPath": "can-data/can-data.js",
         "type": "transform"
       },
       {
         "input": "can-data/import-input.js",
-        "outputPath": "modern/can-data/can-data-import-input.js",
+        "outputPath": "can-data/can-data-import-input.js",
         "type": "fixture"
       },
       {
         "input": "can-data/import-output.js",
-        "outputPath": "modern/can-data/can-data-import-output.js",
+        "outputPath": "can-data/can-data-import-output.js",
         "type": "fixture"
       },
       {
         "input": "can-data/require-input.js",
-        "outputPath": "modern/can-data/can-data-require-input.js",
+        "outputPath": "can-data/can-data-require-input.js",
         "type": "fixture"
       },
       {
         "input": "can-data/require-output.js",
-        "outputPath": "modern/can-data/can-data-require-output.js",
+        "outputPath": "can-data/can-data-require-output.js",
         "type": "fixture"
       },
       {
         "input": "can-data/can-data-test.js",
-        "outputPath": "modern/can-data/can-data-test.js",
+        "outputPath": "can-data/can-data-test.js",
         "type": "test"
       }
     ]
   },
   {
-    "type": "modern",
     "generate": [
       {
         "template": "import/import.ejs",
-        "outputPath": "modern/can-{shortName}/import.js",
+        "outputPath": "can-{shortName}/import.js",
         "type": "transform"
       },
       {
         "template": "import/import-input.ejs",
-        "outputPath": "modern/can-{shortName}/import-input.js",
+        "outputPath": "can-{shortName}/import-input.js",
         "type": "fixture"
       },
       {
         "template": "import/import-output.ejs",
-        "outputPath": "modern/can-{shortName}/import-output.js",
+        "outputPath": "can-{shortName}/import-output.js",
         "type": "fixture"
       },
       {
         "template": "import/import-test.ejs",
-        "outputPath": "modern/can-{shortName}/import-test.js",
+        "outputPath": "can-{shortName}/import-test.js",
         "type": "test"
       },
       {
         "template": "require/require.ejs",
-        "outputPath": "modern/can-{shortName}/require.js",
+        "outputPath": "can-{shortName}/require.js",
         "type": "transform"
       },
       {
         "template": "require/require-input.ejs",
-        "outputPath": "modern/can-{shortName}/require-input.js",
+        "outputPath": "can-{shortName}/require-input.js",
         "type": "fixture"
       },
       {
         "template": "require/require-output.ejs",
-        "outputPath": "modern/can-{shortName}/require-output.js",
+        "outputPath": "can-{shortName}/require-output.js",
         "type": "fixture"
       },
       {
         "template": "require/require-test.ejs",
-        "outputPath": "modern/can-{shortName}/require-test.js",
+        "outputPath": "can-{shortName}/require-test.js",
         "type": "test"
       }
     ],
@@ -382,36 +378,35 @@
     ]
   },
   {
-    "type": "modern",
     "generate": [
       {
         "template": "replace/replace.ejs",
-        "outputPath": "modern/can-{shortName}/replace.js",
+        "outputPath": "can-{shortName}/replace.js",
         "type": "transform"
       },
       {
         "template": "replace/replace-require-input.ejs",
-        "outputPath": "modern/can-{shortName}/replace-require-input.js",
+        "outputPath": "can-{shortName}/replace-require-input.js",
         "type": "fixture"
       },
       {
         "template": "replace/replace-require-output.ejs",
-        "outputPath": "modern/can-{shortName}/replace-require-output.js",
+        "outputPath": "can-{shortName}/replace-require-output.js",
         "type": "fixture"
       },
       {
         "template": "replace/replace-import-input.ejs",
-        "outputPath": "modern/can-{shortName}/replace-import-input.js",
+        "outputPath": "can-{shortName}/replace-import-input.js",
         "type": "fixture"
       },
       {
         "template": "replace/replace-import-output.ejs",
-        "outputPath": "modern/can-{shortName}/replace-import-output.js",
+        "outputPath": "can-{shortName}/replace-import-output.js",
         "type": "fixture"
       },
       {
         "template": "replace/replace-test.ejs",
-        "outputPath": "modern/can-{shortName}/replace-test.js",
+        "outputPath": "can-{shortName}/replace-test.js",
         "type": "test"
       }
     ],
