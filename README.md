@@ -1,5 +1,7 @@
 # can-migrate-codemods
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-migrate-codemods.svg)](https://greenkeeper.io/)
+
 Codemods for migrating to CanJS 3.0
 
 ## transforms.json
