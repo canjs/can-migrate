@@ -4,6 +4,80 @@
 
 Codemods for migrating to CanJS 3.0
 
+## Overview
+
+`can-migrate-codemods` is large-scale codebase refactoring tool that can be partially automated but still require human oversight and intervention. A codemod is a transformation script that parses the [AST]() of your code in order to do a code-aware find-and-replace which powers the refactor. This modules contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand.
+
+### What has changed in CanJS 3?
+
+The short version, the core modules have not changed that much however there are a handful of useful new features and a more modular project structure.
+
+For the long version, read more about it [in the migration guide](https://canjs.com/doc/migrate-3.html
+
+## Install
+
+Install can-migrate from npm:
+  ```shell
+  $ npm install -g can-migrate-codemods
+  ```
+This will make the `can-migrate` command available.
+
+## Usage(CLI)
+
+The CLI provides the following options:
+```
+$ can-migrate [<file|glob> ...]
+
+  Updates files according to the CanJS 3.0 migration paths (minimal, modern, future)
+
+  Options
+  --apply     -a    Apply transforms (instead of a dry run)
+  --force           Apply transforms regardless of git status
+  --silent    -s    Silence output
+  --config    -c    Path to custom config file
+  --transform -t    specify a transform
+
+  Examples
+  can-migrate **/*.js
+  can-migrate --apply **/*.js
+
+```
+
+## Recommended Migration Process
+
+1. Make a new branch
+```shell
+  $ git checkout -b migration
+  
+``` 
+
+1. Run your tests on your code and ensure your github repo is in a clean state
+  As with any migration, if your code is not tested, the amount of time it takes for a successful migration is exponentially greater.
+1. Run the codemods on each [modlet](https://www.bitovi.com/blog/modlet-workflows) or standalone testable component.
+  ```shell
+  $ can-migrate modlet/script.js
+  ```
+1. Install the [can-* modules](https://canjs.com/doc/api.html#ThecanPackage) used in that modlet or component (you can also see what errors you get and download them this way. Here are some common ones:
+  ```shell
+      $ npm i can-component --save
+  $ npm i can-compute --save
+  $ npm i can-connect --save
+  $ npm i can-define --save
+  $ npm i can-route --save
+  $ npm i can-route-pushstate --save
+  $ npm i can-set --save
+  $ npm i can-stache --save
+  $ npm i can-stache-bindings --save
+  ```
+
+1. Run your tests again, Fix the bugs as they come up.
+  Review the [migration guide](https://canjs.com/doc/migrate-3.html) to understand what changes to expect
+1. Commit the module once all tests are passing again.
+1. Repeat 2-6 until all modlet or components are migrated and tests are passing.
+
+Note: If you are using steal, ensure you are running on Steal 0.16 or greater.
+
+
 ## transforms.json
 
 This file has become quite convoluted and warrants some refactor. Here's how it is currently organized:
