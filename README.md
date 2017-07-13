@@ -6,7 +6,7 @@ Codemods for migrating to CanJS 3.0
 
 ## Overview
 
-`can-migrate-codemods` is large-scale codebase refactoring tool that can be partially automated but still require human oversight and intervention. A codemod is a transformation script that parses the [AST]() of your code in order to do a code-aware find-and-replace which powers the refactor. This modules contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand.
+`can-migrate-codemods` is large-scale codebase refactoring tool that is partially automated but still requires oversight and intervention. A codemod is a transformation script that parses the [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of source code in order to do a code-aware find-and-replace refactor across multiple files. This module contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand. Custom codemod transformations can also be used with the can-migrate CLI. 
 
 ### What has changed in CanJS 3?
 
@@ -37,10 +37,20 @@ $ can-migrate [<file|glob> ...]
   --config    -c    Path to custom config file
   --transform -t    specify a transform
 
-  Examples
-  can-migrate **/*.js
-  can-migrate --apply **/*.js
+```
 
+** Example usage**
+
+Runs all the default can-migrate transforms on the files that match the **/*.js glob
+
+```
+$ can-migrate --apply **/*.js
+```
+
+Runs the `can-component-rename` transform on the files that match the **/*.js glob
+
+```
+$ can-migrate can-migrate **/*.js --transforms can-component-rename/can-component-rename.js --apply 
 ```
 
 ## Recommended Migration Process
@@ -78,8 +88,6 @@ $ can-migrate [<file|glob> ...]
 1. Repeat 2-6 until all modlet or components are migrated and tests are passing.
 
 Note: If you are using steal, ensure you are running on Steal 0.16 or greater.
-
-If you are interested in running a particular transform o 
 
 
 ## transforms.json
