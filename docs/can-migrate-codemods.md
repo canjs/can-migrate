@@ -4,24 +4,21 @@
 
 @description A CLI tool to migrate CanJS codebases from 2.x to 3.x
 
-@signature `can-migrate-codements( filepath, transform )`
+@signature `can-migrate [<files> OPTIONS...]`
 
-`can-migrate-codemods` is large-scale codebase refactoring tool that is partially automated but still requires oversight and intervention. A codemod is a transformation script that parses the [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of source code in order to do a code-aware find-and-replace refactor across multiple files. This module contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand. Custom codemod transformations can also be used with the can-migrate CLI. 
+`can-migrate-codemods` is a codebase refactoring tool that is partially automated but still requires oversight and intervention. A codemod is a transformation script that parses the [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of source code in order to do a code-aware find-and-replace refactor across multiple files. This module contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand. Custom codemod transformations can also be used with the can-migrate CLI. 
 
-@param {JavaScript Files} glob A glob that matches JavaScript files containing CanJS 2.x code to be migrated.
+@param {glob} files
 
-@param {Transform File} glob A glob that matches a file that contains a codemod transform script.
+@param {Options} OPTIONS
 
-@options {flags} string The CLI recognizes the following options 
-
+```
   --apply     -a    Apply transforms (instead of a dry run)
   --force           Apply transforms regardless of git status
   --silent    -s    Silence output
   --config    -c    Path to custom config file
   --transform -t    specify a transform
-
-
-@return {JavaScript Files} Files will be written in the CanJS 3.x style.
+```
 
 @body
 
@@ -42,7 +39,7 @@ $ can-migrate can-migrate **/*.js --transforms can-component-rename/can-componen
 
 The CLI provides the following options:
 ```
-$ can-migrate [<file|glob> ...]
+$ can-migrate [<files> OPTIONS...]
 
   Updates files according to the CanJS 3.0 migration paths (minimal, modern, future)
 
@@ -52,7 +49,7 @@ $ can-migrate [<file|glob> ...]
   --silent    -s    Silence output
   --config    -c    Path to custom config file
   --transform -t    specify a transform
-
+```
 ## Recommended Migration Process
 
 1. Make a new branch for the migration.
