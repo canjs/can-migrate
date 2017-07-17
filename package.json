@@ -1,5 +1,5 @@
 {
-  "name": "can-migrate-codemods",
+  "name": "can-migrate",
   "version": "0.0.1",
   "description": "Codemods to simplify upgrading CanJS from 2.x to 3.x",
   "main": "lib/",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/canjs/can-migrate-codemods.git"
+    "url": "git+https://github.com/canjs/can-migrate.git"
   },
   "bin": {
     "can-migrate": "./bin/can-migrate.js"
@@ -38,9 +38,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/canjs/can-migrate-codemods/issues"
+    "url": "https://github.com/canjs/can-migrate/issues"
   },
-  "homepage": "https://github.com/canjs/can-migrate-codemods#readme",
+  "homepage": "https://github.com/canjs/can-migrate#readme",
   "dependencies": {
     "deep-assign": "^2.0.0",
     "disparity": "^2.0.0",
