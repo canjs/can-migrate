@@ -45,7 +45,7 @@
     "deep-assign": "^2.0.0",
     "disparity": "^2.0.0",
     "execa": "^0.6.3",
-    "fs-extra": "^3.0.0",
+    "fs-extra": "^4.0.0",
     "globby": "^6.0.0",
     "is-git-clean": "^1.1.0",
     "js-codemod": "^7.0.0",
