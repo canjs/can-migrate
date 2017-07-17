@@ -1,12 +1,12 @@
-# can-migrate-codemods
+# can-migrate
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-migrate-codemods.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-migrate.svg)](https://greenkeeper.io/)
 
 Codemods for migrating to CanJS 3.0
 
 ## Overview
 
-`can-migrate-codemods` is a codebase refactoring tool that is partially automated but still requires oversight and intervention. A codemod is a transformation script that parses the [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of source code in order to do a code-aware find-and-replace refactor across multiple files. This module contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand. Custom codemod transformations can also be used with the can-migrate CLI. 
+`can-migrate` is a codebase refactoring tool that is partially automated but still requires oversight and intervention. A codemod is a transformation script that parses the [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of source code in order to do a code-aware find-and-replace refactor across multiple files. This module contains a CLI with various codemods that transform Can.js 2.x to 3.x. It is intended to help you get started with a Can.js migration from 2.x to 3.x. However, it won't be a complete solution for a seamless migration, but it will get you significantly closer than doing it by hand. Custom codemod transformations can also be used with the can-migrate CLI. 
 
 ### What has changed in CanJS 3?
 
@@ -18,7 +18,7 @@ For the long version, read more about it [in the migration guide](https://canjs.
 
 Install can-migrate from npm:
   ```shell
-  $ npm install -g can-migrate-codemods
+  $ npm install -g can-migrate
   ```
 This will make the `can-migrate` command available.
 
