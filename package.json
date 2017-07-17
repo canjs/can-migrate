@@ -4,6 +4,9 @@
   "description": "Codemods to simplify upgrading CanJS from 2.x to 3.x",
   "main": "lib/",
   "scripts": {
+    "preversion": "npm test",
+    "version": "git commit -am \"Update package for release\" && git checkout -b release && git add -f dist/",
+    "postversion": "git push --tags && git checkout master && git branch -D release && git push",
     "generate": "./build/generate.js",
     "compile": "rm -rf lib/ && babel -d lib/ src/ --ignore src/templates",
     "watch": "babel --watch -d lib/ src/",
