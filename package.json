@@ -5,7 +5,7 @@
   "main": "lib/",
   "scripts": {
     "preversion": "npm test",
-    "version": "git commit -am \"Update package for release\" && git checkout -b release && git add -f dist/",
+    "version": "git commit -am \"Update package for release\" && git checkout -b release && npm run generate && npm run compile",
     "postversion": "git push --tags && git checkout master && git branch -D release && git push",
     "generate": "./build/generate.js",
     "compile": "rm -rf lib/ && babel -d lib/ src/ --ignore src/templates",
