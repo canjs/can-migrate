@@ -12,7 +12,7 @@ export default function transformer(file, api, options) {
   let found = false;
   const newName = config.moduleToName['can-view-scope'];
 
-  debug(`Finding all instances of 'can.view.scope'`);
+  debug(`Finding all instances of 'can.view.Scope'`);
   root.find(j.MemberExpression).filter(expression => {
     let match = true;
     
@@ -28,9 +28,9 @@ export default function transformer(file, api, options) {
       return false;
     }
     
-    return match && expression.value.property.name === 'scope';
+    return match && expression.value.property.name === 'Scope';
   }).forEach(expression => {
-    debug(`Replacing all instances of 'can.view.scope' with '${newName}'`);
+    debug(`Replacing all instances of 'can.view.Scope' with '${newName}'`);
     found = true;
     
     // can.Map -> canMap
