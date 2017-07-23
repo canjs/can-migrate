@@ -580,10 +580,10 @@
         "sourceValue": "can-util/js/string/string"
       },
       {
-        "shortName": "capitilize",
+        "shortName": "capitalize",
         "oldObjectName": "can",
-        "oldPropertyName": "capitilize",
-        "newPropertyName": "capitilize",
+        "oldPropertyName": "capitalize",
+        "newPropertyName": "capitalize",
         "sourceValue": "can-util/js/string/string"
       },
       {

@@ -71,7 +71,7 @@ require('../lib/transforms/can-ajax/replace-test.js');
 require('../lib/transforms/can-append/replace-test.js');
 require('../lib/transforms/can-buildFragment/replace-test.js');
 require('../lib/transforms/can-camelize/replace-test.js');
-require('../lib/transforms/can-capitilize/replace-test.js');
+require('../lib/transforms/can-capitalize/replace-test.js');
 require('../lib/transforms/can-deparam/replace-test.js');
 require('../lib/transforms/can-each/replace-test.js');
 require('../lib/transforms/can-esc/replace-test.js');
