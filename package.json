@@ -5,8 +5,11 @@
   "main": "lib/",
   "scripts": {
     "preversion": "npm test",
-    "version": "git commit -am \"Update package for release\" && git checkout -b release && npm run generate && npm run compile",
+    "version": "git commit -am \"Update package for release\" && git checkout -b release",
     "postversion": "git push --tags && git checkout master && git branch -D release && git push",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
     "generate": "./build/generate.js",
     "compile": "rm -rf lib/ && babel -d lib/ src/ --ignore src/templates",
     "watch": "babel --watch -d lib/ src/",
