@@ -17,7 +17,7 @@ function checkGitStatus(force) {
 
   try {
     clean = isGitClean.sync(process.cwd(), { files: ['!package.json'] });
-		errorMessage = 'Git directory is not clean';
+    errorMessage = 'Git directory is not clean';
   } catch (e) { }
   if (!clean) {
     if (force) {
@@ -54,7 +54,9 @@ const cli = meow(`
     alias: {
       a: 'apply',
       c: 'config',
-      h: 'help'
+      h: 'help',
+      s: 'silent',
+      t: 'transform'
     }
   });
 
