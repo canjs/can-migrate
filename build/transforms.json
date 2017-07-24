@@ -701,7 +701,7 @@
       {
         "shortName": "view-scope",
         "oldObjectName": "can.view",
-        "oldPropertyName": "scope",
+        "oldPropertyName": "Scope",
         "newPropertyName": false,
         "sourceValue": "can-view-scope"
       },
