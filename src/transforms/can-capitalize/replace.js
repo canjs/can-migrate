@@ -4,7 +4,7 @@ import dependencyUtils from '../../utils/dependencyUtils';
 import makeDebug from 'debug';
 
 export default function transformer(file, api, options) {
-  const debug = makeDebug(`can-migrate:can-capitilize-replace:${file.path}`);
+  const debug = makeDebug(`can-migrate:can-capitalize-replace:${file.path}`);
   const config = getConfig(options.config);
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
@@ -12,19 +12,19 @@ export default function transformer(file, api, options) {
   let found = false;
   const newName = config.moduleToName['can-util/js/string/string'];
 
-  debug(`Finding all instances of 'can.capitilize'`);
+  debug(`Finding all instances of 'can.capitalize'`);
   root.find(j.MemberExpression).filter(expression => {
     let match = true;
     
       match = match && expression.value.object.name === 'can';
     
-    return match && expression.value.property.name === 'capitilize';
+    return match && expression.value.property.name === 'capitalize';
   }).forEach(expression => {
-    debug(`Replacing all instances of 'can.capitilize' with '${newName}.capitilize'`);
+    debug(`Replacing all instances of 'can.capitalize' with '${newName}.capitalize'`);
     found = true;
     
     // can.event.addEvent -> canEvent.addEventListener
-    j(expression).replaceWith(j.memberExpression(j.identifier(newName), j.identifier('capitilize')));
+    j(expression).replaceWith(j.memberExpression(j.identifier(newName), j.identifier('capitalize')));
     
   });
 

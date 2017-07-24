@@ -3,10 +3,10 @@ const utils = require('../../../test/utils');
 const transforms = require('../../../');
 
 const toTest = transforms.filter(function(transform) {
-  return transform.name === 'can-capitilize/replace.js';
+  return transform.name === 'can-capitalize/replace.js';
 })[0];
 
-describe('can-capitilize-replace', function() {
+describe('can-capitalize-replace', function() {
 
   it('replaces all references and adds import dependency', function() {
     const fn = require(toTest.file);
