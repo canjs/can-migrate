@@ -20,11 +20,11 @@ export default function transformer(file, api, options) {
     
     return match && expression.value.property.name === 'remove';
   }).forEach(expression => {
-    debug(`Replacing all instances of 'can.remove' with '${newName}.mutate.removeChild.call'`);
+    debug(`Replacing all instances of 'can.remove' with '${newName}.removeChild.call'`);
     found = true;
     
     // can.event.addEvent -> canEvent.addEventListener
-    j(expression).replaceWith(j.memberExpression(j.identifier(newName), j.identifier('mutate.removeChild.call')));
+    j(expression).replaceWith(j.memberExpression(j.identifier(newName), j.identifier('removeChild.call')));
     
   });
 
