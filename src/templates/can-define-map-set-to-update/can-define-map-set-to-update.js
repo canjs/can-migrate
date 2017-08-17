@@ -15,7 +15,6 @@ export default function transformer(file, api, options) {
   });
 
   setCalls.forEach((statement) => {
-    console.log(statement.node.arguments);
     if(statement.node.arguments.length === 2) {
       const firstArg = statement.node.arguments[0];
       const secondArg = statement.node.arguments[1];
