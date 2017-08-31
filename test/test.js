@@ -1,4 +1,5 @@
 require('../lib/transforms/can-component-rename/can-component-rename-test.js');
+require('../lib/transforms/can-stache-bindings/colon-bindings-test.js');
 require('../lib/transforms/can-extend/can-extend-test.js');
 require('../lib/transforms/can-data/can-data-test.js');
 require('../lib/transforms/can-component/import-test.js');
