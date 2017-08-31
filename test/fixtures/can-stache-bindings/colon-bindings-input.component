@@ -1,0 +1,29 @@
+<view>
+  <input {^$value}="H1" {$value}="H2" {($value)}="H3" ($value)="H4"
+    {^value}="H1" {value}="H2" {(value)}="H3" (value)="H4">
+</view>
+
+<template>
+  <input {^$value}="H1" {$value}="H2" {($value)}="H3" ($value)="H4"
+    {^value}="H1" {value}="H2" {(value)}="H3" (value)="H4">
+</template>
+
+<view-model>
+  Component.extend({
+    tag: 'my-tag',
+    template: stache(
+      '<input {^$value}="H1" {$value}="H2" {($value)}="H3" ($value)="H4" ' +
+      '{^value}="H1" {value}="H2" {(value)}="H3" (value)="H4">'
+    )
+  });
+</view-model>
+
+<script type="view-model">
+  Component.extend({
+    tag: 'my-tag',
+    template: stache(
+      '<input {^$value}="H1" {$value}="H2" {($value)}="H3" ($value)="H4" ' +
+      '{^value}="H1" {value}="H2" {(value)}="H3" (value)="H4">'
+    )
+  });
+</script>

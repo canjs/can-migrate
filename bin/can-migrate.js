@@ -30,6 +30,16 @@ function checkGitStatus(force) {
   return true;
 }
 
+const booleanFlags = ['apply', 'minimal', 'future', 'steal', 'force'];
+const stringFlags = ['_', 'config', 'transform'];
+const aliases = {
+  a: 'apply',
+  c: 'config',
+  h: 'help',
+  s: 'silent',
+  t: 'transform'
+};
+
 const cli = meow(`
   Usage
   $ can-migrate [<file|glob> ...]
@@ -49,15 +59,9 @@ const cli = meow(`
   can-migrate --apply **/*.js
   can-migrate -iad **/*.js
 `, {
-    boolean: ['apply', 'minimal', 'future', 'steal', 'force'],
-    string: ['_', 'config', 'transform'],
-    alias: {
-      a: 'apply',
-      c: 'config',
-      h: 'help',
-      s: 'silent',
-      t: 'transform'
-    }
+    boolean: booleanFlags,
+    string: stringFlags,
+    alias: aliases
   });
 
 if (!cli.input.length) {
@@ -82,15 +86,36 @@ globby(cli.input).then((paths) => {
   }
 
   return series(toApply, (transform) => {
-    console.log(`${transform.name} running`);
-
     const jscodeshiftPath = require.resolve('.bin/jscodeshift');
-    const args = [
-      '-t', transform.file,
-      cli.flags.apply ? '' : '-d',
-      cli.flags.silent ? '-s' : '',
-      cli.flags.config ? `--config=${config}` : ''
-    ].concat(paths);
+    let args = [
+      '-t', transform.file
+    ];
+
+    if (!cli.flags.apply) {
+      args.push('-d');
+    }
+
+    if (cli.flags.silent) {
+      args.push('-s');
+    }
+
+    if (cli.flags.config) {
+      args.push(`--config=${config}`);
+    }
+
+    // pass cli flags through to the transformer
+    // as long as they are not in booleanFlags or stringFlags lists
+    const ignoreArgs = [].concat(booleanFlags)
+      .concat(stringFlags)
+      .concat(Object.keys(aliases));
+
+    for (const key in cli.flags) {
+      if (ignoreArgs.indexOf(key) < 0) {
+        args.push(`--${key}=${cli.flags[key]}`);
+      }
+    }
+
+    args = args.concat(paths);
 
     return execa(jscodeshiftPath, args, { stdio: 'inherit' }).then(() => {
     }).catch(console.error.bind(console));
