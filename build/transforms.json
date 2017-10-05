@@ -32,6 +32,96 @@
         "type": "test"
       }
     ]
+  }, {
+    "copy": [
+      {
+        "input": "can-stache-bindings/colon-bindings.js",
+        "outputPath": "can-stache-bindings/colon-bindings.js",
+        "type": "transform"
+      },
+
+      {
+        "input": "can-stache-bindings/input.js",
+        "outputPath": "can-stache-bindings/colon-bindings-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output.js",
+        "outputPath": "can-stache-bindings/colon-bindings-output.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output-implicit.js",
+        "outputPath": "can-stache-bindings/colon-bindings-output-implicit.js",
+        "type": "fixture"
+      },
+
+      {
+        "input": "can-stache-bindings/input.stache",
+        "outputPath": "can-stache-bindings/colon-bindings-input.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output.stache",
+        "outputPath": "can-stache-bindings/colon-bindings-output.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output-implicit.stache",
+        "outputPath": "can-stache-bindings/colon-bindings-output-implicit.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/input.md",
+        "outputPath": "can-stache-bindings/colon-bindings-input.md",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output.md",
+        "outputPath": "can-stache-bindings/colon-bindings-output.md",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output-implicit.md",
+        "outputPath": "can-stache-bindings/colon-bindings-output-implicit.md",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/input.html",
+        "outputPath": "can-stache-bindings/colon-bindings-input.html",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output.html",
+        "outputPath": "can-stache-bindings/colon-bindings-output.html",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output-implicit.html",
+        "outputPath": "can-stache-bindings/colon-bindings-output-implicit.html",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/input.component",
+        "outputPath": "can-stache-bindings/colon-bindings-input.component",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output.component",
+        "outputPath": "can-stache-bindings/colon-bindings-output.component",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/output-implicit.component",
+        "outputPath": "can-stache-bindings/colon-bindings-output-implicit.component",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache-bindings/colon-bindings-test.js",
+        "outputPath": "can-stache-bindings/colon-bindings-test.js",
+        "type": "test"
+      }
+    ]
   },
   {
     "copy": [
