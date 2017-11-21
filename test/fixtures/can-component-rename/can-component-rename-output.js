@@ -22,10 +22,8 @@ can.Component.extend({
 
 Component.extend({
   tag: 'my-tag',
-
   events: {
     '{element} beforeremove': () => {}
   },
-
   leakScope: true
 });

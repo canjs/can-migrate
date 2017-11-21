@@ -18,5 +18,6 @@ Component.extend({
   tag: 'my-tag',
   events: {
     'removed': () => {}
-  }
+  },
+  leakScope: true
 });

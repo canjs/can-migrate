@@ -26,9 +26,14 @@ export default function transformer(file, api, options) {
     }
   })
   .forEach((expression) => {
-    debug(`Adding leakScope: true`);
-    expression.value.arguments[0].properties.push(leakScopeTrue);
     const eventsProp = propertyUtils.find(expression.value.arguments[0], 'events');
+    const leakScope = propertyUtils.find(expression.value.arguments[0], 'leakScope');
+
+    debug(`Adding leakScope: true`);
+    if(!leakScope) {
+      expression.value.arguments[0].properties.push(leakScopeTrue);
+    }
+
     debug(`Renaming 'template' -> 'view'`);
     propertyUtils.rename(expression.value.arguments[0], 'template', 'view');
     if(eventsProp) {
