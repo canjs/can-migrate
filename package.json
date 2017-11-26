@@ -54,7 +54,7 @@
     "jscodeshift": "^0.3.29",
     "jscodeshift-imports": "^1.0.1",
     "jsesc": "^2.2.0",
-    "meow": "^3.7.0",
+    "meow": "^4.0.0",
     "promise-map-series": "^0.2.3"
   },
   "devDependencies": {
