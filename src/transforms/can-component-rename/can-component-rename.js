@@ -33,6 +33,7 @@ export default function transformer(file, api, options) {
     if(!leakScope) {
       expression.value.arguments[0].properties.push(leakScopeTrue);
     }
+
     debug(`Renaming 'template' -> 'view'`);
     propertyUtils.rename(expression.value.arguments[0], 'template', 'view');
     if(eventsProp) {
