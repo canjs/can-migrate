@@ -10,6 +10,11 @@ export default function transformer(file, api, options) {
   const printOptions = options.printOptions || {};
   const componentName = config.moduleToName['can-component'];
   const root = j(file.source);
+  const leakScopeTrue = j.property(
+    'init',
+    j.identifier('leakScope'),
+    j.literal(true)
+  );
   root.find(j.CallExpression).filter((expression) => {
     // can.Component
     if(expression.value.callee && expression.value.callee.object) {
@@ -22,6 +27,12 @@ export default function transformer(file, api, options) {
   })
   .forEach((expression) => {
     const eventsProp = propertyUtils.find(expression.value.arguments[0], 'events');
+    const leakScope = propertyUtils.find(expression.value.arguments[0], 'leakScope');
+
+    debug(`Adding leakScope: true`);
+    if(!leakScope) {
+      expression.value.arguments[0].properties.push(leakScopeTrue);
+    }
     debug(`Renaming 'template' -> 'view'`);
     propertyUtils.rename(expression.value.arguments[0], 'template', 'view');
     if(eventsProp) {
