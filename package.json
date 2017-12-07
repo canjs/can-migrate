@@ -51,7 +51,7 @@
     "globby": "^7.1.1",
     "is-git-clean": "^1.1.0",
     "js-codemod": "^7.0.0",
-    "jscodeshift": "^0.3.29",
+    "jscodeshift": "^0.4.0",
     "jscodeshift-imports": "^1.0.1",
     "jsesc": "^2.2.0",
     "meow": "^3.7.0",
