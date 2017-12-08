@@ -62,7 +62,7 @@ var transformStache = function (src, useImplicitBindings) {
 var transformJs = function (src, useImplicitBindings) {
   //find call to stache with a template passed in
   //note: only catches the call if a string is passed in and maynot work well if it's not one full string
-  return src.replace(/(\bstache\(\s*([''`]))((?:[^\\\2]|\\[\s\S])*?)(\2\s*\))/g, function (fullStr, $1, quoteType, $3, $4) {
+  return src.replace(/(\bstache\(\s*(['"`]))((?:[^\\\2]|\\[\s\S])*?)(\2\s*\))/g, function (fullStr, $1, quoteType, $3, $4) {
     return $1 + transformStache($3, useImplicitBindings) + $4;
   });
 };
