@@ -217,16 +217,6 @@
         "input": "can-stache/scope-output.stache",
         "outputPath": "can-stache/scope-output.stache",
         "type": "fixture"
-      },
-      {
-        "input": "can-stache/scope-input.js",
-        "outputPath": "can-stache/scope-input.js",
-        "type": "fixture"
-      },
-      {
-        "input": "can-stache/scope-output.js",
-        "outputPath": "can-stache/scope-output.js",
-        "type": "fixture"
       }
     ]
   },
