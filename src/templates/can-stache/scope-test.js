@@ -9,7 +9,7 @@ const toTest = transforms.filter(function(transform) {
 
 describe('can-stache scope transform', function() {
 
-  it('converts `%special` to `scope.special` in .stache files', function() {
+  it('converts `%special` to `scope.special` in all files', function() {
     const fn = require(toTest.file);
     const inputPath = `fixtures/${toTest.fileName.replace('.js', '-input.stache')}`;
     const outputPath = `fixtures/${toTest.fileName.replace('.js', '-output.stache')}`;
