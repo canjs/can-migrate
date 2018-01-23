@@ -192,6 +192,45 @@
     ]
   },
   {
+    "copy": [
+      {
+        "input": "update/can-4.js",
+        "outputPath": "update/can-4.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-stache/scope.js",
+        "outputPath": "can-stache/scope.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-stache/scope-test.js",
+        "outputPath": "can-stache/scope-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-stache/scope-input.stache",
+        "outputPath": "can-stache/scope-input.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/scope-output.stache",
+        "outputPath": "can-stache/scope-output.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/scope-input.js",
+        "outputPath": "can-stache/scope-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/scope-output.js",
+        "outputPath": "can-stache/scope-output.js",
+        "type": "fixture"
+      }
+    ]
+  },
+  {
     "generate": [
       {
         "template": "import/import.ejs",
