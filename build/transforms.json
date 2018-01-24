@@ -192,6 +192,95 @@
     ]
   },
   {
+    "copy": [
+      {
+        "input": "update/can-4.js",
+        "outputPath": "update/can-4.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-stache/scope.js",
+        "outputPath": "can-stache/scope.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-stache/scope-test.js",
+        "outputPath": "can-stache/scope-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-stache/scope-input.stache",
+        "outputPath": "can-stache/scope-input.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/scope-output.stache",
+        "outputPath": "can-stache/scope-output.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/page.js",
+        "outputPath": "can-route/page.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-route/page-test.js",
+        "outputPath": "can-route/page-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-route/page-input.js",
+        "outputPath": "can-route/page-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/page-output.js",
+        "outputPath": "can-route/page-output.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/start.js",
+        "outputPath": "can-route/start.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-route/start-test.js",
+        "outputPath": "can-route/start-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-route/start-input.js",
+        "outputPath": "can-route/start-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/start-output.js",
+        "outputPath": "can-route/start-output.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/register.js",
+        "outputPath": "can-route/register.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-route/register-test.js",
+        "outputPath": "can-route/register-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-route/register-input.js",
+        "outputPath": "can-route/register-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/register-output.js",
+        "outputPath": "can-route/register-output.js",
+        "type": "fixture"
+      }
+    ]
+  },
+  {
     "generate": [
       {
         "template": "import/import.ejs",
