@@ -29,6 +29,7 @@
     "can-util/js/assign/assign": "assign",
     "can-fixture": "fixture",
     "can-mustache": "mustache",
+    "can-queues": "queues",
     "can-route": "route",
     "can-stache": "stache",
     "can-view-autorender": "canAutorender",
