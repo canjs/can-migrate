@@ -237,6 +237,26 @@
         "input": "can-route/page-output.js",
         "outputPath": "can-route/page-output.js",
         "type": "fixture"
+      },
+      {
+        "input": "can-route/start.js",
+        "outputPath": "can-route/start.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-route/start-test.js",
+        "outputPath": "can-route/start-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-route/start-input.js",
+        "outputPath": "can-route/start-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-route/start-output.js",
+        "outputPath": "can-route/start-output.js",
+        "type": "fixture"
       }
     ]
   },
