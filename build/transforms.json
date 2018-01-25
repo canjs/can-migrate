@@ -126,6 +126,30 @@
   {
     "copy": [
       {
+        "input": "can-define-map-set-to-update/can-define-map-set-to-update.js",
+        "outputPath": "can-define-map-set-to-update/can-define-map-set-to-update.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-define-map-set-to-update/test-input.js",
+        "outputPath": "can-define-map-set-to-update/can-define-map-set-to-update-test-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-define-map-set-to-update/test-output.js",
+        "outputPath": "can-define-map-set-to-update/can-define-map-set-to-update-test-output.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-define-map-set-to-update/can-define-map-set-to-update-test.js",
+        "outputPath": "can-define-map-set-to-update/can-define-map-set-to-update-test.js",
+        "type": "test"
+      }
+    ]
+  },
+  {
+    "copy": [
+      {
         "input": "can-extend/can-extend.js",
         "outputPath": "can-extend/can-extend.js",
         "type": "transform"

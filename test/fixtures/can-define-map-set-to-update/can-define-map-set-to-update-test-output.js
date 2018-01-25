@@ -1,0 +1,1 @@
+map.update({ a: 'b' });
