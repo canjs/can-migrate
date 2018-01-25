@@ -6,6 +6,7 @@ require('../lib/transforms/can-stache/scope-test.js');
 require('../lib/transforms/can-route/page-test.js');
 require('../lib/transforms/can-route/start-test.js');
 require('../lib/transforms/can-route/register-test.js');
+require('../lib/transforms/can-queues/batch-test.js');
 require('../lib/transforms/can-component/import-test.js');
 require('../lib/transforms/can-construct/import-test.js');
 require('../lib/transforms/can-construct-super/import-test.js');
