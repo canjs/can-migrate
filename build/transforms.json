@@ -307,6 +307,36 @@
         "input": "can-queues/batch-cjs-output.js",
         "outputPath": "can-queues/batch-cjs-output.js",
         "type": "fixture"
+      },
+      {
+        "input": "can-stache/route-helpers.js",
+        "outputPath": "can-stache/route-helpers.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-stache/route-helpers-test.js",
+        "outputPath": "can-stache/route-helpers-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-stache/route-helpers-input.js",
+        "outputPath": "can-stache/route-helpers-input.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/route-helpers-output.js",
+        "outputPath": "can-stache/route-helpers-output.js",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/route-helpers-input.stache",
+        "outputPath": "can-stache/route-helpers-input.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/route-helpers-output.stache",
+        "outputPath": "can-stache/route-helpers-output.stache",
+        "type": "fixture"
       }
     ]
   },
