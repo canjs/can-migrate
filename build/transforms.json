@@ -337,6 +337,26 @@
         "input": "can-stache/route-helpers-output.stache",
         "outputPath": "can-stache/route-helpers-output.stache",
         "type": "fixture"
+      },
+      {
+        "input": "can-stache/console-log.js",
+        "outputPath": "can-stache/console-log.js",
+        "type": "transform"
+      },
+      {
+        "input": "can-stache/console-log-test.js",
+        "outputPath": "can-stache/console-log-test.js",
+        "type": "test"
+      },
+      {
+        "input": "can-stache/console-log-input.stache",
+        "outputPath": "can-stache/console-log-input.stache",
+        "type": "fixture"
+      },
+      {
+        "input": "can-stache/console-log-output.stache",
+        "outputPath": "can-stache/console-log-output.stache",
+        "type": "fixture"
       }
     ]
   },
