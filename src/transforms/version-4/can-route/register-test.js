@@ -1,7 +1,7 @@
 
 require('mocha');
-const utils = require('../../../test/utils');
-const transforms = require('../../../');
+const utils = require('../../../../test/utils');
+const transforms = require('../../../../');
 
 const toTest = transforms.filter(function(transform) {
   return transform.name === 'can-route/register.js';

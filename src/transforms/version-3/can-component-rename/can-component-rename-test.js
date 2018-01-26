@@ -1,6 +1,6 @@
 require('mocha');
-const utils = require('../../../test/utils');
-const transforms = require('../../../');
+const utils = require('../../../../test/utils');
+const transforms = require('../../../../');
 
 console.log('>>', transforms);
 
