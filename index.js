@@ -17,7 +17,8 @@ transformDirs.forEach((dir) => {
         transformFiles.push({
           name: `${dir}/${transformFile}`,
           fileName: `${dir}/${transformFile}`,
-          file: path.join(__dirname, `${TRANSFORM_PATH}/${dir}/${transformFile}`)
+          file: path.join(__dirname, `${TRANSFORM_PATH}/${dir}/${transformFile}`),
+          version: 3
         });
       }
     });
