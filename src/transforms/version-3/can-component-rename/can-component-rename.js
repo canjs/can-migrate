@@ -1,6 +1,6 @@
 // This is a generated file, see src/templates/can-extend/can-extend.js
-import getConfig from '../../utils/getConfig';
-import propertyUtils from '../../utils/propertyUtils';
+import getConfig from '../../../utils/getConfig';
+import propertyUtils from '../../../utils/propertyUtils';
 import makeDebug from 'debug';
 
 export default function transformer(file, api, options) {

@@ -1,7 +1,7 @@
 // This is a generated file, see src/templates/import/import.ejs
-import getConfig from '../../utils/getConfig';
-import renameImport from '../../utils/renameImport';
-import replaceRefs from '../../utils/replaceRefs';
+import getConfig from '../../../utils/getConfig';
+import renameImport from '../../../utils/renameImport';
+import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
 
 export default function transformer(file, api, options) {
