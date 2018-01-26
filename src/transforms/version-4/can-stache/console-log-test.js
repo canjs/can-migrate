@@ -10,8 +10,8 @@ describe('can-stache console.log() transform', function() {
 
   it('converts `{{log}}` to `{{console.log(this)}}` in stache files', function() {
     const fn = require(toTest.file);
-    const inputPath = `fixtures/${toTest.fileName.replace('.js', '-input.stache')}`;
-    const outputPath = `fixtures/${toTest.fileName.replace('.js', '-output.stache')}`;
+    const inputPath = `fixtures/version-4/${toTest.fileName.replace('.js', '-input.stache')}`;
+    const outputPath = `fixtures/version-4/${toTest.fileName.replace('.js', '-output.stache')}`;
     utils.diffFiles(fn, inputPath, outputPath);
   });
 });
