@@ -31,7 +31,7 @@ function checkGitStatus(force) {
 }
 
 const booleanFlags = ['apply', 'minimal', 'future', 'steal', 'force'];
-const stringFlags = ['_', 'config', 'transform'];
+const stringFlags = ['_', 'config', 'transform', 'can-version'];
 const aliases = {
   a: 'apply',
   c: 'config',
@@ -53,6 +53,7 @@ const cli = meow(`
   --silent    -s    Silence output
   --config    -c    Path to custom config file
   --transform -t    specify a transform
+  --can-version     specify CanJS version to upgrade to
 
   Examples
   can-migrate **/*.js
@@ -76,11 +77,19 @@ if(!checkGitStatus(cli.flags.force)) {
 globby(cli.input).then((paths) => {
   let toApply = transforms;
   let config;
+
+  if (cli.flags.canVersion) {
+    toApply = toApply.filter((transform) => {
+      return transform.version.indexOf(cli.flags.canVersion) !== -1;
+    });
+  }
+
   if (cli.flags.transform) {
     toApply = toApply.filter((t) => {
       return t.name.indexOf(cli.flags.transform) !== -1;
     });
   }
+
   if (cli.flags.config) {
     config = path.resolve(__dirname, cli.flags.config);
   }

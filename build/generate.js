@@ -22,21 +22,23 @@ function sub(template, config) {
 }
 
 function copyTemplate(copy) {
-  const outputPath = `../${copy.type ? DIRS[copy.type] + '/' : ''}${copy.outputPath}`;
+  const versionDir = 'version-' + copy.version
+  const outputPath = `../${copy.type ? DIRS[copy.type] + '/' : ''}${versionDir +'/'}${copy.outputPath}`;
   const srcPath = `../${TEMPLATE_DIR}/${copy.input}`;
   if(copy.type === "test") {
     testFiles.push(`${outputPath.replace('src/', 'lib/')}`);
   }
   fs.copy(path.join(__dirname, srcPath), path.join(__dirname, outputPath), (err) => {
     if (err) {
-        throw err;
-      }
-      console.log(`>> Copied: ${outputPath}`);
+      throw err;
+    }
+    console.log(`>> Copied: ${outputPath}`);
   });
 }
 
 function writeTemplate(generate, transform) {
-  const outputPath = `${generate.type ? DIRS[generate.type] + '/' : ''}${sub(generate.outputPath, transform)}`;
+  const versionDir = 'version-' + generate.version
+  const outputPath = `${generate.type ? DIRS[generate.type] + '/' : ''}${generate.type ? versionDir +'/' : ''}${sub(generate.outputPath, transform)}`;
   const templatePath = `${TEMPLATE_DIR}/${generate.template}`;
   if(generate.type === "test") {
     testFiles.push(`../${outputPath.replace('src/', 'lib/')}`);
@@ -76,7 +78,7 @@ function writeTransforms(transforms) {
   });
   writeTemplate({
     outputPath: 'test/test.js',
-    template: 'test.ejs'
+    template: 'test.ejs',
   }, {
     tests: testFiles
   });

@@ -4,32 +4,38 @@
       {
         "input": "can-component-rename/can-component-rename.js",
         "outputPath": "can-component-rename/can-component-rename.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
       {
         "input": "can-component-rename/input.js",
         "outputPath": "can-component-rename/can-component-rename-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-component-rename/output.js",
         "outputPath": "can-component-rename/can-component-rename-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-component-rename/input-no-component.js",
         "outputPath": "can-component-rename/can-component-rename-input-no-component.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-component-rename/output-no-component.js",
         "outputPath": "can-component-rename/can-component-rename-output-no-component.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-component-rename/can-component-rename-test.js",
         "outputPath": "can-component-rename/can-component-rename-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       }
     ]
   }, {
@@ -37,89 +43,106 @@
       {
         "input": "can-stache-bindings/colon-bindings.js",
         "outputPath": "can-stache-bindings/colon-bindings.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
 
       {
         "input": "can-stache-bindings/input.js",
         "outputPath": "can-stache-bindings/colon-bindings-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output.js",
         "outputPath": "can-stache-bindings/colon-bindings-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output-implicit.js",
         "outputPath": "can-stache-bindings/colon-bindings-output-implicit.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
 
       {
         "input": "can-stache-bindings/input.stache",
         "outputPath": "can-stache-bindings/colon-bindings-input.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output.stache",
         "outputPath": "can-stache-bindings/colon-bindings-output.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output-implicit.stache",
         "outputPath": "can-stache-bindings/colon-bindings-output-implicit.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/input.md",
         "outputPath": "can-stache-bindings/colon-bindings-input.md",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output.md",
         "outputPath": "can-stache-bindings/colon-bindings-output.md",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output-implicit.md",
         "outputPath": "can-stache-bindings/colon-bindings-output-implicit.md",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/input.html",
         "outputPath": "can-stache-bindings/colon-bindings-input.html",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output.html",
         "outputPath": "can-stache-bindings/colon-bindings-output.html",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output-implicit.html",
         "outputPath": "can-stache-bindings/colon-bindings-output-implicit.html",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/input.component",
         "outputPath": "can-stache-bindings/colon-bindings-input.component",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output.component",
         "outputPath": "can-stache-bindings/colon-bindings-output.component",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/output-implicit.component",
         "outputPath": "can-stache-bindings/colon-bindings-output-implicit.component",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-stache-bindings/colon-bindings-test.js",
         "outputPath": "can-stache-bindings/colon-bindings-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       }
     ]
   },
@@ -128,32 +151,38 @@
       {
         "input": "can-extend/can-extend.js",
         "outputPath": "can-extend/can-extend.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
       {
         "input": "can-extend/import-input.js",
         "outputPath": "can-extend/can-extend-import-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-extend/import-output.js",
         "outputPath": "can-extend/can-extend-import-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-extend/require-input.js",
         "outputPath": "can-extend/can-extend-require-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-extend/require-output.js",
         "outputPath": "can-extend/can-extend-require-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-extend/can-extend-test.js",
         "outputPath": "can-extend/can-extend-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       }
     ]
   },
@@ -162,32 +191,38 @@
       {
         "input": "can-data/can-data.js",
         "outputPath": "can-data/can-data.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
       {
         "input": "can-data/import-input.js",
         "outputPath": "can-data/can-data-import-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-data/import-output.js",
         "outputPath": "can-data/can-data-import-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-data/require-input.js",
         "outputPath": "can-data/can-data-require-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-data/require-output.js",
         "outputPath": "can-data/can-data-require-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "input": "can-data/can-data-test.js",
         "outputPath": "can-data/can-data-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       }
     ]
   },
@@ -196,167 +231,200 @@
       {
         "input": "update/can-4.js",
         "outputPath": "update/can-4.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-stache/scope.js",
         "outputPath": "can-stache/scope.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-stache/scope-test.js",
         "outputPath": "can-stache/scope-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-stache/scope-input.stache",
         "outputPath": "can-stache/scope-input.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/scope-output.stache",
         "outputPath": "can-stache/scope-output.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-route/page.js",
         "outputPath": "can-route/page.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-route/page-test.js",
         "outputPath": "can-route/page-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-route/page-input.js",
         "outputPath": "can-route/page-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-route/page-output.js",
         "outputPath": "can-route/page-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-route/start.js",
         "outputPath": "can-route/start.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-route/start-test.js",
         "outputPath": "can-route/start-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-route/start-input.js",
         "outputPath": "can-route/start-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-route/start-output.js",
         "outputPath": "can-route/start-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-route/register.js",
         "outputPath": "can-route/register.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-route/register-test.js",
         "outputPath": "can-route/register-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-route/register-input.js",
         "outputPath": "can-route/register-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-route/register-output.js",
         "outputPath": "can-route/register-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-queues/batch.js",
         "outputPath": "can-queues/batch.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-queues/batch-test.js",
         "outputPath": "can-queues/batch-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-queues/batch-esm-input.js",
         "outputPath": "can-queues/batch-esm-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-queues/batch-esm-output.js",
         "outputPath": "can-queues/batch-esm-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-queues/batch-cjs-input.js",
         "outputPath": "can-queues/batch-cjs-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-queues/batch-cjs-output.js",
         "outputPath": "can-queues/batch-cjs-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/route-helpers.js",
         "outputPath": "can-stache/route-helpers.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-stache/route-helpers-test.js",
         "outputPath": "can-stache/route-helpers-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-stache/route-helpers-input.js",
         "outputPath": "can-stache/route-helpers-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/route-helpers-output.js",
         "outputPath": "can-stache/route-helpers-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/route-helpers-input.stache",
         "outputPath": "can-stache/route-helpers-input.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/route-helpers-output.stache",
         "outputPath": "can-stache/route-helpers-output.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/console-log.js",
         "outputPath": "can-stache/console-log.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "4"
       },
       {
         "input": "can-stache/console-log-test.js",
         "outputPath": "can-stache/console-log-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "4"
       },
       {
         "input": "can-stache/console-log-input.stache",
         "outputPath": "can-stache/console-log-input.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       },
       {
         "input": "can-stache/console-log-output.stache",
         "outputPath": "can-stache/console-log-output.stache",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "4"
       }
     ]
   },
@@ -365,42 +433,50 @@
       {
         "template": "import/import.ejs",
         "outputPath": "can-{shortName}/import.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
       {
         "template": "import/import-input.ejs",
         "outputPath": "can-{shortName}/import-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "import/import-output.ejs",
         "outputPath": "can-{shortName}/import-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "import/import-test.ejs",
         "outputPath": "can-{shortName}/import-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       },
       {
         "template": "require/require.ejs",
         "outputPath": "can-{shortName}/require.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
       {
         "template": "require/require-input.ejs",
         "outputPath": "can-{shortName}/require-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "require/require-output.ejs",
         "outputPath": "can-{shortName}/require-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "require/require-test.ejs",
         "outputPath": "can-{shortName}/require-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       }
     ],
     "transforms": [
@@ -641,32 +717,38 @@
       {
         "template": "replace/replace.ejs",
         "outputPath": "can-{shortName}/replace.js",
-        "type": "transform"
+        "type": "transform",
+        "version": "3"
       },
       {
         "template": "replace/replace-require-input.ejs",
         "outputPath": "can-{shortName}/replace-require-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "replace/replace-require-output.ejs",
         "outputPath": "can-{shortName}/replace-require-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "replace/replace-import-input.ejs",
         "outputPath": "can-{shortName}/replace-import-input.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "replace/replace-import-output.ejs",
         "outputPath": "can-{shortName}/replace-import-output.js",
-        "type": "fixture"
+        "type": "fixture",
+        "version": "3"
       },
       {
         "template": "replace/replace-test.ejs",
         "outputPath": "can-{shortName}/replace-test.js",
-        "type": "test"
+        "type": "test",
+        "version": "3"
       }
     ],
     "transforms": [
