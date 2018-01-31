@@ -44,8 +44,9 @@ const cli = meow(`
   Usage
   $ can-migrate [<file|glob> ...]
 
-  Updates files according to the CanJS 3.0 migration paths (minimal, modern, future)
-  More info: http://canjs.github.io/canjs/doc/migrate-3.html#Modernizedmigrationpath
+  Updates files according to the CanJS 3.0 or CanJS 4.0 migration paths (minimal, modern, future)
+  More info for v3.0: http://canjs.github.io/canjs/doc/migrate-3.html#Modernizedmigrationpath
+  More info for v4.0: http://canjs.github.io/canjs/doc/migrate-4.html
 
   Options
   --apply     -a    Apply transforms (instead of a dry run)
@@ -59,6 +60,8 @@ const cli = meow(`
   can-migrate **/*.js
   can-migrate --apply **/*.js
   can-migrate -iad **/*.js
+  can-migrate **/*.* --transform can-route/register.js
+  can-migrate **/*.* --can-version 4
 `, {
     boolean: booleanFlags,
     string: stringFlags,
