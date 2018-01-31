@@ -2,7 +2,7 @@
  * Utility for replacing an import statement of the form:
  *   `import <oldLocalName> from <oldSourceValue>
  * Then it replaces references of <oldLocalName> with the new local name.
- * 
+ *
  * Options:
  *   oldSourceValues {Array<String>} possible values for <oldSourceValue>
  *   newSourceValue {String} new source value to use (will replace <oldSourceValue>)

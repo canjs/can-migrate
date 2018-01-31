@@ -425,6 +425,30 @@
         "outputPath": "can-stache/console-log-output.stache",
         "type": "fixture",
         "version": "4"
+      },
+      {
+        "input": "can-define/default.js",
+        "outputPath": "can-define/default.js",
+        "type": "transform",
+        "version": "4"
+      },
+      {
+        "input": "can-define/default-test.js",
+        "outputPath": "can-define/default-test.js",
+        "type": "test",
+        "version": "4"
+      },
+      {
+        "input": "can-define/default-input.js",
+        "outputPath": "can-define/default-input.js",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
+        "input": "can-define/default-output.js",
+        "outputPath": "can-define/default-output.js",
+        "type": "fixture",
+        "version": "4"
       }
     ]
   },
