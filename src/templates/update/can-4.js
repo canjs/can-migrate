@@ -18,7 +18,7 @@ export default function transformer(file, api, options) {
   src = routeHelpers(src);
   src = consoleLog(src);
   src = batch(file, api, options);
-  src = valueToDefault(src);
+  src = valueToDefault(file, api);
 
   return src;
 }
