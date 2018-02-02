@@ -1,2 +1,0 @@
-
-let ViewModel = DefineMap.extend

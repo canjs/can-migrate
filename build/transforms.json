@@ -449,6 +449,30 @@
         "outputPath": "can-define/default-output.js",
         "type": "fixture",
         "version": "4"
+      },
+      {
+        "input": "can-define/for-each.js",
+        "outputPath": "can-define/for-each.js",
+        "type": "transform",
+        "version": "4"
+      },
+      {
+        "input": "can-define/for-each-test.js",
+        "outputPath": "can-define/for-each-test.js",
+        "type": "test",
+        "version": "4"
+      },
+      {
+        "input": "can-define/for-each-input.js",
+        "outputPath": "can-define/for-each-input.js",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
+        "input": "can-define/for-each-output.js",
+        "outputPath": "can-define/for-each-output.js",
+        "type": "fixture",
+        "version": "4"
       }
     ]
   },

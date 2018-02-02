@@ -4,7 +4,7 @@ const utils = require('../../../../test/utils');
 const transforms = require('../../../../');
 
 const toTest = transforms.filter(function(transform) {
-  return transform.name === 'can-define/default.js';
+  return transform.name === 'can-define/for-each.js';
 })[0];
 
 describe('can-define forEach transform', function() {
