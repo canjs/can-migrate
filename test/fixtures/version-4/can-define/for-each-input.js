@@ -15,14 +15,14 @@ let ViewModel = DefineMap.extend({
   }
 });
 
-let list = new DefineList([
+let MyList = new DefineList([
   { prop1: 'prop1 value' },
-  { prop1: 'prop1 value' },
-  { print: function() {
-    this.each((val) => {
-      console.log(val);
-    });
-  }}
+  { prop2: function() {
+      this.each((val) => {
+        console.log(val);
+      });
+    }
+  }
 ]);
 
 let obj = {
