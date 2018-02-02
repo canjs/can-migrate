@@ -78,6 +78,10 @@ if(!checkGitStatus(cli.flags.force)) {
 }
 
 globby(cli.input).then((paths) => {
+  paths = paths.filter((path) => {
+    return path.indexOf('node_modules') === -1;
+  });
+
   let toApply = transforms;
   let config;
 
