@@ -229,12 +229,6 @@
   {
     "copy": [
       {
-        "input": "update/can-4.js",
-        "outputPath": "update/can-4.js",
-        "type": "transform",
-        "version": "4"
-      },
-      {
         "input": "can-stache/scope.js",
         "outputPath": "can-stache/scope.js",
         "type": "transform",
