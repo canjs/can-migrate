@@ -8,6 +8,7 @@ const globby = require('globby');
 const series = require('promise-map-series');
 const isGitClean = require('is-git-clean');
 const transforms = require('../');
+const runTransform = require('../lib/utils/runTransform');
 
 const ENSURE_BACKUP_MESSAGE = 'Ensure you have a backup of your tests or commit the latest changes before continuing.';
 
@@ -102,7 +103,6 @@ globby(cli.input).then((paths) => {
   }
 
   return series(toApply, (transform) => {
-    const jscodeshiftPath = require.resolve('.bin/jscodeshift');
     let args = [
       '-t', transform.file
     ];
@@ -131,9 +131,7 @@ globby(cli.input).then((paths) => {
       }
     }
 
-    args = args.concat(paths);
+    runTransform(transform, paths, args, cli.flags.apply);
 
-    return execa(jscodeshiftPath, args, { stdio: 'inherit' }).then(() => {
-    }).catch(console.error.bind(console));
   });
 });
