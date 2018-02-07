@@ -12,6 +12,9 @@ mockRoot.prototype.filter = noop;
 let mockJscodeshift = function(source) { return new mockRoot(source); };
 mockJscodeshift.CallExperssion = noop;
 mockJscodeshift.Identifier = noop;
+mockJscodeshift.identifier = noop;
+mockJscodeshift.literal = noop;
+mockJscodeshift.property = noop;
 
 const mockApi = {
   jscodeshift: mockJscodeshift
