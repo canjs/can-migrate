@@ -11,7 +11,9 @@ export default function transformer(file, api) {
     }
   }).forEach(expressionStatement => {
     j(expressionStatement).find(j.CallExpression, { callee: { object: { type: 'ThisExpression' } } }).forEach(expression => {
-      expression.value.callee.property.name = 'forEach';
+      if (expression.value.callee.property.name === 'each') {
+        expression.value.callee.property.name = 'forEach';
+      }
     });
   }).toSource();
 
@@ -23,7 +25,9 @@ export default function transformer(file, api) {
     }
   }).forEach(expressionStatement => {
     j(expressionStatement).find(j.CallExpression, { callee: { object: { type: 'ThisExpression' } } }).forEach(expression => {
-      expression.value.callee.property.name = 'forEach';
+      if (expression.value.callee.property.name === 'each') {
+        expression.value.callee.property.name = 'forEach';
+      }
     });
   }).toSource();
 
