@@ -2,6 +2,7 @@ require('../lib/transforms/version-3/can-component-rename/can-component-rename-t
 require('../lib/transforms/version-3/can-stache-bindings/colon-bindings-test.js');
 require('../lib/transforms/version-3/can-extend/can-extend-test.js');
 require('../lib/transforms/version-3/can-data/can-data-test.js');
+require('../lib/transforms/version-3/can-define/set-to-update-test.js');
 require('../lib/transforms/version-4/can-stache/scope-test.js');
 require('../lib/transforms/version-4/can-route/page-test.js');
 require('../lib/transforms/version-4/can-route/start-test.js');

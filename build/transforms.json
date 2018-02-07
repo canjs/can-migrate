@@ -223,6 +223,30 @@
         "outputPath": "can-data/can-data-test.js",
         "type": "test",
         "version": "3"
+      },
+      {
+        "input": "can-define/set-to-update.js",
+        "outputPath": "can-define/set-to-update.js",
+        "type": "transform",
+        "version": "3"
+      },
+      {
+        "input": "can-define/set-to-update-test.js",
+        "outputPath": "can-define/set-to-update-test.js",
+        "type": "test",
+        "version": "3"
+      },
+      {
+        "input": "can-define/set-to-update-input.js",
+        "outputPath": "can-define/set-to-update-input.js",
+        "type": "fixture",
+        "version": "3"
+      },
+      {
+        "input": "can-define/set-to-update-output.js",
+        "outputPath": "can-define/set-to-update-output.js",
+        "type": "fixture",
+        "version": "3"
       }
     ]
   },
