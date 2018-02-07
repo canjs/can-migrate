@@ -11,6 +11,7 @@ require('../lib/transforms/version-4/can-stache/route-helpers-test.js');
 require('../lib/transforms/version-4/can-stache/console-log-test.js');
 require('../lib/transforms/version-4/can-define/default-test.js');
 require('../lib/transforms/version-4/can-define/for-each-test.js');
+require('../lib/transforms/version-4/can-stache/attr-from-test.js');
 require('../lib/transforms/version-3/can-component/import-test.js');
 require('../lib/transforms/version-3/can-construct/import-test.js');
 require('../lib/transforms/version-3/can-construct-super/import-test.js');

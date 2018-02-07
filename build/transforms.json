@@ -467,6 +467,30 @@
         "outputPath": "can-define/for-each-output.js",
         "type": "fixture",
         "version": "4"
+      },
+      {
+        "input": "can-stache/attr-from.js",
+        "outputPath": "can-stache/attr-from.js",
+        "type": "transform",
+        "version": "4"
+      },
+      {
+        "input": "can-stache/attr-from-test.js",
+        "outputPath": "can-stache/attr-from-test.js",
+        "type": "test",
+        "version": "4"
+      },
+      {
+        "input": "can-stache/attr-from-input.stache",
+        "outputPath": "can-stache/attr-from-input.stache",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
+        "input": "can-stache/attr-from-output.stache",
+        "outputPath": "can-stache/attr-from-output.stache",
+        "type": "fixture",
+        "version": "4"
       }
     ]
   },

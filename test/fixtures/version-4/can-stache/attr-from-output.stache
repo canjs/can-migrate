@@ -1,0 +1,18 @@
+<some-element xml:lang='value' xml:base='value' aria-labelledby='value' onabort='value'
+  onautocomplete='value' onautocompleteerror='value' onblur='value' oncancel='value'
+  oncanplay='value' oncanplaythrough='value' onchange='value' onclick='value' onclose='value'
+  oncontextmenu='value' oncuechange='value' ondblclick='value' ondrag='value' ondragend='value'
+  ondragenter='value' ondragexit='value' ondragleave='value' ondragover='value' ondragstart='value'
+  ondrop='value' ondurationchange='value' onemptied='value' onended='value' onerror='value'
+  onfocus='value' oninput='value' oninvalid='value' onkeydown='value' onkeypress='value'
+  onkeyup='value' onload='value' onloadeddata='value' onloadedmetadata='value' onloadstart='value'
+  onmousedown='value' onmouseenter='value' onmouseleave='value' onmousemove='value'
+  onmouseout='value' onmouseover='value' onmouseup='value' onmousewheel='value' onpause='value'
+  onplay='value' onplaying='value' onprogress='value' onratechange='value' onreset='value'
+  onresize='value' onscroll='value' onseeked='value' onseeking='value' onselect='value'
+  onshow='value' onsort='value' onstalled='value' onsubmit='value' onsuspend='value'
+  ontimeupdate='value' ontoggle='value' onvolumechange='value' onwaiting='value' accesskey='value'
+  class='value' contenteditable='value' contextmenu='value' data-something='value'
+  dir='value' draggable='value' hidden='value' id='value' is='value' lang='value' style='value'
+  tabindex='value' title='value' prop:bind='value'>
+</some-element>
