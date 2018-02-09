@@ -14,5 +14,5 @@
   ontimeupdate='value' ontoggle='value' onvolumechange='value' onwaiting='value' accesskey='value'
   class='value' contenteditable='value' contextmenu='value' data-something='value'
   dir='value' draggable='value' hidden='value' id='value' is='value' lang='value' style='value'
-  tabindex='value' title='value' prop:bind='value'>
+  tabindex='value' title='value' prop:from="'something'" prop2:from='"something else"'>
 </some-element>
