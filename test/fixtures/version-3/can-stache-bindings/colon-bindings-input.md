@@ -3,7 +3,7 @@
   {^value}="H1" {value}="H2" {(value)}="H3" (value)="H4">
 ```
 
-```js
+```javascript
 Component.extend({
   tag: 'my-tag',
   template: stache(

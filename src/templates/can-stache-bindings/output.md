@@ -3,7 +3,7 @@
   vm:value:to="H1" vm:value:from="H2" vm:value:bind="H3" on:vm:value="H4">
 ```
 
-```js
+```javascript
 Component.extend({
   tag: 'my-tag',
   template: stache(

@@ -5,7 +5,7 @@ Transforms
 
 All transforms are store in `build/transforms.json`.
 
-```js
+```javascript
 [
   {
     // List of files to copy
