@@ -26,8 +26,15 @@ export default function transformer(file) {
     const attributes = src.match(attributeRegexp);
     for (let i = 0; i < attributes.length; i++) {
       const attribute = attributes[i].slice(0, attributes[i].lastIndexOf('='));
+      const value = attributes[i].slice(attributes[i].lastIndexOf('=') + 1);
       if (globalAttributes.indexOf(attribute) === -1 && !attribute.includes('aria') && !attribute.includes('data')) {
-        src = src.replace(attribute, attribute + ':bind');
+        src = src.replace(attribute, attribute + ':from');
+        if (value.includes("'")) { // jshint ignore:line
+          src = src.replace(value, '"' + value + '"'); // jshint ignore:line
+        }
+        else {
+          src = src.replace(value, "'" + value + "'"); // jshint ignore:line
+        }
       }
     }
   }
