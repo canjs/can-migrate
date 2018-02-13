@@ -3,12 +3,12 @@
   value:to="H1" value:from="H2" value:bind="H3" on:value="H4">
 ```
 
-```javascript
+```js
 Component.extend({
-  tag: 'my-tag',
-  template: stache(
-    '<input value:to="H1" value:from="H2" value:bind="H3" on:value="H4" ' +
+	tag: 'my-tag',
+	template: stache(
+		'<input value:to="H1" value:from="H2" value:bind="H3" on:value="H4" ' +
     'value:to="H1" value:from="H2" value:bind="H3" on:value="H4">'
-  )
+	)
 });
 ```
