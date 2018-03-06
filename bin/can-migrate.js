@@ -31,6 +31,34 @@ function checkGitStatus(force) {
   return true;
 }
 
+function toPercent(value) {
+    return (value * 100).toFixed();
+}
+
+function toTime(value) {
+    function format(value) {
+        return (Math.floor(value * 10) / 10).toFixed(1);
+    }
+
+    value = value / 1000;
+    if (value < 60) {
+        return `${format(value)} seconds`;
+    }
+
+    value /= 60;
+    if (value  < 60) {
+        return `${format(value)} minutes`;
+    }
+
+    value /= 60;
+    if (value < 24) {
+        return `${format(value)} hours`;
+    }
+
+    value /= 24;
+    return `${format(value)} days`;
+}
+
 const booleanFlags = ['apply', 'minimal', 'future', 'steal', 'force'];
 const stringFlags = ['_', 'config', 'transform', 'can-version'];
 const aliases = {
@@ -102,7 +130,9 @@ globby(cli.input).then((paths) => {
     config = path.resolve(__dirname, cli.flags.config);
   }
 
-  return series(toApply, (transform) => {
+  const startTime = Date.now();
+  return series(toApply, (transform, index) => {
+
     let args = [
       '-t', transform.file
     ];
@@ -131,7 +161,11 @@ globby(cli.input).then((paths) => {
       }
     }
 
-    runTransform(transform, paths, args, cli.flags.apply);
+    return runTransform(transform, paths, args, cli.flags.apply).then(() => {
+      const progress = (index + 1) / toApply.length;
+      const eta = (Date.now() - startTime) * (1 / progress - 1);
+      console.log(`Progress: ${toPercent(progress)}%. ETA: ${toTime(eta)}.`);
+    });
 
   });
 });
