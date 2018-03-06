@@ -16,3 +16,5 @@
   dir='value' draggable='value' hidden='value' id='value' is='value' lang='value' style='value'
   tabindex='value' title='value' prop='something' prop2="something else">
 </some-element>
+<can-import from="some/thing"/>
+<script src="{{joinBase 'steal.production.js'}}"></script>
