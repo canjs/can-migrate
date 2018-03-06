@@ -131,7 +131,7 @@ globby(cli.input).then((paths) => {
       }
     }
 
-    runTransform(transform, paths, args, cli.flags.apply);
+    return runTransform(transform, paths, args, cli.flags.apply);
 
   });
 });
