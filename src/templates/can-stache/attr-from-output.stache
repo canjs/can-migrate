@@ -18,3 +18,7 @@
 </some-element>
 <can-import from="some/thing"/>
 <script src="{{joinBase 'steal.production.js'}}"></script>
+<h4>
+  <a href="{{routeUrl page='home'}}">Home</a>
+</h4>
+<another-element prop3:from='"something"'/>
