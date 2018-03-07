@@ -42,7 +42,6 @@ export default function transformer(file) {
     let attributeAtIndexShouldBeModified = [];
 
     let currentTag = '';
-    let currentAttr = '';
 
     parser(src, {
       start: function(tagName) {
@@ -52,16 +51,12 @@ export default function transformer(file) {
         currentTag = '';
       },
       attrStart: function(attrName) {
-        currentAttr = attrName;
-      },
-      attrEnd: function() {
-        currentAttr = '';
-      },
-      attrValue: function() {
         const shouldModify = tagShouldBeModified(currentTag) &&
-          attributeShouldBeModified(currentAttr);
+          attributeShouldBeModified(attrName);
         attributeAtIndexShouldBeModified.push(shouldModify);
       },
+      attrEnd: noop,
+      attrValue: noop,
       done: noop,
       special: noop
     });
