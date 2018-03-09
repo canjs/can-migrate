@@ -45,7 +45,9 @@ function runTransform(transform, paths, args, apply) {
     let options = {};
     let newSource = transformFunc(file, mockApi, options);
     // Write changes to file if apply specified
-    if (apply) { fs.writeFileSync(file.path, newSource); }
+    if (newSource !== file.source && apply) {
+      fs.writeFileSync(file.path, newSource);
+    }
   }
 
   args = args.concat(jsPaths);
