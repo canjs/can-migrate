@@ -11,9 +11,13 @@ export default function transformer(file, api) {
       }
     })
     .forEach((path) => {
+      let propDefinitionsArg = path.value.arguments.length === 1 ?
+        path.value.arguments[0] :
+        path.value.arguments[1];
+
       // loop through each PropDefinition
       // passed to the first argument of DefineMap.extend
-      path.value.arguments[0].properties
+      propDefinitionsArg.properties
         .forEach((propDefinition) => {
           if (propDefinition.value.type === 'ObjectExpression') {
             propDefinition.value.properties
