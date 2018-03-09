@@ -45,10 +45,11 @@ export default function transformer(file) {
   if (type === 'stache') {
     // this list contains a boolean for each attribute found during parsing to indicate
     // whether its value should be modified when looping through attributes with regex
-    let attributeAtIndexShouldBeModified = [];
+    const parsedAttributes = [];
 
     let currentTag = '';
 
+    // use parser to find all attributes and mark those that should be modified
     parser(src, {
       start: function(tagName) {
         currentTag = tagName;
@@ -57,25 +58,43 @@ export default function transformer(file) {
         currentTag = '';
       },
       attrStart: function(attrName) {
-        const shouldModify = tagShouldBeModified(currentTag) &&
-          attributeShouldBeModified(attrName);
-        attributeAtIndexShouldBeModified.push(shouldModify);
+        parsedAttributes.push({
+          name: attrName,
+          shouldBeModified: false
+        });
       },
       attrEnd: noop,
-      attrValue: noop,
+      attrValue: function() {
+        const currentAttr = parsedAttributes[parsedAttributes.length - 1];
+
+        currentAttr.shouldBeModified =  tagShouldBeModified(currentTag) &&
+          attributeShouldBeModified(currentAttr.name);
+      },
       done: noop,
       special: noop
     });
 
+    // use a regex to find attributes in source and modify them in place
+    // if they were marked to be modified by the parsing step above
     const alphaNumeric = 'A-Za-z0-9';
     const alphaNumericHU = '-:_' + alphaNumeric;
     const attributeRegexp = new RegExp('[' + alphaNumericHU + ']+\s*=\s*("[^"]*"|\'[^\']*\')', 'gm');
     const attributes = src.match(attributeRegexp);
 
-    for (let i = 0; i < attributes.length; i++) {
-      const attribute = attributes[i].slice(0, attributes[i].lastIndexOf('='));
+    for (let i=0, parserIndex=0; i<attributes.length; i++, parserIndex++) {
+      const attribute = attributes[i].slice(0, attributes[i].indexOf('='));
       const value = attributes[i].slice(attributes[i].lastIndexOf('=') + 1);
-      if (attributeAtIndexShouldBeModified[i]) {
+
+      // if the attribute doesn't match what the parser found
+      // skip to the next parsed attribute
+      // this handles skipping boolean attributes and any other
+      // attributes not found by our regex
+      let parsedAttribute = parsedAttributes[parserIndex];
+      while (parsedAttribute.name !== attribute) {
+        parsedAttribute = parsedAttributes[++parserIndex];
+      }
+
+      if (parsedAttribute.shouldBeModified) {
         src = src.replace(attribute, attribute + ':from');
         if (value.includes("'")) { // jshint ignore:line
           src = src.replace(value, '"' + value + '"'); // jshint ignore:line
