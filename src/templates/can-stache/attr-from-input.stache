@@ -21,4 +21,5 @@
 <h4>
   <a href="{{routeUrl page='home'}}">Home</a>
 </h4>
+<input type="checkbox" checked>
 <another-element prop3="something" on:click="setFoo()" prop4:from="foo" prop5:to="bar" prop5:bind="baz" />
