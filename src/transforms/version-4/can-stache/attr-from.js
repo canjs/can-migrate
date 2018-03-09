@@ -19,10 +19,16 @@ const noop = function() {};
 
 const isDataAttribute = (attributeName) => attributeName.indexOf('data-') === 0;
 const isAriaAttribute = (attributeName) => attributeName.indexOf('aria-') === 0;
+const isBindingAttribute = (attributeName) =>
+  attributeName.startsWith('on:') ||
+  attributeName.endsWith(':to') ||
+  attributeName.endsWith(':from') ||
+  attributeName.endsWith(':bind');
 const isInGlobalAttributes = (attributeName) => globalAttributes.indexOf(attributeName) >= 0;
 const attributeShouldBeModified = (attributeName) =>
   !isDataAttribute(attributeName) &&
   !isAriaAttribute(attributeName) &&
+  !isBindingAttribute(attributeName) &&
   !isInGlobalAttributes(attributeName);
 
 const isCustomElement = (tagName) => tagName.includes('-');

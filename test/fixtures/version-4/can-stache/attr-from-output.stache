@@ -21,4 +21,4 @@
 <h4>
   <a href="{{routeUrl page='home'}}">Home</a>
 </h4>
-<another-element prop3:from='"something"'/>
+<another-element prop3:from='"something"' on:click="setFoo()" prop4:from="foo" prop5:to="bar" prop5:bind="baz" />
