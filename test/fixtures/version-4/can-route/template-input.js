@@ -1,3 +1,3 @@
-import route from "can-route";
+import canRoute from "can-route";
 
-route(":foo/:bar", { foo: "abc" });
+canRoute(":foo/:bar", { foo: "abc" });
