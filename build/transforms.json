@@ -301,6 +301,18 @@
         "version": "4"
       },
       {
+        "input": "can-route/template-input-register.js",
+        "outputPath": "can-route/template-input-register.js",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
+        "input": "can-route/template-output-register.js",
+        "outputPath": "can-route/template-output-register.js",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
         "input": "can-route/start.js",
         "outputPath": "can-route/start.js",
         "type": "transform",

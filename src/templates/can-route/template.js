@@ -1,5 +1,16 @@
 import dependencyUtils from '../../../utils/dependencyUtils';
 
+const updateTemplatedRules = (statement) => {
+  const parent = statement.parent;
+  const args = parent.value.type === 'CallExpression' ?
+    // route.register(...)
+    parent.parent.value.expression.arguments :
+    // route(...)
+    parent.value.expression.arguments;
+  const rule = args[0];
+  rule.value = rule.value.replace(/:([a-zA-Z]*)/g, '\{$1\}');
+};
+
 export default function transformer(file, api) {
   const path = file.path;
   const type = path.slice(path.lastIndexOf('.') + 1);
@@ -18,20 +29,26 @@ export default function transformer(file, api) {
         routeImportVariable = foo.value.local.name;
       });
 
-    // find all the places that function is called
-    root
-      .find(j.CallExpression, {
-        callee: {
-          name: routeImportVariable
-        }
+    // find all canRoute(...) calls
+    root.find(j.CallExpression, {
+      callee: {
+        name: routeImportVariable
+      }
     })
     // modify the templated pieces of the rule (the first argument)
     // :foo -> {foo}
-    .forEach((statement) => {
-      const args = statement.parent.value.expression.arguments;
-      const rule = args[0];
-      rule.value = rule.value.replace(/:([a-zA-Z]*)/g, '\{$1\}');
-    });
+      .forEach(updateTemplatedRules);
+
+    // find all canRoute.register(...) calls
+    root.find(j.MemberExpression, {
+      object: {
+        name: routeImportVariable
+      },
+      property: {
+        name: 'register'
+      }
+    })
+      .forEach(updateTemplatedRules);
   }
 
   return root.toSource();
