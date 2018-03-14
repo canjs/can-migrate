@@ -1,1 +1,3 @@
-can.route.start();
+import canRoute from "can-route";
+
+canRoute.start();
