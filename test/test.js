@@ -4,7 +4,7 @@ require('../lib/transforms/version-3/can-extend/can-extend-test.js');
 require('../lib/transforms/version-3/can-data/can-data-test.js');
 require('../lib/transforms/version-3/can-define/set-to-update-test.js');
 require('../lib/transforms/version-4/can-stache/scope-test.js');
-require('../lib/transforms/version-4/can-route/page-test.js');
+require('../lib/transforms/version-4/can-route/template-test.js');
 require('../lib/transforms/version-4/can-route/start-test.js');
 require('../lib/transforms/version-4/can-route/register-test.js');
 require('../lib/transforms/version-4/can-queues/batch-test.js');

@@ -26,6 +26,9 @@ export default {
       return {
         size(){
           return 0;
+        },
+        find() {
+          return [];
         }
       };
     } else {

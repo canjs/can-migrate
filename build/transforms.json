@@ -277,26 +277,38 @@
         "version": "4"
       },
       {
-        "input": "can-route/page.js",
-        "outputPath": "can-route/page.js",
+        "input": "can-route/template.js",
+        "outputPath": "can-route/template.js",
         "type": "transform",
         "version": "4"
       },
       {
-        "input": "can-route/page-test.js",
-        "outputPath": "can-route/page-test.js",
+        "input": "can-route/template-test.js",
+        "outputPath": "can-route/template-test.js",
         "type": "test",
         "version": "4"
       },
       {
-        "input": "can-route/page-input.js",
-        "outputPath": "can-route/page-input.js",
+        "input": "can-route/template-input.js",
+        "outputPath": "can-route/template-input.js",
         "type": "fixture",
         "version": "4"
       },
       {
-        "input": "can-route/page-output.js",
-        "outputPath": "can-route/page-output.js",
+        "input": "can-route/template-output.js",
+        "outputPath": "can-route/template-output.js",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
+        "input": "can-route/template-input-register.js",
+        "outputPath": "can-route/template-input-register.js",
+        "type": "fixture",
+        "version": "4"
+      },
+      {
+        "input": "can-route/template-output-register.js",
+        "outputPath": "can-route/template-output-register.js",
         "type": "fixture",
         "version": "4"
       },

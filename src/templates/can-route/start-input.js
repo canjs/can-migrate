@@ -1,1 +1,3 @@
-can.route.ready();
+import canRoute from "can-route";
+
+canRoute.ready();
