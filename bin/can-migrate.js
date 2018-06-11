@@ -37,26 +37,11 @@ function toPercent(value) {
 
 function toTime(value) {
     function format(value) {
-        return (Math.floor(value * 10) / 10).toFixed(1);
+        return ((Math.floor(value * 10) / 10) + 1).toFixed(0);
     }
 
     value = value / 1000;
-    if (value < 60) {
-        return `${format(value)} seconds`;
-    }
-
-    value /= 60;
-    if (value  < 60) {
-        return `${format(value)} minutes`;
-    }
-
-    value /= 60;
-    if (value < 24) {
-        return `${format(value)} hours`;
-    }
-
-    value /= 24;
-    return `${format(value)} days`;
+    return `${format(value)} seconds`;
 }
 
 const booleanFlags = ['apply', 'minimal', 'future', 'steal', 'force'];
@@ -164,7 +149,9 @@ globby(cli.input).then((paths) => {
     return runTransform(transform, paths, args, cli.flags.apply).then(() => {
       const progress = (index + 1) / toApply.length;
       const eta = (Date.now() - startTime) * (1 / progress - 1);
-      console.log(`Progress: ${toPercent(progress)}%. ETA: ${toTime(eta)}.`);
+      if (args.indexOf("-s") < 0) {
+        console.log(`Percent complete: ${toPercent(progress)}%.\nTime remaining: ${toTime(eta)}.\n`);
+      }
     });
 
   });

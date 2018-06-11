@@ -2,6 +2,7 @@
 const path = require('path');
 const execa = require('execa');
 const fs = require('fs');
+const stream = require('stream');
 
 let noop = function() { return this; };
 let mockRoot = function(source) { this.source = source; };
@@ -20,9 +21,35 @@ const mockApi = {
   jscodeshift: mockJscodeshift
 };
 
+function getReadableTransformName(transformFile) {
+  const file = transformFile.split('.js')[0];
+  const parts = file.split('lib/transforms/');
+  return parts[1];
+}
+
+function getResultCountFromString(count) {
+  count = count[0].split(' ')[0] || 0;
+  return +count;
+}
+
+function parseJsCodeShiftResults(results) {
+  const errors = getResultCountFromString(results.match(/(\d)* errors./));
+  const unmodified = getResultCountFromString(results.match(/(\d)* unmodified./));
+  const skipped = getResultCountFromString(results.match(/(\d)* skipped./));
+  const ok = getResultCountFromString(results.match(/(\d)* ok./));
+
+  const total = errors + unmodified + skipped + ok;
+
+  return `${ok} / ${total} files modified (${errors} errors).`;
+}
+
 function runTransform(transform, paths, args, apply) {
   const jscodeshiftPath = require.resolve('.bin/jscodeshift');
   const transformFunc = require(transform.file);
+
+  if (args.indexOf('-s') < 0) {
+    console.log(`Running transform: ${getReadableTransformName(transform.file)}.`);
+  }
 
   let jsPaths = [];
   let otherPaths = [];
@@ -52,8 +79,26 @@ function runTransform(transform, paths, args, apply) {
 
   args = args.concat(jsPaths);
 
-  return execa(jscodeshiftPath, args, { stdio: 'inherit' }).then(() => {
-  }).catch(console.error.bind(console));
+  const resultsStream = new stream.Writable();
+  resultsStream._write = function (chunk, encoding, done) {
+    const msg = chunk.toString();
+    if (args.indexOf('-s') < 0) {
+      if (msg.indexOf('Results:') > -1) {
+        console.log(parseJsCodeShiftResults(msg));
+      }
+    }
+    done();
+  };
+
+  const execaStream = execa(jscodeshiftPath, args);
+
+  // pipe console messages from jsCodeShift through custom writable stream
+  // so we can aggregate the results
+  execaStream.stdout.pipe(resultsStream);
+
+  return execaStream
+    .then(function() {})
+    .catch(console.error.bind(console));
 }
 
 module.exports = runTransform;
