@@ -1,7 +1,7 @@
 {
   "name": "can-migrate",
   "version": "2.1.9",
-  "description": "Codemods to simplify upgrading CanJS from 2.x to 3.x",
+  "description": "Codemods to simplify upgrading CanJS.",
   "main": "lib/",
   "scripts": {
     "preversion": "npm test",
