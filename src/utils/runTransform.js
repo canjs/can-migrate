@@ -54,6 +54,12 @@ function runTransform(transform, paths, args, apply) {
   let jsPaths = [];
   let otherPaths = [];
 
+  const otherPathsResults = {
+    ok: 0,
+    total: 0,
+    errors: 0
+  };
+
   for (let i = 0; i < paths.length; i++) {
     if(path.extname(paths[i]) === '.js') {
       jsPaths.push(paths[i]);
@@ -73,32 +79,43 @@ function runTransform(transform, paths, args, apply) {
     let newSource = transformFunc(file, mockApi, options);
     // Write changes to file if apply specified
     if (newSource !== file.source && apply) {
+      otherPathsResults.ok++;
       fs.writeFileSync(file.path, newSource);
     }
+
+    otherPathsResults.total++;
   }
 
-  args = args.concat(jsPaths);
+  if (jsPaths.length) {
+    args = args.concat(jsPaths);
 
-  const resultsStream = new stream.Writable();
-  resultsStream._write = function (chunk, encoding, done) {
-    const msg = chunk.toString();
-    if (args.indexOf('-s') < 0) {
-      if (msg.indexOf('Results:') > -1) {
-        console.log(parseJsCodeShiftResults(msg));
+    const resultsStream = new stream.Writable();
+    resultsStream._write = function (chunk, encoding, done) {
+      const msg = chunk.toString();
+      if (args.indexOf('-s') < 0) {
+        if (msg.indexOf('Results:') > -1) {
+          console.log(parseJsCodeShiftResults(msg));
+        }
       }
+      done();
+    };
+
+    const execaStream = execa(jscodeshiftPath, args);
+
+    // pipe console messages from jsCodeShift through custom writable stream
+    // so we can aggregate the results
+    execaStream.stdout.pipe(resultsStream);
+
+    return execaStream
+      .then(function() {})
+      .catch(console.error.bind(console));
+  } else {
+    if (args.indexOf('-s') < 0) {
+      console.log(`${otherPathsResults.ok} / ${otherPathsResults.total} files modified (${otherPathsResults.errors} errors).`);
     }
-    done();
-  };
 
-  const execaStream = execa(jscodeshiftPath, args);
-
-  // pipe console messages from jsCodeShift through custom writable stream
-  // so we can aggregate the results
-  execaStream.stdout.pipe(resultsStream);
-
-  return execaStream
-    .then(function() {})
-    .catch(console.error.bind(console));
+    return Promise.resolve();
+  }
 }
 
 module.exports = runTransform;
