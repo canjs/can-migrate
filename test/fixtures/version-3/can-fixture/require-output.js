@@ -11,3 +11,6 @@ fixture.prototype.say = function(){};
 function speak(MyFixture) {};
 const say = function(MyFixture) {};
 Object.assign({}, fixture);
+const map = new fixture({
+  MyFixture: fixture
+});

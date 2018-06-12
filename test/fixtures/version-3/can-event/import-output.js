@@ -11,3 +11,6 @@ canEvent.prototype.say = function(){};
 function speak(MyEvent) {};
 const say = function(MyEvent) {};
 Object.assign({}, canEvent);
+const map = new canEvent({
+  MyEvent: canEvent
+});

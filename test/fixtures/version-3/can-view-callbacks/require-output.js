@@ -11,3 +11,6 @@ canViewCallbacks.prototype.say = function(){};
 function speak(MyViewCallbacks) {};
 const say = function(MyViewCallbacks) {};
 Object.assign({}, canViewCallbacks);
+const map = new canViewCallbacks({
+  MyViewCallbacks: canViewCallbacks
+});

@@ -11,3 +11,6 @@ MyModel.prototype.say = function(){};
 function speak(MyModel) {};
 const say = function(MyModel) {};
 Object.assign({}, MyModel);
+const map = new MyModel({
+  MyModel: MyModel
+});

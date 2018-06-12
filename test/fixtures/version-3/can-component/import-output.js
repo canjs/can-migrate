@@ -11,3 +11,6 @@ Component.prototype.say = function(){};
 function speak(MyComponent) {};
 const say = function(MyComponent) {};
 Object.assign({}, Component);
+const map = new Component({
+  MyComponent: Component
+});

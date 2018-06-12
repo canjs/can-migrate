@@ -11,3 +11,6 @@ MyCompute.prototype.say = function(){};
 function speak(MyCompute) {};
 const say = function(MyCompute) {};
 Object.assign({}, MyCompute);
+const map = new MyCompute({
+  MyCompute: MyCompute
+});

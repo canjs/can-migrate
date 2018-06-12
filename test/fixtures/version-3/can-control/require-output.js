@@ -11,3 +11,6 @@ Control.prototype.say = function(){};
 function speak(MyControl) {};
 const say = function(MyControl) {};
 Object.assign({}, Control);
+const map = new Control({
+  MyControl: Control
+});

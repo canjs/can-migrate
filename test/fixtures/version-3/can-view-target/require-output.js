@@ -11,3 +11,6 @@ canViewTarget.prototype.say = function(){};
 function speak(MyTarget) {};
 const say = function(MyTarget) {};
 Object.assign({}, canViewTarget);
+const map = new canViewTarget({
+  MyTarget: canViewTarget
+});

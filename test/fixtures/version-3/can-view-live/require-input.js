@@ -11,3 +11,6 @@ MyViewLive.prototype.say = function(){};
 function speak(MyViewLive) {};
 const say = function(MyViewLive) {};
 Object.assign({}, MyViewLive);
+const map = new MyViewLive({
+  MyViewLive: MyViewLive
+});

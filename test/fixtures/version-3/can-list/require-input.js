@@ -11,3 +11,6 @@ MyList.prototype.say = function(){};
 function speak(MyList) {};
 const say = function(MyList) {};
 Object.assign({}, MyList);
+const map = new MyList({
+  MyList: MyList
+});
