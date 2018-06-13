@@ -11,3 +11,6 @@ canAutorender.prototype.say = function(){};
 function speak(MyAutorender) {};
 const say = function(MyAutorender) {};
 Object.assign({}, canAutorender);
+const map = new canAutorender({
+  MyAutorender: canAutorender
+});

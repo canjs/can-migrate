@@ -11,3 +11,6 @@ MyParser.prototype.say = function(){};
 function speak(MyParser) {};
 const say = function(MyParser) {};
 Object.assign({}, MyParser);
+const map = new MyParser({
+  MyParser: MyParser
+});

@@ -11,3 +11,6 @@ MyConstruct.prototype.say = function(){};
 function speak(MyConstruct) {};
 const say = function(MyConstruct) {};
 Object.assign({}, MyConstruct);
+const map = new MyConstruct({
+  MyConstruct: MyConstruct
+});

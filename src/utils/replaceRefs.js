@@ -63,7 +63,9 @@ export default function replaceRefs(j, root, options) {
     identifier.parent.value.type !== 'FunctionExpression' &&
     identifier.parent.value.type !== 'FunctionDeclaration' &&
     // Don't replace if it is part of an Object ie. `obj.<oldLocalName>`
-    identifier.parent.value.type !== 'MemberExpression'
+    identifier.parent.value.type !== 'MemberExpression' &&
+    // Don't replace if it is the key on an Object i. foo = { <oldLocalName>: bar }
+    identifier.parent.value.type !== 'Property'
   )).forEach(identifier => {
     identifier.node.name = options.newLocalName;
   });

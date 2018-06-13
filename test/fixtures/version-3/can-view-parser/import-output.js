@@ -11,3 +11,6 @@ HTMLParser.prototype.say = function(){};
 function speak(MyParser) {};
 const say = function(MyParser) {};
 Object.assign({}, HTMLParser);
+const map = new HTMLParser({
+  MyParser: HTMLParser
+});

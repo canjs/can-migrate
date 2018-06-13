@@ -11,4 +11,7 @@ new <%= moduleToName[newSourceValue] %>();
 function speak(<%= exampleLocalName %>) {};
 const say = function(<%= exampleLocalName %>) {};
 Object.assign({}, <%= moduleToName[newSourceValue] %>);
+const map = new <%= moduleToName[newSourceValue] %>({
+  <%= exampleLocalName %>: <%= moduleToName[newSourceValue] %>
+});
 <% } _%>

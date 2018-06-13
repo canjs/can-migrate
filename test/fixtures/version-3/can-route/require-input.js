@@ -11,3 +11,6 @@ MyRoute.prototype.say = function(){};
 function speak(MyRoute) {};
 const say = function(MyRoute) {};
 Object.assign({}, MyRoute);
+const map = new MyRoute({
+  MyRoute: MyRoute
+});
