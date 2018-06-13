@@ -1,3 +1,5 @@
+import template from "foo";
+
 Component.extend({
   tag: 'my-tag',
   view: 'Hi',
@@ -25,5 +27,17 @@ Component.extend({
   events: {
     '{element} beforeremove': () => {}
   },
+  leakScope: true
+});
+
+Component.extend({
+  tag: 'my-tag',
+  view: template,
+  leakScope: true
+});
+
+Component.extend({
+  tag: 'my-tag',
+  view: template,
   leakScope: true
 });

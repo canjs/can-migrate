@@ -27,15 +27,35 @@ export default function transformer(file, api, options) {
   })
   .forEach((expression) => {
     const eventsProp = propertyUtils.find(expression.value.arguments[0], 'events');
-    const leakScope = propertyUtils.find(expression.value.arguments[0], 'leakScope');
+    const leakScopeProp = propertyUtils.find(expression.value.arguments[0], 'leakScope');
+    const templateProp = propertyUtils.find(expression.value.arguments[0], 'template');
 
     debug(`Adding leakScope: true`);
-    if(!leakScope) {
+    if(!leakScopeProp) {
       expression.value.arguments[0].properties.push(leakScopeTrue);
+    }
+
+    // change `template` property value shorthand:
+    //
+    // .extend({
+    //   template
+    // })
+    //
+    // to non-shorthand:
+    //
+    // .extend({
+    //   template: template
+    // })
+    //
+    // before renaming to view
+    if (templateProp && templateProp.shorthand === true) {
+      debug(`Changing property value shorthand for 'template' to 'template: template'`);
+      templateProp.shorthand = false;
     }
 
     debug(`Renaming 'template' -> 'view'`);
     propertyUtils.rename(expression.value.arguments[0], 'template', 'view');
+
     if(eventsProp) {
       debug(`Renaming 'removed' -> 'beforeremove'`);
       propertyUtils.rename(eventsProp.value, 'removed', '{element} beforeremove', true);
