@@ -335,6 +335,29 @@
         "outputPath": "can-route/start-output.js",
         "type": "fixture",
         "version": "4"
+      },{
+        "input": "can-route/pushstate.js",
+        "outputPath": "can-route/pushstate.js",
+        "type": "transform",
+        "version": "5"
+      },
+      {
+        "input": "can-route/pushstate-test.js",
+        "outputPath": "can-route/pushstate-test.js",
+        "type": "test",
+        "version": "5"
+      },
+      {
+        "input": "can-route/pushstate-input.js",
+        "outputPath": "can-route/pushstate-input.js",
+        "type": "fixture",
+        "version": "5"
+      },
+      {
+        "input": "can-route/pushstate-output.js",
+        "outputPath": "can-route/pushstate-output.js",
+        "type": "fixture",
+        "version": "5"
       },
       {
         "input": "can-route/register.js",

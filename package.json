@@ -14,8 +14,11 @@
     "watch": "babel --watch -d lib/ src/",
     "jshint": "jshint src/. test/. --config",
     "mocha": "mocha test/ --compilers js:babel-core/register",
-    "test": "npm run generate && npm run compile && npm run jshint && npm run mocha",
-    "test-no-jshint": "npm run generate && npm run compile && npm run mocha"
+    "mocha-debug": "mocha --inspect-brk test/ --compilers js:babel-core/register",
+    "test": "npm run test-prep && npm run jshint && npm run mocha",
+    "test-debug": "npm run test-prep && npm run mocha-debug",
+    "test-no-jshint": "npm run test-prep && npm run mocha",
+    "test-prep": "npm run generate && npm run compile"
   },
   "repository": {
     "type": "git",
