@@ -6,6 +6,7 @@ require('../lib/transforms/version-3/can-define/set-to-update-test.js');
 require('../lib/transforms/version-4/can-stache/scope-test.js');
 require('../lib/transforms/version-4/can-route/template-test.js');
 require('../lib/transforms/version-4/can-route/start-test.js');
+require('../lib/transforms/version-5/can-route/pushstate-test.js');
 require('../lib/transforms/version-4/can-route/register-test.js');
 require('../lib/transforms/version-4/can-queues/batch-test.js');
 require('../lib/transforms/version-4/can-stache/route-helpers-test.js');
