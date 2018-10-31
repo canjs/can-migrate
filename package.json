@@ -1,6 +1,6 @@
 {
   "name": "can-migrate",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Codemods to simplify upgrading CanJS.",
   "main": "lib/",
   "scripts": {
