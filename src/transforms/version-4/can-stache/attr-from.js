@@ -86,7 +86,7 @@ export default function transformer(file) {
     const alphaNumericHU = '-:_' + alphaNumeric;
     const attributeRegexp = new RegExp('[' + alphaNumericHU + ']+\s*=\s*("[^"]*"|\'[^\']*\')', 'gm');
     const attributes = src.match(attributeRegexp);
-    if(attributes)
+    if(attributes) {
       for (let i=0, parserIndex=0; i<attributes.length; i++) {
         const attribute = attributes[i].slice(0, attributes[i].indexOf('='));
         const value = attributes[i].slice(attributes[i].indexOf('=') + 1);
