@@ -49,7 +49,7 @@
   "homepage": "https://github.com/canjs/can-migrate#readme",
   "dependencies": {
     "can-view-parser": "^4.0.2",
-    "deep-assign": "^2.0.0",
+    "deep-assign": "^3.0.0",
     "disparity": "^2.0.0",
     "execa": "^0.9.0",
     "fs-extra": "^5.0.0",
