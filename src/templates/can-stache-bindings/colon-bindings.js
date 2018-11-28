@@ -81,13 +81,13 @@ var transformHtml = function (src, useImplicitBindings) {
 var transformMd = function (src, useImplicitBindings) {
   //find ```html code blocks and treat it as stache
   //find ```js code blocks and treat them as js
-  return src.replace(/(```)(js|html)?((?:[\s\S])+?)\1/g, function (fullStr, ticks, codeBlockType, codeBlock) {
+  return src.replace(/(```)(js|javascript|html)?((?:[\s\S])+?)\1/g, function (fullStr, ticks, codeBlockType, codeBlock) {
     codeBlockType = codeBlockType || '';
     var output = ticks + codeBlockType;
 
     if (codeBlockType === 'html') {
       output += transformStache(codeBlock, useImplicitBindings);
-    } else if (codeBlockType === 'js') {
+    } else if (codeBlockType === 'js' || codeBlockType === 'javascript' ) {
       output += transformJs(codeBlock, useImplicitBindings);
     } else {
       output += codeBlock;
