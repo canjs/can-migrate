@@ -6,3 +6,12 @@
   {{%viewModel}}
   {{%arguments}}
 </p>
+
+<p>
+  {{%index}}
+  {{%key}}
+  {{%element}}
+  {{%event}}
+  {{%viewModel}}
+  {{%arguments}}
+</p>

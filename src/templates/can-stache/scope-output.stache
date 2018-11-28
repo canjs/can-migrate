@@ -6,3 +6,12 @@
   {{scope.viewModel}}
   {{scope.arguments}}
 </p>
+
+<p>
+  {{scope.index}}
+  {{scope.key}}
+  {{scope.element}}
+  {{scope.event}}
+  {{scope.viewModel}}
+  {{scope.arguments}}
+</p>
