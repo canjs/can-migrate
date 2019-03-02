@@ -1,65 +1,28 @@
 # can-migrate
 
+[![Join our Slack](https://img.shields.io/badge/slack-join%20chat-611f69.svg)](https://www.bitovi.com/community/slack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join our Discourse](https://img.shields.io/discourse/https/forums.bitovi.com/posts.svg)](https://forums.bitovi.com/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canjs/can-migrate/blob/master/LICENSE)
 [![npm version](https://badge.fury.io/js/can-migrate.svg)](https://www.npmjs.com/package/can-migrate)
-[![Build Status](https://travis-ci.org/canjs/can-migrate.svg?branch=master)](https://travis-ci.org/canjs/can-migrate)
+[![Travis build status](https://travis-ci.org/canjs/can-migrate.svg?branch=master)](https://travis-ci.org/canjs/can-migrate)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/can-migrate?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/can-migrate)
+[![Coverage status](https://coveralls.io/repos/github/canjs/can-migrate/badge.svg?branch=master)](https://coveralls.io/github/canjs/can-migrate?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-migrate.svg)](https://greenkeeper.io/)
 
 CLI & codemod scripts for upgrading to CanJS 3.
 
-## Usage
+## Documentation
 
-Check out the [Using Codemods guide on canjs.com](https://canjs.com/doc/guides/upgrade/using-codemods.html) for an overview of this project, how to install `can-migrate`, how to use the CLI, and recommendations for how to migrate your app.
+Read the [can-migrate API docs on CanJS.com](https://canjs.com/doc/can-migrate.html).
 
-## transforms.json
+## Changelog
 
-There is one entry in the array per type of template/test required to generate the transforms.
-The current groups of transforms are:
+See the [latest releases on GitHub](https://github.com/canjs/can-migrate/releases).
 
-- Component Rename: rename parts of a component
-- can.extend: swap out extend for assign or deep-assign
-- can-data: swap out .data() for domData
-- Replace imports/requires: Replace existing import/require statements and replace any references in the code
-- Replace can.*: Replace can.* methods and add the corresponding import/require
+## Contributing
 
-```
-[
-  {
-    "copy": [ // Copy these files from src
-      {
-        "input": "...", // Source filename
-        "output: "...", // Destination filename
-        "type": "fixture|test|transform" // Type of copy determines where the destination file ends up (more on that below)
-      }
-    ],
-    "generate": [ // Generate output from the template in src using "transforms
-      {
-        "template": "...", // Source filename
-        "outputPath: "...", // Destination filename
-        "type": "fixture|test|transform" // Type of copy determines where the destination file ends up (more on that below)
-      }
-    ],
-    "transforms": [
-      {
-        "shortName": "component", // Short name of the transform for debugging and template filename generation
-        "oldSourceValues": [ // List of ways this component could be imported/required. Used to replace these with newer component import
-          "can/component/",
-          "can/component/component",
-          "can/component/component.js"
-        ],
-        "newSourceValue": "can-component", // The new value of the import/require
-        "exampleLocalName": "MyComponent" // The example local name to include in generate documentation
-        "oldObjectName": "can", // Object name to look for
-        "oldPropertyName": "addEvent", // Property name to look for
-        "newPropertyName": addEventListener, // What should replace the object.property (false for nothing, could be a complex replacement like mutate.appendChild)
-        "sourceValue": "can-construct" // Key to look up the configurable naming in config.json
-      }
-    ]
-  }
-]
-```
+The [contribution guide](https://github.com/canjs/can-migrate/blob/master/CONTRIBUTING.md) has information on getting help, reporting bugs, developing locally, and more.
 
-## Types
+## License
 
-- __test__: Copied to `lib`, file is added to `test/test.js`.
-- __fixture__ : Copied to `test/fixtures`
-- __transform__: Copied to `lib/transforms`
+[MIT](https://github.com/canjs/can-migrate/blob/master/LICENSE)
