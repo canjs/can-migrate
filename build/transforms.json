@@ -554,6 +554,34 @@
     ]
   },
   {
+    "copy": [
+      {
+        "input": "can-stache-define-element-import/input.js",
+        "outputPath": "can-stache-define-element-import/can-stache-define-element-import-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element-import/output.js",
+        "outputPath": "can-stache-define-element-import/can-stache-define-element-import-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element-import/can-stache-define-element-import-test.js",
+        "outputPath": "can-stache-define-element-import/can-stache-define-element-import-test.js",
+        "type": "test",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element-import/can-stache-define-element-import.js",
+        "outputPath": "can-stache-define-element-import/can-stache-define-element-import.js",
+        "type": "transform",
+        "version": "6"
+      }
+    ]
+  },
+  {
     "generate": [
       {
         "template": "import/import.ejs",
