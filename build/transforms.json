@@ -578,6 +578,30 @@
         "outputPath": "can-stache-define-element-import/can-stache-define-element-import.js",
         "type": "transform",
         "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/input.js",
+        "outputPath": "can-stache-define-element/can-stache-define-element-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/output.js",
+        "outputPath": "can-stache-define-element/can-stache-define-element-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/can-stache-define-element-test.js",
+        "outputPath": "can-stache-define-element/can-stache-define-element-test.js",
+        "type": "test",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/can-stache-define-element.js",
+        "outputPath": "can-stache-define-element/can-stache-define-element.js",
+        "type": "transform",
+        "version": "6"
       }
     ]
   },
