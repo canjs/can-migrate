@@ -1,54 +1,51 @@
-// import getConfig from '../../../utils/getConfig';
-// import renameImport from '../../../utils/renameImport';
-// import replaceRefs from '../../../utils/replaceRefs';
+import string from 'can-string';
 import makeDebug from 'debug';
 
 // TODO
-// - add pascalise to `can-string`
-// pascalise the className to ensure all classes are pascal case: fooBar === FooBar
-// add transform.json for testing and copying files
-
+//
 export default function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-stache-define-element:${file.path}`);
   const j = api.jscodeshift;
-  const props = {
-    'view': {
-      name: 'view',
-      type: 'get',
-      static: true,
-      path: null
-    },
-    'ViewModel': {
-      name: 'define',
-      type: 'get',
-      static: true,
-      path: null
-    },
-    'events': {
-      name: 'connected',
-      type: 'method',
-      static: false,
-      path: null
-    }
-  };
-  const methods = [];
-  let tagName;
-  let varDeclaration;
 
   return j(file.source)
     .find(j.CallExpression, {
       callee: {
-        type: "MemberExpression",
+        type: 'MemberExpression',
         object: {
-          name: "Component"
+          name: 'Component'
         },
         property: {
-          name: "extend"
+          name: 'extend'
         }
       }
     })
-    .forEach(p => {
-      p.value.arguments[0].properties
+    .forEach(path => {
+      const props = {
+        'view': {
+          name: 'view',
+          type: 'get',
+          static: true,
+          path: null
+        },
+        'ViewModel': {
+          name: 'define',
+          type: 'get',
+          static: true,
+          path: null
+        },
+        'events': {
+          name: 'connected',
+          type: 'method',
+          static: false,
+          path: null
+        }
+      };
+      const methods = [];
+      let tagName;
+      let varDeclaration;
+
+      // Loop over the properties to grab the ones we want to copy over
+      path.value.arguments[0].properties
         .forEach(path => {
           if (props[path.key.name]) {
             props[path.key.name].path = path;
@@ -56,21 +53,21 @@ export default function transformer(file, api) {
             tagName = path.value.value;
           }
         });
-      })
-    .forEach(path => {
+
       // Replace variable declarations with class def
       if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator') {
         varDeclaration = path.parentPath.value.id.name;
         path = path.parentPath.parentPath.parentPath;
       }
+      const className = string.pascalize(varDeclaration ||tagName);
 
-      debug(`Replacing ${varDeclaration ||tagName} with StacheDefineElement class`);
+      debug(`Replacing ${className} with StacheDefineElement class`);
 
       j(path).replaceWith(
         j.classDeclaration(
-          j.identifier(varDeclaration ||tagName),
+          j.identifier(className),
           j.classBody([]),
-          j.identifier("StacheDefineElement")
+          j.identifier('StacheDefineElement')
         )
       );
 
@@ -108,15 +105,15 @@ export default function transformer(file, api) {
             ));
           }
         }
-      })
+      });
 
       // Append methods to main class
       path.value.body.body.push(...methods);
 
       // Add the customElements define
       j(varDeclaration ? path : path.parentPath).insertAfter(
-        `customElements.define('${tagName}', ${varDeclaration || tagName})`
-      )
+        `customElements.define('${tagName}', ${className})`
+      );
     })
     .toSource();
 }

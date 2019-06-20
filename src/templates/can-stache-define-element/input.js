@@ -16,7 +16,7 @@ const CustomScroll = Component.extend({
     something: {
       type: 'string',
       get (lastSet, resolve) {
-        resolve(true)
+        resolve(true);
       }
     }
   },
@@ -25,7 +25,7 @@ const CustomScroll = Component.extend({
 `,
   events: {
     inserted () {
-      const { viewModel } = this
+      const { viewModel } = this;
     }
   }
 });
