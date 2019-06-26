@@ -5,15 +5,15 @@ import replaceRefs from '../../../utils/replaceRefs';
 import makeDebug from 'debug';
 
 export default function transformer(file, api, options) {
-  const debug = makeDebug(`can-migrate:can-define:${file.path}`);
+  const debug = makeDebug(`can-migrate:can-define-object:${file.path}`);
   const config = getConfig(options.config);
-  const newLocalName = config.moduleToName['can-define-array'];
+  const newLocalName = config.moduleToName['can-define-object'];
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
   const oldLocalName = renameImport(root, {
-    oldSourceValues: ['can-define/list/list', 'can-define/list/'],
-    newSourceValue: 'can-define-array',
+    oldSourceValues: ['can-define/map/map', 'can-define/map/'],
+    newSourceValue: 'can-define-object',
     newLocalName
   });
   if(oldLocalName) {

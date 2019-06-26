@@ -3,7 +3,7 @@ const utils = require('../../../../test/utils');
 const transforms = require('../../../../');
 
 const toTest = transforms.filter(function(transform) {
-  return transform.name === 'can-define/define-array.js';
+  return transform.name === 'can-define-array/import.js';
 })[0];
 
 describe('can-define-array', function() {

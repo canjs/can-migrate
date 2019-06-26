@@ -3,7 +3,7 @@ const utils = require('../../../../test/utils');
 const transforms = require('../../../../');
 
 const toTest = transforms.filter(function(transform) {
-  return transform.name === 'can-define/define-object.js';
+  return transform.name === 'can-define-object/import.js';
 })[0];
 
 describe('can-define-object', function() {

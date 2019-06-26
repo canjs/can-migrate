@@ -580,50 +580,50 @@
         "version": "6"
       },
       {
-        "input": "can-define/define-object-input.js",
-        "outputPath": "can-define/define-object-input.js",
+        "input": "can-define-object/import-input.js",
+        "outputPath": "can-define-object/import-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define/define-object-output.js",
-        "outputPath": "can-define/define-object-output.js",
+        "input": "can-define-object/import-output.js",
+        "outputPath": "can-define-object/import-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define/define-object-test.js",
-        "outputPath": "can-define/define-object-test.js",
+        "input": "can-define-object/import-test.js",
+        "outputPath": "can-define-object/import-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-define/define-object.js",
-        "outputPath": "can-define/define-object.js",
+        "input": "can-define-object/import.js",
+        "outputPath": "can-define-object/import.js",
         "type": "transform",
         "version": "6"
       },
       {
-        "input": "can-define/define-array-input.js",
-        "outputPath": "can-define/define-array-input.js",
+        "input": "can-define-array/import-input.js",
+        "outputPath": "can-define-array/import-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define/define-array-output.js",
-        "outputPath": "can-define/define-array-output.js",
+        "input": "can-define-array/import-output.js",
+        "outputPath": "can-define-array/import-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define/define-array-test.js",
-        "outputPath": "can-define/define-array-test.js",
+        "input": "can-define-array/import-test.js",
+        "outputPath": "can-define-array/import-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-define/define-array.js",
-        "outputPath": "can-define/define-array.js",
+        "input": "can-define-array/import.js",
+        "outputPath": "can-define-array/import.js",
         "type": "transform",
         "version": "6"
       },
