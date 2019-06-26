@@ -1,11 +1,12 @@
 import string from 'can-string';
 import makeDebug from 'debug';
+import getConfig from '../../../utils/getConfig';
 
-// TODO
-//
-export default function transformer(file, api) {
+export default function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-stache-define-element:${file.path}`);
   const j = api.jscodeshift;
+  const config = getConfig(options.config);
+  const extendedClassName = config.moduleToName['can-stache-define-element'];
 
   return j(file.source)
     .find(j.CallExpression, {
@@ -61,13 +62,13 @@ export default function transformer(file, api) {
       }
       const className = string.pascalize(varDeclaration ||tagName);
 
-      debug(`Replacing ${className} with StacheDefineElement class`);
+      debug(`Replacing ${className} with ${extendedClassName} class`);
 
       j(path).replaceWith(
         j.classDeclaration(
           j.identifier(className),
           j.classBody([]),
-          j.identifier('StacheDefineElement')
+          j.identifier(extendedClassName)
         )
       );
 
