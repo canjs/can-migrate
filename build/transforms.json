@@ -580,6 +580,30 @@
         "version": "6"
       },
       {
+        "input": "can-define/define-object-input.js",
+        "outputPath": "can-define/define-object-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define/define-object-output.js",
+        "outputPath": "can-define/define-object-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define/define-object-test.js",
+        "outputPath": "can-define/define-object-test.js",
+        "type": "test",
+        "version": "6"
+      },
+      {
+        "input": "can-define/define-object.js",
+        "outputPath": "can-define/define-object.js",
+        "type": "transform",
+        "version": "6"
+      },
+      {
         "input": "can-stache-define-element/input.js",
         "outputPath": "can-stache-define-element/can-stache-define-element-input.js",
         "type": "fixture",
