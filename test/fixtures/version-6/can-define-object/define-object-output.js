@@ -1,5 +1,5 @@
 class Foo extends DefineObject {
-  static define() {
+  static get define() {
     return {
       name: 'string',
       completed: {
@@ -11,7 +11,7 @@ class Foo extends DefineObject {
 }
 
 class VM extends DefineObject {
-  static define() {
+  static get define() {
     return {
       firstName: 'string',
       lastName: 'string',

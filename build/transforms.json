@@ -674,6 +674,30 @@
         "outputPath": "can-define-object/define-object.js",
         "type": "transform",
         "version": "6"
+      },
+      {
+        "input": "can-define-array/define-array-input.js",
+        "outputPath": "can-define-array/define-array-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-array/define-array-output.js",
+        "outputPath": "can-define-array/define-array-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-array/define-array-test.js",
+        "outputPath": "can-define-array/define-array-test.js",
+        "type": "test",
+        "version": "6"
+      },
+      {
+        "input": "can-define-array/define-array.js",
+        "outputPath": "can-define-array/define-array.js",
+        "type": "transform",
+        "version": "6"
       }
     ]
   },
