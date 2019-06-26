@@ -1,6 +1,7 @@
 import string from 'can-string';
 import makeDebug from 'debug';
 import getConfig from '../../../utils/getConfig';
+import { createClass, createMethod } from '../../../utils/classUtils';
 
 export default function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-stache-define-element:${file.path}`);
@@ -65,11 +66,11 @@ export default function transformer(file, api, options) {
       debug(`Replacing ${className} with ${extendedClassName} class`);
 
       j(path).replaceWith(
-        j.classDeclaration(
-          j.identifier(className),
-          j.classBody([]),
-          j.identifier(extendedClassName)
-        )
+        createClass({
+          j,
+          className,
+          extendedClassName
+        })
       );
 
       Object.keys(props).forEach(key => {
@@ -98,12 +99,13 @@ export default function transformer(file, api, options) {
             existingMethod.value.body.body.push(...blockStatement);
           } else {
             // Otherwise create a new method definition
-            methods.push(j.methodDefinition(
-              prop.type,
-              j.identifier(prop.name),
-              j.functionExpression(null, [], j.blockStatement(blockStatement)),
-              prop.static
-            ));
+            methods.push(createMethod({
+              j,
+              method: prop.type === 'method',
+              name: prop.name,
+              blockStatement,
+              isStatic: prop.static
+            }));
           }
         }
       });

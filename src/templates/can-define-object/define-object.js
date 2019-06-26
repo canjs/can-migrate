@@ -1,5 +1,6 @@
 import makeDebug from 'debug';
 import getConfig from '../../../utils/getConfig';
+import { createClass, createMethod } from '../../../utils/classUtils';
 
 export default function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-define-object:${file.path}`);
@@ -35,24 +36,19 @@ export default function transformer(file, api, options) {
       debug(`Replacing ${varDeclaration} with ${className} class`);
 
       j(classPath).replaceWith(
-        j.classDeclaration(
-          j.identifier(varDeclaration),
-          j.classBody([
-            j.methodDefinition(
-              'method',
-              j.identifier('define'),
-              j.functionExpression(
-                null,
-                [],
-                j.blockStatement([
-                  j.returnStatement(propDefinitionsArg)
-                ])
-              ),
-              true
-            )
-          ]),
-          j.identifier(className)
-        )
+        createClass({
+          j,
+          className: varDeclaration,
+          body: [
+            createMethod({
+              j,
+              name: 'define',
+              blockStatement: [j.returnStatement(propDefinitionsArg)],
+              isStatic: true
+            })
+          ],
+          extendedClassName: className
+        })
       );
 
     })
