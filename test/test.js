@@ -18,6 +18,7 @@ require('../lib/transforms/version-6/can-stache-define-element-import/can-stache
 require('../lib/transforms/version-6/can-define-object/import-test.js');
 require('../lib/transforms/version-6/can-define-array/import-test.js');
 require('../lib/transforms/version-6/can-stache-define-element/can-stache-define-element-test.js');
+require('../lib/transforms/version-6/can-define-object/define-object-test.js');
 require('../lib/transforms/version-3/can-component/import-test.js');
 require('../lib/transforms/version-3/can-construct/import-test.js');
 require('../lib/transforms/version-3/can-construct-super/import-test.js');

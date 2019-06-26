@@ -650,6 +650,30 @@
         "outputPath": "can-stache-define-element/can-stache-define-element.js",
         "type": "transform",
         "version": "6"
+      },
+      {
+        "input": "can-define-object/define-object-input.js",
+        "outputPath": "can-define-object/define-object-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/define-object-output.js",
+        "outputPath": "can-define-object/define-object-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/define-object-test.js",
+        "outputPath": "can-define-object/define-object-test.js",
+        "type": "test",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/define-object.js",
+        "outputPath": "can-define-object/define-object.js",
+        "type": "transform",
+        "version": "6"
       }
     ]
   },
