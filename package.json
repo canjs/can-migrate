@@ -25,7 +25,8 @@
     "url": "git+https://github.com/canjs/can-migrate.git"
   },
   "bin": {
-    "can-migrate": "./bin/can-migrate.js"
+    "can-migrate": "./bin/can-migrate.js",
+    "can-migrate-generate": "./bin/can-migrate-generate.js"
   },
   "directories": {
     "lib": "lib"
