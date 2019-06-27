@@ -23,7 +23,7 @@ const cli = meow(`
 `, {
   string: ['can-version']
 });
-console.log('flags', cli.flags)
+
 if (!cli.input.length || cli.input.length !== 2 || !cli.flags.canVersion) {
   cli.showHelp();
   return;
