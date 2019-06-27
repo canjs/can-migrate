@@ -38,7 +38,8 @@
         "version": "3"
       }
     ]
-  }, {
+  },
+  {
     "copy": [
       {
         "input": "can-stache-bindings/colon-bindings.js",
@@ -46,7 +47,6 @@
         "type": "transform",
         "version": "3"
       },
-
       {
         "input": "can-stache-bindings/input.js",
         "outputPath": "can-stache-bindings/colon-bindings-input.js",
@@ -65,7 +65,6 @@
         "type": "fixture",
         "version": "3"
       },
-
       {
         "input": "can-stache-bindings/input.stache",
         "outputPath": "can-stache-bindings/colon-bindings-input.stache",
@@ -335,7 +334,8 @@
         "outputPath": "can-route/start-output.js",
         "type": "fixture",
         "version": "4"
-      },{
+      },
+      {
         "input": "can-route/pushstate.js",
         "outputPath": "can-route/pushstate.js",
         "type": "transform",
@@ -1353,6 +1353,34 @@
         "oldPropertyName": "tag",
         "newPropertyName": "tag",
         "sourceValue": "can-view-callbacks"
+      }
+    ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-types/shorthands.js",
+        "outputPath": "can-types/shorthands.js",
+        "type": "transform",
+        "version": "6"
+      },
+      {
+        "input": "can-types/shorthands-input.js",
+        "outputPath": "can-types/shorthands-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-types/shorthands-output.js",
+        "outputPath": "can-types/shorthands-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-types/shorthands-test.js",
+        "outputPath": "can-types/shorthands-test.js",
+        "type": "test",
+        "version": "6"
       }
     ]
   }

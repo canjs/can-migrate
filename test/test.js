@@ -113,3 +113,4 @@ require('../lib/transforms/version-3/can-view-target/replace-test.js');
 require('../lib/transforms/version-3/can-view-callbacks/replace-test.js');
 require('../lib/transforms/version-3/can-view-attr/replace-test.js');
 require('../lib/transforms/version-3/can-view-tag/replace-test.js');
+require('../lib/transforms/version-6/can-types/shorthands-test.js');
