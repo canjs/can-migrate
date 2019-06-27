@@ -1,45 +1,17 @@
-import getConfig from '../../../utils/getConfig';
 import makeDebug from 'debug';
+import { typeConversions, find } from '../../../utils/typeUtils';
 
-export default function transformer(file, api, options) {
+export default function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-types/shorthands:${file.path}`);
-  const config = getConfig(options.config);
   const j = api.jscodeshift;
+  const root = j(file.source);
 
-  const maybeConvert = (val) => j.callExpression(
-    j.memberExpression(
-      j.identifier('type'),
-      j.identifier('maybeConvert')
-    ),
-    [j.identifier(val)]
-  );
-  const typeConversions = {
-    'string': maybeConvert('String'),
-    'number': maybeConvert('Number'),
-    'date': maybeConvert('Date'),
-    'boolean': maybeConvert('Boolean'),
-    'any': j.memberExpression(
-      j.identifier('type'),
-      j.identifier('Any')
-    )
-  };
-
-  return j(file.source)
-    .find(j.MethodDefinition, {
-      key: {
-        name: 'define'
-      },
-      kind: 'get',
-      static: true
-    })
-    .forEach(path => {
-      const props = path.value.value.body.body[0].argument.properties;
-      const topLevelProps = props.filter(p => p.value.type === 'Literal');
-
-      topLevelProps.forEach(prop => {
+  return find(root, 'Literal', function (props) {
+    return props.forEach(prop => {
         const type = prop.value.value;
+        debug(`Converting ${type} -> ${typeConversions[type]}`);
         prop.value = typeConversions[type];
-      });
-    })
-    .toSource();
+    });
+  })
+  .toSource();
 }
