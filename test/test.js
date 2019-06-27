@@ -114,3 +114,4 @@ require('../lib/transforms/version-3/can-view-attr/replace-test.js');
 require('../lib/transforms/version-3/can-view-tag/replace-test.js');
 require('../lib/transforms/version-6/can-types/shorthands-test.js');
 require('../lib/transforms/version-6/can-stache-define-element/import-test.js');
+require('../lib/transforms/version-6/can-types/property-definitions-test.js');

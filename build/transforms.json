@@ -1387,5 +1387,33 @@
         "version": "6"
       }
     ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-types/property-definitions.js",
+        "outputPath": "can-types/property-definitions.js",
+        "type": "transform",
+        "version": "6"
+      },
+      {
+        "input": "can-types/property-definitions-input.js",
+        "outputPath": "can-types/property-definitions-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-types/property-definitions-output.js",
+        "outputPath": "can-types/property-definitions-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-types/property-definitions-test.js",
+        "outputPath": "can-types/property-definitions-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
   }
 ]
