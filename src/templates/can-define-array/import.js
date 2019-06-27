@@ -1,7 +1,6 @@
 // This is a generated file, see src/templates/can-extend/can-extend.js
 import getConfig from '../../../utils/getConfig';
-import renameImport from '../../../utils/renameImport';
-import replaceRefs from '../../../utils/replaceRefs';
+import renameImport, { updateImport } from '../../../utils/renameImport';
 import makeDebug from 'debug';
 
 export default function transformer(file, api, options) {
@@ -11,17 +10,22 @@ export default function transformer(file, api, options) {
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
   const root = j(file.source);
-  const oldLocalName = renameImport(root, {
+
+  // Update default import
+  // import DefineList from 'can-define/list/'
+  renameImport(root, {
     oldSourceValues: ['can-define/list/list', 'can-define/list/'],
     newSourceValue: 'can-define-array',
     newLocalName
   });
-  if(oldLocalName) {
-    debug(`Replacing all occurences of ${oldLocalName} with ${newLocalName}`);
-    replaceRefs(j, root, {
-      oldLocalName,
-      newLocalName
-    });
-  }
+  // Update the destructured import
+  // import { DefineList } from 'can'
+  updateImport(j, root, {
+    oldValue: 'DefineList',
+    newValue: newLocalName
+  });
+
+  debug(`Replacing import with ${newLocalName}`);
+
   return root.toSource(printOptions);
 }

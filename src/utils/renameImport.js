@@ -21,3 +21,29 @@ export default function replaceImport(ast, options) {
   });
   return oldLocalName;
 }
+
+/**
+ * updateImport
+ * @param {jscodshift} j
+ * @param {Object} file
+ * @param {Object} options
+ * Updates the left hand of the import
+ *
+ * import Component from 'can' /-> import CanStachDefineElement from 'can'
+ * import { Component } from 'can' /-> import { CanStacheDefineElement } from 'can'
+ */
+export function updateImport (j, root, { oldValue, newValue }) {
+  root
+    .find(j.ImportDeclaration)
+    .filter(p => {
+      return p.parent.node.type === 'Program' && p.get('specifiers', 0, 'type').value !== 'ImportNamespaceSpecifier';
+    })
+    .forEach(path => {
+      path.value.specifiers.forEach((specifier, index) => {
+        const importedName = specifier.imported ? specifier.imported.name : 'default';
+        if (importedName === oldValue) {
+          path.value.specifiers[index] = j.importSpecifier(j.identifier(newValue), j.identifier(newValue));
+        }
+      });
+    });
+}
