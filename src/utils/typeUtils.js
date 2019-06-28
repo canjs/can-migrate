@@ -32,6 +32,6 @@ export const find = (root, type, cb = () => {}) => {
       const props = path.value.value.body.body[0].argument.properties;
       const topLevelProps = props.filter(p => p.value.type === type);
 
-      return cb(topLevelProps);
+      return cb(topLevelProps, path);
     });
 };

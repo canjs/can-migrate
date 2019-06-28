@@ -1415,5 +1415,33 @@
         "version": "6"
       }
     ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-types/property-functions.js",
+        "outputPath": "can-types/property-functions.js",
+        "type": "transform",
+        "version": "6"
+      },
+      {
+        "input": "can-types/property-functions-input.js",
+        "outputPath": "can-types/property-functions-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-types/property-functions-output.js",
+        "outputPath": "can-types/property-functions-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-types/property-functions-test.js",
+        "outputPath": "can-types/property-functions-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
   }
 ]
