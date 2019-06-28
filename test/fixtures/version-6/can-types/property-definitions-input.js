@@ -27,6 +27,7 @@ class Bar extends DefineObject {
     return {
       name: 'string',
       items: {
+        serialize: false,
         Type: List,
         default: () => []
       },

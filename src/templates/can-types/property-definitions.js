@@ -8,16 +8,16 @@ export default function transformer(file, api) {
 
   return find(root, 'ObjectExpression', function (props) {
     return props.forEach(prop => {
-      const { nestedProp, capPropConversions } = prop.value.properties
+      const { nestedProp, propConversions } = prop.value.properties
         .reduce((acc, path) => {
           if (path.value.type === 'Literal' && path.key.name === 'type') {
             acc.nestedProp = path;
           }
-          if (['Type', 'Default'].includes(path.key.name)) {
-            acc.capPropConversions.push(path);
+          if (['Type', 'Default', 'serialize'].includes(path.key.name)) {
+            acc.propConversions.push(path);
           }
           return acc;
-        }, { nestedProp: null, capPropConversions: [] });
+        }, { nestedProp: null, propConversions: [] });
 
       // Convert "types" to maybeConverts
       if (nestedProp) {
@@ -27,9 +27,11 @@ export default function transformer(file, api) {
       }
 
       // Check for Type && Default to be converted
-      capPropConversions.forEach(prop => {
-        debug(`Converting key ${prop.key.name} -> ${prop.key.name.toLowerCase()}`);
-        prop.key.name = prop.key.name.toLowerCase();
+      // Change serialize to enumerable
+      propConversions.forEach(prop => {
+        const updatedKey = prop.key.name === 'serialize' ? 'enumerable' : prop.key.name.toLowerCase();
+        debug(`Converting key ${prop.key.name} -> ${updatedKey}`);
+        prop.key.name = updatedKey;
       });
     });
   })
