@@ -2,7 +2,7 @@ import makeDebug from 'debug';
 import { typeConversions, find } from '../../../utils/typeUtils';
 
 export default function transformer(file, api) {
-  const debug = makeDebug(`can-migrate:can-types/shorthands:${file.path}`);
+  const debug = makeDebug(`can-migrate:can-property-definitions/shorthands:${file.path}`);
   const j = api.jscodeshift;
   const root = j(file.source);
 

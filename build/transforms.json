@@ -1335,26 +1335,26 @@
   {
     "copy": [
       {
-        "input": "can-types/shorthands.js",
-        "outputPath": "can-types/shorthands.js",
+        "input": "can-property-definitions/shorthands.js",
+        "outputPath": "can-property-definitions/shorthands.js",
         "type": "transform",
         "version": "6"
       },
       {
-        "input": "can-types/shorthands-input.js",
-        "outputPath": "can-types/shorthands-input.js",
+        "input": "can-property-definitions/shorthands-input.js",
+        "outputPath": "can-property-definitions/shorthands-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-types/shorthands-output.js",
-        "outputPath": "can-types/shorthands-output.js",
+        "input": "can-property-definitions/shorthands-output.js",
+        "outputPath": "can-property-definitions/shorthands-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-types/shorthands-test.js",
-        "outputPath": "can-types/shorthands-test.js",
+        "input": "can-property-definitions/shorthands-test.js",
+        "outputPath": "can-property-definitions/shorthands-test.js",
         "type": "test",
         "version": "6"
       }
@@ -1391,26 +1391,26 @@
   {
     "copy": [
       {
-        "input": "can-types/property-definitions.js",
-        "outputPath": "can-types/property-definitions.js",
+        "input": "can-property-definitions/property-definitions.js",
+        "outputPath": "can-property-definitions/property-definitions.js",
         "type": "transform",
         "version": "6"
       },
       {
-        "input": "can-types/property-definitions-input.js",
-        "outputPath": "can-types/property-definitions-input.js",
+        "input": "can-property-definitions/property-definitions-input.js",
+        "outputPath": "can-property-definitions/property-definitions-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-types/property-definitions-output.js",
-        "outputPath": "can-types/property-definitions-output.js",
+        "input": "can-property-definitions/property-definitions-output.js",
+        "outputPath": "can-property-definitions/property-definitions-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-types/property-definitions-test.js",
-        "outputPath": "can-types/property-definitions-test.js",
+        "input": "can-property-definitions/property-definitions-test.js",
+        "outputPath": "can-property-definitions/property-definitions-test.js",
         "type": "test",
         "version": "6"
       }
@@ -1419,26 +1419,26 @@
   {
     "copy": [
       {
-        "input": "can-types/property-functions.js",
-        "outputPath": "can-types/property-functions.js",
+        "input": "can-property-definitions/property-functions.js",
+        "outputPath": "can-property-definitions/property-functions.js",
         "type": "transform",
         "version": "6"
       },
       {
-        "input": "can-types/property-functions-input.js",
-        "outputPath": "can-types/property-functions-input.js",
+        "input": "can-property-definitions/property-functions-input.js",
+        "outputPath": "can-property-definitions/property-functions-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-types/property-functions-output.js",
-        "outputPath": "can-types/property-functions-output.js",
+        "input": "can-property-definitions/property-functions-output.js",
+        "outputPath": "can-property-definitions/property-functions-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-types/property-functions-test.js",
-        "outputPath": "can-types/property-functions-test.js",
+        "input": "can-property-definitions/property-functions-test.js",
+        "outputPath": "can-property-definitions/property-functions-test.js",
         "type": "test",
         "version": "6"
       }
