@@ -64,6 +64,26 @@ export default function transformer(file, api) {
        */
       replaceDefaultFunction(j, 'FunctionExpression', j(prop));
       replaceDefaultFunction(j, 'ArrowFunctionExpression', j(prop));
+
+    /**
+     * Convert async getters into async's
+     * get (lastSet, resolve) {}
+     * into
+     * async (resolve, lastSet) {}
+     */
+    j(prop).find(j.FunctionExpression)
+      .forEach(prop => {
+        // Check for the get methods
+        if (prop.parentPath.value.key.name === 'get') {
+          // We only want getters with 2 params
+          if (prop.value.params.length === 2) {
+            // Change the name
+            prop.parentPath.value.key.name = 'async';
+            // Reverse the prop order
+            prop.value.params = prop.value.params.reverse();
+          }
+        }
+      });
     });
   })
   .toSource();

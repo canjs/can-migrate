@@ -50,7 +50,7 @@ class CustomScroll extends StacheDefineElement {
       elem: 'string',
       something: {
         type: type.maybeConvert(String),
-        get (lastSet, resolve) {
+        async (resolve, lastSet) {
           resolve(true);
         }
       }
