@@ -22,6 +22,22 @@ class Foo extends DefineArray {
   }
 };
 
+class Bar extends DefineObject {
+  static get define() {
+    return {
+      name: 'string',
+      items: {
+        Type: List,
+        default: () => []
+      },
+      list: {
+        Type: List,
+        Default: List
+      }
+    };
+  }
+};
+
 class CustomScroll extends StacheDefineElement {
   static get view() {
     return ``;

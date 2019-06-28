@@ -8,13 +8,29 @@ export default function transformer(file, api) {
 
   return find(root, 'ObjectExpression', function (props) {
     return props.forEach(prop => {
+      const { nestedProp, capPropConversions } = prop.value.properties
+        .reduce((acc, path) => {
+          if (path.value.type === 'Literal' && path.key.name === 'type') {
+            acc.nestedProp = path;
+          }
+          if (['Type', 'Default'].includes(path.key.name)) {
+            acc.capPropConversions.push(path);
+          }
+          return acc;
+        }, { nestedProp: null, capPropConversions: [] });
+
       // Convert "types" to maybeConverts
-      const nestedProps = prop.value.properties.filter(p => p.value.type === 'Literal' && p.key.name === 'type');
-      if (nestedProps.length === 1) {
-        const type = nestedProps[0].value.value;
-        debug(`Converting ${type} -> ${typeConversions[type]}`);
-        nestedProps[0].value = typeConversions[type];
+      if (nestedProp) {
+        const type = nestedProp.value.value;
+        debug(`Converting property ${type} -> ${typeConversions[type]}`);
+        nestedProp.value = typeConversions[type];
       }
+
+      // Check for Type && Default to be converted
+      capPropConversions.forEach(prop => {
+        debug(`Converting key ${prop.key.name} -> ${prop.key.name.toLowerCase()}`);
+        prop.key.name = prop.key.name.toLowerCase();
+      });
     });
   })
   .toSource();
