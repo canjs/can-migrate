@@ -12,7 +12,7 @@ class Bar extends DefineObject {
 class Foo extends DefineObject {
   static get define() {
     return {
-      createItem(args) {
+      async createItem(args) {
         return new Item(args);
       }
     };

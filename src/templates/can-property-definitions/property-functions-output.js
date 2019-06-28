@@ -15,7 +15,7 @@ class Foo extends DefineObject {
     return {};
   }
 
-  createItem(args) {
+  async createItem(args) {
     return new Item(args);
   }
 };
