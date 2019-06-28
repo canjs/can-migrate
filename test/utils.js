@@ -19,7 +19,7 @@ function diffFiles(fn, inputPath, outputPath, options = {}) {
 
   // console.log('\n\n', result, '\n\n');
 
-  const diff = disparity.unified(fs.readFileSync(path.join(__dirname, outputPath), 'utf8').trim(), result.trim(), {
+  const diff = disparity.unified(result.trim(), fs.readFileSync(path.join(__dirname, outputPath), 'utf8').trim(), {
     paths: [
       `${inputPath} (transformed)`,
       outputPath
