@@ -57,3 +57,26 @@ class CustomScroll extends StacheDefineElement {
     };
   }
 };
+
+class Baz extends DefineObject {
+  static get define() {
+    return {
+      name: {
+        default: () => {
+          return 'Hello';
+        }
+      },
+      items: {
+        enumerable: false,
+        type: List,
+        default () {
+          return 'World!'
+        }
+      },
+      list: {
+        type: List,
+        default: List
+      }
+    };
+  }
+};

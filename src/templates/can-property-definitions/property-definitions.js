@@ -33,7 +33,59 @@ export default function transformer(file, api) {
         debug(`Converting key ${prop.key.name} -> ${updatedKey}`);
         prop.key.name = updatedKey;
       });
+
+      /**
+       * Convert default functions that are functions that return functions into top-level functions
+       * class Bar extends DefineObject {
+       *   static get define() {
+       *     return {
+       *       items: {
+       *         default () {
+       *         	 return function () {
+       *             return 'World!'
+       *           }
+       *         }
+       *       }
+       *     };
+       *   }
+       * };
+       * Becomes:
+       * class Bar extends DefineObject {
+       *   static get define() {
+       *     return {
+       *       items: {
+       *         default () {
+       *         	 return 'World!'
+       *         }
+       *       }
+       *     };
+       *   }
+       * };
+       */
+      replaceDefaultFunction(j, 'FunctionExpression', j(prop));
+      replaceDefaultFunction(j, 'ArrowFunctionExpression', j(prop));
     });
   })
   .toSource();
+}
+
+function replaceDefaultFunction (j, type, root) {
+  root.find(j[type])
+    .forEach(p => {
+      // Check that we have multiple returns within this function expression
+      const returns = j(p).find(j.ReturnStatement);
+      // We only care if we have more than one return statement
+      if (returns.length === 2) {
+        // Get the inner return statement
+        const inner = returns.at(0).get();
+        // Go through the return statements and update the one which is a Function Expression
+        returns.forEach(path => {
+          if (path.value.argument.type === type) {
+            // Replace with the inner body of the Function Expression
+            const index = path.parentPath.value.findIndex(i => i.type === 'ReturnStatement');
+            path.parentPath.value.splice(index, 1, ...inner.value.argument.body.body);
+          }
+        });
+      }
+    });
 }
