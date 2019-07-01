@@ -1,7 +1,11 @@
 class Bar extends DefineObject {
   static get define() {
     return {
-      name: 'string'
+      name: 'string',
+
+      get sayHi () {
+        return `Hello ${this.name}`;
+      }
     };
   }
 

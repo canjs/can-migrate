@@ -10,21 +10,23 @@ export default function transformer(file, api) {
     const rootDefine = rootPath.value.value.body.body[0].argument.properties;
 
     return props.forEach(prop => {
-      // Add the method to the class body
-      rootPath.parent.value.body.push(j.methodDefinition(
-        'method',
-        prop.key,
-        prop.value
-      ));
+      if (prop.kind !== 'get') {
+        // Add the method to the class body
+        rootPath.parent.value.body.push(j.methodDefinition(
+          'method',
+          prop.key,
+          prop.value
+        ));
 
-      debug(`Removing ${prop.key} from define () {} into class definition`);
+        debug(`Removing ${prop.key} from define () {} into class definition`);
 
-      // Remove the method from the static define
-      rootDefine.forEach((p, i) => {
-        if (p === prop) {
-          rootDefine.splice(i, 1);
-        }
-      });
+        // Remove the method from the static define
+        rootDefine.forEach((p, i) => {
+          if (p === prop) {
+            rootDefine.splice(i, 1);
+          }
+        });
+      }
     });
   })
   .toSource();

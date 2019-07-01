@@ -4,6 +4,9 @@ class Bar extends DefineObject {
       name: 'string',
       createItem(args) {
         return new Item(args);
+      },
+      get sayHi () {
+        return `Hello ${this.name}`;
       }
     };
   }
