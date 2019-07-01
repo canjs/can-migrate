@@ -1,5 +1,6 @@
 import makeDebug from 'debug';
 import { typeConversions, find } from '../../../utils/typeUtils';
+import { addImport } from '../../../utils/renameImport';
 
 export default function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-property-definitions/property-definitions:${file.path}`);
@@ -84,6 +85,9 @@ export default function transformer(file, api) {
           }
         }
       });
+
+      // Add the import
+      addImport(j, root, { importName: 'type' });
     });
   })
   .toSource();

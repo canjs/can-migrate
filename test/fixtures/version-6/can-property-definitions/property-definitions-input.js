@@ -1,3 +1,4 @@
+import { DefineArray } from 'can';
 class Foo extends DefineArray {
   static get define() {
     return {
@@ -22,6 +23,7 @@ class Foo extends DefineArray {
   }
 };
 
+import { DefineObject } from 'can';
 class Bar extends DefineObject {
   static get define() {
     return {

@@ -47,3 +47,28 @@ export function updateImport (j, root, { oldValue, newValue }) {
       });
     });
 }
+
+/**
+ * addImport
+ * @param {jscodshift} j
+ * @param {Object} file
+ * @param {Object} options
+ * Adds the import
+ * Will add to existing deconstructed import
+ */
+export function addImport (j, root, { importName, importIncludes = 'can' } = {}) {
+  root
+    .find(j.ImportDeclaration)
+    .filter(p => {
+      return p.parent.node.type === 'Program';
+    })
+    .forEach(path => {
+      if (path.value.source.value.includes(importIncludes)) {
+        if (path.value.specifiers.length && path.value.specifiers[0].type !== 'ImportDefaultSpecifier') {
+          if (!path.value.specifiers.find(i => i.imported && i.imported.name === importName)) {
+            path.value.specifiers.push(j.importSpecifier(j.identifier(importName), j.identifier(importName)));
+          }
+        }
+      }
+    });
+}

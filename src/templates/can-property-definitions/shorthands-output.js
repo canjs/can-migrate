@@ -1,3 +1,4 @@
+import { DefineArray, type } from 'can';
 class Foo extends DefineArray {
   static get define() {
     return {
@@ -22,6 +23,7 @@ class Foo extends DefineArray {
   }
 };
 
+import { StacheDefineElement, type } from 'can';
 class CustomScroll extends StacheDefineElement {
   static get view() {
     return ``;
