@@ -16,12 +16,14 @@ const cli = meow(`
 
   Options
   --can-version     specify CanJS version
+  --order           order the transform should be applied on
 
   Examples
   can-migrate-generate can-define-array define-array --can-version=6
   can-migrate-generate can-blob import --can-version=6
+  can-migrate-generate can-blob import --can-version=6 --order=20
 `, {
-  string: ['can-version']
+  string: ['can-version', 'order']
 });
 
 if (!cli.input.length || cli.input.length !== 2 || !cli.flags.canVersion) {
@@ -108,7 +110,8 @@ for (let i = 0; i < extensions.length; i++) {
     input: `${migration}${current.ext}`,
     outputPath: `${migration}${current.ext}`,
     type: current.type,
-    version: cli.flags.canVersion+''
+    version: cli.flags.canVersion+'',
+    ...cli.flags.order && { order: cli.flags.order }
   });
 }
 

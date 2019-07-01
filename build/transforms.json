@@ -577,7 +577,8 @@
         "input": "can-define-object/import.js",
         "outputPath": "can-define-object/import.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 5
       },
       {
         "input": "can-define-array/import-input.js",
@@ -601,7 +602,8 @@
         "input": "can-define-array/import.js",
         "outputPath": "can-define-array/import.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 6
       },
       {
         "input": "can-stache-define-element/input.js",
@@ -625,7 +627,8 @@
         "input": "can-stache-define-element/can-stache-define-element.js",
         "outputPath": "can-stache-define-element/can-stache-define-element.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 1
       },
       {
         "input": "can-define-object/define-object-input.js",
@@ -649,7 +652,8 @@
         "input": "can-define-object/define-object.js",
         "outputPath": "can-define-object/define-object.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 3
       },
       {
         "input": "can-define-array/define-array-input.js",
@@ -673,7 +677,8 @@
         "input": "can-define-array/define-array.js",
         "outputPath": "can-define-array/define-array.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 4
       }
     ]
   },
@@ -1338,7 +1343,8 @@
         "input": "can-property-definitions/shorthands.js",
         "outputPath": "can-property-definitions/shorthands.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 10
       },
       {
         "input": "can-property-definitions/shorthands-input.js",
@@ -1366,7 +1372,8 @@
         "input": "can-stache-define-element/import.js",
         "outputPath": "can-stache-define-element/import.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 2
       },
       {
         "input": "can-stache-define-element/import-input.js",
@@ -1394,7 +1401,8 @@
         "input": "can-property-definitions/property-definitions.js",
         "outputPath": "can-property-definitions/property-definitions.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 15
       },
       {
         "input": "can-property-definitions/property-definitions-input.js",
@@ -1422,7 +1430,8 @@
         "input": "can-property-definitions/property-functions.js",
         "outputPath": "can-property-definitions/property-functions.js",
         "type": "transform",
-        "version": "6"
+        "version": "6",
+        "order": 20
       },
       {
         "input": "can-property-definitions/property-functions-input.js",
@@ -1439,6 +1448,35 @@
       {
         "input": "can-property-definitions/property-functions-test.js",
         "outputPath": "can-property-definitions/property-functions-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-property-definitions/property-definition-default.js",
+        "outputPath": "can-property-definitions/property-definition-default.js",
+        "type": "transform",
+        "version": "6",
+        "order": 25
+      },
+      {
+        "input": "can-property-definitions/property-definition-default-input.js",
+        "outputPath": "can-property-definitions/property-definition-default-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-property-definitions/property-definition-default-output.js",
+        "outputPath": "can-property-definitions/property-definition-default-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-property-definitions/property-definition-default-test.js",
+        "outputPath": "can-property-definitions/property-definition-default-test.js",
         "type": "test",
         "version": "6"
       }
