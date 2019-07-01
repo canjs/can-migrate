@@ -117,3 +117,4 @@ require('../lib/transforms/version-6/can-stache-define-element/import-test.js');
 require('../lib/transforms/version-6/can-property-definitions/property-definitions-test.js');
 require('../lib/transforms/version-6/can-property-definitions/property-functions-test.js');
 require('../lib/transforms/version-6/can-property-definitions/property-definition-default-test.js');
+require('../lib/transforms/version-6/can-property-definitions/define-array-property-default-test.js');
