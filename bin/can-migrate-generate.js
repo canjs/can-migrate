@@ -111,7 +111,7 @@ for (let i = 0; i < extensions.length; i++) {
     outputPath: `${migration}${current.ext}`,
     type: current.type,
     version: cli.flags.canVersion+'',
-    ...cli.flags.order && { order: cli.flags.order }
+    ...cli.flags.order && current.type === 'transform' && { order: cli.flags.order }
   });
 }
 
