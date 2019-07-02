@@ -3,7 +3,7 @@ import { typeConversions, find } from '../../../utils/typeUtils';
 import { addImport } from '../../../utils/renameImport';
 import fileTransform from '../../../utils/fileUtil';
 
-export default function transformer(file, api) {
+function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-property-definitions/property-definitions:${file.path}`);
   const j = api.jscodeshift;
   
@@ -117,3 +117,7 @@ function replaceDefaultFunction (j, type, root) {
       }
     });
 }
+
+transformer.forceJavaScriptTransform = true;
+
+export default transformer;

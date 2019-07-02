@@ -4,7 +4,7 @@ import getConfig from '../../../utils/getConfig';
 import { createClass, createMethod } from '../../../utils/classUtils';
 import fileTransform from '../../../utils/fileUtil';
 
-export default function transformer(file, api, options) {
+function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-stache-define-element:${file.path}`);
   const j = api.jscodeshift;
   const config = getConfig(options.config);
@@ -123,3 +123,7 @@ export default function transformer(file, api, options) {
       .toSource();
     });
 }
+
+transformer.forceJavaScriptTransform = true;
+
+export default transformer;

@@ -1,4 +1,3 @@
-
 const path = require('path');
 const execa = require('execa');
 const fs = require('fs');
@@ -11,7 +10,7 @@ mockRoot.prototype.toSource = function() { return this.source; };
 mockRoot.prototype.forEach = noop;
 mockRoot.prototype.filter = noop;
 let mockJscodeshift = function(source) { return new mockRoot(source); };
-mockJscodeshift.CallExperssion = noop;
+mockJscodeshift.CallExpression = noop;
 mockJscodeshift.Identifier = noop;
 mockJscodeshift.identifier = noop;
 mockJscodeshift.literal = noop;
@@ -61,10 +60,9 @@ function runTransform(transform, paths, args, apply) {
   };
 
   for (let i = 0; i < paths.length; i++) {
-    if(path.extname(paths[i]) === '.js') {
+    if (path.extname(paths[i]) === '.js' || transformFunc.forceJavaScriptTransform) {
       jsPaths.push(paths[i]);
-    }
-    else {
+    } else {
       otherPaths.push(paths[i]);
     }
   }

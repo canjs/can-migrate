@@ -39,10 +39,16 @@ function transformMd (src, transformer) {
   return src.replace(/(```)(js|javascript|html)?((?:[\s\S])+?)\1/g, function (fullStr, ticks, codeBlockType, codeBlock) {
     codeBlockType = codeBlockType || '';
     var output = ticks + codeBlockType;
+    let transformedCode;
 
-    let transformedCode = transformer(codeBlock);
+    if (codeBlockType === 'html') {
+      transformedCode = transformHtml(codeBlock, transformer);
+    } else {
+      transformedCode = transformer(codeBlock);
+    }
 
     // Ensure we have newlines at the start and end
+    // When replacing the Component.extend with the class it removes all newlines
     // ```js\n
     // codeBlock \n
     // ```

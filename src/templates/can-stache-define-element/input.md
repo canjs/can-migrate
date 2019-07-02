@@ -1,9 +1,11 @@
 ```js
-Component.extend({
-  tag: 'foo-bar',
-  ViewModel: {},
-  view: ``
-});
+  import { Component } from "can";
+  // Component
+  Component.extend({
+    tag: 'foo-bar',
+    ViewModel: {},
+    view: ``
+  });
 ```
 
 ```js

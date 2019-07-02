@@ -1,4 +1,6 @@
 ```js
+import { Component } from "can";
+// Component
 class FooBar extends StacheDefineElement {
   static get view() {
     return ``;

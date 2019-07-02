@@ -4,7 +4,7 @@ import renameImport, { updateImport } from '../../../utils/renameImport';
 import makeDebug from 'debug';
 import fileTransform from '../../../utils/fileUtil';
 
-export default function transformer(file, api, options) {
+function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-stache-define-element:${file.path}`);
   const config = getConfig(options.config);
   const newLocalName = config.moduleToName['can-stache-define-element'];
@@ -33,3 +33,7 @@ export default function transformer(file, api, options) {
     return root.toSource(printOptions);
   });
 }
+
+transformer.forceJavaScriptTransform = true;
+
+export default transformer;

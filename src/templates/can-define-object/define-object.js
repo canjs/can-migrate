@@ -3,7 +3,7 @@ import getConfig from '../../../utils/getConfig';
 import defineTransform from '../../../utils/defineTransform';
 import fileTransform from '../../../utils/fileUtil';
 
-export default function transformer(file, api, options) {
+function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-define-object:${file.path}`);
   const j = api.jscodeshift;
   const config = getConfig(options.config);
@@ -19,3 +19,7 @@ export default function transformer(file, api, options) {
     });
   });
 }
+
+transformer.forceJavaScriptTransform = true;
+
+export default transformer;

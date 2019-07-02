@@ -2,7 +2,7 @@ import makeDebug from 'debug';
 import { find } from '../../../utils/typeUtils';
 import fileTransform from '../../../utils/fileUtil';
 
-export default function transformer(file, api) {
+function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-property-definitions/property-functions:${file.path}`);
   const j = api.jscodeshift;
   
@@ -35,3 +35,7 @@ export default function transformer(file, api) {
     .toSource();
   });
 }
+
+transformer.forceJavaScriptTransform = true;
+
+export default transformer;
