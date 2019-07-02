@@ -15,4 +15,11 @@ describe('can-define-object/import', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Renames can-define/map import to can-define-object in .md files', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.md')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output.md')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });

@@ -568,6 +568,18 @@
         "version": "6"
       },
       {
+        "input": "can-define-object/import-input.md",
+        "outputPath": "can-define-object/import-input.md",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/import-output.md",
+        "outputPath": "can-define-object/import-output.md",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-define-object/import-test.js",
         "outputPath": "can-define-object/import-test.js",
         "type": "test",
@@ -614,6 +626,18 @@
       {
         "input": "can-stache-define-element/output.js",
         "outputPath": "can-stache-define-element/can-stache-define-element-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/input.md",
+        "outputPath": "can-stache-define-element/can-stache-define-element-input.md",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/output.md",
+        "outputPath": "can-stache-define-element/can-stache-define-element-output.md",
         "type": "fixture",
         "version": "6"
       },

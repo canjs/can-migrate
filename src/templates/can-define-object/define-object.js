@@ -12,7 +12,7 @@ export default function transformer(file, api, options) {
   return fileTransform(file, function (source) {
     return defineTransform({
       j,
-      source: source,
+      source,
       extendedClassName,
       objectName: 'DefineMap',
       debug

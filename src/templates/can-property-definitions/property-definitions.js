@@ -1,96 +1,100 @@
 import makeDebug from 'debug';
 import { typeConversions, find } from '../../../utils/typeUtils';
 import { addImport } from '../../../utils/renameImport';
+import fileTransform from '../../../utils/fileUtil';
 
 export default function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-property-definitions/property-definitions:${file.path}`);
   const j = api.jscodeshift;
-  const root = j(file.source);
+  
+  return fileTransform(file, function (source) {
+    const root = j(source);
+    
+    return find(root, 'ObjectExpression', function (props) {
+      return props.forEach(prop => {
+        const { nestedProp, propConversions } = prop.value.properties
+          .reduce((acc, path) => {
+            if (path.value.type === 'Literal' && path.key.name === 'type') {
+              acc.nestedProp = path;
+            }
+            if (['Type', 'Default', 'serialize'].includes(path.key.name)) {
+              acc.propConversions.push(path);
+            }
+            return acc;
+          }, { nestedProp: null, propConversions: [] });
 
-  return find(root, 'ObjectExpression', function (props) {
-    return props.forEach(prop => {
-      const { nestedProp, propConversions } = prop.value.properties
-        .reduce((acc, path) => {
-          if (path.value.type === 'Literal' && path.key.name === 'type') {
-            acc.nestedProp = path;
-          }
-          if (['Type', 'Default', 'serialize'].includes(path.key.name)) {
-            acc.propConversions.push(path);
-          }
-          return acc;
-        }, { nestedProp: null, propConversions: [] });
+        // Convert "types" to maybeConverts
+        if (nestedProp) {
+          const type = nestedProp.value.value;
+          debug(`Converting property ${type} -> ${typeConversions[type]}`);
+          nestedProp.value = typeConversions[type];
+        }
 
-      // Convert "types" to maybeConverts
-      if (nestedProp) {
-        const type = nestedProp.value.value;
-        debug(`Converting property ${type} -> ${typeConversions[type]}`);
-        nestedProp.value = typeConversions[type];
-      }
+        // Check for Type && Default to be converted
+        // Change serialize to enumerable
+        propConversions.forEach(prop => {
+          const updatedKey = prop.key.name === 'serialize' ? 'enumerable' : prop.key.name.toLowerCase();
+          debug(`Converting key ${prop.key.name} -> ${updatedKey}`);
+          prop.key.name = updatedKey;
+        });
 
-      // Check for Type && Default to be converted
-      // Change serialize to enumerable
-      propConversions.forEach(prop => {
-        const updatedKey = prop.key.name === 'serialize' ? 'enumerable' : prop.key.name.toLowerCase();
-        debug(`Converting key ${prop.key.name} -> ${updatedKey}`);
-        prop.key.name = updatedKey;
-      });
+        /**
+         * Convert default functions that are functions that return functions into top-level functions
+         * class Bar extends DefineObject {
+         *   static get define() {
+         *     return {
+         *       items: {
+         *         default () {
+         *         	 return function () {
+         *             return 'World!'
+         *           }
+         *         }
+         *       }
+         *     };
+         *   }
+         * };
+         * Becomes:
+         * class Bar extends DefineObject {
+         *   static get define() {
+         *     return {
+         *       items: {
+         *         default () {
+         *         	 return 'World!'
+         *         }
+         *       }
+         *     };
+         *   }
+         * };
+         */
+        replaceDefaultFunction(j, 'FunctionExpression', j(prop));
+        replaceDefaultFunction(j, 'ArrowFunctionExpression', j(prop));
 
       /**
-       * Convert default functions that are functions that return functions into top-level functions
-       * class Bar extends DefineObject {
-       *   static get define() {
-       *     return {
-       *       items: {
-       *         default () {
-       *         	 return function () {
-       *             return 'World!'
-       *           }
-       *         }
-       *       }
-       *     };
-       *   }
-       * };
-       * Becomes:
-       * class Bar extends DefineObject {
-       *   static get define() {
-       *     return {
-       *       items: {
-       *         default () {
-       *         	 return 'World!'
-       *         }
-       *       }
-       *     };
-       *   }
-       * };
+       * Convert async getters into async's
+       * get (lastSet, resolve) {}
+       * into
+       * async (resolve, lastSet) {}
        */
-      replaceDefaultFunction(j, 'FunctionExpression', j(prop));
-      replaceDefaultFunction(j, 'ArrowFunctionExpression', j(prop));
-
-    /**
-     * Convert async getters into async's
-     * get (lastSet, resolve) {}
-     * into
-     * async (resolve, lastSet) {}
-     */
-    j(prop).find(j.FunctionExpression)
-      .forEach(prop => {
-        // Check for the get methods
-        if (prop.parentPath.value.key.name === 'get') {
-          // We only want getters with 2 params
-          if (prop.value.params.length === 2) {
-            // Change the name
-            prop.parentPath.value.key.name = 'async';
-            // Reverse the prop order
-            prop.value.params = prop.value.params.reverse();
+      j(prop).find(j.FunctionExpression)
+        .forEach(prop => {
+          // Check for the get methods
+          if (prop.parentPath.value.key.name === 'get') {
+            // We only want getters with 2 params
+            if (prop.value.params.length === 2) {
+              // Change the name
+              prop.parentPath.value.key.name = 'async';
+              // Reverse the prop order
+              prop.value.params = prop.value.params.reverse();
+            }
           }
-        }
-      });
+        });
 
-      // Add the import
-      addImport(j, root, { importName: 'type' });
-    });
-  })
-  .toSource();
+        // Add the import
+        addImport(j, root, { importName: 'type' });
+      });
+    })
+    .toSource();
+  });
 }
 
 function replaceDefaultFunction (j, type, root) {

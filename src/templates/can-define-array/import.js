@@ -2,6 +2,7 @@
 import getConfig from '../../../utils/getConfig';
 import renameImport, { updateImport } from '../../../utils/renameImport';
 import makeDebug from 'debug';
+import fileTransform from '../../../utils/fileUtil';
 
 export default function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-define-array:${file.path}`);
@@ -9,23 +10,26 @@ export default function transformer(file, api, options) {
   const newLocalName = config.moduleToName['can-define-array'];
   const j = api.jscodeshift;
   const printOptions = options.printOptions || {};
-  const root = j(file.source);
 
-  // Update default import
-  // import DefineList from 'can-define/list/'
-  renameImport(root, {
-    oldSourceValues: ['can-define/list/list', 'can-define/list/'],
-    newSourceValue: 'can-define-array',
-    newLocalName
+  return fileTransform(file, function (source) {
+    const root = j(source);
+
+    // Update default import
+    // import DefineList from 'can-define/list/'
+    renameImport(root, {
+      oldSourceValues: ['can-define/list/list', 'can-define/list/'],
+      newSourceValue: 'can-define-array',
+      newLocalName
+    });
+    // Update the destructured import
+    // import { DefineList } from 'can'
+    updateImport(j, root, {
+      oldValue: 'DefineList',
+      newValue: newLocalName
+    });
+
+    debug(`Replacing import with ${newLocalName}`);
+
+    return root.toSource(printOptions);
   });
-  // Update the destructured import
-  // import { DefineList } from 'can'
-  updateImport(j, root, {
-    oldValue: 'DefineList',
-    newValue: newLocalName
-  });
-
-  debug(`Replacing import with ${newLocalName}`);
-
-  return root.toSource(printOptions);
 }
