@@ -8,7 +8,7 @@ class FooBar extends StacheDefineElement {
   }
 };
 
-customElements.define('foo-bar', FooBar)
+customElements.define('foo-bar', FooBar);
 
 class FooBaz extends StacheDefineElement {
   static get view() {
@@ -20,7 +20,7 @@ class FooBaz extends StacheDefineElement {
   }
 };
 
-customElements.define('foo-baz', FooBaz)
+customElements.define('foo-baz', FooBaz);
 
 class CustomScroll extends StacheDefineElement {
   static get view() {
@@ -49,4 +49,4 @@ class CustomScroll extends StacheDefineElement {
   }
 }
 
-customElements.define('custom-scroll', CustomScroll)
+customElements.define('custom-scroll', CustomScroll);

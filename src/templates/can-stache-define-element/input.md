@@ -1,4 +1,5 @@
-```js
+  
+  ```js
   import { Component } from "can";
   // Component
   Component.extend({
@@ -6,7 +7,7 @@
     ViewModel: {},
     view: ``
   });
-```
+  ```
 
 ```js
 Component.extend({

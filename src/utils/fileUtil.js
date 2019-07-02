@@ -40,7 +40,9 @@ function transformMd (src, transformer) {
     codeBlockType = codeBlockType || '';
     var output = ticks + codeBlockType;
     let transformedCode;
-
+    let space = fullStr.match(/\s+(?=```)/);
+    space = space[0].replace('\n', '');
+    
     if (codeBlockType === 'html') {
       transformedCode = transformHtml(codeBlock, transformer);
     } else {
@@ -56,6 +58,21 @@ function transformMd (src, transformer) {
       transformedCode = `\n${transformedCode}\n`;
     }
 
-    return output + transformedCode + ticks;
+    output = `${output}${transformedCode}${ticks}`;
+    
+    if (codeBlock !== transformedCode) {
+      // Add any spaces back
+      output = output.split('\n')
+        .map((str, index) => {
+          // Don't add spaces to the first line
+          if (index > 0 && str.length > 0) {
+            str = `${space}${str}`;
+          }
+          return str;
+        })
+        .join('\n');
+    }
+
+    return output;
   });
 }

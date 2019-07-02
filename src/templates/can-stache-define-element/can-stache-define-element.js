@@ -8,6 +8,7 @@ function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-stache-define-element:${file.path}`);
   const j = api.jscodeshift;
   const config = getConfig(options.config);
+  const printOptions = options.printOptions || {};
   const extendedClassName = config.moduleToName['can-stache-define-element'];
 
   return fileTransform(file, function (source) {
@@ -117,10 +118,18 @@ function transformer(file, api, options) {
 
         // Add the customElements define
         j(varDeclaration ? path : path.parentPath).insertAfter(
-          `customElements.define('${tagName}', ${className})`
+          j.expressionStatement(
+            j.callExpression(
+              j.memberExpression(
+                j.identifier('customElements'),
+                j.identifier('define')
+              ),
+              [j.literal(tagName), j.identifier(className)]
+            )
+          )
         );
       })
-      .toSource();
+      .toSource(printOptions);
     });
 }
 

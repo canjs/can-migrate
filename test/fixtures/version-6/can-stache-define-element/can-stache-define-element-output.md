@@ -1,17 +1,18 @@
-```js
-import { Component } from "can";
-// Component
-class FooBar extends StacheDefineElement {
-  static get view() {
-    return ``;
-  }
 
-  static get define() {
-    return {};
-  }
-};
-customElements.define('foo-bar', FooBar)
-```
+  ```js
+  import { Component } from "can";
+  // Component
+  class FooBar extends StacheDefineElement {
+    static get view() {
+      return ``;
+    }
+
+    static get define() {
+      return {};
+    }
+  };
+  customElements.define('foo-bar', FooBar);
+  ```
 
 ```js
 class FooBaz extends StacheDefineElement {
@@ -23,5 +24,5 @@ class FooBaz extends StacheDefineElement {
     return {};
   }
 };
-customElements.define('foo-baz', FooBaz)
+customElements.define('foo-baz', FooBaz);
 ```
