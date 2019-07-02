@@ -643,6 +643,18 @@
         "version": "6"
       },
       {
+        "input": "can-define-object/define-object-input.md",
+        "outputPath": "can-define-object/define-object-input.md",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/define-object-output.md",
+        "outputPath": "can-define-object/define-object-output.md",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-define-object/define-object-test.js",
         "outputPath": "can-define-object/define-object-test.js",
         "type": "test",
@@ -1506,6 +1518,20 @@
         "order": 30
       },
       {
+        "input": "can-property-definitions/define-array-property-default-input.html",
+        "outputPath": "can-property-definitions/define-array-property-default-input.html",
+        "type": "fixture",
+        "version": "6",
+        "order": 30
+      },
+      {
+        "input": "can-property-definitions/define-array-property-default-output.html",
+        "outputPath": "can-property-definitions/define-array-property-default-output.html",
+        "type": "fixture",
+        "version": "6",
+        "order": 30
+      },
+      {
         "input": "can-property-definitions/define-array-property-default-test.js",
         "outputPath": "can-property-definitions/define-array-property-default-test.js",
         "type": "test",
@@ -1533,6 +1559,20 @@
       {
         "input": "can-property-definitions/connected-events-output.js",
         "outputPath": "can-property-definitions/connected-events-output.js",
+        "type": "fixture",
+        "version": "6",
+        "order": 35
+      },
+      {
+        "input": "can-property-definitions/connected-events-input.md",
+        "outputPath": "can-property-definitions/connected-events-input.md",
+        "type": "fixture",
+        "version": "6",
+        "order": 35
+      },
+      {
+        "input": "can-property-definitions/connected-events-output.md",
+        "outputPath": "can-property-definitions/connected-events-output.md",
         "type": "fixture",
         "version": "6",
         "order": 35

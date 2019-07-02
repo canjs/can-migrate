@@ -1,6 +1,7 @@
 import makeDebug from 'debug';
 import getConfig from '../../../utils/getConfig';
 import defineTransform from '../../../utils/defineTransform';
+import fileTransform from '../../../utils/fileUtil';
 
 export default function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-define-object:${file.path}`);
@@ -8,11 +9,13 @@ export default function transformer(file, api, options) {
   const config = getConfig(options.config);
   const extendedClassName = config.moduleToName['can-define-object'];
 
-  return defineTransform({
-    j,
-    source: file.source,
-    extendedClassName,
-    objectName: 'DefineMap',
-    debug
+  return fileTransform(file, function (source) {
+    return defineTransform({
+      j,
+      source: source,
+      extendedClassName,
+      objectName: 'DefineMap',
+      debug
+    });
   });
 }

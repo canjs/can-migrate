@@ -15,4 +15,11 @@ describe('can-define-object/define-object', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Converts DefineMap.extend to class extends DefineObject in .md files', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.md')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output.md')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });

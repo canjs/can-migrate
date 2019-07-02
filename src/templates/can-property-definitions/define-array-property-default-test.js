@@ -15,4 +15,11 @@ describe('can-property-definitions/define-array-property-default', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('moves # default prop in DefineList into items getter on DefineArray in .html files', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.html')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output.html')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });
