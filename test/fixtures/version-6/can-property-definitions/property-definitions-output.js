@@ -1,4 +1,5 @@
-import { DefineArray, type } from 'can';
+import { stache } from 'can/core';
+import { DefineArray, type } from 'can/everything';
 class Foo extends DefineArray {
   static get define() {
     return {

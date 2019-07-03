@@ -59,14 +59,14 @@ export function updateImport (j, root, { oldValue, newValue }) {
  * Adds the import
  * Will add to existing deconstructed import
  */
-export function addImport (j, root, { importName, importIncludes = 'can' } = {}) {
+export function addImport (j, root, { importName, importIncludes = 'can', hasSiblings = [] } = {}) {
   root
     .find(j.ImportDeclaration)
     .filter(p => {
       return p.parent.node.type === 'Program';
     })
     .forEach(path => {
-      if (path.value.source.value.includes(importIncludes)) {
+      if (path.value.source.value.includes(importIncludes) && (hasSiblings.length > 0 ? path.value.specifiers.some(i => i.imported && hasSiblings.includes(i.imported.name)) : true)) {
         if (path.value.specifiers.length && path.value.specifiers[0].type !== 'ImportDefaultSpecifier') {
           if (!path.value.specifiers.find(i => i.imported && i.imported.name === importName)) {
             path.value.specifiers.push(j.importSpecifier(j.identifier(importName), j.identifier(importName)));
