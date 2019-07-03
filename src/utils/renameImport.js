@@ -42,7 +42,10 @@ export function updateImport (j, root, { oldValue, newValue }) {
       path.value.specifiers.forEach((specifier, index) => {
         const importedName = specifier.imported ? specifier.imported.name : 'default';
         if (importedName === oldValue) {
+          // Update the existing value
           path.value.specifiers[index] = j.importSpecifier(j.identifier(newValue), j.identifier(newValue));
+          // Sort the array alphabetically
+          path.value.specifiers.sort(importSort);
         }
       });
     });
@@ -67,8 +70,20 @@ export function addImport (j, root, { importName, importIncludes = 'can' } = {})
         if (path.value.specifiers.length && path.value.specifiers[0].type !== 'ImportDefaultSpecifier') {
           if (!path.value.specifiers.find(i => i.imported && i.imported.name === importName)) {
             path.value.specifiers.push(j.importSpecifier(j.identifier(importName), j.identifier(importName)));
+            // Sort the array alphabetically
+            path.value.specifiers.sort(importSort);
           }
         }
       }
     });
+}
+
+function importSort (a, b) {
+  if (a.imported.name.toLowerCase() > b.imported.name.toLowerCase()) {
+    return 1;
+  } else if (a.imported.name.toLowerCase() < b.imported.name.toLowerCase()) {
+    return -1;
+  } else {
+    return 0;
+  }
 }

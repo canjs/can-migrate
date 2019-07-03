@@ -1,4 +1,4 @@
-import { StacheDefineElement, Control } from 'can';
+import { Control, StacheDefineElement } from 'can';
 
 class CustomScroll extends StacheDefineElement {
   connected() {

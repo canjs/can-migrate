@@ -1,5 +1,5 @@
 ```js
-import { StacheDefineElement, Control } from 'can';
+import { Control, StacheDefineElement } from 'can';
 
 class CustomScroll extends StacheDefineElement {
   connected() {
@@ -19,7 +19,7 @@ class CustomScroll extends StacheDefineElement {
 ```
 
 ```js
-import { StacheDefineElement, Control } from 'can';
+import { Control, StacheDefineElement } from 'can';
 
 class MyScroll extends StacheDefineElement {
   connected() {
