@@ -1,0 +1,49 @@
+<script>
+class MyOtherList extends DefineArray {
+  static get define() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+</script>
+
+<script>
+class MessagesList extends DefineArray {
+  static get define() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+
+MyComponent({
+  List: MessagesList
+});
+</script>
+
+<script>
+class UserList extends DefineArray {
+  static get define() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+
+MyComponent({
+  List: UserList
+});
+</script>

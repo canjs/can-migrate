@@ -740,6 +740,18 @@
         "version": "6"
       },
       {
+        "input": "can-define-array/define-array-input.html",
+        "outputPath": "can-define-array/define-array-input.html",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-array/define-array-output.html",
+        "outputPath": "can-define-array/define-array-output.html",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-define-array/define-array-test.js",
         "outputPath": "can-define-array/define-array-test.js",
         "type": "test",
