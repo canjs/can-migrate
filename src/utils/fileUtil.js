@@ -58,21 +58,6 @@ function transformMd (src, transformer) {
       transformedCode = `\n${transformedCode}\n`;
     }
 
-    output = `${output}${transformedCode}${ticks}`;
-    
-    if (codeBlock !== transformedCode) {
-      // Add any spaces back
-      output = output.split('\n')
-        .map((str, index) => {
-          // Don't add spaces to the first line
-          if (index > 0 && str.length > 0) {
-            str = `${space}${str}`;
-          }
-          return str;
-        })
-        .join('\n');
-    }
-
-    return output;
+    return `${output}${transformedCode}${ticks}`;
   });
 }

@@ -11,6 +11,6 @@ canViewScope.prototype.say = function(){};
 function speak(MyViewScope) {};
 const say = function(MyViewScope) {};
 Object.assign({}, canViewScope);
-const map = new canViewScope({
+const secondMap = new canViewScope({
   MyViewScope: canViewScope
 });

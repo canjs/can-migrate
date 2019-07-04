@@ -1,0 +1,1 @@
+import { Component, DefineObject } from 'can';

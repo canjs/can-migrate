@@ -11,6 +11,6 @@ CanMap.prototype.say = function(){};
 function speak(MyMap) {};
 const say = function(MyMap) {};
 Object.assign({}, CanMap);
-const map = new CanMap({
+const secondMap = new CanMap({
   MyMap: CanMap
 });

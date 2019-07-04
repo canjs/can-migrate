@@ -58,7 +58,7 @@
     "globby": "^7.1.1",
     "is-git-clean": "^1.1.0",
     "js-codemod": "^7.0.0",
-    "jscodeshift": "^0.4.0",
+    "jscodeshift": "^0.6.4",
     "jscodeshift-imports": "^1.0.1",
     "jsesc": "^2.2.0",
     "meow": "^4.0.0",
@@ -70,7 +70,7 @@
     "babel-core": "^6.17.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.16.0",
-    "ejs": "^2.5.2",
+    "ejs": "^2.6.2",
     "js-beautify": "^1.6.4",
     "jshint": "^2.9.3",
     "mocha": "^5.0.0"

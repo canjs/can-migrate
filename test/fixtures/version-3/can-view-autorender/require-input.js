@@ -11,6 +11,6 @@ MyAutorender.prototype.say = function(){};
 function speak(MyAutorender) {};
 const say = function(MyAutorender) {};
 Object.assign({}, MyAutorender);
-const map = new MyAutorender({
+const secondMap = new MyAutorender({
   MyAutorender: MyAutorender
 });

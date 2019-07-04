@@ -11,6 +11,6 @@ MyTarget.prototype.say = function(){};
 function speak(MyTarget) {};
 const say = function(MyTarget) {};
 Object.assign({}, MyTarget);
-const map = new MyTarget({
+const secondMap = new MyTarget({
   MyTarget: MyTarget
 });

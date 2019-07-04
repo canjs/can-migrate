@@ -568,6 +568,18 @@
         "version": "6"
       },
       {
+        "input": "can-define-object/import-input-deconstructed.js",
+        "outputPath": "can-define-object/import-input-deconstructed.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/import-output-deconstructed.js",
+        "outputPath": "can-define-object/import-output-deconstructed.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-define-object/import-input.md",
         "outputPath": "can-define-object/import-input.md",
         "type": "fixture",
@@ -601,6 +613,18 @@
       {
         "input": "can-define-array/import-output.js",
         "outputPath": "can-define-array/import-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-array/import-input-deconstructed.js",
+        "outputPath": "can-define-array/import-input-deconstructed.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-array/import-output-deconstructed.js",
+        "outputPath": "can-define-array/import-output-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
@@ -1420,6 +1444,18 @@
       {
         "input": "can-stache-define-element/import-output.js",
         "outputPath": "can-stache-define-element/import-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/import-input-deconstructed.js",
+        "outputPath": "can-stache-define-element/import-input-deconstructed.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/import-output-deconstructed.js",
+        "outputPath": "can-stache-define-element/import-output-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },

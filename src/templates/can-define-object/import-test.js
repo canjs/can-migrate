@@ -15,6 +15,13 @@ describe('can-define-object/import', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Renames can-define/map import to can-define-object deconstructed', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input-deconstructed.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output-deconstructed.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
   it('Renames can-define/map import to can-define-object in .md files', function() {
     const fn = require(toTest.file);
     const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.md')}`;

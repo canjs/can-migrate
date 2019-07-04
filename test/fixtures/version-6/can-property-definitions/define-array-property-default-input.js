@@ -11,7 +11,7 @@ class Bar extends DefineArray {
   }
 };
 
-class Bar extends DefineObject {
+class Foo extends DefineObject {
   static get define() {
     return {
       '#': Item,

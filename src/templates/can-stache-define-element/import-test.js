@@ -15,4 +15,11 @@ describe('can-stache-define-element/import', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Renames can-component import to can-stache-define-element deconstructed', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input-deconstructed.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output-deconstructed.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });
