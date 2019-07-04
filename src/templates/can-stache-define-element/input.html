@@ -1,0 +1,21 @@
+<script>
+  Component.extend({
+    tag: "my-app",
+    view: `CanJS {{feels}} modules`,
+    ViewModel: {
+      feels: { default: "😍" }
+    }
+  });
+</script>
+
+<script type='text/stache' id='chat-template'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        {{# eq(page, 'home') }}
+          <h1>Home</h1>
+        {{/ eq }}
+      </div>
+    </div>
+  </div>
+</script>

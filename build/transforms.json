@@ -666,6 +666,18 @@
         "version": "6"
       },
       {
+        "input": "can-stache-define-element/input.html",
+        "outputPath": "can-stache-define-element/can-stache-define-element-input.html",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-define-element/output.html",
+        "outputPath": "can-stache-define-element/can-stache-define-element-output.html",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-stache-define-element/can-stache-define-element-test.js",
         "outputPath": "can-stache-define-element/can-stache-define-element-test.js",
         "type": "test",

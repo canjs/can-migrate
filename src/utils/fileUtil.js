@@ -23,8 +23,8 @@ export default function fileTransform (file, transformer) {
 }
 
 function transformHtml (src, transformer) {
-  // find script tag with type text/stache
-  return src.replace(/(<script[^>]*type=("|')text\/stache\2[^>]*>)([\s\S]+?)(<\/script>)/g, function (fullStr, $1, quoteType, $3, $4) {
+  // find just a script tag
+  return src.replace(/(<script>)([\s\S]+?)(<\/script>)/g, function (fullStr, $1, $3, $4) {
     return $1 + transformer($3) + $4;
   })
   // find steal.js script tag
