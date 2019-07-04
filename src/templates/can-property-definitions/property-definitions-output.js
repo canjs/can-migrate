@@ -65,14 +65,15 @@ class Baz extends DefineObject {
   static get define() {
     return {
       name: {
-        default: () => {
+        get default() {
           return 'Hello';
         }
       },
       items: {
         enumerable: false,
         type: List,
-        default () {
+
+        get default() {
           return 'World!'
         }
       },

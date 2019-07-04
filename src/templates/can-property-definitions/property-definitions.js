@@ -1,6 +1,7 @@
 import makeDebug from 'debug';
 import { typeConversions, find } from '../../../utils/typeUtils';
 import { addImport } from '../../../utils/renameImport';
+import { createMethod } from '../../../utils/classUtils';
 import fileTransform from '../../../utils/fileUtil';
 
 function transformer(file, api) {
@@ -107,14 +108,14 @@ function replaceDefaultFunction (j, type, root) {
       if (returns.length === 2) {
         // Get the inner return statement
         const inner = returns.at(0).get();
-        // Go through the return statements and update the one which is a Function Expression
-        returns.forEach(path => {
-          if (path.value.argument.type === type) {
-            // Replace with the inner body of the Function Expression
-            const index = path.parentPath.value.findIndex(i => i.type === 'ReturnStatement');
-            path.parentPath.value.splice(index, 1, ...inner.value.argument.body.body);
-          }
-        });
+        // Replace the function with a getter function
+        // should be get default () {}
+        j(p.parentPath).replaceWith(createMethod({
+          j,
+          name: 'default',
+          method: false,
+          blockStatement: inner.value.argument.body.body
+        }));
       }
     });
 }
