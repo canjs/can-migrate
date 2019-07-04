@@ -102,20 +102,38 @@ function transformer(file, api) {
 function replaceDefaultFunction (j, type, root) {
   root.find(j[type])
     .forEach(p => {
-      // Check that we have multiple returns within this function expression
-      const returns = j(p).find(j.ReturnStatement);
-      // We only care if we have more than one return statement
-      if (returns.length === 2) {
-        // Get the inner return statement
-        const inner = returns.at(0).get();
-        // Replace the function with a getter function
-        // should be get default () {}
-        j(p.parentPath).replaceWith(createMethod({
-          j,
-          name: 'default',
-          method: false,
-          blockStatement: inner.value.argument.body.body
-        }));
+      // Only modify default function
+      if (p.parentPath.value.key && p.parentPath.value.key.name === 'default') {
+        // Check that we have multiple returns within this function expression
+        const returns = j(p).find(j.ReturnStatement);
+        // We only care if we have more than one return statement
+        if (returns.length === 2) {
+          // Get the inner return statement
+          const inner = returns.at(0).get();
+          // Replace the function with a getter function
+          // should be get default () {}
+          j(p.parentPath).replaceWith(createMethod({
+            j,
+            name: 'default',
+            method: false,
+            blockStatement: inner.value.argument.body.body
+          }));
+        } else {
+          // Default to the function body
+          let body = p.value.body;
+          // If the body type isn't a blockStatement
+          // wrap it in one
+          if (body.type !== 'BlockStatement') {
+            body = j.blockStatement([j.returnStatement(p.value.body)]);
+          }
+          // Replace the function with a getter
+          j(p.parentPath).replaceWith(createMethod({
+            j,
+            name: 'default',
+            method: false,
+            blockStatement: body
+          }));
+        }
       }
     });
 }

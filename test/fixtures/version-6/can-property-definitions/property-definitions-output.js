@@ -32,7 +32,10 @@ class Bar extends DefineObject {
       items: {
         enumerable: false,
         type: List,
-        default: () => []
+
+        get default() {
+          return [];
+        }
       },
       list: {
         type: List,
@@ -80,6 +83,18 @@ class Baz extends DefineObject {
       list: {
         type: List,
         default: List
+      }
+    };
+  }
+};
+
+class MyApp extends DefineObject {
+  static get define() {
+    return {
+      messagesPromise: {
+        get default() {
+          return Message.getList({});
+        }
       }
     };
   }

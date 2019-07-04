@@ -13,7 +13,7 @@ export default {
       j.functionExpression(
         null,
         [],
-        j.blockStatement(blockStatement)
+        blockStatement.type === 'BlockStatement' ? blockStatement : j.blockStatement(blockStatement)
       ),
       isStatic
     );

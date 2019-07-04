@@ -87,3 +87,15 @@ class Baz extends DefineObject {
     };
   }
 };
+
+class MyApp extends DefineObject {
+  static get define() {
+    return {
+      messagesPromise: {
+        default(){
+          return Message.getList({});
+        }
+      }
+    };
+  }
+};
