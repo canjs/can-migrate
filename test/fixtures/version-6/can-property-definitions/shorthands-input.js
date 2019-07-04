@@ -1,3 +1,4 @@
+import { stache } from 'can/core';
 import { DefineArray } from 'can';
 class Foo extends DefineArray {
   static get define() {

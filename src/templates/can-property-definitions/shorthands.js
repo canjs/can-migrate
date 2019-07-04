@@ -17,7 +17,7 @@ function transformer(file, api) {
           prop.value = typeConversions[type];
 
           // Add the import
-          addImport(j, root, { importName: 'type' });
+          addImport(j, root, { importName: 'type', hasSiblings: ['DefineArray', 'DefineObject', 'StacheDefineElement'] });
       });
     })
     .toSource();
