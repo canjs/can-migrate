@@ -35,3 +35,21 @@ MyComponent({
   List: Users.List
 });
 </script>
+
+<script>
+Users.List = DefineList.extend('UserList', {
+  '#': 'string',
+
+  get itemCount () {
+    return this.items;
+  }
+});
+
+MyComponent({
+  List: Users.List
+});
+
+class UserList extends StacheDefineElement {
+  static get define () {}
+}
+</script>

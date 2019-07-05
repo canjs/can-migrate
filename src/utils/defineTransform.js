@@ -28,6 +28,7 @@ export default function defineTransform ({
   .forEach(path => {
     let varDeclaration;
     let classPath;
+    let refUpdate;
 
     // Replace variable declarations with class def
     if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator') {
@@ -43,16 +44,29 @@ export default function defineTransform ({
         `${path.parentPath.value.left.object.name}${path.parentPath.value.left.property.name}`;
 
       // Update refs if we are of type AssignmentExpression
-      updateRefs.push({
+      refUpdate = {
         objectName: path.parentPath.value.left.object.name,
-        propertyName: path.parentPath.value.left.property.name,
-        varDeclaration
-      });
+        propertyName: path.parentPath.value.left.property.name
+      };
     }
 
     let propDefinitionsArg = path.value.arguments.length === 1 ?
       path.value.arguments[0] :
       path.value.arguments[1];
+
+    // Check if we have an existing varDeclaration
+    // if so let's create a new name to prevent clashing
+    if (refUpdate) {
+      const nameInUse = root
+        .find(j.Identifier, {
+          name: varDeclaration
+        });
+      
+      varDeclaration = nameInUse.length > 0 ? `${varDeclaration}Model` : varDeclaration;
+
+      // Update refs if we are of type AssignmentExpression
+      updateRefs.push(Object.assign(refUpdate, { varDeclaration }));
+    }
 
     debug(`Replacing ${varDeclaration} with ${extendedClassName} class`);
 

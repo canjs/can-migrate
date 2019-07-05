@@ -47,3 +47,25 @@ MyComponent({
   List: UserList
 });
 </script>
+
+<script>
+class UserListModel extends DefineArray {
+  static get define() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+
+MyComponent({
+  List: UserListModel
+});
+
+class UserList extends StacheDefineElement {
+  static get define () {}
+}
+</script>
