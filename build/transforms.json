@@ -1669,5 +1669,34 @@
         "order": 35
       }
     ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-property-definitions/connectedcallback.js",
+        "outputPath": "can-property-definitions/connectedcallback.js",
+        "type": "transform",
+        "version": "6",
+        "order": 40
+      },
+      {
+        "input": "can-property-definitions/connectedcallback-input.js",
+        "outputPath": "can-property-definitions/connectedcallback-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-property-definitions/connectedcallback-output.js",
+        "outputPath": "can-property-definitions/connectedcallback-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-property-definitions/connectedcallback-test.js",
+        "outputPath": "can-property-definitions/connectedcallback-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
   }
 ]

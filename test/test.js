@@ -119,3 +119,4 @@ require('../lib/transforms/version-6/can-property-definitions/property-functions
 require('../lib/transforms/version-6/can-property-definitions/property-definition-default-test.js');
 require('../lib/transforms/version-6/can-property-definitions/define-array-property-default-test.js');
 require('../lib/transforms/version-6/can-property-definitions/connected-events-test.js');
+require('../lib/transforms/version-6/can-property-definitions/connectedcallback-test.js');
