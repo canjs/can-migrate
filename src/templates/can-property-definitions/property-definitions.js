@@ -7,10 +7,10 @@ import fileTransform from '../../../utils/fileUtil';
 function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-property-definitions/property-definitions:${file.path}`);
   const j = api.jscodeshift;
-  
+
   return fileTransform(file, function (source) {
     const root = j(source);
-    
+
     return find(root, 'ObjectExpression', function (props) {
       return props.forEach(prop => {
         const { nestedProp, propConversions } = prop.value.properties
@@ -110,14 +110,9 @@ function replaceDefaultFunction (j, type, root) {
         if (returns.length === 2) {
           // Get the inner return statement
           const inner = returns.at(0).get();
-          // Replace the function with a getter function
+          // Replace the function with a function
           // should be get default () {}
-          j(p.parentPath).replaceWith(createMethod({
-            j,
-            name: 'default',
-            method: false,
-            blockStatement: inner.value.argument.body.body
-          }));
+          j(inner).replaceWith(inner.value.argument.body.body);
         } else {
           // Default to the function body
           let body = p.value.body;

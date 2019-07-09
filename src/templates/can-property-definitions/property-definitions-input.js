@@ -95,6 +95,19 @@ class MyApp extends DefineObject {
         default(){
           return Message.getList({});
         }
+      },
+      messageList: {
+        default() {
+          return ['message']
+        }
+      },
+      messageFunc: {
+        default () {
+          const item = this.item
+          return function () {
+            return item
+          }
+        }
       }
     };
   }

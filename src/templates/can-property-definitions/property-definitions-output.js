@@ -68,15 +68,14 @@ class Baz extends DefineObject {
   static get define() {
     return {
       name: {
-        get default() {
+        default: () => {
           return 'Hello';
         }
       },
       items: {
         enumerable: false,
         type: List,
-
-        get default() {
+        default () {
           return 'World!'
         }
       },
@@ -94,6 +93,17 @@ class MyApp extends DefineObject {
       messagesPromise: {
         get default() {
           return Message.getList({});
+        }
+      },
+      messageList: {
+        get default() {
+          return ['message']
+        }
+      },
+      messageFunc: {
+        default () {
+          const item = this.item
+          return item
         }
       }
     };
