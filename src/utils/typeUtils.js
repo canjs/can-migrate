@@ -29,7 +29,7 @@ export const find = (root, type, cb = () => {}) => {
       static: true
     })
     .forEach(path => {
-      const props = path.value.value.body.body[0].argument.properties;
+      const props = path.value.value.body.body.length ? path.value.value.body.body[0].argument.properties : [];
       const topLevelProps = props.filter(p => p.value.type === type);
 
       return cb(topLevelProps, path);

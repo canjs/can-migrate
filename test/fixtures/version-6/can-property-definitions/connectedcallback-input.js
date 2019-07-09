@@ -20,7 +20,7 @@ class analogClock extends StacheDefineElement {
       }
     };
   }
-  
+
   connected() {
     const vmControl = Control.extend({
       '.form click': function (ev) {
@@ -32,3 +32,18 @@ class analogClock extends StacheDefineElement {
   }
 };
 customElements.define("analog-clock", analog-clock);
+
+class MyApp extends StacheDefineElement {
+  static get view() {
+    return ``;
+  }
+
+  static get define() {}
+
+  connectedCallback(element) {
+    element.addEventListener('click', (ev) => ev.preventDefault());
+
+    element.style.height = '200px';
+  }
+};
+customElements.define("my-app", MyApp);
