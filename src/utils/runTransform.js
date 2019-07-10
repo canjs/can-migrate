@@ -31,7 +31,7 @@ function getResultCountFromString(count) {
   return +count;
 }
 
-function parseJsCodeShiftResults(results) {
+function parseJsCodeShiftResults(results, invalidFileSource) {
   const errors = getResultCountFromString(results.match(/(\d)* errors./));
   const unmodified = getResultCountFromString(results.match(/(\d)* unmodified./));
   const skipped = getResultCountFromString(results.match(/(\d)* skipped./));
@@ -39,7 +39,7 @@ function parseJsCodeShiftResults(results) {
 
   const total = errors + unmodified + skipped + ok;
 
-  return `${ok} / ${total} files modified (${errors} errors).`;
+  return `${ok} / ${total} files modified (${errors + invalidFileSource} errors).`;
 }
 
 function runTransform(transform, paths, args, apply) {
@@ -88,11 +88,16 @@ function runTransform(transform, paths, args, apply) {
     args = args.concat(jsPaths);
 
     const resultsStream = new stream.Writable();
+    let invalidFileSource = 0;
     resultsStream._write = function (chunk, encoding, done) {
       const msg = chunk.toString();
+      if (msg.indexOf('File source invalid:') > -1) {
+        console.log(msg);
+        invalidFileSource++;
+      }
       if (args.indexOf('-s') < 0) {
         if (msg.indexOf('Results:') > -1) {
-          console.log(parseJsCodeShiftResults(msg));
+          console.log(parseJsCodeShiftResults(msg, invalidFileSource));
         }
       }
       done();

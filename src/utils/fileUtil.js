@@ -19,7 +19,8 @@ export default function fileTransform (file, transformer) {
       // run the transformer function
       return transformer(source);
     } catch (error) {
-      console.error(`Source is invalid: ${error.message}`);
+      console.log(`File source invalid: ${path}
+Error: ${error.message}.`);
       // Return the source
       return source;
     }
