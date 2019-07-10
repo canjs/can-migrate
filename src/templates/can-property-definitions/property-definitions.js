@@ -91,8 +91,10 @@ function transformer(file, api) {
         });
 
         // Add the import
-        // Ensure we only add the 'type' if we are on an import with DefineArray, DefineObject or StacheDefineElement
-        addImport(j, root, { importName: 'type', hasSiblings: ['DefineArray', 'DefineObject', 'StacheDefineElement'] });
+        if (nestedProp) {
+          // Ensure we only add the 'type' if we are on an import with DefineArray, DefineObject or StacheDefineElement
+          addImport(j, root, { importName: 'type', hasSiblings: ['DefineArray', 'DefineObject', 'StacheDefineElement'] });
+        }
       });
     })
     .toSource();
