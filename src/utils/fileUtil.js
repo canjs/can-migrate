@@ -1,3 +1,5 @@
+import j from 'jscodeshift';
+
 /**
  * Util for running transforms against different sources
  * This should run the transforms against
@@ -10,13 +12,26 @@ export default function fileTransform (file, transformer) {
   const path = file.path;
   const type = path.slice(path.lastIndexOf('.') + 1);
 
+  const safeTransform = function (source) {
+    try {
+      // Verify the source is valid
+      j(source);
+      // run the transformer function
+      return transformer(source);
+    } catch (error) {
+      console.error(`Source is invalid: ${error.message}`);
+      // Return the source
+      return source;
+    }
+  };
+
   switch (type) {
     case 'md':
-      return transformMd(src, transformer);
+      return transformMd(src, safeTransform);
     case 'js':
-      return transformer(src);
+      return safeTransform(src);
     case 'html':
-      return transformHtml(src, transformer);
+      return transformHtml(src, safeTransform);
   }
 
   return src;
@@ -24,7 +39,7 @@ export default function fileTransform (file, transformer) {
 
 function transformHtml (src, transformer) {
   // find just a script tag
-  return src.replace(/(<script>)([\s\S]+?)(<\/script>)/g, function (fullStr, $1, $3, $4) {
+  return src.replace(/(<script[^>]*type=("|')module\2[^>]*>|<script>)([\s\S]+?)(<\/script>)/g, function (fullStr, $1, $quoteType, $3, $4) {
     return $1 + transformer($3) + $4;
   })
   // find steal.js script tag
@@ -36,13 +51,13 @@ function transformHtml (src, transformer) {
 function transformMd (src, transformer) {
   // find ```html code blocks and treat it as stache
   // find ```js code blocks and treat them as js
-  return src.replace(/(```)(js|javascript|html)?((?:[\s\S])+?)\1/g, function (fullStr, ticks, codeBlockType, codeBlock) {
+  return src.replace(/(```)(js|javascript|html)((?:[\s\S])+?)\1/g, function (fullStr, ticks, codeBlockType, codeBlock) {
     codeBlockType = codeBlockType || '';
     var output = ticks + codeBlockType;
     let transformedCode;
     let space = fullStr.match(/\s+(?=```)/);
     space = space[0].replace('\n', '');
-    
+
     if (codeBlockType === 'html') {
       transformedCode = transformHtml(codeBlock, transformer);
     } else {
