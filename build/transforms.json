@@ -1727,5 +1727,34 @@
         "version": "6"
       }
     ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-define-object/constructor.js",
+        "outputPath": "can-define-object/constructor.js",
+        "type": "transform",
+        "version": "6",
+        "order": 50
+      },
+      {
+        "input": "can-define-object/constructor-input.js",
+        "outputPath": "can-define-object/constructor-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/constructor-output.js",
+        "outputPath": "can-define-object/constructor-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-define-object/constructor-test.js",
+        "outputPath": "can-define-object/constructor-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
   }
 ]
