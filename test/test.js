@@ -120,3 +120,4 @@ require('../lib/transforms/version-6/can-property-definitions/property-definitio
 require('../lib/transforms/version-6/can-property-definitions/define-array-property-default-test.js');
 require('../lib/transforms/version-6/can-property-definitions/connected-events-test.js');
 require('../lib/transforms/version-6/can-property-definitions/connectedcallback-test.js');
+require('../lib/transforms/version-6/can-define-array/array-constructor-test.js');
