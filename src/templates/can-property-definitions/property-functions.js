@@ -13,7 +13,7 @@ function transformer(file, api) {
       const rootDefine = rootPath.value.value.body.body[0].argument.properties;
 
       return props.forEach(prop => {
-        if (prop.kind !== 'get') {
+        if (prop.kind !== 'get' && prop.kind !== 'set') {
           // Add the method to the class body
           rootPath.parent.value.body.push(j.methodDefinition(
             'method',

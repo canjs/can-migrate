@@ -7,6 +7,9 @@ class Bar extends DefineObject {
       },
       get sayHi () {
         return `Hello ${this.name}`;
+      },
+      set sayHi (val) {
+        this.name = val;
       }
     };
   }

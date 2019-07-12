@@ -9,6 +9,26 @@
 </script>
 
 <script>
+  Component.extend({
+    tag: "my-widget",
+    view: `CanJS {{feels}} modules`,
+    ViewModel: {
+      theFeeling: {
+        type: 'string',
+        default: '😍'
+      },
+      
+      get feels () {
+        return this.theFeeling
+      },
+      set feels (newVal) {
+        this.theFeeling = newVal
+      }
+    }
+  });
+</script>
+
+<script>
 {
   "foo": "bar"
 }

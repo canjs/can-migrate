@@ -14,6 +14,31 @@
 </script>
 
 <script>
+  class MyWidget extends StacheDefineElement {
+    static get view() {
+      return `CanJS {{feels}} modules`;
+    }
+
+    static get define() {
+      return {
+        theFeeling: {
+          type: 'string',
+          default: '😍'
+        },
+        
+        get feels () {
+          return this.theFeeling
+        },
+        set feels (newVal) {
+          this.theFeeling = newVal
+        }
+      };
+    }
+  };
+  customElements.define('my-widget', MyWidget);
+</script>
+
+<script>
 {
   "foo": "bar"
 }
