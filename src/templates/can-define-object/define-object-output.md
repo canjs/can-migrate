@@ -31,3 +31,43 @@ class VM extends DefineObject {
   }
 }
 ```
+
+```js
+export default class Model extends DefineObject {
+  static get define() {
+    return {
+      firstName: 'string',
+      lastName: 'string',
+      age: 'number',
+
+      addAge (age) {
+        this.age = age;
+      },
+
+      get fullName () {
+        return `${firstName} ${lastName}`
+      }
+    };
+  }
+}
+```
+
+```js
+export default class MyMap extends DefineObject {
+  static get define() {
+    return {
+      firstName: 'string',
+      lastName: 'string',
+      age: 'number',
+
+      addAge (age) {
+        this.age = age;
+      },
+
+      get fullName () {
+        return `${firstName} ${lastName}`
+      }
+    };
+  }
+}
+```

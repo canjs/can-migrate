@@ -34,6 +34,14 @@ export default function defineTransform ({
     if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator') {
       varDeclaration = path.parentPath.value.id.name;
       classPath = path.parentPath.parentPath.parentPath;
+    // Handle default exports
+    } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'ExportDefaultDeclaration') {
+        // If we have "default" export if the DefineMap or DefineList has two arguments, use the first as the name of the class
+        // fallback to using `Model` if not
+        varDeclaration = path.value.arguments.length === 2 ?
+          path.value.arguments[0].value :
+          'Model';
+        classPath = path;
     } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'AssignmentExpression') {
       classPath = path.parentPath.parentPath;
       // Use either the first argument if there are more than one

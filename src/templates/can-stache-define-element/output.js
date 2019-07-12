@@ -50,3 +50,14 @@ class CustomScroll extends StacheDefineElement {
 }
 
 customElements.define('custom-scroll', CustomScroll);
+
+export default class Whizz extends StacheDefineElement {
+  static get view() {
+    return `<h1>HELLO</h1>`;
+  }
+
+  static get define() {
+    return {};
+  }
+}
+customElements.define('whizz', Whizz);

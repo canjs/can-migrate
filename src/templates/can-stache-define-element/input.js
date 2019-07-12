@@ -29,3 +29,9 @@ const CustomScroll = Component.extend({
     }
   }
 });
+
+export default Component.extend({
+  tag: 'whizz',
+  ViewModel: {},
+  view: `<h1>HELLO</h1>`
+});
