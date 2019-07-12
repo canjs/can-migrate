@@ -39,7 +39,10 @@ class Bar extends DefineObject {
       },
       list: {
         type: List,
-        default: List
+
+        get default() {
+          return new List();
+        }
       }
     };
   }

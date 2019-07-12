@@ -13,16 +13,19 @@ function transformer(file, api) {
 
     return find(root, 'ObjectExpression', function (props) {
       return props.forEach(prop => {
-        const { nestedProp, propConversions } = prop.value.properties
+        const { nestedProp, propConversions, defaultLiteral } = prop.value.properties
           .reduce((acc, path) => {
             if (path.value.type === 'Literal' && path.key.name === 'type') {
               acc.nestedProp = path;
             }
-            if (['Type', 'Default', 'serialize'].includes(path.key.name)) {
+            if (path.value.type === 'Identifier' && path.key.name === 'Default') {
+              acc.defaultLiteral = path;
+            }
+            if (['Type', 'serialize'].includes(path.key.name)) {
               acc.propConversions.push(path);
             }
             return acc;
-          }, { nestedProp: null, propConversions: [] });
+          }, { nestedProp: null, propConversions: [], defaultLiteral: null });
 
         // Convert "types" to maybeConverts
         if (nestedProp) {
@@ -31,7 +34,7 @@ function transformer(file, api) {
           nestedProp.value = typeConversions[type];
         }
 
-        // Check for Type && Default to be converted
+        // Check for Type to be converted
         // Change serialize to enumerable
         propConversions.forEach(prop => {
           const updatedKey = prop.key.name === 'serialize' ? 'enumerable' : prop.key.name.toLowerCase();
@@ -69,6 +72,15 @@ function transformer(file, api) {
          */
         replaceDefaultFunction(j, 'FunctionExpression', j(prop));
         replaceDefaultFunction(j, 'ArrowFunctionExpression', j(prop));
+        // Convert `Default: Todo` into 
+        // Default: {
+        //   get default () {
+        //     return new Todo()
+        //   }
+        // }
+        if (defaultLiteral) {
+          replaceDefaultFunction(j, 'Identifier', j(prop), { name: 'Default' });
+        }
 
       /**
        * Convert async getters into async's
@@ -101,8 +113,8 @@ function transformer(file, api) {
   });
 }
 
-function replaceDefaultFunction (j, type, root) {
-  root.find(j[type])
+function replaceDefaultFunction (j, type, root, opts = {}) {
+  root.find(j[type], opts)
     .forEach(p => {
       // Only modify default function
       if (p.parentPath.value.key && p.parentPath.value.key.name === 'default') {
@@ -131,6 +143,18 @@ function replaceDefaultFunction (j, type, root) {
             blockStatement: body
           }));
         }
+      } else if (p.value.name === 'Default') {
+        // Replace with a getter
+        j(p.parentPath).replaceWith(createMethod({
+          j,
+          name: 'default',
+          method: false,
+          blockStatement: [
+            j.returnStatement(
+              j.newExpression(j.identifier(p.parentPath.value.value.name), [])
+            )
+          ]
+        }));
       }
     });
 }
