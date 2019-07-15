@@ -31,14 +31,14 @@ class Bar extends DefineObject {
       name: 'string',
       items: {
         enumerable: false,
-        type: List,
+        type: type.maybeConvert(List),
 
         get default() {
           return [];
         }
       },
       list: {
-        type: List,
+        type: type.maybeConvert(List),
 
         get default() {
           return new List();
@@ -77,13 +77,13 @@ class Baz extends DefineObject {
       },
       items: {
         enumerable: false,
-        type: List,
+        type: type.maybeConvert(List),
         default () {
           return 'World!'
         }
       },
       list: {
-        type: List,
+        type: type.maybeConvert(List),
         default: List
       }
     };

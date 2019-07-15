@@ -8,7 +8,7 @@ const maybeConvert = (val) => j.callExpression(
   [j.identifier(val)]
 );
 
-export const typeConversions = {
+const conversions = {
   'string': maybeConvert('String'),
   'number': maybeConvert('Number'),
   'date': maybeConvert('Date'),
@@ -17,6 +17,20 @@ export const typeConversions = {
     j.identifier('type'),
     j.identifier('Any')
   )
+};
+
+// Convert known types and unknown types into type.maybeConvert's
+export const typeConversions = (type) => {
+  // Known primitive types
+  if (conversions[type]) {
+    return conversions[type];
+  } else {
+    // Unkown's should be converted
+    // prop: MyMap
+    // converts into
+    // prop: type.maybeConvert(MyMap)
+    return maybeConvert(type);
+  }
 };
 
 export const find = (root, type, cb = () => {}) => {

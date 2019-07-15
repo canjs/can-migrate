@@ -33,7 +33,7 @@ class CustomScroll extends StacheDefineElement {
   static get define() {
     return {
       scrolled: type.maybeConvert(Boolean),
-      elem: type.maybeConvert(String),
+      elem: type.maybeConvert(MyMap),
       something: {
         type: 'string',
         get (lastSet, resolve) {

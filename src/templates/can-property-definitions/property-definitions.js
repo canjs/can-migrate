@@ -15,7 +15,7 @@ function transformer(file, api) {
       return props.forEach(prop => {
         const { nestedProp, propConversions, defaultLiteral } = prop.value.properties
           .reduce((acc, path) => {
-            if (path.value.type === 'Literal' && path.key.name === 'type') {
+            if ((path.value.type === 'Literal' || path.value.type === 'Identifier') && path.key.name.toLowerCase() === 'type') {
               acc.nestedProp = path;
             }
             if (path.value.type === 'Identifier' && path.key.name === 'Default') {
@@ -29,9 +29,9 @@ function transformer(file, api) {
 
         // Convert "types" to maybeConverts
         if (nestedProp) {
-          const type = nestedProp.value.value;
-          debug(`Converting property ${type} -> ${typeConversions[type]}`);
-          nestedProp.value = typeConversions[type];
+          const type = nestedProp.value.value || nestedProp.value.name;
+          debug(`Converting property ${type}.`);
+          nestedProp.value = typeConversions(type);
         }
 
         // Check for Type to be converted
