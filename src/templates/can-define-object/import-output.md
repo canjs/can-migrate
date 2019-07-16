@@ -1,15 +1,15 @@
 ```js
-import DefineObject from 'can-define-object';
+import ObservableObject from 'can-define-object';
 ```
 
 ```js
-import DefineObject from 'can-define-object';
+import ObservableObject from 'can-define-object';
 ```
 
 ```js
-import { Component, DefineObject } from 'can';
+import { Component, ObservableObject } from 'can';
 ```
 
 ```js
-import { DefineObject } from 'can';
+import { ObservableObject } from 'can';
 ```

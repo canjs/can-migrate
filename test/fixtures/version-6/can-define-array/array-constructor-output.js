@@ -1,7 +1,7 @@
-const foo = new DefineArray(...[1, 2, 3]);
-const bar = new DefineArray();
-const zed = new DefineArray(...[]);
+const foo = new ObservableArray(...[1, 2, 3]);
+const bar = new ObservableArray();
+const zed = new ObservableArray(...[]);
 
-const list = new DefineArray(...[]);
-const list1 = new DefineArray(...[1, 2]);
-const list2 = new DefineArray();
+const list = new ObservableArray(...[]);
+const list1 = new ObservableArray(...[1, 2]);
+const list2 = new ObservableArray();

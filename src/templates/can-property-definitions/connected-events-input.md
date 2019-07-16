@@ -1,7 +1,7 @@
 ```js
-import { StacheDefineElement } from 'can';
+import { StacheElement } from 'can';
 
-class CustomScroll extends StacheDefineElement {
+class CustomScroll extends StacheElement {
   connected() {
     const events = {
       inserted () {
@@ -16,9 +16,9 @@ class CustomScroll extends StacheDefineElement {
 ```
 
 ```js
-import { StacheDefineElement } from 'can';
+import { StacheElement } from 'can';
 
-class MyScroll extends StacheDefineElement {
+class MyScroll extends StacheElement {
   connected() {
     const events = {
       '.form click': function (ev) {

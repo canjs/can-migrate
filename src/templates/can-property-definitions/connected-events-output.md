@@ -1,7 +1,7 @@
 ```js
-import { Control, StacheDefineElement } from 'can';
+import { Control, StacheElement } from 'can';
 
-class CustomScroll extends StacheDefineElement {
+class CustomScroll extends StacheElement {
   connected() {
     const vmControl = Control.extend({
       inserted () {
@@ -19,9 +19,9 @@ class CustomScroll extends StacheDefineElement {
 ```
 
 ```js
-import { Control, StacheDefineElement } from 'can';
+import { Control, StacheElement } from 'can';
 
-class MyScroll extends StacheDefineElement {
+class MyScroll extends StacheElement {
   connected() {
     const vmControl = Control.extend({
       '.form click': function (ev) {

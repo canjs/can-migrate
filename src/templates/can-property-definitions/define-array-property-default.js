@@ -15,7 +15,7 @@ function transformer(file, api) {
 
       return rootProps.forEach((path, i) => {
         // Only run this for DefineArrays
-        if (rootPath.parentPath.parentPath.parentPath.value.superClass.name === 'DefineArray') {
+        if (rootPath.parentPath.parentPath.parentPath.value.superClass.name === 'ObservableArray') {
           if (path.key.value === '#') {
             rootPath.parent.value.body.push(
               j.methodDefinition(

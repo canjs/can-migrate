@@ -1,7 +1,7 @@
 import makeDebug from 'debug';
 import fileTransform from '../../../utils/fileUtil';
 
-const replacementName = 'DefineArray';
+const replacementName = 'ObservableArray';
 
 function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-define-array/array-constructor:${file.path}`);
@@ -11,9 +11,9 @@ function transformer(file, api) {
   return fileTransform(file, function (source) {
     const root = j(source);
 
-    // Transform any `new DefineArray`
+    // Transform any `new ObservableArray`
     replaceWithSpread(j, root, replacementName, debug);
-    // Replace any `new DefineList` with `new DefineArray`
+    // Replace any `new DefineList` with `new ObservableArray`
     replaceWithSpread(j, root, 'DefineList', debug);
     
     return root.toSource();

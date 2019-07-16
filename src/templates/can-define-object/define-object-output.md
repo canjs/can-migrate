@@ -1,6 +1,6 @@
 ```js
-class Foo extends DefineObject {
-  static get define() {
+class Foo extends ObservableObject {
+  static get props() {
     return {
       name: 'string',
       completed: {
@@ -13,8 +13,8 @@ class Foo extends DefineObject {
 ```
 
 ```js
-class VM extends DefineObject {
-  static get define() {
+class VM extends ObservableObject {
+  static get props() {
     return {
       firstName: 'string',
       lastName: 'string',
@@ -33,8 +33,8 @@ class VM extends DefineObject {
 ```
 
 ```js
-export default class Model extends DefineObject {
-  static get define() {
+export default class Model extends ObservableObject {
+  static get props() {
     return {
       firstName: 'string',
       lastName: 'string',
@@ -53,8 +53,8 @@ export default class Model extends DefineObject {
 ```
 
 ```js
-export default class MyMap extends DefineObject {
-  static get define() {
+export default class MyMap extends ObservableObject {
+  static get props() {
     return {
       firstName: 'string',
       lastName: 'string',

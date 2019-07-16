@@ -1,5 +1,5 @@
-class Bar extends DefineObject {
-  static get define() {
+class Bar extends ObservableObject {
+  static get props() {
     return {
       name: 'string',
       createItem(args) {
@@ -15,8 +15,8 @@ class Bar extends DefineObject {
   }
 };
 
-class Foo extends DefineObject {
-  static get define() {
+class Foo extends ObservableObject {
+  static get props() {
     return {
       async createItem(args) {
         return new Item(args);
@@ -25,8 +25,8 @@ class Foo extends DefineObject {
   }
 };
 
-class List extends DefineArray {
-  static get define() {
+class List extends ObservableArray {
+  static get props() {
     return {
       name: 'string',
       items: [],

@@ -1,5 +1,5 @@
-class Foo extends DefineObject {
-  static get define() {
+class Foo extends ObservableObject {
+  static get props() {
     return {
       name: 'string',
       completed: {
@@ -10,8 +10,8 @@ class Foo extends DefineObject {
   }
 }
 
-class VM extends DefineObject {
-  static get define() {
+class VM extends ObservableObject {
+  static get props() {
     return {
       firstName: 'string',
       lastName: 'string',

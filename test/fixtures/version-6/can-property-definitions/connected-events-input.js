@@ -1,6 +1,6 @@
-import { StacheDefineElement } from 'can';
+import { StacheElement } from 'can';
 
-class CustomScroll extends StacheDefineElement {
+class CustomScroll extends StacheElement {
   connected() {
     const events = {
       inserted () {

@@ -44,8 +44,8 @@ function transformer(file, api) {
 
         /**
          * Convert default functions that are functions that return functions into top-level functions
-         * class Bar extends DefineObject {
-         *   static get define() {
+         * class Bar extends ObservableObject {
+         *   static get props() {
          *     return {
          *       items: {
          *         default () {
@@ -58,8 +58,8 @@ function transformer(file, api) {
          *   }
          * };
          * Becomes:
-         * class Bar extends DefineObject {
-         *   static get define() {
+         * class Bar extends ObservableObject {
+         *   static get props() {
          *     return {
          *       items: {
          *         default () {
@@ -104,8 +104,8 @@ function transformer(file, api) {
 
         // Add the import
         if (nestedProp) {
-          // Ensure we only add the 'type' if we are on an import with DefineArray, DefineObject or StacheDefineElement
-          addImport(j, root, { importName: 'type', hasSiblings: ['DefineArray', 'DefineObject', 'StacheDefineElement'] });
+          // Ensure we only add the 'type' if we are on an import with ObservableArray, ObservableObject or StacheElement
+          addImport(j, root, { importName: 'type', hasSiblings: ['ObservableArray', 'ObservableObject', 'StacheElement'] });
         }
       });
     })

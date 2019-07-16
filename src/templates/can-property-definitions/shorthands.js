@@ -19,7 +19,7 @@ function transformer(file, api) {
           prop.value = typeConversions(type);
 
           // Add the import
-          addImport(j, root, { importName: 'type', hasSiblings: ['DefineArray', 'DefineObject', 'StacheDefineElement'] });
+          addImport(j, root, { importName: 'type', hasSiblings: ['ObservableArray', 'ObservableObject', 'StacheElement'] });
       });
     });
 
@@ -32,7 +32,7 @@ function transformer(file, api) {
           prop.value = typeConversions(type);
 
           // Add the import
-          addImport(j, root, { importName: 'type', hasSiblings: ['DefineArray', 'DefineObject', 'StacheDefineElement'] });
+          addImport(j, root, { importName: 'type', hasSiblings: ['ObservableArray', 'ObservableObject', 'StacheElement'] });
       });
     });
 

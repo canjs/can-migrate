@@ -1,6 +1,6 @@
 <script>
-class MyOtherList extends DefineArray {
-  static get define() {
+class MyOtherList extends ObservableArray {
+  static get props() {
     return {
       '#': 'string',
 
@@ -13,8 +13,8 @@ class MyOtherList extends DefineArray {
 </script>
 
 <script>
-class MessagesList extends DefineArray {
-  static get define() {
+class MessagesList extends ObservableArray {
+  static get props() {
     return {
       '#': 'string',
 
@@ -31,8 +31,8 @@ MyComponent({
 </script>
 
 <script>
-class UserList extends DefineArray {
-  static get define() {
+class UserList extends ObservableArray {
+  static get props() {
     return {
       '#': 'string',
 
@@ -49,8 +49,8 @@ MyComponent({
 </script>
 
 <script>
-class UserListModel extends DefineArray {
-  static get define() {
+class UserListModel extends ObservableArray {
+  static get props() {
     return {
       '#': 'string',
 
@@ -65,7 +65,7 @@ MyComponent({
   List: UserListModel
 });
 
-class UserList extends StacheDefineElement {
-  static get define () {}
+class UserList extends StacheElement {
+  static get props () {}
 }
 </script>

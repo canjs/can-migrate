@@ -1,1 +1,1 @@
-import { Component, DefineObject } from 'can';
+import { Component, ObservableObject } from 'can';

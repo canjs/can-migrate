@@ -1,1 +1,1 @@
-import StacheDefineElement from 'can-stache-define-element';
+import StacheElement from 'can-stache-define-element';

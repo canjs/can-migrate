@@ -1,1 +1,1 @@
-import DefineArray from 'can-define-array';
+import ObservableArray from 'can-define-array';

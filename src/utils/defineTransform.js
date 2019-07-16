@@ -46,7 +46,7 @@ export default function defineTransform ({
       classPath = path.parentPath.parentPath;
       // Use either the first argument if there are more than one
       // or use the expression ie. Message.List = DefineList {...}
-      // becomes class MessageList extends DefineArray {...}
+      // becomes class MessageList extends ObservableArray {...}
       varDeclaration = path.value.arguments.length > 1 ?
         path.value.arguments[0].value :
         `${path.parentPath.value.left.object.name}${path.parentPath.value.left.property.name}`;
@@ -86,7 +86,7 @@ export default function defineTransform ({
           createMethod({
             j,
             method: false, // Want this to be a getter
-            name: 'define',
+            name: 'props',
             blockStatement: [j.returnStatement(propDefinitionsArg)],
             isStatic: true
           })

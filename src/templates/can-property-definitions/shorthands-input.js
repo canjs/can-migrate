@@ -1,7 +1,7 @@
 import { stache } from 'can/core';
-import { DefineArray } from 'can';
-class Foo extends DefineArray {
-  static get define() {
+import { ObservableArray } from 'can';
+class Foo extends ObservableArray {
+  static get props() {
     return {
       name: 'string',
       date: 'date',
@@ -17,20 +17,20 @@ class Foo extends DefineArray {
   get foo () {
   }
 
-  get define () {
+  get props () {
     return {
       foo: 'string'
     }
   }
 };
 
-import { StacheDefineElement } from 'can';
-class CustomScroll extends StacheDefineElement {
+import { StacheElement } from 'can';
+class CustomScroll extends StacheElement {
   static get view() {
     return ``;
   }
 
-  static get define() {
+  static get props() {
     return {
       scrolled: 'boolean',
       elem: MyMap,
@@ -44,8 +44,8 @@ class CustomScroll extends StacheDefineElement {
   }
 };
 
-class MyList extends DefineArray {
-  static get define() {
+class MyList extends ObservableArray {
+  static get props() {
     return {
       '#': 'string',
 

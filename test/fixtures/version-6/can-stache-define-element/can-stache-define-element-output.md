@@ -2,12 +2,12 @@
   ```js
   import { Component } from "can";
   // Component
-  class FooBar extends StacheDefineElement {
+  class FooBar extends StacheElement {
     static get view() {
       return ``;
     }
 
-    static get define() {
+    static get props() {
       return {};
     }
   };
@@ -15,12 +15,12 @@
   ```
 
 ```js
-class FooBaz extends StacheDefineElement {
+class FooBaz extends StacheElement {
   static get view() {
     return `<h1>HELLO</h1>`;
   }
 
-  static get define() {
+  static get props() {
     return {};
   }
 };

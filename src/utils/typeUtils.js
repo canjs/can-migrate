@@ -37,7 +37,7 @@ export const find = (root, type, cb = () => {}) => {
   return root
     .find(j.MethodDefinition, {
       key: {
-        name: 'define'
+        name: 'props'
       },
       kind: 'get',
       static: true

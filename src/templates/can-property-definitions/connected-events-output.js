@@ -1,6 +1,6 @@
-import { Control, StacheDefineElement } from 'can';
+import { Control, StacheElement } from 'can';
 
-class CustomScroll extends StacheDefineElement {
+class CustomScroll extends StacheElement {
   connected() {
     const vmControl = Control.extend({
       inserted () {

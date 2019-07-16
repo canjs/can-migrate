@@ -8,7 +8,7 @@ const toTest = transforms.filter(function(transform) {
 
 describe('can-define-object/constructor', function() {
 
-  it('transform any new DefineMap instances into new DefineObject', function() {
+  it('transform any new DefineMap instances into new ObservableObject', function() {
     const fn = require(toTest.file);
     const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.js')}`;
     const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output.js')}`;

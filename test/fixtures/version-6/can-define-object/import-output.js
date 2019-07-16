@@ -1,1 +1,1 @@
-import DefineObject from 'can-define-object';
+import ObservableObject from 'can-define-object';

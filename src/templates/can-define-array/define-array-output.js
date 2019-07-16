@@ -1,11 +1,11 @@
-class MyList extends DefineArray {
-  static get define() {
+class MyList extends ObservableArray {
+  static get props() {
     return { '#': 'string' };
   }
 }
 
-class MyOtherList extends DefineArray {
-  static get define() {
+class MyOtherList extends ObservableArray {
+  static get props() {
     return {
       '#': 'string',
 

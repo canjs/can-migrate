@@ -33,7 +33,7 @@ function transformer(file, api, options) {
             path: null
           },
           'ViewModel': {
-            name: 'define',
+            name: 'props',
             type: 'get',
             static: true,
             path: null

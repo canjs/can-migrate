@@ -8,14 +8,14 @@ const toTest = transforms.filter(function(transform) {
 
 describe('can-property-definitions/define-array-property-default', function() {
 
-  it('moves # default prop in DefineList into items getter on DefineArray', function() {
+  it('moves # default prop in DefineList into items getter on ObservableArray', function() {
     const fn = require(toTest.file);
     const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.js')}`;
     const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output.js')}`;
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
-  it('moves # default prop in DefineList into items getter on DefineArray in .html files', function() {
+  it('moves # default prop in DefineList into items getter on ObservableArray in .html files', function() {
     const fn = require(toTest.file);
     const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input.html')}`;
     const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output.html')}`;

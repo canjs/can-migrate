@@ -1,5 +1,5 @@
-class Bar extends DefineObject {
-  static get define() {
+class Bar extends ObservableObject {
+  static get props() {
     return {};
   }
 
@@ -10,8 +10,8 @@ class Bar extends DefineObject {
   }
 };
 
-class Foo extends DefineObject {
-  static get define() {
+class Foo extends ObservableObject {
+  static get props() {
     return {
       name: 'string',
 

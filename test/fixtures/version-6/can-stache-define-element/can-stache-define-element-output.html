@@ -1,10 +1,10 @@
 <script>
-  class MyApp extends StacheDefineElement {
+  class MyApp extends StacheElement {
     static get view() {
       return `CanJS {{feels}} modules`;
     }
 
-    static get define() {
+    static get props() {
       return {
         feels: { default: "😍" }
       };
@@ -14,12 +14,12 @@
 </script>
 
 <script>
-  class MyWidget extends StacheDefineElement {
+  class MyWidget extends StacheElement {
     static get view() {
       return `CanJS {{feels}} modules`;
     }
 
-    static get define() {
+    static get props() {
       return {
         theFeeling: {
           type: 'string',

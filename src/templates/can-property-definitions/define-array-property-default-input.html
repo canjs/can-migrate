@@ -1,6 +1,6 @@
 <script src="../foo/bar/steal/steal.js">
-class Bar extends DefineArray {
-  static get define() {
+class Bar extends ObservableArray {
+  static get props() {
     return {
       '#': Item,
       items: {
@@ -14,8 +14,8 @@ class Bar extends DefineArray {
 </script>
 
 <script src="../foo/bar/steal/steal.js">
-class Bar extends DefineObject {
-  static get define() {
+class Bar extends ObservableObject {
+  static get props() {
     return {
       '#': Item,
       items: {

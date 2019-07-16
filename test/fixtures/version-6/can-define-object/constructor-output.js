@@ -1,2 +1,2 @@
-const Bar = new DefineObject({});
-const Person = new DefineObject({ name: 'Fred' });
+const Bar = new ObservableObject({});
+const Person = new ObservableObject({ name: 'Fred' });

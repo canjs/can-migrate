@@ -1,7 +1,7 @@
 import makeDebug from 'debug';
 import fileTransform from '../../../utils/fileUtil';
 
-const replacementName = 'DefineObject';
+const replacementName = 'ObservableObject';
 
 function transformer(file, api) {
   const debug = makeDebug(`can-migrate:can-define-object/constructor:${file.path}`);
@@ -11,7 +11,7 @@ function transformer(file, api) {
   return fileTransform(file, function (source) {
     const root = j(source);
 
-    // Transform any `new DefineMap` into `new DefineObject`
+    // Transform any `new DefineMap` into `new ObservableObject`
     root
     .find(j.NewExpression, {
       callee: {

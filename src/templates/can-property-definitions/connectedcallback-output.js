@@ -1,9 +1,9 @@
-class analogClock extends StacheDefineElement {
+class analogClock extends StacheElement {
   static get view() {
     return `<canvas this:to="canvasElement" id="analog" width="255" height="255"></canvas>`;
   }
 
-  static get define() {
+  static get props() {
     return {
       // the canvas element
       canvasElement: HTMLCanvasElement,
@@ -30,12 +30,12 @@ class analogClock extends StacheDefineElement {
 };
 customElements.define("analog-clock", analog-clock);
 
-class MyApp extends StacheDefineElement {
+class MyApp extends StacheElement {
   static get view() {
     return ``;
   }
 
-  static get define() {}
+  static get props() {}
 
   connected() {
     this.addEventListener('click', (ev) => ev.preventDefault());

@@ -1,1 +1,1 @@
-import { DefineList, DefineMap, domEvents, enterEvent, fixture, realtimeRestModel, route, StacheDefineElement } from '//unpkg.com/can@5/everything.mjs';
+import { DefineList, DefineMap, domEvents, enterEvent, fixture, realtimeRestModel, route, StacheElement } from '//unpkg.com/can@5/everything.mjs';
