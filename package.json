@@ -1,11 +1,12 @@
 {
   "name": "can-migrate",
-  "version": "2.2.4",
+  "version": "2.3.0-pre.10",
   "description": "Codemods to simplify upgrading CanJS.",
   "main": "lib/",
   "scripts": {
     "preversion": "npm test",
     "publish": "git push origin --tags && git push origin",
+    "release:pre": "npm version prerelease && npm publish --tag=pre",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
@@ -25,7 +26,8 @@
     "url": "git+https://github.com/canjs/can-migrate.git"
   },
   "bin": {
-    "can-migrate": "./bin/can-migrate.js"
+    "can-migrate": "./bin/can-migrate.js",
+    "can-migrate-generate": "./bin/can-migrate-generate.js"
   },
   "directories": {
     "lib": "lib"
@@ -48,6 +50,7 @@
   },
   "homepage": "https://github.com/canjs/can-migrate#readme",
   "dependencies": {
+    "can-string": "^1.1.0",
     "can-view-parser": "^4.0.2",
     "deep-assign": "^3.0.0",
     "disparity": "^2.0.0",
@@ -56,7 +59,7 @@
     "globby": "^7.1.1",
     "is-git-clean": "^1.1.0",
     "js-codemod": "^7.0.0",
-    "jscodeshift": "^0.4.0",
+    "jscodeshift": "^0.6.4",
     "jscodeshift-imports": "^1.0.1",
     "jsesc": "^2.2.0",
     "meow": "^4.0.0",
@@ -68,7 +71,7 @@
     "babel-core": "^6.17.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.16.0",
-    "ejs": "^2.5.2",
+    "ejs": "^2.6.2",
     "js-beautify": "^1.6.4",
     "jshint": "^2.9.3",
     "mocha": "^5.0.0"

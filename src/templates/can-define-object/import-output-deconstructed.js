@@ -1,0 +1,1 @@
+import { Component, ObservableObject } from 'can';

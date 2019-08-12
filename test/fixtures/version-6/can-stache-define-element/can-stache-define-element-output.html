@@ -1,0 +1,58 @@
+<script>
+  class MyApp extends StacheElement {
+    static get view() {
+      return `CanJS {{feels}} modules`;
+    }
+
+    static get props() {
+      return {
+        feels: { default: "😍" }
+      };
+    }
+  };
+  customElements.define('my-app', MyApp);
+</script>
+
+<script>
+  class MyWidget extends StacheElement {
+    static get view() {
+      return `CanJS {{feels}} modules`;
+    }
+
+    static get props() {
+      return {
+        theFeeling: {
+          type: 'string',
+          default: '😍'
+        },
+        
+        get feels () {
+          return this.theFeeling
+        },
+        set feels (newVal) {
+          this.theFeeling = newVal
+        }
+      };
+    }
+  };
+  customElements.define('my-widget', MyWidget);
+</script>
+
+<script>
+{
+  "foo": "bar"
+}
+...
+</script>
+
+<script type='text/stache' id='chat-template'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        {{# eq(page, 'home') }}
+          <h1>Home</h1>
+        {{/ eq }}
+      </div>
+    </div>
+  </div>
+</script>

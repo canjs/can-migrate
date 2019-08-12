@@ -11,6 +11,6 @@ MyStache.prototype.say = function(){};
 function speak(MyStache) {};
 const say = function(MyStache) {};
 Object.assign({}, MyStache);
-const map = new MyStache({
+const secondMap = new MyStache({
   MyStache: MyStache
 });

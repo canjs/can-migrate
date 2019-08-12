@@ -1,4 +1,3 @@
-
 const path = require('path');
 const execa = require('execa');
 const fs = require('fs');
@@ -11,7 +10,7 @@ mockRoot.prototype.toSource = function() { return this.source; };
 mockRoot.prototype.forEach = noop;
 mockRoot.prototype.filter = noop;
 let mockJscodeshift = function(source) { return new mockRoot(source); };
-mockJscodeshift.CallExperssion = noop;
+mockJscodeshift.CallExpression = noop;
 mockJscodeshift.Identifier = noop;
 mockJscodeshift.identifier = noop;
 mockJscodeshift.literal = noop;
@@ -32,7 +31,7 @@ function getResultCountFromString(count) {
   return +count;
 }
 
-function parseJsCodeShiftResults(results) {
+function parseJsCodeShiftResults(results, invalidFileSource) {
   const errors = getResultCountFromString(results.match(/(\d)* errors./));
   const unmodified = getResultCountFromString(results.match(/(\d)* unmodified./));
   const skipped = getResultCountFromString(results.match(/(\d)* skipped./));
@@ -40,7 +39,7 @@ function parseJsCodeShiftResults(results) {
 
   const total = errors + unmodified + skipped + ok;
 
-  return `${ok} / ${total} files modified (${errors} errors).`;
+  return `${ok} / ${total} files modified (${errors + invalidFileSource} errors).`;
 }
 
 function runTransform(transform, paths, args, apply) {
@@ -61,10 +60,9 @@ function runTransform(transform, paths, args, apply) {
   };
 
   for (let i = 0; i < paths.length; i++) {
-    if(path.extname(paths[i]) === '.js') {
+    if (path.extname(paths[i]) === '.js' || transformFunc.forceJavaScriptTransform) {
       jsPaths.push(paths[i]);
-    }
-    else {
+    } else {
       otherPaths.push(paths[i]);
     }
   }
@@ -90,11 +88,16 @@ function runTransform(transform, paths, args, apply) {
     args = args.concat(jsPaths);
 
     const resultsStream = new stream.Writable();
+    let invalidFileSource = 0;
     resultsStream._write = function (chunk, encoding, done) {
       const msg = chunk.toString();
+      if (msg.indexOf('File source invalid:') > -1) {
+        console.log(msg);
+        invalidFileSource++;
+      }
       if (args.indexOf('-s') < 0) {
         if (msg.indexOf('Results:') > -1) {
-          console.log(parseJsCodeShiftResults(msg));
+          console.log(parseJsCodeShiftResults(msg, invalidFileSource));
         }
       }
       done();

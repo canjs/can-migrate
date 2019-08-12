@@ -1,0 +1,29 @@
+<script src="../foo/bar/steal/steal.js">
+class Bar extends ObservableArray {
+  static get props() {
+    return {
+      '#': Item,
+      items: {
+        type: Array,
+        default: Array
+      },
+      name: 'string'
+    };
+  }
+};
+</script>
+
+<script src="../foo/bar/steal/steal.js">
+class Bar extends ObservableObject {
+  static get props() {
+    return {
+      '#': Item,
+      items: {
+        type: Array,
+        default: Array
+      },
+      name: 'string'
+    };
+  }
+};
+</script>

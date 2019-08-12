@@ -11,6 +11,6 @@ MyEvent.prototype.say = function(){};
 function speak(MyEvent) {};
 const say = function(MyEvent) {};
 Object.assign({}, MyEvent);
-const map = new MyEvent({
+const secondMap = new MyEvent({
   MyEvent: MyEvent
 });

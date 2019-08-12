@@ -36,7 +36,7 @@ let ViewModelTwo = DefineMap.extend("NamedDefineMap", {
   }
 });
 
-let ViewModel = new DefineMap({
+let ViewModelThree = new DefineMap({
   myProp: {
     value: 'something'
   }

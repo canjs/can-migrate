@@ -11,6 +11,6 @@ MyViewScope.prototype.say = function(){};
 function speak(MyViewScope) {};
 const say = function(MyViewScope) {};
 Object.assign({}, MyViewScope);
-const map = new MyViewScope({
+const secondMap = new MyViewScope({
   MyViewScope: MyViewScope
 });

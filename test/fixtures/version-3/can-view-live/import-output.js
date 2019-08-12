@@ -11,6 +11,6 @@ canViewLive.prototype.say = function(){};
 function speak(MyViewLive) {};
 const say = function(MyViewLive) {};
 Object.assign({}, canViewLive);
-const map = new canViewLive({
+const secondMap = new canViewLive({
   MyViewLive: canViewLive
 });

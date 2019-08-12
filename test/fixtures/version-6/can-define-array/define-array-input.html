@@ -1,0 +1,55 @@
+<script>
+const MyOtherList = DefineList.extend({
+  '#': 'string',
+
+  get itemCount () {
+    return this.items;
+  }
+});
+</script>
+
+<script>
+Messages.List = DefineList.extend({
+  '#': 'string',
+
+  get itemCount () {
+    return this.items;
+  }
+});
+
+MyComponent({
+  List: Messages.List
+});
+</script>
+
+<script>
+Users.List = DefineList.extend('UserList', {
+  '#': 'string',
+
+  get itemCount () {
+    return this.items;
+  }
+});
+
+MyComponent({
+  List: Users.List
+});
+</script>
+
+<script>
+Users.List = DefineList.extend('UserList', {
+  '#': 'string',
+
+  get itemCount () {
+    return this.items;
+  }
+});
+
+MyComponent({
+  List: Users.List
+});
+
+class UserList extends StacheElement {
+  static get props () {}
+}
+</script>

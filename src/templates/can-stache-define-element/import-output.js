@@ -1,0 +1,1 @@
+import StacheElement from 'can-stache-define-element';

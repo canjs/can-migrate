@@ -1,0 +1,1 @@
+import ObservableObject from 'can-define-object';

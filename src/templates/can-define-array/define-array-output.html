@@ -1,0 +1,71 @@
+<script>
+class MyOtherList extends ObservableArray {
+  static get props() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+</script>
+
+<script>
+class MessagesList extends ObservableArray {
+  static get props() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+
+MyComponent({
+  List: MessagesList
+});
+</script>
+
+<script>
+class UserList extends ObservableArray {
+  static get props() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+
+MyComponent({
+  List: UserList
+});
+</script>
+
+<script>
+class UserListModel extends ObservableArray {
+  static get props() {
+    return {
+      '#': 'string',
+
+      get itemCount () {
+        return this.items;
+      }
+    };
+  }
+}
+
+MyComponent({
+  List: UserListModel
+});
+
+class UserList extends StacheElement {
+  static get props () {}
+}
+</script>

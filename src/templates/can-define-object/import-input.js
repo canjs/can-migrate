@@ -1,0 +1,1 @@
+import DefineMap from 'can-define/map/map';

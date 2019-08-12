@@ -11,6 +11,6 @@ Construct.prototype.say = function(){};
 function speak(MyConstruct) {};
 const say = function(MyConstruct) {};
 Object.assign({}, Construct);
-const map = new Construct({
+const secondMap = new Construct({
   MyConstruct: Construct
 });

@@ -3,7 +3,6 @@
 
 const path = require('path');
 const meow = require('meow');
-const execa = require('execa');
 const globby = require('globby');
 const series = require('promise-map-series');
 const isGitClean = require('is-git-clean');
@@ -103,6 +102,20 @@ globby(cli.input).then((paths) => {
     toApply = toApply.filter((transform) => {
       return transform.version.indexOf(cli.flags.canVersion) !== -1;
     });
+
+    // Sort by order prop (if exists)
+    const { ordered, unordered } = toApply.reduce(({ ordered, unordered }, current) => {
+      if (current.order) {
+        ordered.push(current);
+      } else {
+        unordered.push(current);
+      }
+      
+      return { ordered, unordered };
+    }, { ordered: [], unordered: [] });
+
+    toApply = ordered.sort((a, b) => a.order - b.order);
+    toApply.push(...unordered);
   }
 
   if (cli.flags.transform) {

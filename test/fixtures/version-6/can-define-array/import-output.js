@@ -1,0 +1,1 @@
+import ObservableArray from 'can-define-array';

@@ -1,0 +1,48 @@
+<script>
+  Component.extend({
+    tag: "my-app",
+    view: `CanJS {{feels}} modules`,
+    ViewModel: {
+      feels: { default: "😍" }
+    }
+  });
+</script>
+
+<script>
+  Component.extend({
+    tag: "my-widget",
+    view: `CanJS {{feels}} modules`,
+    ViewModel: {
+      theFeeling: {
+        type: 'string',
+        default: '😍'
+      },
+      
+      get feels () {
+        return this.theFeeling
+      },
+      set feels (newVal) {
+        this.theFeeling = newVal
+      }
+    }
+  });
+</script>
+
+<script>
+{
+  "foo": "bar"
+}
+...
+</script>
+
+<script type='text/stache' id='chat-template'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        {{# eq(page, 'home') }}
+          <h1>Home</h1>
+        {{/ eq }}
+      </div>
+    </div>
+  </div>
+</script>

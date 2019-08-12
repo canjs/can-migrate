@@ -10,6 +10,14 @@ CLI & codemod scripts for upgrading to CanJS 3.
 
 Check out the [Using Codemods guide on canjs.com](https://canjs.com/doc/guides/upgrade/using-codemods.html) for an overview of this project, how to install `can-migrate`, how to use the CLI, and recommendations for how to migrate your app.
 
+## Generate template and tests
+
+There is now a quick and easy way to create a transform and the associated tests and diff files. Running:
+```
+./bin/can-migrate-generate.js <folder> <transform> --can-version=6
+```
+Will either add the files to an existing folder or create a folder and add the files. It will create `transform.js` | `transform-test.js` | `transform-input.js` | `transform-output.js` as well as adding the information into the `transforms.json`.
+
 ## transforms.json
 
 There is one entry in the array per type of template/test required to generate the transforms.
