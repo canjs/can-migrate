@@ -1,0 +1,59 @@
+<script>
+  import { ObservableObject } from "can";
+
+  class Bar extends ObservableObject {
+    static get props() {
+      return {
+        '#': Item,
+        items: {
+          type: Array,
+          default: Array
+        },
+        name: 'string'
+      };
+    }
+
+    static get propertyDefaults() {
+      return Item;
+    }
+  }
+</script>
+
+<script>
+  import { ObservableObject } from "can";
+  import DeepObservable from "can-deep-observable";
+
+  class Bar extends ObservableObject {
+    static get props() {
+      return {
+        '#': Item,
+        items: {
+          type: Array,
+          default: Array
+        },
+        name: 'string'
+      };
+    }
+
+    static get propertyDefaults() {
+      return DeepObservable;
+    }
+  }
+
+  class Foo extends ObservableObject {
+    static get props() {
+      return {
+        '#': Item,
+        items: {
+          type: Array,
+          default: Array
+        },
+        name: 'string'
+      };
+    }
+
+    static get propertyDefaults() {
+      return DeepObservable;
+    }
+  }
+</script>
