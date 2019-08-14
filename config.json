@@ -4,6 +4,7 @@
     "can-stache-define-element": "StacheElement",
     "can-define-object": "ObservableObject",
     "can-define-array": "ObservableArray",
+    "can-deep-observable": "DeepObservable",
     "can-construct": "Construct",
     "can-control": "Control",
     "can-list": "CanList",
