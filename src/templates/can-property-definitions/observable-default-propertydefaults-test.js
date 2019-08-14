@@ -3,10 +3,10 @@ const utils = require('../../../../test/utils');
 const transforms = require('../../../../');
 
 const toTest = transforms.filter(function(transform) {
-  return transform.name === 'can-property-definitions/observable-object-default-propertydefaults.js';
+  return transform.name === 'can-property-definitions/observable-default-propertydefaults.js';
 })[0];
 
-describe('can-property-definitions/observable-object-default-propertydefaults', function() {
+describe('can-property-definitions/observable-default-propertydefaults', function() {
 
   it('will set propertyDefaults if not already set', function() {
     const fn = require(toTest.file);

@@ -1760,39 +1760,39 @@
   {
     "copy": [
       {
-        "input": "can-property-definitions/observable-object-default-propertydefaults.js",
-        "outputPath": "can-property-definitions/observable-object-default-propertydefaults.js",
+        "input": "can-property-definitions/observable-default-propertydefaults.js",
+        "outputPath": "can-property-definitions/observable-default-propertydefaults.js",
         "type": "transform",
         "version": "6",
         "order": 55
       },
       {
-        "input": "can-property-definitions/observable-object-default-propertydefaults-input.js",
-        "outputPath": "can-property-definitions/observable-object-default-propertydefaults-input.js",
+        "input": "can-property-definitions/observable-default-propertydefaults-input.js",
+        "outputPath": "can-property-definitions/observable-default-propertydefaults-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-property-definitions/observable-object-default-propertydefaults-output.js",
-        "outputPath": "can-property-definitions/observable-object-default-propertydefaults-output.js",
+        "input": "can-property-definitions/observable-default-propertydefaults-output.js",
+        "outputPath": "can-property-definitions/observable-default-propertydefaults-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-property-definitions/observable-object-default-propertydefaults-input.html",
-        "outputPath": "can-property-definitions/observable-object-default-propertydefaults-input.html",
+        "input": "can-property-definitions/observable-default-propertydefaults-input.html",
+        "outputPath": "can-property-definitions/observable-default-propertydefaults-input.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-property-definitions/observable-object-default-propertydefaults-output.html",
-        "outputPath": "can-property-definitions/observable-object-default-propertydefaults-output.html",
+        "input": "can-property-definitions/observable-default-propertydefaults-output.html",
+        "outputPath": "can-property-definitions/observable-default-propertydefaults-output.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-property-definitions/observable-object-default-propertydefaults-test.js",
-        "outputPath": "can-property-definitions/observable-object-default-propertydefaults-test.js",
+        "input": "can-property-definitions/observable-default-propertydefaults-test.js",
+        "outputPath": "can-property-definitions/observable-default-propertydefaults-test.js",
         "type": "test",
         "version": "6"
       }
