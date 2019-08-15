@@ -31,6 +31,8 @@ Error: ${error.message}.`);
       return transformMd(src, safeTransform);
     case 'js':
       return safeTransform(src);
+    case 'mjs':
+      return safeTransform(src);
     case 'html':
       return transformHtml(src, safeTransform);
   }
