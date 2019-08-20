@@ -556,210 +556,210 @@
   {
     "copy": [
       {
-        "input": "can-define-object/import-input.js",
-        "outputPath": "can-define-object/import-input.js",
+        "input": "can-observable-object/import-input.js",
+        "outputPath": "can-observable-object/import-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/import-output.js",
-        "outputPath": "can-define-object/import-output.js",
+        "input": "can-observable-object/import-output.js",
+        "outputPath": "can-observable-object/import-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/import-input-deconstructed.js",
-        "outputPath": "can-define-object/import-input-deconstructed.js",
+        "input": "can-observable-object/import-input-deconstructed.js",
+        "outputPath": "can-observable-object/import-input-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/import-output-deconstructed.js",
-        "outputPath": "can-define-object/import-output-deconstructed.js",
+        "input": "can-observable-object/import-output-deconstructed.js",
+        "outputPath": "can-observable-object/import-output-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/import-input.md",
-        "outputPath": "can-define-object/import-input.md",
+        "input": "can-observable-object/import-input.md",
+        "outputPath": "can-observable-object/import-input.md",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/import-output.md",
-        "outputPath": "can-define-object/import-output.md",
+        "input": "can-observable-object/import-output.md",
+        "outputPath": "can-observable-object/import-output.md",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/import-test.js",
-        "outputPath": "can-define-object/import-test.js",
+        "input": "can-observable-object/import-test.js",
+        "outputPath": "can-observable-object/import-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-define-object/import.js",
-        "outputPath": "can-define-object/import.js",
+        "input": "can-observable-object/import.js",
+        "outputPath": "can-observable-object/import.js",
         "type": "transform",
         "version": "6",
         "order": 5
       },
       {
-        "input": "can-define-array/import-input.js",
-        "outputPath": "can-define-array/import-input.js",
+        "input": "can-observable-array/import-input.js",
+        "outputPath": "can-observable-array/import-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/import-output.js",
-        "outputPath": "can-define-array/import-output.js",
+        "input": "can-observable-array/import-output.js",
+        "outputPath": "can-observable-array/import-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/import-input-deconstructed.js",
-        "outputPath": "can-define-array/import-input-deconstructed.js",
+        "input": "can-observable-array/import-input-deconstructed.js",
+        "outputPath": "can-observable-array/import-input-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/import-output-deconstructed.js",
-        "outputPath": "can-define-array/import-output-deconstructed.js",
+        "input": "can-observable-array/import-output-deconstructed.js",
+        "outputPath": "can-observable-array/import-output-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/import-test.js",
-        "outputPath": "can-define-array/import-test.js",
+        "input": "can-observable-array/import-test.js",
+        "outputPath": "can-observable-array/import-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-define-array/import.js",
-        "outputPath": "can-define-array/import.js",
+        "input": "can-observable-array/import.js",
+        "outputPath": "can-observable-array/import.js",
         "type": "transform",
         "version": "6",
         "order": 6
       },
       {
-        "input": "can-stache-define-element/input.js",
-        "outputPath": "can-stache-define-element/can-stache-define-element-input.js",
+        "input": "can-stache-element/input.js",
+        "outputPath": "can-stache-element/can-stache-element-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/output.js",
-        "outputPath": "can-stache-define-element/can-stache-define-element-output.js",
+        "input": "can-stache-element/output.js",
+        "outputPath": "can-stache-element/can-stache-element-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/input.md",
-        "outputPath": "can-stache-define-element/can-stache-define-element-input.md",
+        "input": "can-stache-element/input.md",
+        "outputPath": "can-stache-element/can-stache-element-input.md",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/output.md",
-        "outputPath": "can-stache-define-element/can-stache-define-element-output.md",
+        "input": "can-stache-element/output.md",
+        "outputPath": "can-stache-element/can-stache-element-output.md",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/input.html",
-        "outputPath": "can-stache-define-element/can-stache-define-element-input.html",
+        "input": "can-stache-element/input.html",
+        "outputPath": "can-stache-element/can-stache-element-input.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/output.html",
-        "outputPath": "can-stache-define-element/can-stache-define-element-output.html",
+        "input": "can-stache-element/output.html",
+        "outputPath": "can-stache-element/can-stache-element-output.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/can-stache-define-element-test.js",
-        "outputPath": "can-stache-define-element/can-stache-define-element-test.js",
+        "input": "can-stache-element/can-stache-element-test.js",
+        "outputPath": "can-stache-element/can-stache-element-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/can-stache-define-element.js",
-        "outputPath": "can-stache-define-element/can-stache-define-element.js",
+        "input": "can-stache-element/can-stache-element.js",
+        "outputPath": "can-stache-element/can-stache-element.js",
         "type": "transform",
         "version": "6",
         "order": 1
       },
       {
-        "input": "can-define-object/define-object-input.js",
-        "outputPath": "can-define-object/define-object-input.js",
+        "input": "can-observable-object/observable-object-input.js",
+        "outputPath": "can-observable-object/observable-object-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/define-object-output.js",
-        "outputPath": "can-define-object/define-object-output.js",
+        "input": "can-observable-object/observable-object-output.js",
+        "outputPath": "can-observable-object/observable-object-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/define-object-input.md",
-        "outputPath": "can-define-object/define-object-input.md",
+        "input": "can-observable-object/observable-object-input.md",
+        "outputPath": "can-observable-object/observable-object-input.md",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/define-object-output.md",
-        "outputPath": "can-define-object/define-object-output.md",
+        "input": "can-observable-object/observable-object-output.md",
+        "outputPath": "can-observable-object/observable-object-output.md",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/define-object-test.js",
-        "outputPath": "can-define-object/define-object-test.js",
+        "input": "can-observable-object/observable-object-test.js",
+        "outputPath": "can-observable-object/observable-object-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-define-object/define-object.js",
-        "outputPath": "can-define-object/define-object.js",
+        "input": "can-observable-object/observable-object.js",
+        "outputPath": "can-observable-object/observable-object.js",
         "type": "transform",
         "version": "6",
         "order": 3
       },
       {
-        "input": "can-define-array/define-array-input.js",
-        "outputPath": "can-define-array/define-array-input.js",
+        "input": "can-observable-array/observable-array-input.js",
+        "outputPath": "can-observable-array/observable-array-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/define-array-output.js",
-        "outputPath": "can-define-array/define-array-output.js",
+        "input": "can-observable-array/observable-array-output.js",
+        "outputPath": "can-observable-array/observable-array-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/define-array-input.html",
-        "outputPath": "can-define-array/define-array-input.html",
+        "input": "can-observable-array/observable-array-input.html",
+        "outputPath": "can-observable-array/observable-array-input.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/define-array-output.html",
-        "outputPath": "can-define-array/define-array-output.html",
+        "input": "can-observable-array/observable-array-output.html",
+        "outputPath": "can-observable-array/observable-array-output.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/define-array-test.js",
-        "outputPath": "can-define-array/define-array-test.js",
+        "input": "can-observable-array/observable-array-test.js",
+        "outputPath": "can-observable-array/observable-array-test.js",
         "type": "test",
         "version": "6"
       },
       {
-        "input": "can-define-array/define-array.js",
-        "outputPath": "can-define-array/define-array.js",
+        "input": "can-observable-array/observable-array.js",
+        "outputPath": "can-observable-array/observable-array.js",
         "type": "transform",
         "version": "6",
         "order": 4
@@ -1453,39 +1453,39 @@
   {
     "copy": [
       {
-        "input": "can-stache-define-element/import.js",
-        "outputPath": "can-stache-define-element/import.js",
+        "input": "can-stache-element/import.js",
+        "outputPath": "can-stache-element/import.js",
         "type": "transform",
         "version": "6",
         "order": 2
       },
       {
-        "input": "can-stache-define-element/import-input.js",
-        "outputPath": "can-stache-define-element/import-input.js",
+        "input": "can-stache-element/import-input.js",
+        "outputPath": "can-stache-element/import-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/import-output.js",
-        "outputPath": "can-stache-define-element/import-output.js",
+        "input": "can-stache-element/import-output.js",
+        "outputPath": "can-stache-element/import-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/import-input-deconstructed.js",
-        "outputPath": "can-stache-define-element/import-input-deconstructed.js",
+        "input": "can-stache-element/import-input-deconstructed.js",
+        "outputPath": "can-stache-element/import-input-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/import-output-deconstructed.js",
-        "outputPath": "can-stache-define-element/import-output-deconstructed.js",
+        "input": "can-stache-element/import-output-deconstructed.js",
+        "outputPath": "can-stache-element/import-output-deconstructed.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-stache-define-element/import-test.js",
-        "outputPath": "can-stache-define-element/import-test.js",
+        "input": "can-stache-element/import-test.js",
+        "outputPath": "can-stache-element/import-test.js",
         "type": "test",
         "version": "6"
       }
@@ -1581,43 +1581,43 @@
   {
     "copy": [
       {
-        "input": "can-property-definitions/define-array-property-default.js",
-        "outputPath": "can-property-definitions/define-array-property-default.js",
+        "input": "can-property-definitions/observable-array-property-default.js",
+        "outputPath": "can-property-definitions/observable-array-property-default.js",
         "type": "transform",
         "version": "6",
         "order": 30
       },
       {
-        "input": "can-property-definitions/define-array-property-default-input.js",
-        "outputPath": "can-property-definitions/define-array-property-default-input.js",
+        "input": "can-property-definitions/observable-array-property-default-input.js",
+        "outputPath": "can-property-definitions/observable-array-property-default-input.js",
         "type": "fixture",
         "version": "6",
         "order": 30
       },
       {
-        "input": "can-property-definitions/define-array-property-default-output.js",
-        "outputPath": "can-property-definitions/define-array-property-default-output.js",
+        "input": "can-property-definitions/observable-array-property-default-output.js",
+        "outputPath": "can-property-definitions/observable-array-property-default-output.js",
         "type": "fixture",
         "version": "6",
         "order": 30
       },
       {
-        "input": "can-property-definitions/define-array-property-default-input.html",
-        "outputPath": "can-property-definitions/define-array-property-default-input.html",
+        "input": "can-property-definitions/observable-array-property-default-input.html",
+        "outputPath": "can-property-definitions/observable-array-property-default-input.html",
         "type": "fixture",
         "version": "6",
         "order": 30
       },
       {
-        "input": "can-property-definitions/define-array-property-default-output.html",
-        "outputPath": "can-property-definitions/define-array-property-default-output.html",
+        "input": "can-property-definitions/observable-array-property-default-output.html",
+        "outputPath": "can-property-definitions/observable-array-property-default-output.html",
         "type": "fixture",
         "version": "6",
         "order": 30
       },
       {
-        "input": "can-property-definitions/define-array-property-default-test.js",
-        "outputPath": "can-property-definitions/define-array-property-default-test.js",
+        "input": "can-property-definitions/observable-array-property-default-test.js",
+        "outputPath": "can-property-definitions/observable-array-property-default-test.js",
         "type": "test",
         "version": "6",
         "order": 30
@@ -1702,27 +1702,27 @@
   {
     "copy": [
       {
-        "input": "can-define-array/array-constructor.js",
-        "outputPath": "can-define-array/array-constructor.js",
+        "input": "can-observable-array/array-constructor.js",
+        "outputPath": "can-observable-array/array-constructor.js",
         "type": "transform",
         "version": "6",
         "order": 45
       },
       {
-        "input": "can-define-array/array-constructor-input.js",
-        "outputPath": "can-define-array/array-constructor-input.js",
+        "input": "can-observable-array/array-constructor-input.js",
+        "outputPath": "can-observable-array/array-constructor-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/array-constructor-output.js",
-        "outputPath": "can-define-array/array-constructor-output.js",
+        "input": "can-observable-array/array-constructor-output.js",
+        "outputPath": "can-observable-array/array-constructor-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-array/array-constructor-test.js",
-        "outputPath": "can-define-array/array-constructor-test.js",
+        "input": "can-observable-array/array-constructor-test.js",
+        "outputPath": "can-observable-array/array-constructor-test.js",
         "type": "test",
         "version": "6"
       }
@@ -1731,27 +1731,27 @@
   {
     "copy": [
       {
-        "input": "can-define-object/constructor.js",
-        "outputPath": "can-define-object/constructor.js",
+        "input": "can-observable-object/constructor.js",
+        "outputPath": "can-observable-object/constructor.js",
         "type": "transform",
         "version": "6",
         "order": 50
       },
       {
-        "input": "can-define-object/constructor-input.js",
-        "outputPath": "can-define-object/constructor-input.js",
+        "input": "can-observable-object/constructor-input.js",
+        "outputPath": "can-observable-object/constructor-input.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/constructor-output.js",
-        "outputPath": "can-define-object/constructor-output.js",
+        "input": "can-observable-object/constructor-output.js",
+        "outputPath": "can-observable-object/constructor-output.js",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-define-object/constructor-test.js",
-        "outputPath": "can-define-object/constructor-test.js",
+        "input": "can-observable-object/constructor-test.js",
+        "outputPath": "can-observable-object/constructor-test.js",
         "type": "test",
         "version": "6"
       }
