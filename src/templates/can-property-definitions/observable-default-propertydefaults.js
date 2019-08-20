@@ -6,8 +6,8 @@ function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-property-definitions/observable-default-propertydefaults:${file.path}`);
   const j = api.jscodeshift;
   const config = getConfig(options.config);
-  const extendedObjectClassName = config.moduleToName['can-define-object'];
-  const extendedArrayClassName = config.moduleToName['can-define-array'];
+  const extendedObjectClassName = config.moduleToName['can-observable-object'];
+  const extendedArrayClassName = config.moduleToName['can-observable-array'];
   const propertyDefaultDeepObservable = config.moduleToName['can-deep-observable'];
 
   // Transform different file types

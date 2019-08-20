@@ -1,9 +1,9 @@
 {
   "moduleToName": {
     "can-component": "Component",
-    "can-stache-define-element": "StacheElement",
-    "can-define-object": "ObservableObject",
-    "can-define-array": "ObservableArray",
+    "can-stache-element": "StacheElement",
+    "can-observable-object": "ObservableObject",
+    "can-observable-array": "ObservableArray",
     "can-deep-observable": "DeepObservable",
     "can-construct": "Construct",
     "can-control": "Control",

@@ -19,7 +19,7 @@ const cli = meow(`
   --order           order the transform should be applied on
 
   Examples
-  can-migrate-generate can-define-array define-array --can-version=6
+  can-migrate-generate can-observable-array observable-array --can-version=6
   can-migrate-generate can-blob import --can-version=6
   can-migrate-generate can-blob import --can-version=6 --order=20
 `, {
