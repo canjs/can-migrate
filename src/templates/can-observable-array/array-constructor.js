@@ -11,16 +11,14 @@ function transformer(file, api) {
   return fileTransform(file, function (source) {
     const root = j(source);
 
-    // Transform any `new ObservableArray`
-    replaceWithSpread(j, root, replacementName, debug);
     // Replace any `new DefineList` with `new ObservableArray`
-    replaceWithSpread(j, root, 'DefineList', debug);
+    replaceWithObservable(j, root, 'DefineList', debug);
 
     return root.toSource();
   });
 }
 
-function replaceWithSpread(j, root, name, debug) {
+function replaceWithObservable(j, root, name, debug) {
   root
     .find(j.NewExpression, {
       callee: {
@@ -28,18 +26,8 @@ function replaceWithSpread(j, root, name, debug) {
       }
     })
     .forEach(path => {
-      // Get the current arguments
-      const args = path.value.arguments;
-      if (args.length) {
-        // Replace the current new expression with a new one
-        // using the spread operator to spread the args
-        j(path).replaceWith(j.newExpression(
-          j.identifier(replacementName),
-          [j.spreadElement(...args)]
-        ));
-
-        debug(`Replacing ${replacementName}([]) with ${replacementName}(...[])`);
-      } else if (path.value.callee.name !== replacementName) {
+      if (path.value.callee.name !== replacementName) {
+        debug(`Replacing ${path.value.callee.name} with ${replacementName}`);
         // Update the name
         path.value.callee.name = replacementName;
       }
