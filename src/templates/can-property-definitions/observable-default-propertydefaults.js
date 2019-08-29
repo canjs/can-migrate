@@ -8,6 +8,7 @@ function transformer(file, api, options) {
   const config = getConfig(options.config);
   const extendedObjectClassName = config.moduleToName['can-observable-object'];
   const extendedArrayClassName = config.moduleToName['can-observable-array'];
+  const extendedStacheClassName = config.moduleToName['can-stache-element'];
   const propertyDefaultDeepObservable = config.moduleToName['can-deep-observable'];
 
   // Transform different file types
@@ -21,34 +22,7 @@ function transformer(file, api, options) {
           name: extendedObjectClassName
         }
       })
-      .forEach(path => {
-        const propertyDefaults = j(path).find(j.MethodDefinition, {
-          key: {
-            name: 'propertyDefaults'
-          },
-          kind: 'get',
-          static: true
-        });
-        // Only create a propertyDefault if the instance doesn't already have one
-        if (!propertyDefaults.length) {
-          debug(`Setting propertyDefaults to "${propertyDefaultDeepObservable}"`);
-
-          path.value.body.body.push(
-            j.methodDefinition(
-              'get',
-              j.identifier('propertyDefaults'),
-              j.functionExpression(
-                null,
-                [],
-                j.blockStatement([j.returnStatement(j.identifier(propertyDefaultDeepObservable))])
-              ),
-              true
-            )
-          );
-
-          addImport({ j, root, importName: propertyDefaultDeepObservable });
-        }
-      });
+      .forEach(path => checkAndAddPropertyDefaults({ j, debug, path, root, propertyDefaultDeepObservable, defaultName: 'propertyDefaults' }));
 
       // Update ObservableArray
       root
@@ -57,34 +31,16 @@ function transformer(file, api, options) {
           name: extendedArrayClassName
         }
       })
-      .forEach(path => {
-        const propertyDefaults = j(path).find(j.MethodDefinition, {
-          key: {
-            name: 'items'
-          },
-          kind: 'get',
-          static: true
-        });
-        // Only create a propertyDefault if the instance doesn't already have one
-        if (!propertyDefaults.length) {
-          debug(`Setting items to "${propertyDefaultDeepObservable}"`);
+      .forEach(path => checkAndAddPropertyDefaults({ j, debug, path, root, propertyDefaultDeepObservable, defaultName: 'items' }));
 
-          path.value.body.body.push(
-            j.methodDefinition(
-              'get',
-              j.identifier('items'),
-              j.functionExpression(
-                null,
-                [],
-                j.blockStatement([j.returnStatement(j.identifier(propertyDefaultDeepObservable))])
-              ),
-              true
-            )
-          );
-
-          addImport({ j, root, importName: propertyDefaultDeepObservable });
+      // Update StacheElement
+      root
+      .find(j.ClassDeclaration, {
+        superClass: {
+          name: extendedStacheClassName
         }
-      });
+      })
+      .forEach(path => checkAndAddPropertyDefaults({ j, debug, path, root, propertyDefaultDeepObservable, defaultName: 'propertyDefaults' }));
 
       return root.toSource();
     });
@@ -111,6 +67,35 @@ function addImport ({ j, importName, root }) {
   } else if (!imports.length) {
     // Add to beginning if we don't have imports.. which is unlikely
     root.get().node.program.body.unshift(addImport);
+  }
+}
+
+function checkAndAddPropertyDefaults ({ j, debug, path, root, propertyDefaultDeepObservable, defaultName }) {
+  const propertyDefaults = j(path).find(j.MethodDefinition, {
+    key: {
+      name: defaultName
+    },
+    kind: 'get',
+    static: true
+  });
+  // Only create a propertyDefault if the instance doesn't already have one
+  if (!propertyDefaults.length) {
+    debug(`Setting items to "${propertyDefaultDeepObservable}"`);
+
+    path.value.body.body.push(
+      j.methodDefinition(
+        'get',
+        j.identifier(defaultName),
+        j.functionExpression(
+          null,
+          [],
+          j.blockStatement([j.returnStatement(j.identifier(propertyDefaultDeepObservable))])
+        ),
+        true
+      )
+    );
+
+    addImport({ j, root, importName: propertyDefaultDeepObservable });
   }
 }
 

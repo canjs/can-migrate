@@ -95,3 +95,27 @@
     }
   }
 </script>
+
+<script>
+  import { StacheElement } from "can";
+  import DeepObservable from "can-deep-observable";
+
+  class TheTag extends StacheElement {
+    static get view() {
+      return `
+        {{this.foo}}
+      `;
+    }
+
+    static get props() {
+      return {
+        foo: type.maybeConvert(String),
+        bar: type.maybeConvert(D)
+      };
+    }
+
+    static get propertyDefaults() {
+      return DeepObservable;
+    }
+  }
+</script>
