@@ -87,3 +87,22 @@
     }
   }
 </script>
+
+<script>
+  import { StacheElement } from "can";
+
+  class TheTag extends StacheElement {
+    static get view() {
+      return `
+        {{this.foo}}
+      `;
+    }
+
+  static get props() {
+    return {
+      foo: type.maybeConvert(String),
+      bar: type.maybeConvert(D)
+    };
+  }
+}
+</script>
