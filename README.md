@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/canjs/can-migrate.svg?branch=master)](https://travis-ci.org/canjs/can-migrate)
 [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-migrate.svg)](https://greenkeeper.io/)
 
-CLI & codemod scripts for upgrading to CanJS 3.
+CLI & codemod scripts for upgrading to CanJS 3 to 6.
 
 ## Usage
 
