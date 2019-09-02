@@ -605,14 +605,14 @@
         "order": 5
       },
       {
-        "input": "can-observable-array/import-input.js",
-        "outputPath": "can-observable-array/import-input.js",
+        "input": "can-observable-array/import-input.html",
+        "outputPath": "can-observable-array/import-input.html",
         "type": "fixture",
         "version": "6"
       },
       {
-        "input": "can-observable-array/import-output.js",
-        "outputPath": "can-observable-array/import-output.js",
+        "input": "can-observable-array/import-output.html",
+        "outputPath": "can-observable-array/import-output.html",
         "type": "fixture",
         "version": "6"
       },
@@ -1468,6 +1468,18 @@
       {
         "input": "can-stache-element/import-output.js",
         "outputPath": "can-stache-element/import-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-element/import-input.html",
+        "outputPath": "can-stache-element/import-input.html",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-element/import-output.html",
+        "outputPath": "can-stache-element/import-output.html",
         "type": "fixture",
         "version": "6"
       },

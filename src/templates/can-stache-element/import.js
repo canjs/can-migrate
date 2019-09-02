@@ -1,6 +1,7 @@
 // This is a generated file, see src/templates/can-extend/can-extend.js
 import getConfig from '../../../utils/getConfig';
 import renameImport, { updateImport } from '../../../utils/renameImport';
+import renameRequire from '../../../utils/renameRequire';
 import makeDebug from 'debug';
 import fileTransform from '../../../utils/fileUtil';
 
@@ -26,6 +27,13 @@ function transformer(file, api, options) {
     updateImport(j, root, {
       oldValue: 'Component',
       newValue: newLocalName
+    });
+    // Update require
+    // const Component = require('can-component')
+    renameRequire(root, {
+      oldSourceValues: ['can-component'],
+      newSourceValue: 'can-stache-element',
+      newLocalName
     });
 
     debug(`Replacing import with ${newLocalName}`);

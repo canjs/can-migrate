@@ -1,6 +1,7 @@
 // This is a generated file, see src/templates/can-extend/can-extend.js
 import getConfig from '../../../utils/getConfig';
 import renameImport, { updateImport } from '../../../utils/renameImport';
+import renameRequire from '../../../utils/renameRequire';
 import makeDebug from 'debug';
 import fileTransform from '../../../utils/fileUtil';
 
@@ -26,6 +27,13 @@ function transformer(file, api, options) {
     updateImport(j, root, {
       oldValue: 'DefineMap',
       newValue: newLocalName
+    });
+    // Update require
+    // const DefineMap = require('can-define/map')
+    renameRequire(root, {
+      oldSourceValues: ['can-define/map/map', 'can-define/map/'],
+      newSourceValue: 'can-observable-object',
+      newLocalName
     });
 
     debug(`Replacing import with ${newLocalName}`);

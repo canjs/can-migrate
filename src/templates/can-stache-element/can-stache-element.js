@@ -47,7 +47,8 @@ function transformer(file, api, options) {
         };
         const methods = [];
         let tagName;
-        let varDeclaration;
+        let varDeclarationPath;
+        let varDeclarationName;
 
         // Loop over the properties to grab the ones we want to copy over
         path.value.arguments[0].properties
@@ -61,10 +62,19 @@ function transformer(file, api, options) {
 
         // Replace variable declarations with class def
         if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator') {
-          varDeclaration = path.parentPath.value.id.name;
+          // Use the name of the variable as the component name
+          varDeclarationName = path.parentPath.value.id.name;
           path = path.parentPath.parentPath.parentPath;
+          varDeclarationPath = j(path);
+        // `AssignmentExpression` used to check if the `Component` is being exported as created ie:
+        // module.exports = Component.extend({ ... })
+        } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'AssignmentExpression') {
+          varDeclarationPath = j(path).closest(j.ExpressionStatement);
+        } else {
+          varDeclarationPath = j(path.parentPath);
         }
-        const className = string.pascalize(varDeclaration ||tagName);
+
+        const className = string.pascalize(varDeclarationName || tagName);
 
         debug(`Replacing ${className} with ${extendedClassName} class`);
 
@@ -117,7 +127,7 @@ function transformer(file, api, options) {
         path.value.body.body.push(...methods);
 
         // Add the customElements define
-        j(varDeclaration ? path : path.parentPath).insertAfter(
+        varDeclarationPath.insertAfter(
           j.expressionStatement(
             j.callExpression(
               j.memberExpression(
