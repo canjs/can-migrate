@@ -41,6 +41,14 @@ function transformer(file, api, options) {
         }
       })
       .forEach(path => checkAndAddPropertyDefaults({ j, debug, path, root, propertyDefaultDeepObservable, defaultName: 'propertyDefaults' }));
+      // Use ClassExpression when the class is exported ie: module.exports = class MyApp extends StacheElement {}
+      root
+      .find(j.ClassExpression, {
+        superClass: {
+          name: extendedStacheClassName
+        }
+      })
+      .forEach(path => checkAndAddPropertyDefaults({ j, debug, path, root, propertyDefaultDeepObservable, defaultName: 'propertyDefaults' }));
 
       return root.toSource();
     });
