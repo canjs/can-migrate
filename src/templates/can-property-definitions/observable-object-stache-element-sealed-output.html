@@ -1,0 +1,30 @@
+<script>
+  import { ObservableObject } from "can";
+  import DeepObservable from "can-deep-observable";
+
+  class Foo extends ObservableObject {
+    static get propertyDefaults() {
+      return DeepObservable;
+    }
+
+    static get seal() {
+      return true;
+    }
+  };
+</script>
+
+<script>
+  import { StacheElement } from "can";
+
+  class TheTag extends StacheElement {
+    static get view() {
+      return `
+        {{this.foo}}
+      `;
+    }
+
+    static get seal() {
+      return true;
+    }
+  };
+</script>
