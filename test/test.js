@@ -123,3 +123,7 @@ require('../lib/transforms/version-6/can-property-definitions/connectedcallback-
 require('../lib/transforms/version-6/can-observable-array/array-constructor-test.js');
 require('../lib/transforms/version-6/can-observable-object/constructor-test.js');
 require('../lib/transforms/version-6/can-property-definitions/observable-default-propertydefaults-test.js');
+require('../lib/transforms/version-6/can-rest-model/can-rest-model-map-list-test.js');
+require('../lib/transforms/version-6/can-rest-model/can-realtime-rest-model-test.js');
+require('../lib/transforms/version-6/can-rest-model/can-rest-model-map-short-test.js');
+require('../lib/transforms/version-6/can-rest-model/can-rest-model-list-short-test.js');
