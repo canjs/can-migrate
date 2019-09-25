@@ -2,6 +2,25 @@ import makeDebug from 'debug';
 import getConfig from '../../../utils/getConfig';
 import fileTransform from '../../../utils/fileUtil';
 
+/**
+ * Transform
+ * ```
+ * const todoConnection = restModel({
+ *   Map: Todo,
+ *   List: TodoList,
+ *   url: "/api/todos/{id}"
+ * });
+ * ```
+ * to
+ * ```
+ * const todoConnection = restModel({
+ *  ObjectType: Todo,
+ *   ArrayType: TodoList,
+ *   url: "/api/todos/{id}"
+ *  });
+ * ```
+ * for restModel and realtimeRestModel
+ */
 function transformer(file, api, options) {
   const debug = makeDebug(`can-migrate:can-rest-model:${file.path}`);
   const j = api.jscodeshift;
@@ -13,16 +32,16 @@ function transformer(file, api, options) {
   return fileTransform(file, function (source) {
     const root = j(source);
 
-    root
-    .find(j.CallExpression, {
+    // restModel
+    root.find(j.CallExpression, {
       callee: {
         type: 'Identifier',
         name: restModelName,
       }
     }).forEach(path => checkAndUpdateOptionsKey(path, debug, restModelName, replacements));
 
-    root
-    .find(j.CallExpression, {
+    // realtimeRestModel
+    root.find(j.CallExpression, {
       callee: {
         type: 'Identifier',
         name: realtimeRestModelName,
@@ -35,17 +54,18 @@ function transformer(file, api, options) {
 
 function checkAndUpdateOptionsKey(path, debug, packageName, replacements) {
   let propDefinitionsArg = path.value.arguments[0];
-
-  propDefinitionsArg.properties.forEach( prop => {
-    if (prop.type === 'Property') {
-      replacements.forEach(replacement => {
-        if (prop.key.name === replacement.oldKey) {
-          debug(`Replacing '${packageName}.${replacement.oldKey}' with '${packageName}.${replacement.newKey}'`);
-          prop.key.name = replacement.newKey;
-        }
-      });
-    }
-  });
+  if (propDefinitionsArg.properties) {
+    propDefinitionsArg.properties.forEach( prop => {
+      if (prop.type === 'Property') {
+        replacements.forEach(replacement => {
+          if (prop.key.name === replacement.oldKey) {
+            debug(`Replacing '${packageName}.${replacement.oldKey}' with '${packageName}.${replacement.newKey}'`);
+            prop.key.name = replacement.newKey;
+          }
+        });
+      }
+    });
+  }
 }
 
 transformer.forceJavaScriptTransform = true;
