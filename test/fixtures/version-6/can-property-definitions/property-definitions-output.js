@@ -10,7 +10,14 @@ class Foo extends ObservableArray {
         type: type.maybeConvert(Boolean),
         default: false
       },
-      items: 'any'
+      items: 'any',
+      parentFoo: {
+        set(parentFoo){
+            this.forEach(function(sub){});
+            return parentFoo;
+        },
+        enumerable: false
+      }
     };
   }
 

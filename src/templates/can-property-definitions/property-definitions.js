@@ -72,7 +72,7 @@ function transformer(file, api) {
          */
         replaceDefaultFunction(j, 'FunctionExpression', j(prop));
         replaceDefaultFunction(j, 'ArrowFunctionExpression', j(prop));
-        // Convert `Default: Todo` into 
+        // Convert `Default: Todo` into
         // Default: {
         //   get default () {
         //     return new Todo()
@@ -91,7 +91,9 @@ function transformer(file, api) {
       j(prop).find(j.FunctionExpression)
         .forEach(prop => {
           // Check for the get methods
-          if (prop.parentPath.value.key.name === 'get') {
+          // The type must be property to avoid
+          // BlockStatement error see #139
+          if (prop.parentPath.value.type === 'Property' && prop.parentPath.value.key.name === 'get') {
             // We only want getters with 2 params
             if (prop.value.params.length === 2) {
               // Change the name
