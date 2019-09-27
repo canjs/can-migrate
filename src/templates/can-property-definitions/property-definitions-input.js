@@ -10,7 +10,14 @@ class Foo extends ObservableArray {
         type: 'boolean',
         default: false
       },
-      items: 'any'
+      items: 'any',
+      parentFoo: {
+        set(parentFoo){
+            this.forEach(function(sub){});
+            return parentFoo;
+        },
+        serialize: false
+      }
     };
   }
 
