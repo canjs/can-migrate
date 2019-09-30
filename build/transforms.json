@@ -1850,5 +1850,63 @@
         "version": "6"
       }
     ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-rest-model/map-list.js",
+        "outputPath": "can-rest-model/map-list.js",
+        "type": "transform",
+        "version": "6",
+        "order": 65
+      },
+      {
+        "input": "can-rest-model/map-list-input.js",
+        "outputPath": "can-rest-model/map-list-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-rest-model/map-list-output.js",
+        "outputPath": "can-rest-model/map-list-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-rest-model/map-list-test.js",
+        "outputPath": "can-rest-model/map-list-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
+  },
+  {
+    "copy": [
+      {
+        "input": "can-rest-model/map-list-shorthand.js",
+        "outputPath": "can-rest-model/map-list-shorthand.js",
+        "type": "transform",
+        "version": "6",
+        "order": 70
+      },
+      {
+        "input": "can-rest-model/map-list-shorthand-input.js",
+        "outputPath": "can-rest-model/map-list-shorthand-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-rest-model/map-list-shorthand-output.js",
+        "outputPath": "can-rest-model/map-list-shorthand-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-rest-model/map-list-shorthand-test.js",
+        "outputPath": "can-rest-model/map-list-shorthand-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
   }
 ]

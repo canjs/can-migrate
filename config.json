@@ -34,6 +34,8 @@
     "can-fixture": "fixture",
     "can-mustache": "mustache",
     "can-queues": "queues",
+    "can-realtime-rest-model": "realtimeRestModel",
+    "can-rest-model": "restModel",
     "can-route": "route",
     "can-stache": "stache",
     "can-view-autorender": "canAutorender",
