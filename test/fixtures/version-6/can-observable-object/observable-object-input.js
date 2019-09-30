@@ -1,3 +1,4 @@
+// Comment line should not be removed
 const Foo = DefineMap.extend({
   name: 'string',
   completed: {
@@ -6,6 +7,11 @@ const Foo = DefineMap.extend({
   }
 });
 
+/**
+ * Comment Block should not be removed
+ * Foo bar
+ */
+//foo
 const VM = DefineMap.extend({
   firstName: 'string',
   lastName: 'string',

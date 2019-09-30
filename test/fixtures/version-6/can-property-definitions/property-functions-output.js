@@ -4,6 +4,7 @@ class Bar extends ObservableObject {
       name: 'string',
 
       get sayHi () {
+        // Comment inside getter
         return `Hello ${this.name}`;
       },
 
@@ -23,6 +24,7 @@ class Foo extends ObservableObject {
     return {};
   }
 
+  // The comment should not be removed
   async createItem(args) {
     return new Item(args);
   }
