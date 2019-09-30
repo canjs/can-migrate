@@ -1,3 +1,4 @@
+// Comment line should not be removed
 class Foo extends ObservableObject {
   static get props() {
     return {
@@ -10,6 +11,11 @@ class Foo extends ObservableObject {
   }
 }
 
+/**
+ * Comment Block should not be removed
+ * Foo bar
+ */
+//foo
 class VM extends ObservableObject {
   static get props() {
     return {

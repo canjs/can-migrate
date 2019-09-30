@@ -18,6 +18,7 @@ class Bar extends ObservableObject {
 class Foo extends ObservableObject {
   static get props() {
     return {
+      // The comment should not be removed
       async createItem(args) {
         return new Item(args);
       }

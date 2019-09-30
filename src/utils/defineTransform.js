@@ -69,7 +69,7 @@ export default function defineTransform ({
         .find(j.Identifier, {
           name: varDeclaration
         });
-      
+
       varDeclaration = nameInUse.length > 0 ? `${varDeclaration}Model` : varDeclaration;
 
       // Update refs if we are of type AssignmentExpression
@@ -78,24 +78,36 @@ export default function defineTransform ({
 
     debug(`Replacing ${varDeclaration} with ${extendedClassName} class`);
 
-    j(classPath).replaceWith(
-      createClass({
-        j,
-        className: varDeclaration,
-        body: [
-          createMethod({
-            j,
-            method: false, // Want this to be a getter
-            name: 'props',
-            blockStatement: [j.returnStatement(propDefinitionsArg)],
-            isStatic: true
-          })
-        ],
-        extendedClassName
-      })
-    );
+    const classDeclaration = createClass({
+      j,
+      className: varDeclaration,
+      body: [
+        createMethod({
+          j,
+          method: false, // Want this to be a getter
+          name: 'props',
+          blockStatement: [j.returnStatement(propDefinitionsArg)],
+          isStatic: true
+        })
+      ],
+      extendedClassName
+    });
+
+    if (classPath.node.comments && classPath.node.comments.length) {
+      classDeclaration.comments = classDeclaration.comments ? classDeclaration.comments : [];
+      classPath.node.comments.forEach(function(comment){
+        if (comment.type === 'CommentLine') {
+          classDeclaration.comments.push(j.commentLine(comment.value, true, false));
+        }
+        if (comment.type === 'CommentBlock') {
+          classDeclaration.comments.push(j.commentBlock(comment.value, true, false));
+        }
+      });
+    }
+
+    j(classPath).replaceWith(classDeclaration);
   });
-  
+
   // If we have changed the ref we need to update all references
   updateRefs.forEach(ref => {
     replaceRefs(j, root, {
@@ -103,6 +115,6 @@ export default function defineTransform ({
       newLocalName: ref.varDeclaration
     });
   });
-  
+
   return root.toSource();
 }
