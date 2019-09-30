@@ -4,6 +4,7 @@ class Bar extends ObservableObject {
       name: 'string',
 
       get sayHi () {
+        // Comment inside getter
         return `Hello ${this.name}`;
       },
 
