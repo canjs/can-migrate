@@ -3,7 +3,7 @@ import { Control, StacheElement } from 'can';
 
 class CustomScroll extends StacheElement {
   connected() {
-    const vmControl = Control.extend({
+    const EventsControl = Control.extend({
       inserted () {
         const { viewModel } = this;
       },
@@ -13,7 +13,7 @@ class CustomScroll extends StacheElement {
       }
     });
 
-    new vmControl(this);
+    new EventsControl(this);
   }
 }
 ```
@@ -23,13 +23,13 @@ import { Control, StacheElement } from 'can';
 
 class MyScroll extends StacheElement {
   connected() {
-    const vmControl = Control.extend({
+    const EventsControl = Control.extend({
       '.form click': function (ev) {
         ev.preventDefault();
       }
     });
 
-    new vmControl(this);
+    new EventsControl(this);
   }
 }
 ```
