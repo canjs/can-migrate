@@ -22,13 +22,13 @@ class analogClock extends StacheElement {
   }
 
   connected() {
-    const vmControl = Control.extend({
+    const EventsControl = Control.extend({
       '.form click': function (ev) {
         ev.preventDefault();
       }
     });
 
-    new vmControl(this);
+    new EventsControl(this);
   }
 };
 customElements.define("analog-clock", analog-clock);

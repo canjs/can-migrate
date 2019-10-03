@@ -2,7 +2,7 @@ import { Control, StacheElement } from 'can';
 
 class CustomScroll extends StacheElement {
   connected() {
-    const vmControl = Control.extend({
+    const EventsControl = Control.extend({
       inserted () {
         const { viewModel } = this;
       },
@@ -12,6 +12,6 @@ class CustomScroll extends StacheElement {
       }
     });
 
-    new vmControl(this);
+    new EventsControl(this);
   }
 }
