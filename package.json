@@ -62,7 +62,7 @@
     "jscodeshift": "^0.6.4",
     "jscodeshift-imports": "^1.0.1",
     "jsesc": "^2.2.0",
-    "meow": "^4.0.0",
+    "meow": "^6.0.0",
     "promise-map-series": "^0.2.3",
     "stream": "0.0.2"
   },
