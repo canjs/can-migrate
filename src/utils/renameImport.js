@@ -38,7 +38,8 @@ export function updateImport (j, root, { oldValue, newValue }) {
     .filter(p => {
       return  p.parent.node.type === 'Program' &&
               p.get('specifiers', 0, 'type').value !== 'ImportNamespaceSpecifier' &&
-              p.value.source.value === 'can' || p.value.source.value === '//unpkg.com/can@5/everything.mjs';
+              p.value.source.value === 'can' ||
+              /\/\/unpkg.com\/can@5?(\.[0-9]+)?(\.[0-9]+)?\/everything.mjs/.test(p.value.source.value);
     })
     .forEach(path => {
       path.value.specifiers.forEach((specifier, index) => {
