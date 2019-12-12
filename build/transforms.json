@@ -1500,6 +1500,18 @@
         "outputPath": "can-stache-element/import-test.js",
         "type": "test",
         "version": "6"
+      },
+      {
+        "input": "can-stache-element/import-input-deconstructed-w-other.js",
+        "outputPath": "can-stache-element/import-input-deconstructed-w-other.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-element/import-output-deconstructed-w-other.js",
+        "outputPath": "can-stache-element/import-output-deconstructed-w-other.js",
+        "type": "fixture",
+        "version": "6"
       }
     ]
   },

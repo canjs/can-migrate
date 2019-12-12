@@ -29,4 +29,11 @@ describe('can-stache-element/import', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Renames can-component import to can-stache-element deconstructed with other Component keywords', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-input-deconstructed-w-other.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-output-deconstructed-w-other.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });
