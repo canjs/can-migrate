@@ -678,6 +678,18 @@
         "version": "6"
       },
       {
+        "input": "can-stache-element/can-stache-element-other-name-input.js",
+        "outputPath": "can-stache-element/can-stache-element-other-name-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-stache-element/can-stache-element-other-name-output.js",
+        "outputPath": "can-stache-element/can-stache-element-other-name-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-stache-element/can-stache-element-test.js",
         "outputPath": "can-stache-element/can-stache-element-test.js",
         "type": "test",
