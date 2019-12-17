@@ -1,6 +1,8 @@
 import { createClass, createMethod } from './classUtils';
 import replaceRefs from './replaceRefs';
 
+const transformInlineMap = (path) => path.value.arguments.length === 2 ?  path.value.arguments[0].value : 'Model';
+
 // can-define transform util
 // used to transform can-define/map & can-define/list
 export default function defineTransform ({
@@ -35,15 +37,10 @@ export default function defineTransform ({
       varDeclaration = path.parentPath.value.id.name;
       classPath = path.parentPath.parentPath.parentPath;
     // Handle default exports
-    } else if (path.parentPath && path.parentPath.value &&
-               path.parentPath.value.type === 'ExportDefaultDeclaration' ||
-               path.parentPath.value.type === 'Property'
-              ) {
+    } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'ExportDefaultDeclaration') {
         // If we have "default" export if the DefineMap or DefineList has two arguments, use the first as the name of the class
         // fallback to using `Model` if not
-        varDeclaration = path.value.arguments.length === 2 ?
-          path.value.arguments[0].value :
-          'Model';
+        varDeclaration = transformInlineMap(path);
         classPath = path;
     } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'AssignmentExpression') {
       classPath = path.parentPath.parentPath;
@@ -59,6 +56,10 @@ export default function defineTransform ({
         objectName: path.parentPath.value.left.object.name,
         propertyName: path.parentPath.value.left.property.name
       };
+    } else if (path.parentPath.value.type === 'Property') {
+      // Handle Define.extend as a property like '#': DefineMap.extend
+      varDeclaration = transformInlineMap(path);
+      classPath = path;
     }
 
     let propDefinitionsArg = path.value.arguments.length === 1 ?
