@@ -35,7 +35,10 @@ export default function defineTransform ({
       varDeclaration = path.parentPath.value.id.name;
       classPath = path.parentPath.parentPath.parentPath;
     // Handle default exports
-    } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'ExportDefaultDeclaration') {
+    } else if (path.parentPath && path.parentPath.value &&
+               path.parentPath.value.type === 'ExportDefaultDeclaration' ||
+               path.parentPath.value.type === 'Property'
+              ) {
         // If we have "default" export if the DefineMap or DefineList has two arguments, use the first as the name of the class
         // fallback to using `Model` if not
         varDeclaration = path.value.arguments.length === 2 ?
