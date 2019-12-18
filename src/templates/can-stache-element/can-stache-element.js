@@ -12,12 +12,31 @@ function transformer(file, api, options) {
   const extendedClassName = config.moduleToName['can-stache-element'];
 
   return fileTransform(file, function (source) {
-    return j(source)
+    const root = j(source);
+    var name;
+
+    // Get the imported local name
+    root.find(j.ImportDeclaration).filter(p => {
+      return  p.parent.node.type === 'Program' &&
+            p.get('specifiers', 0, 'type').value !== 'ImportNamespaceSpecifier' &&
+                p.value.source.value === 'can' ||
+                /\/\/unpkg.com\/can@5(\.[0-9]+)?(\.[0-9]+)?\/[a-z]+.mjs/.test(p.value.source.value);
+    }).forEach(path => {
+      path.value.specifiers.forEach((specifier) => {
+        if (specifier.imported.name === 'Component') {
+          if (specifier.local.name) {
+            name = specifier.local.name;
+          }
+        }
+      });
+    });
+
+    return root
       .find(j.CallExpression, {
         callee: {
           type: 'MemberExpression',
           object: {
-            name: 'Component'
+            name: name ? name : 'Component'
           },
           property: {
             name: 'extend'

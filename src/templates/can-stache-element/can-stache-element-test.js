@@ -29,4 +29,11 @@ describe('can-stache-element', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Converts Component.extend to class extends StacheElement when can-component imported with other name', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-other-name-input.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-other-name-output.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });
