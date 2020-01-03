@@ -1,4 +1,4 @@
-const Todo = DefineMap.extend('Foo', { bar: 'Bar', seal: false}, {
+const Todo = DefineMap.extend('Foo', { bar: 'Bar', seal: true}, {
   foo: "number"
 });
 

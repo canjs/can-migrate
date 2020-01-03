@@ -110,7 +110,7 @@ export default function defineTransform ({
     if (staticPropsDefinitionsArg) {
       // Class level static properties
       staticPropsDefinitionsArg.properties.forEach(prop => {
-        if (prop.key.name !== 'seal') {
+        if (prop.key.name === 'seal' && prop.value.value === true) {
           body.push(j.classProperty(
             j.identifier(prop.key.name),
             j.literal(prop.value.value),
