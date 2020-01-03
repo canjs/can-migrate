@@ -727,6 +727,18 @@
         "version": "6"
       },
       {
+        "input": "can-observable-object/observable-object-static-properties-input.js",
+        "outputPath": "can-observable-object/observable-object-static-properties-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "can-observable-object/observable-object-static-properties-output.js",
+        "outputPath": "can-observable-object/observable-object-static-properties-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
         "input": "can-observable-object/observable-object-test.js",
         "outputPath": "can-observable-object/observable-object-test.js",
         "type": "test",
