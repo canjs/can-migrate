@@ -1,8 +1,6 @@
 import { createClass, createMethod } from './classUtils';
 import replaceRefs from './replaceRefs';
 
-const transformInlineMap = (path) => path.value.arguments.length === 2 ?  path.value.arguments[0].value : 'Model';
-
 // can-define transform util
 // used to transform can-define/map & can-define/list
 export default function defineTransform ({
@@ -32,41 +30,38 @@ export default function defineTransform ({
     let classPath;
     let refUpdate;
 
-    var parentPathValueType = path.parentPath && path.parentPath.value && path.parentPath.value.type;
 
-    // Replace variable declarations with class def
-    if (parentPathValueType && (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator')) {
-      if (path.value.arguments.length > 1 && path.value.arguments[0].type === 'Literal') {
-        varDeclaration = path.value.arguments[0].value;
-      } else {
-        varDeclaration = path.parentPath.value.id.name;
-      }
-      classPath = path.parentPath.parentPath.parentPath;
-    // Handle default exports
-    } else if (parentPathValueType && (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'ExportDefaultDeclaration')) {
-        // If we have "default" export if the DefineMap or DefineList has two arguments, use the first as the name of the class
-        // fallback to using `Model` if not
-        varDeclaration = transformInlineMap(path);
-        classPath = path;
-    } else if (parentPathValueType && (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'AssignmentExpression')) {
-      classPath = path.parentPath.parentPath;
-      // Use either the first argument if there are more than one
-      // or use the expression ie. Message.List = DefineList {...}
-      // becomes class MessageList extends ObservableArray {...}
-      varDeclaration = path.value.arguments.length > 1 ?
-        path.value.arguments[0].value :
-        `${path.parentPath.value.left.object.name}${path.parentPath.value.left.property.name}`;
-
-      // Update refs if we are of type AssignmentExpression
-      refUpdate = {
-        objectName: path.parentPath.value.left.object.name,
-        propertyName: path.parentPath.value.left.property.name
-      };
-    } else if (parentPathValueType && path.parentPath.value.type === 'Property') {
-      // Handle Define.extend as a property like '#': DefineMap.extend
-      varDeclaration = transformInlineMap(path);
-      classPath = path;
+  // Replace variable declarations with class def
+  if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator') {
+    if (path.value.arguments.length > 1 && path.value.arguments[0].type === 'Literal') {
+      varDeclaration = path.value.arguments[0].value;
+    } else {
+      varDeclaration = path.parentPath.value.id.name;
     }
+    classPath = path.parentPath.parentPath.parentPath;
+  // Handle default exports
+  } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'ExportDefaultDeclaration') {
+      // If we have "default" export if the DefineMap or DefineList has two arguments, use the first as the name of the class
+      // fallback to using `Model` if not
+      varDeclaration = path.value.arguments.length === 2 ?
+        path.value.arguments[0].value :
+        'Model';
+      classPath = path;
+  } else if (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'AssignmentExpression') {
+    classPath = path.parentPath.parentPath;
+    // Use either the first argument if there are more than one
+    // or use the expression ie. Message.List = DefineList {...}
+    // becomes class MessageList extends ObservableArray {...}
+    varDeclaration = path.value.arguments.length > 1 ?
+      path.value.arguments[0].value :
+      `${path.parentPath.value.left.object.name}${path.parentPath.value.left.property.name}`;
+
+    // Update refs if we are of type AssignmentExpression
+    refUpdate = {
+      objectName: path.parentPath.value.left.object.name,
+      propertyName: path.parentPath.value.left.property.name
+    };
+  }
 
     let propDefinitionsArg;
     let staticPropsDefinitionsArg;
