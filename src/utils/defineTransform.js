@@ -60,7 +60,7 @@ export default function defineTransform ({
       };
     } else if (parentPathValueType && path.parentPath.value.type === 'Property') {
       // Handle Define.extend as a property like '#': DefineMap.extend
-      varDeclaration = transformInlineMap(path);
+      // the class will be just class expression without a name
       classPath = path;
     }
 
@@ -86,7 +86,7 @@ export default function defineTransform ({
 
     const classDeclaration = createClass({
       j,
-      className: varDeclaration,
+      className: varDeclaration ? varDeclaration : '',
       body: [
         createMethod({
           j,
