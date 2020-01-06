@@ -64,17 +64,12 @@ export default function defineTransform ({
   }
 
     let propDefinitionsArg;
-    let staticPropsDefinitionsArg;
 
     if (path.value.arguments.length === 3) {
       // Handle DefineMap.extend('Foo', {//staticProps}, {protoProps})
-      staticPropsDefinitionsArg = path.value.arguments[1];
       propDefinitionsArg = path.value.arguments[2];
     }  else if (path.value.arguments.length === 2) {
       // Handle DefineMap.extend({//staticProps}, {protoProps})
-      if (path.value.arguments[0].type === 'ObjectExpression') {
-        staticPropsDefinitionsArg = path.value.arguments[0];
-      }
       propDefinitionsArg = path.value.arguments[1];
     } else if (path.value.arguments.length === 1) {
       // Handle DefineMap.extend({protoProps})
@@ -107,18 +102,13 @@ export default function defineTransform ({
       })
     ];
 
-    if (staticPropsDefinitionsArg) {
-      // Class level static properties
-      staticPropsDefinitionsArg.properties.forEach(prop => {
-        if (prop.key.name === 'seal' && prop.value.value === true) {
-          body.push(j.classProperty(
-            j.identifier(prop.key.name),
-            j.literal(prop.value.value),
-            null,
-            true
-          ));
-        }
-      });
+    if (extendedClassName ==='ObservableObject') {
+      body.push(j.classProperty(
+        j.identifier('seal'),
+        j.literal(true),
+        null,
+        true
+      ));
     }
 
     const classDeclaration = createClass({

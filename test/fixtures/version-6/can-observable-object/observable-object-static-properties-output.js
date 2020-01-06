@@ -14,6 +14,8 @@ class MyTodo extends ObservableObject {
       foo: "number"
     };
   }
+
+  static seal = true;
 }
 
 class Foo extends ObservableObject {
@@ -22,4 +24,6 @@ class Foo extends ObservableObject {
       foo: "number"
     };
   }
+
+  static seal = true;
 }
