@@ -126,3 +126,4 @@ require('../lib/transforms/version-6/can-property-definitions/observable-default
 require('../lib/transforms/version-6/can-property-definitions/observable-object-stache-element-sealed-test.js');
 require('../lib/transforms/version-6/can-rest-model/map-list-test.js');
 require('../lib/transforms/version-6/can-rest-model/map-list-shorthand-test.js');
+require('../lib/transforms/version-6/variable-declaration/chained-declaration-test.js');
