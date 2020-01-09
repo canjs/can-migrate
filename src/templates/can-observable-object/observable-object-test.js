@@ -22,4 +22,11 @@ describe('can-observable-object/observable-object', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Converts inline DefineMap.extend to class extends ObservableObject', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-inline-input.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-inline-output.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });
