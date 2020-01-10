@@ -113,12 +113,12 @@ export default function defineTransform ({
     ];
 
     if (extendedClassName ==='ObservableObject') {
-      let isSealed = false;
+      let isSealed = true;
       if (staticPropsDefinitionsArg) {
         const staticProps = staticPropsDefinitionsArg.properties;
-        isSealed = staticProps.contains('seal') && staticProps.seal.value.value === true;
-      } else {
-        isSealed = true;
+        if (staticProps.includes('seal') && staticProps.seal.value.value === false) {
+          isSealed = false;
+        }
       }
 
       if (isSealed) {
@@ -130,23 +130,6 @@ export default function defineTransform ({
         ));
       }
     }
-
-
-    // if (staticPropsDefinitionsArg && extendedClassName ==='ObservableObject') {
-    //   // Class level static properties
-    //   const staticProps = staticPropsDefinitionsArg.properties;
-    //   const isSealed = staticProps.contains('seal') && staticProps.seal.value.value === true;
-
-    //   if (isSealed || !staticProps.contains('seal')) {
-    //     // DefinedMap are seald by default
-    //     body.push(j.classProperty(
-    //       j.identifier('seal'),
-    //       j.literal(true),
-    //       null,
-    //       true
-    //     ));
-    //   }
-    // }
 
     const classDeclaration = createClass({
       j,
