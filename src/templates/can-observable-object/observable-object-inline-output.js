@@ -6,7 +6,5 @@ const TodosList = DefineList.extend({
           name: "string"
       };
     }
-
-    static seal = true;
   }
 });

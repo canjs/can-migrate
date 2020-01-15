@@ -36,11 +36,7 @@ export default function defineTransform ({
 
     // Replace variable declarations with class def
     if (parentPathValueType && (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'VariableDeclarator')) {
-      if (path.value.arguments.length > 1 && path.value.arguments[0].type === 'Literal') {
-        varDeclaration = path.value.arguments[0].value;
-      } else {
-        varDeclaration = path.parentPath.value.id.name;
-      }
+      varDeclaration = path.parentPath.value.id.name;
       classPath = path.parentPath.parentPath.parentPath;
     // Handle default exports
     } else if (parentPathValueType && (path.parentPath && path.parentPath.value && path.parentPath.value.type === 'ExportDefaultDeclaration')) {
@@ -69,17 +65,12 @@ export default function defineTransform ({
     }
 
     let propDefinitionsArg;
-    let staticPropsDefinitionsArg;
 
     if (path.value.arguments.length === 3) {
       // Handle DefineMap.extend('Foo', {//staticProps}, {protoProps})
-      staticPropsDefinitionsArg = path.value.arguments[1];
       propDefinitionsArg = path.value.arguments[2];
     }  else if (path.value.arguments.length === 2) {
       // Handle DefineMap.extend({//staticProps}, {protoProps})
-      if (path.value.arguments[0].type === 'ObjectExpression') {
-        staticPropsDefinitionsArg = path.value.arguments[0];
-      }
       propDefinitionsArg = path.value.arguments[1];
     } else if (path.value.arguments.length === 1) {
       // Handle DefineMap.extend({protoProps})
@@ -111,25 +102,6 @@ export default function defineTransform ({
         isStatic: true
       })
     ];
-
-    if (extendedClassName ==='ObservableObject') {
-      let isSealed = true;
-      if (staticPropsDefinitionsArg) {
-        const staticProps = staticPropsDefinitionsArg.properties;
-        if (staticProps.includes('seal') && staticProps.seal.value.value === false) {
-          isSealed = false;
-        }
-      }
-
-      if (isSealed) {
-        body.push(j.classProperty(
-          j.identifier('seal'),
-          j.literal(true),
-          null,
-          true
-        ));
-      }
-    }
 
     const classDeclaration = createClass({
       j,

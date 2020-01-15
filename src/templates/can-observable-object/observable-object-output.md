@@ -10,8 +10,6 @@ class Foo extends ObservableObject {
       }
     };
   }
-
-  static seal = true;
 }
 ```
 
@@ -37,8 +35,6 @@ class VM extends ObservableObject {
       }
     };
   }
-
-  static seal = true;
 }
 ```
 
@@ -59,8 +55,6 @@ export default class Model extends ObservableObject {
       }
     };
   }
-
-  static seal = true;
 }
 ```
 
@@ -81,7 +75,5 @@ export default class MyMap extends ObservableObject {
       }
     };
   }
-
-  static seal = true;
 }
 ```

@@ -1,11 +1,9 @@
-class Foo extends ObservableObject {
+class Todo extends ObservableObject {
   static get props() {
     return {
       foo: "number"
     };
   }
-
-  static seal = true;
 }
 
 class MyTodo extends ObservableObject {
@@ -14,16 +12,12 @@ class MyTodo extends ObservableObject {
       foo: "number"
     };
   }
-
-  static seal = true;
 }
 
-class Foo extends ObservableObject {
+class MyOtherTodo extends ObservableObject {
   static get props() {
     return {
       foo: "number"
     };
   }
-
-  static seal = true;
 }

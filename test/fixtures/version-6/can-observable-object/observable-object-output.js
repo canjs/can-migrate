@@ -9,8 +9,6 @@ class Foo extends ObservableObject {
       }
     };
   }
-
-  static seal = true;
 }
 
 /**
@@ -34,6 +32,4 @@ class VM extends ObservableObject {
       }
     };
   }
-
-  static seal = true;
 }
