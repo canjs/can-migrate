@@ -29,4 +29,11 @@ describe('can-observable-object/observable-object', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Handles DefineMap static propeties to ObservableObject static properties', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-static-properties-input.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-static-properties-output.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });

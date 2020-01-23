@@ -64,9 +64,18 @@ export default function defineTransform ({
       classPath = path;
     }
 
-    let propDefinitionsArg = path.value.arguments.length === 1 ?
-      path.value.arguments[0] :
-      path.value.arguments[1];
+    let propDefinitionsArg;
+
+    if (path.value.arguments.length === 3) {
+      // Handle DefineMap.extend('Foo', {//staticProps}, {protoProps})
+      propDefinitionsArg = path.value.arguments[2];
+    }  else if (path.value.arguments.length === 2) {
+      // Handle DefineMap.extend({//staticProps}, {protoProps})
+      propDefinitionsArg = path.value.arguments[1];
+    } else if (path.value.arguments.length === 1) {
+      // Handle DefineMap.extend({protoProps})
+      propDefinitionsArg = path.value.arguments[0];
+    }
 
     // Check if we have an existing varDeclaration
     // if so let's create a new name to prevent clashing
@@ -84,18 +93,20 @@ export default function defineTransform ({
 
     debug(`Replacing ${varDeclaration} with ${extendedClassName} class`);
 
+    let body = [
+      createMethod({
+        j,
+        method: false, // Want this to be a getter
+        name: 'props',
+        blockStatement: [j.returnStatement(propDefinitionsArg)],
+        isStatic: true
+      })
+    ];
+
     const classDeclaration = createClass({
       j,
       className: varDeclaration ? varDeclaration : '',
-      body: [
-        createMethod({
-          j,
-          method: false, // Want this to be a getter
-          name: 'props',
-          blockStatement: [j.returnStatement(propDefinitionsArg)],
-          isStatic: true
-        })
-      ],
+      body: body,
       extendedClassName
     });
 
