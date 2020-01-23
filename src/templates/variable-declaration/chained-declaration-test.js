@@ -15,4 +15,11 @@ describe('variable-declaration/chained-declaration', function() {
     utils.diffFiles(fn, inputPath, outputPath);
   });
 
+  it('Doesn not split chained var declaration DefineMap, DefineList and Component are not defined', function() {
+    const fn = require(toTest.file);
+    const inputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-simple-input.js')}`;
+    const outputPath = `fixtures/version-6/${toTest.fileName.replace('.js', '-simple-output.js')}`;
+    utils.diffFiles(fn, inputPath, outputPath);
+  });
+
 });
