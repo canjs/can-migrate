@@ -1944,5 +1944,46 @@
         "version": "6"
       }
     ]
+  },
+  {
+    "copy": [
+      {
+        "input": "variable-declaration/chained-declaration.js",
+        "outputPath": "variable-declaration/chained-declaration.js",
+        "type": "transform",
+        "version": "6",
+        "order": 1
+      },
+      {
+        "input": "variable-declaration/chained-declaration-input.js",
+        "outputPath": "variable-declaration/chained-declaration-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "variable-declaration/chained-declaration-output.js",
+        "outputPath": "variable-declaration/chained-declaration-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "variable-declaration/chained-declaration-simple-input.js",
+        "outputPath": "variable-declaration/chained-declaration-simple-input.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "variable-declaration/chained-declaration-simple-output.js",
+        "outputPath": "variable-declaration/chained-declaration-simple-output.js",
+        "type": "fixture",
+        "version": "6"
+      },
+      {
+        "input": "variable-declaration/chained-declaration-test.js",
+        "outputPath": "variable-declaration/chained-declaration-test.js",
+        "type": "test",
+        "version": "6"
+      }
+    ]
   }
 ]
