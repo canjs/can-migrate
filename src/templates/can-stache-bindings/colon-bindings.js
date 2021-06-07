@@ -5,6 +5,18 @@ var kebabToCamel = function (kebab) {
 };
 
 var transformStacheExplicit = function (src) {
+  // older legacy binding.
+  src = src.replace(/([-\w:]+)="\{([^}\n"]+)\}"/g, function (x, $1, $2) {
+    return 'vm:' + kebabToCamel($1) + ':from="' + $2 + '"';
+  });
+  src = src.replace(/\bcan-(\w[-\w]+)=/g, function (x, $1) {
+    if($1.toLowerCase() === 'value') {
+      return 'el:' + kebabToCamel($1) + ':bind=';
+    } else {
+      return 'on:el:' + kebabToCamel($1) + '=';
+    }
+  });
+
   src = src.replace(/\{\^\$([^}\n]+)\}=/g, function (x, $1) {
     return 'el:' + kebabToCamel($1) + ':to=';
   });
@@ -37,6 +49,18 @@ var transformStacheExplicit = function (src) {
 };
 
 var transformStacheContextIntuitive = function (src) {
+  // older legacy binding.
+  src = src.replace(/([-\w:]+)="\{([^}\n"]+)\}"/g, function (x, $1, $2) {
+    return kebabToCamel($1) + ':from="' + $2 + '"';
+  });
+  src = src.replace(/\bcan-(\w[-\w]+)=/g, function (x, $1) {
+    if($1.toLowerCase() === 'value') {
+      return kebabToCamel($1) + ':bind=';
+    } else {
+      return 'on:' + kebabToCamel($1) + '=';
+    }
+  });
+
   src = src.replace(/\{\^\$?([^}\n]+)\}=/g, function (x, $1) {
     return kebabToCamel($1) + ':to=';
   });
