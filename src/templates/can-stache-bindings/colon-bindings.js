@@ -4,17 +4,72 @@ var kebabToCamel = function (kebab) {
   });
 };
 
-var transformStacheExplicit = function (src) {
+var cvTypeRE = /\btype=\\?"([^"]*?)\\?"/;
+var cvValueRE = /[^-]\bvalue=\\?"([^"]*?)\\?"/;
+var cvCanValueRE = /\bcan-value=\\?"([^"]*?)(\\?")/;
+var cvTrueValueRE = /\bcan-true-value=\\?"([^"]*?)\\?"/;
+var cvFalseValueRE = /\bcan-false-value=\\?"([^"]*?)\\?"/;
+var cvTagCloseRE = / ?\/?>/;
+
+function makeCanValueProcessor(explicit, escapeSingleQuote) {
+  return function ($0) {
+    var type = (cvTypeRE.exec($0) || [])[1];
+    var valueBindingAndQuote = (cvCanValueRE.exec($0) || []);
+    var valueBinding = valueBindingAndQuote[1];
+    var valueText = (cvValueRE.exec($0) || [])[1];
+    var trueValue = (cvTrueValueRE.exec($0) || [])[1] || '';
+    var falseValue = (cvFalseValueRE.exec($0) || [])[1] || '';
+    var tagEnd = (cvTagCloseRE.exec($0) || ['>'])[0];
+
+    var q = valueBindingAndQuote[2] || '"';
+    var sq = escapeSingleQuote && q === '"' ? '\\\'' : '\'';
+
+    var canValueExp;
+    switch(type) {
+      case 'checkbox':
+        if(trueValue || falseValue) {
+          canValueExp = (explicit ? 'el:' : '') + 'checked:bind=' + q + 'either-or(' + valueBinding + ', ' + sq + trueValue + sq + ', ' + sq + falseValue + sq + ')' + q;
+        } else {
+          canValueExp = (explicit ? 'el:' : '') + 'checked:bind=' + q + valueBinding + q;
+        }
+      break;
+      case 'radio':
+        if(valueText) {
+          canValueExp = (explicit ? 'el:' : '') + 'checked:bind=' + q + 'equal(' + valueBinding + ', ' + sq + valueText + sq + ')' + q;
+        } else {
+          canValueExp = (explicit ? 'el:' : '') + 'checked:bind=' + q + valueBinding + q;
+        }
+      break;
+      default:  // text, select, textarea, number, password, etc.
+        canValueExp = (explicit ? 'el:' : '') + 'value:bind=' + q + valueBinding + q;
+      break;
+    }
+
+    return $0.replace(cvCanValueRE, '')
+      .replace(cvTrueValueRE, '')
+      .replace(cvFalseValueRE, '')
+      .replace(cvTagCloseRE, '')
+      .replace(/ +/g, ' ')
+      .trim() +
+        ' ' +
+        canValueExp +
+        tagEnd;
+  };
+}
+
+
+var transformStacheExplicit = function (src, escapeSingleQuote) {
   // older legacy binding.
-  src = src.replace(/([-\w:]+)="\{([^}\n"]+)\}"/g, function (x, $1, $2) {
-    return 'vm:' + kebabToCamel($1) + ':from="' + $2 + '"';
-  });
+  src = src.replace(/<[^>]*\bcan-value=[^>]*>/g, makeCanValueProcessor(true, escapeSingleQuote));
   src = src.replace(/\bcan-(\w[-\w]+)=/g, function (x, $1) {
     if($1.toLowerCase() === 'value') {
       return 'el:' + kebabToCamel($1) + ':bind=';
     } else {
       return 'on:el:' + kebabToCamel($1) + '=';
     }
+  });
+  src = src.replace(/([-\w:]+)=(\\?")\{(?!\{)([^}\n"]+)\}\\?"/g, function (x, $1, $quot, $2) {
+    return 'vm:' + kebabToCamel($1) + ':from=' + $quot + $2 + $quot;
   });
 
   src = src.replace(/\{\^\$([^}\n]+)\}=/g, function (x, $1) {
@@ -48,17 +103,18 @@ var transformStacheExplicit = function (src) {
   return src;
 };
 
-var transformStacheContextIntuitive = function (src) {
+var transformStacheContextIntuitive = function (src, escapeSingleQuote) {
   // older legacy binding.
-  src = src.replace(/([-\w:]+)="\{([^}\n"]+)\}"/g, function (x, $1, $2) {
-    return kebabToCamel($1) + ':from="' + $2 + '"';
-  });
+  // can-value is the trickiest because the new binding is different
+  //   for different input types.  In addition, checkboxes can have
+  //   can-true-value and can-false-value, which need to combine with
+  //   can-value's value to produce an either-or stache converter in later Can.
+  src = src.replace(/<[^>]*\bcan-value=[^>]*>/g, makeCanValueProcessor(false, escapeSingleQuote));
   src = src.replace(/\bcan-(\w[-\w]+)=/g, function (x, $1) {
-    if($1.toLowerCase() === 'value') {
-      return kebabToCamel($1) + ':bind=';
-    } else {
-      return 'on:' + kebabToCamel($1) + '=';
-    }
+    return 'on:' + kebabToCamel($1) + '=';
+  });
+  src = src.replace(/([-\w:]+)=(\\?")\{(?!\{)([^}\n"]+)\}\\?"/g, function (x, $1, $quot, $2) {
+    return kebabToCamel($1) + ':from=' + $quot + $2 + $quot;
   });
 
   src = src.replace(/\{\^\$?([^}\n]+)\}=/g, function (x, $1) {
@@ -77,17 +133,17 @@ var transformStacheContextIntuitive = function (src) {
   return src;
 };
 
-var transformStache = function (src, useImplicitBindings) {
+var transformStache = function (src, useImplicitBindings, escapeSingleQuote) {
   return useImplicitBindings ?
-    transformStacheContextIntuitive(src) :
-    transformStacheExplicit(src);
+    transformStacheContextIntuitive(src, escapeSingleQuote) :
+    transformStacheExplicit(src, escapeSingleQuote);
 };
 
 var transformJs = function (src, useImplicitBindings) {
   //find call to stache with a template passed in
   //note: only catches the call if a string is passed in and maynot work well if it's not one full string
   return src.replace(/(\bstache\(\s*(['"`]))((?:[^\\\2]|\\[\s\S])*?)(\2\s*\))/g, function (fullStr, $1, quoteType, $3, $4) {
-    return $1 + transformStache($3, useImplicitBindings) + $4;
+    return $1 + transformStache($3, useImplicitBindings, true) + $4;
   });
 };
 
