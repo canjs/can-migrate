@@ -49,7 +49,7 @@ function makeCanValueProcessor(explicit, escapeSingleQuote) {
       .replace(cvTrueValueRE, '')
       .replace(cvFalseValueRE, '')
       .replace(cvTagCloseRE, '')
-      .replace(/ +/g, ' ')
+      .replace(/([^\n ]) +/g, '$1 ')
       .trim() +
         ' ' +
         canValueExp +
@@ -61,15 +61,15 @@ function makeCanValueProcessor(explicit, escapeSingleQuote) {
 var transformStacheExplicit = function (src, escapeSingleQuote) {
   // older legacy binding.
   src = src.replace(/<[^>]*\bcan-value=[^>]*>/g, makeCanValueProcessor(true, escapeSingleQuote));
-  src = src.replace(/\bcan-(\w[-\w]+)=/g, function (x, $1) {
-    if($1.toLowerCase() === 'value') {
-      return 'el:' + kebabToCamel($1) + ':bind=';
-    } else {
-      return 'on:el:' + kebabToCamel($1) + '=';
-    }
+  src = src.replace(/\bcan-(\w[-:\w]+)=/g, function (x, $1) {
+    return 'on:el:' + kebabToCamel($1) + '=';
   });
   src = src.replace(/([-\w:]+)=(\\?")\{(?!\{)([^}\n"]+)\}\\?"/g, function (x, $1, $quot, $2) {
-    return 'vm:' + kebabToCamel($1) + ':from=' + $quot + $2 + $quot;
+    if(/^on:|:bind$/.test($1)) {
+      return $1 + '=' + $quot + $2 + $quot;
+    } else {
+      return 'vm:' + kebabToCamel($1) + ':from=' + $quot + $2 + $quot;
+    }
   });
 
   src = src.replace(/\{\^\$([^}\n]+)\}=/g, function (x, $1) {
@@ -110,11 +110,15 @@ var transformStacheContextIntuitive = function (src, escapeSingleQuote) {
   //   can-true-value and can-false-value, which need to combine with
   //   can-value's value to produce an either-or stache converter in later Can.
   src = src.replace(/<[^>]*\bcan-value=[^>]*>/g, makeCanValueProcessor(false, escapeSingleQuote));
-  src = src.replace(/\bcan-(\w[-\w]+)=/g, function (x, $1) {
+  src = src.replace(/\bcan-(\w[-:\w]+)=/g, function (x, $1) {
     return 'on:' + kebabToCamel($1) + '=';
   });
   src = src.replace(/([-\w:]+)=(\\?")\{(?!\{)([^}\n"]+)\}\\?"/g, function (x, $1, $quot, $2) {
-    return kebabToCamel($1) + ':from=' + $quot + $2 + $quot;
+    if(/^on:|:bind$/.test($1)) {
+      return $1 + '=' + $quot + $2 + $quot;
+    } else {
+      return kebabToCamel($1) + ':from=' + $quot + $2 + $quot;
+    }
   });
 
   src = src.replace(/\{\^\$?([^}\n]+)\}=/g, function (x, $1) {
