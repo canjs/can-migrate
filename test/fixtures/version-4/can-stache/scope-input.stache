@@ -5,6 +5,16 @@
   {{%event}}
   {{%viewModel}}
   {{%arguments}}
+  {{%scope}}
+  {{@index}}
+  {{@key}}
+  {{@element}}
+  {{@event}}
+  {{@viewModel}}
+  {{@arguments}}
+  {{@scope}}
+  {{%context}}
+  {{@context}}
 </p>
 
 <p>
@@ -14,4 +24,14 @@
   {{%event}}
   {{%viewModel}}
   {{%arguments}}
+  {{%scope}}
+  {{@index}}
+  {{@key}}
+  {{@element}}
+  {{@event}}
+  {{@viewModel}}
+  {{@arguments}}
+  {{@scope}}
+  {{%context}}
+  {{@context}}
 </p>
