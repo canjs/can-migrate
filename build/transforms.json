@@ -855,6 +855,33 @@
     ],
     "transforms": [
       {
+        "shortName": "can",
+        "oldSourceValues": [
+          "ttcore/all",
+          "ttcore/attributes",
+          "ttcore/component",
+          "ttcore/control",
+          "ttcore/core",
+          "ttcore/extensions",
+          "ttcore/lib",
+          "ttcore/map",
+          "ttcore/model",
+          "ttcore/models",
+          "ttcore/all.js",
+          "ttcore/attributes.js",
+          "ttcore/component.js",
+          "ttcore/control.js",
+          "ttcore/core.js",
+          "ttcore/extensions.js",
+          "ttcore/lib.js",
+          "ttcore/map.js",
+          "ttcore/model.js",
+          "ttcore/models.js"
+        ],
+        "newSourceValue": "can",
+        "exampleLocalName": false
+      },
+      {
         "shortName": "component",
         "oldSourceValues": [
           "can/component/",
