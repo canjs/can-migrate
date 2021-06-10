@@ -1,0 +1,5 @@
+<can-import from="./foo.stache!steal-stache" value:to="stache" />
+<can-import from="./bar.stache!steal-stache" value:to="stache2" />
+
+{{stache(this)}}
+{{stache2(this)}}

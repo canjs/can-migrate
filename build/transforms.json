@@ -803,6 +803,46 @@
     ]
   },
   {
+    "copy": [
+      {
+        "input": "import/import-append-steal-stache.js",
+        "outputPath": "import/import-append-steal-stache.js",
+        "type": "transform",
+        "version": "3"
+      },
+      {
+        "input": "import/import-append-steal-stache-input.js",
+        "outputPath": "import/import-append-steal-stache-input.js",
+        "type": "fixture",
+        "version": "3"
+      },
+      {
+        "input": "import/import-append-steal-stache-output.js",
+        "outputPath": "import/import-append-steal-stache-output.js",
+        "type": "fixture",
+        "version": "3"
+      },
+      {
+        "input": "import/import-append-steal-stache-input.stache",
+        "outputPath": "import/import-append-steal-stache-input.stache",
+        "type": "fixture",
+        "version": "3"
+      },
+      {
+        "input": "import/import-append-steal-stache-output.stache",
+        "outputPath": "import/import-append-steal-stache-output.stache",
+        "type": "fixture",
+        "version": "3"
+      },
+      {
+        "input": "import/import-append-steal-stache-test.js",
+        "outputPath": "import/import-append-steal-stache-test.js",
+        "type": "test",
+        "version": "3"
+      }
+    ]
+  },
+  {
     "generate": [
       {
         "template": "import/import.ejs",

@@ -19,6 +19,7 @@ require('../lib/transforms/version-6/can-observable-array/import-test.js');
 require('../lib/transforms/version-6/can-stache-element/can-stache-element-test.js');
 require('../lib/transforms/version-6/can-observable-object/observable-object-test.js');
 require('../lib/transforms/version-6/can-observable-array/observable-array-test.js');
+require('../lib/transforms/version-3/import/import-append-steal-stache-test.js');
 require('../lib/transforms/version-3/can-can/import-test.js');
 require('../lib/transforms/version-3/can-component/import-test.js');
 require('../lib/transforms/version-3/can-construct/import-test.js');
