@@ -6,7 +6,7 @@ var kebabToCamel = function (kebab) {
 
 var detectCanValueRE = /<[^>]*\bcan-value=[^>]*>/g;
 var detectCanHrefRE = /\bcan-href=[^>]*>/g;
-var detectCanEventRE = /\bcan-(\w[-:\w]+)=(\\?")([^\n"]+?)\\?"/g;
+var detectCanEventRE = /\bcan-(\w[-:\w]+)=(\\?") *\{*([^\n"]+?)\}* *\\?"/g;
 var detectBraceDelimitedValueRE = /([-\w:]+)=(\\?")\{(?!\{)([^}\n"]+)\}\\?"/g;
 
 var cvTypeRE = /\btype=\\?"([^"]*?)\\?"/;
@@ -69,6 +69,7 @@ function makeCanEventProcessor(explicit) {
     var tokens;
     if (!hasCallExpr) {
       if(hasParams) {
+
         tokens = $2.split(' ').map(function(token) {
           return {
             str: token,
