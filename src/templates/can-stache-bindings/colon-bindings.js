@@ -4,6 +4,7 @@ var kebabToCamel = function (kebab) {
   });
 };
 
+var detectBadBindingAttrRE = /([-\w:]+)=\{(?!\{)([^}\n]+)\}(?!\})/g;
 var detectCanValueRE = /<[^>]*\bcan-value=[^>]*>/g;
 var detectCanHrefRE = /\bcan-href=[^>]*>/g;
 var detectCanEventRE = /\bcan-(\w[-:\w]+)=(\\?") *\{*([^\n"]+?)\}* *\\?"/g;
@@ -20,7 +21,7 @@ function makeCanValueProcessor(explicit, escapeSingleQuote) {
   return function ($0) {
     var type = (cvTypeRE.exec($0) || [])[1];
     var valueBindingAndQuote = (cvCanValueRE.exec($0) || []);
-    var valueBinding = valueBindingAndQuote[1];
+    var valueBinding = (valueBindingAndQuote[1] || '').trim().replace(/^\{(.*)\}$/, '$1');
     var valueText = (cvValueRE.exec($0) || [])[1];
     var trueValue = (cvTrueValueRE.exec($0) || [])[1] || '';
     var falseValue = (cvFalseValueRE.exec($0) || [])[1] || '';
@@ -28,8 +29,8 @@ function makeCanValueProcessor(explicit, escapeSingleQuote) {
 
     var q = valueBindingAndQuote[2] || '"';
     var sq = escapeSingleQuote && q === '"' ? '\\\'' : '\'';
-
     var canValueExp;
+
     switch(type) {
       case 'checkbox':
         if(trueValue || falseValue) {
@@ -65,7 +66,7 @@ function makeCanValueProcessor(explicit, escapeSingleQuote) {
 function makeCanEventProcessor(explicit) {
   return function (x, $1, $quot, $2) {
     var hasCallExpr = /\w.*\(.*\)/.test($2);
-    var hasParams = / [\w.$@%]/.test($2.trim());
+    var hasParams = / [\w.$@%']/.test($2.trim());
     var tokens;
     if (!hasCallExpr) {
       if(hasParams) {
@@ -90,7 +91,7 @@ function makeCanEventProcessor(explicit) {
         tokens[tokens.length - 1].str += ')';
         $2 = tokens[0].str + tokens.slice(1).map(function(token) { return token.str; }).join(' ');
       } else {
-        $2 = $2.trim() + '(this, scope.element, scope.event)';
+        $2 = $2.trim() + '(this, %jQueryElement, %event)';
       }
     }
 
@@ -101,6 +102,9 @@ function makeCanEventProcessor(explicit) {
 
 var transformStacheExplicit = function (src, escapeSingleQuote) {
   // older legacy binding.
+  src = src.replace(detectBadBindingAttrRE, function(x, $1, $2) {
+    return $1 + '="' + $2 + '"';
+  });
   src = src.replace(detectCanValueRE, makeCanValueProcessor(true, escapeSingleQuote));
   src = src.replace(detectCanHrefRE, function(x, $1) {
     return 'href="{{routeUrl ' + $1.trim().replace(/[{}]/g, '') + '}}"';
